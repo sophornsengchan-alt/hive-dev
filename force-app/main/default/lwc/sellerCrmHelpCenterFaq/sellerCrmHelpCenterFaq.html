@@ -1,0 +1,28 @@
+<template>
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-primary-800 mb-4 pb-2 border-b-2 border-primary-200">
+            Frequently Asked Questions
+        </h2>
+        
+        <template if:true={knowledgeFaqs}>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <template for:each={knowledgeFaqs} for:item="faq">
+                    <c-seller-crm-help-center-item 
+                        key={faq.Title}
+                        id={faq.Id}
+                        url-name={faq.UrlName}
+                        title={faq.Title}
+                        icon-url={faq.IconURL__c}
+                        description={faq.Summary}
+                        icon-class="icon-secondary-500"
+                    ></c-seller-crm-help-center-item>
+                </template>
+            </div>
+        </template>
+        <template if:false={knowledgeFaqs}>
+            <p class="text-gray-500">
+                No FAQs available at the moment. Please check back later.
+            </p>
+        </template>
+    </div>
+</template>

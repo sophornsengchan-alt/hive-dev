@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-accordion__list-item">
+        <section class="slds-accordion__section slds-is-close slds-p-around_none">
+          <!-- <div class="slds-accordion__summary">
+            <h2 class="slds-accordion__summary-heading">
+              <button class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="referenceId-45" aria-expanded="true" 
+                title="Accordion summary" onclick={handleSummaryClick}>
+                <lightning-icon icon-name="utility:chevronright" class="chevron_icon slds-is-absolute" size="medium" ></lightning-icon>
+                <span class="title-class slds-m-around_small slds-accordion__summary-content">{title}</span>
+              </button>
+            </h2>
+          </div> -->
+          <slot class="slds-accordion__content">
+
+          </slot>
+        </section>
+      </div>   
+</template>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Main Title" name="headerTitle0" type="String" default="Create single or multiple deals in one go via CSV file upload tool"/>
+            <property label="Label Download Template" name="labelDownload0" type="String" default="Create Deal"/>						
+            <property label="Enable Tile 1" name="enableTile1" type="Boolean" default="true"/>
+            <property label="Main Title 1" name="headerTitle1" type="String" default="Bulk upload from CSV"/>
+            <property label="Body Text 1" name="bodyText1" type="String" default="Lorem ipsum dolor sit amet, consectetur adipiscing elit"/>
+            <property label="Label Download Template1" name="labelDownload1" type="String" default="Download template"/>						
+            <property label="URL 1" name="url1" type="String" default=""/>
+            <property label="Enable Tile 2" name="enableTile2" type="Boolean" default="true"/>
+            <property label="Main Title 2" name="headerTitle2" type="String" default="Start new deal from scratch"/>
+            <property label="Body Text 2" name="bodyText2" type="String" default="Lorem ipsum dolor sit amet, consectetur adipiscing elit"/>
+						<property label="Label Download Template 2" name="labelDownload2" type="String" default="Download template"/>
+            <property label="URL 2" name="url2" type="String" default=""/>
+            <property label="Enable Tile 3" name="enableTile3" type="Boolean" default="true"/>
+            <property label="Main Title 3" name="headerTitle3" type="String" default="Clone from a previous deal"/>
+            <property label="Body Text 3" name="bodyText3" type="String" default="Lorem ipsum dolor sit amet, consectetur adipiscing elit"/>
+						<property label="Label Download Template 3" name="labelDownload3" type="String" default="Download template"/>
+            <property label="URL 3" name="url3" type="String" default=""/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

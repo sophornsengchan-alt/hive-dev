@@ -1,0 +1,35 @@
+<template>
+    <div
+    class="bg-white h-full slds-card rounded-lg shadow-md p-6 flex items-center hover:shadow-lg transition-shadow duration-300"
+>
+    <template if:true={isUseStandardIcon}>
+        <lightning-icon
+            icon-name={iconName}
+            size="medium"
+            class={iconClass}
+        ></lightning-icon>
+    </template>
+    <template if:true={shouldDisplayCustomIcon} >
+        <img src={iconUrl} class="w-8 h-8" alt={iconUrl}></img>
+    </template>
+    <div class="pl-3">
+        <template if:true={knowledgeDetailUrl}>
+            <a href={knowledgeDetailUrl} class="text-lg font-semibold text-primary-700 hover:text-primary-500">
+                <lightning-formatted-rich-text value={title}>
+                </lightning-formatted-rich-text> 
+            </a>
+        </template>
+        <template if:false={knowledgeDetailUrl}>
+            <div class="text-lg font-semibold text-primary-700 hover:text-primary-500">
+                <lightning-formatted-rich-text value={title}>
+                </lightning-formatted-rich-text> 
+            </div>
+        </template>
+       
+        <p class="text-gray-600 mt-2">
+            <lightning-formatted-rich-text value={description}>
+            </lightning-formatted-rich-text> 
+        </p>
+    </div>
+</div>
+</template>

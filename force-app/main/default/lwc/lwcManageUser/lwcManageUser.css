@@ -1,0 +1,19 @@
+.redb-box{
+    border-color: red;
+}
+.default-contacts-H{
+    min-height: 135px;
+}
+.red-text{
+    color:red !important;
+}
+.list-contact{
+    background-color: #f3f2f2;
+    border-color:#f3f2f2 ;
+    max-height: 240px;
+    overflow-y: scroll; 
+}
+.titleBlock h1 {
+    font-weight: 700;
+    overflow:hidden !important;
+}

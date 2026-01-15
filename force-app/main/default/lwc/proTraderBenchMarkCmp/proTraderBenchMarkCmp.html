@@ -1,0 +1,135 @@
+<template>
+    <section class="benchmark-data slds-p-horizontal_xx-large slds-p-vertical_xx-large">
+        <div class="spinner">
+            <template if:true={isLoading} >
+                <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+            </template>
+        </div>
+        <div class="slds-p-horizontal_xx-large slds-p-vertical_xx-large">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <h3 class="text-center">{label.Pro_Trader_Benchmark_data_for_your_category}</h3>
+                </div>
+            </div>
+            <div >
+                <div class="col-12 col-lg-10 mt-4">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item active-li" id="retail-standards-tab" role="presentation" data-name="RetailLi">
+                            <a class="nav-link" id="nav-retail-tab" data-bs-toggle="tab" 
+                                aria-controls="retail" aria-selected="true" role="tab" data-name="Retail" onclick={handleTabChange}>
+                                {label.Pro_Trader_Retail_Standards}</a>
+                          </li>
+                          <li class="nav-item inactive-li" id="promotions-tab" role="presentation" data-name="PromotionsLi" lwc:ref="myDiv">
+                            <a class="nav-link" id="nav-promotions-tab" data-bs-toggle="tab" data-name="Promotions" onclick={handleTabChange}
+                                aria-controls="promotions" aria-selected="false" role="tab" tabindex="-1">{label.Pro_Trader_Promotions}</a>
+                          </li>
+                          <li class="nav-item inactive-li" role="presentation" data-name="HealthLi">
+                            <a class="nav-link" id="nav-listing-tab" data-bs-toggle="tab" data-name="Health" onclick={handleTabChange} 
+                                aria-controls="listing" aria-selected="false" tabindex="-1" role="tab">{label.Pro_Trader_Listing_health}</a>
+                          </li>
+                    </ul>
+                    <div class="tab-content ">
+                        <div class="tab-pane fade " id="retail" role="tabpanel" aria-labelledby="nav-retail-tab">
+                            <!--Retail and promotion tab-->
+                            <div class="slds-p-horizontal_xx-large">
+                                <template if:true={showProgressBar}> 
+                                    <div class="slds-p-horizontal_xx-large">
+                                        <p class="sub-title">{label.Pro_Trader_benchmark_info}</p>
+                                        <div class="filter slds-p-bottom_small">
+                                            <lightning-combobox
+                                            name="progress"
+                                            value={prodValue}
+                                            options={options}
+                                            onchange={handlePicklistChange} class="blank-col-width"></lightning-combobox>
+                                            <p class="slds-show_inline slds-p-around_large">{label.Pro_Trader_average_monthly12_months}</p>
+                                        </div>
+                                        <template if:true={progressBarList} for:each={progressBarList} for:item="eachBar" >
+                                            <div class="slds-p-bottom_large" key={eachBar.label}>
+                                                <p class="progress-bar-label slds-p-vertical_x-small slds-p-right_large">{eachBar.label} <lightning-helptext icon-name="utility:info_alt" content={eachBar.helpText}></lightning-helptext></p>
+                                                <!--<lightning-progress-bar value="50" size="large" variant="circular"></lightning-progress-bar>-->
+                                                <div if:true={eachBar.showProgressBar} class="slds-progress-bar slds-progress-bar_circular slds-progress-bar_large progress-bar-height" 
+                                                        aria-valuemin="0" aria-valuemax="100" aria-valuenow={eachBar.valuePercentage} role="progressbar">
+                                                    <span class="slds-progress-bar__value progress-bar" style={eachBar.valuePercentage}>  
+                                                        <p class="progress-bar-text slds-text-align_right slds-p-left_x-small slds-p-right_medium">{eachBar.value}</p>                        
+                                                    </span>
+                                                </div>
+                                                <div class="calendar" if:false={eachBar.showProgressBar}>
+                                                    <img src={protraderSalesEventCalendar} width="30"></img>
+                                                    <p class="slds-show_inline slds-p-left_x-small">{eachBar.value}</p>
+                                                </div>
+                                            </div>
+                                            
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                            <!--Listing health tab-->
+                            <template if:false={showProgressBar}>
+                                <div class="slds-p-top_xx-large">
+                                    <div class="table-responsive slds-scrollable_x">
+                                        <table class="slds-table" style="width:150%">
+                                            <thead>
+                                                <tr class="first-table-header slds-line-height_reset">
+                                                    <th class="slds-text-align_center"></th>
+                                                    <th class="slds-text-align_center"><span class="txt-bold">{label.Pro_trader_Item_specifics}</span><span> {label.Pro_Trader_per_listing}</span></th>
+                                                    <th class="slds-text-align_center"><span class="txt-bold">{label.Pro_Trader_Photos}</span><span> {label.Pro_Trader_per_listing}</span></th>
+                                                    <th class="slds-text-align_center"><span class="txt-bold">{label.Pro_Trader_Title_length}</span><span> {label.Pro_Trader_character_count}</span></th>
+                                                    <th class="slds-text-align_center"><span class="txt-bold">{label.Pro_trader_Sponsored_listings}</span><span> {label.Pro_Trader_number_of_listing}</span></th>
+                                                </tr>
+
+                                                <tr class="second-table-header slds-line-height_reset">
+                                                    <th></th>
+                                                    <th>
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell txt-bold slds-line-clamp_small slds-float_left">{label.Pro_TraderYour} {label.Pro_trader_listings}</span> 
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell slds-line-clamp_small slds-float_right"><span if:false={isItalianLanguage}>eBay</span> {label.Pro_trader_average}</span>
+                                                    </th>
+                                                    <th>
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell txt-bold slds-line-clamp_small slds-float_left">{label.Pro_TraderYour} {label.Pro_trader_listings}</span> 
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell slds-line-clamp_small slds-float_right"><span if:false={isItalianLanguage}>eBay</span> {label.Pro_trader_average}</span>
+                                                    </th>
+                                                    <th>
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell txt-bold slds-line-clamp_small slds-float_left">{label.Pro_TraderYour} {label.Pro_trader_listings}</span> 
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell slds-line-clamp_small slds-float_right"><span if:false={isItalianLanguage}>eBay</span> {label.Pro_trader_average}</span>
+                                                    </th>
+                                                    <th>
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell txt-bold slds-line-clamp_small slds-float_left">{label.Pro_TraderYours} {label.pro_trader_category} {label.pro_trader_coverage}</span> 
+                                                        <span class="slds-p-around_small slds-text-align_center half-cell slds-line-clamp_small slds-float_right"><span if:false={isItalianLanguage}>eBay</span> {label.pro_trader_category} {label.pro_trader_coverage}</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr if:true={sellerBenchMarkData} for:each={sellerBenchMarkData} for:item="subCategory" key={subCategory.subCategoryName} for:index="index" class="slds-hint-parent top-line">
+                                                    <td for:each={subCategory} for:item="cell" key={cell.subCategoryName} class="td-class">
+                                        
+                                                        <div if:true={cell.subCategoryName} class="slds-p-around_medium slds-text-align_left">{cell.subCategoryName}</div> 
+
+                                                        <div if:true={cell.itemsSepcificYourListingCount}  class="slds-p-around_medium slds-truncate half-cell slds-text-align_center slds-float_left">{cell.itemsSepcificYourListingCount}</div> 
+                                                        <div if:true={cell.itemSpecificEbayAverageCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_right">{cell.itemSpecificEbayAverageCount}</div> 
+
+                                                        <div if:true={cell.photosYourListingCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_left">{cell.photosYourListingCount}</div>  
+                                                        <div if:true={cell.photosEbaysAverageCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_right">{cell.photosEbaysAverageCount}</div>  
+
+                                                        <div if:true={cell.titleLengthYourListingCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_left">{cell.titleLengthYourListingCount}</div>  
+                                                        <div if:true={cell.titleLengthEbaysAverageCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_right">{cell.titleLengthEbaysAverageCount}</div>
+
+                                                        <div if:true={cell.sponsoredListingYourCategoryCoverageCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_left">{cell.sponsoredListingYourCategoryCoverageCount}</div>  
+                                                        <div if:true={cell.sponsoredListingEbayCategoryCoverageCount} class="slds-p-around_medium half-cell slds-text-align_center slds-float_right">{cell.sponsoredListingEbayCategoryCoverageCount}</div>                                             
+                                                                
+                                                    </td>
+                                                </tr>
+                                                    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                     
+                            </template>
+
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+
+    </section>
+</template>

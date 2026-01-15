@@ -1,0 +1,41 @@
+<template>
+        <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+        <div class="slds-col slds-size_2-of-8 custom_combox">
+            <lightning-combobox name="status" label="Status" onchange={handleChange}
+                options={statusOptions} value={value}>
+            </lightning-combobox>   
+        </div>
+        <div class="slds-col slds-size_2-of-8 custom_combox">
+            <lightning-combobox name="rejectionreason" label="Rejection reason"
+                onchange={handleChange} options={rjectionReasonOptions} value={value}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_2-of-8 custom_combox">
+            <lightning-combobox name="dealformat" label="Deal format"
+                onchange={handleChange} options={dealFormatOption} value={value}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_2-of-8">
+            <lightning-input type="date" name="startdate" label="Start date" class="clndr" 
+                onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div class="slds-col slds-size_2-of-8">
+            <lightning-input type="date" name="enddate" label="End date" class="clndr" 
+                onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <div class="slds-col slds-size_6-of-8 slds-m-top_large">
+            <div class="slds-float_right">
+                <lightning-button variant="brand"  label="Apply" onclick={handleSearch}
+                class="custombtn">
+                </lightning-button>
+                <lightning-button variant="brand" label="Clear" onclick={clearHandler}
+                class="slds-m-left_medium custombtn custombtnclear">
+            </lightning-button>
+            </div>
+            
+        </div>
+        
+    </div>
+</template>

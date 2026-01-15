@@ -1,0 +1,665 @@
+<template>
+    <div class="main-body">
+        <form>
+
+        <template if:false={isEdit}>
+        
+        <div class="slds-grid">
+            <div class="slds-col slds-size_12-of-12 slds-grid_align-center">
+                <template if:true={isFromContractAmendment}>
+                    <div class="body-header-amendment">
+                        <strong><p><lightning-formatted-rich-text value={Labels.ContractAmendment_HeaderStep3}></lightning-formatted-rich-text></p></strong>
+                    </div>
+
+                </template>
+                <template if:false={isFromContractAmendment}>
+                    <div class="body-headerling">
+                        <h1><lightning-formatted-rich-text value={Labels.Pricing_Guided_welcome_header}></lightning-formatted-rich-text></h1>
+                        <h3><lightning-formatted-rich-text value={Labels.Pricing_Guided_welcome_text}></lightning-formatted-rich-text></h3>
+                    </div>
+                    <div class="progress-bar">
+                        <c-flow-contract-user-guided-u-x mode={mode} current-step={currentStep}></c-flow-contract-user-guided-u-x>
+                    </div>
+                </template>
+                
+                <template if:true={isCurrentStep1}>
+                    <template if:true={isCurrentMode3}>
+                        <div class="step-header">
+                            <h2><lightning-formatted-rich-text value={Labels.Pricing_Guided_header_Step_1}></lightning-formatted-rich-text></h2>
+                            <p><lightning-formatted-rich-text value={Labels.Pricing_Guided_text_Step_1}></lightning-formatted-rich-text></p>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={isCurrentStep2}>
+                    <div class="step-header">
+                        <h2><lightning-formatted-rich-text value={Labels.Pricing_Guided_header_Step_2}></lightning-formatted-rich-text></h2>
+                        <p><lightning-formatted-rich-text value={Labels.Pricing_Guided_text_Step_2}></lightning-formatted-rich-text></p>
+                    </div>
+                </template>
+                <template if:true={isCurrentStep3}>
+                    <div class="step-header">
+                        <h2><lightning-formatted-rich-text value={Labels.Pricing_Guided_header_Step_3}></lightning-formatted-rich-text></h2>
+                        <p><lightning-formatted-rich-text value={Labels.Pricing_Guided_text_Step_3}></lightning-formatted-rich-text></p>
+                    </div>
+                </template>
+                
+            </div>
+        </div>
+        </template>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_12-of-12 container">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </template>
+
+                <!-- LA -->
+                <template if:true={isCurrentStep1}>
+                    <template if:true={isCurrentMode3}>
+                        <template for:each={selectPricingCategoryList} for:item="item" for:index="idx">
+                            <div key={item.key}>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <div class="site-selection">
+                                            <lightning-record-edit-form object-api-name="EBH_Pricing__c" id={idx} record-type-id="0123u0000019nfeAAA">
+                                                <lightning-input-field data-id={idx} required="true" field-name="EBH_Site__c" value={item.EBH_Site__c} onchange={handleChangeSite}> </lightning-input-field>
+                                            </lightning-record-edit-form>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12 right-align">
+                                        <template if:false={item.isFirstIndex}>
+                                            <div class="remove-btn">
+                                                <lightning-button variant="destructive-text" icon-name="utility:delete" label="Remove Site" title="Remove" data-id={idx} onclick={removeSite} class="slds-m-left_x-small"></lightning-button>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <article class="slds-card">
+                                            <div class="slds-card__header slds-grid">
+                                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                    <div class="slds-media__figure">
+                                                        <lightning-icon icon-name={headerIcon} size="small"></lightning-icon>
+                                                    </div>
+                                                    <div class="slds-media__body">
+                                                        <h2 class="slds-card__header-title">
+                                                            <span>{headerTitle}</span>
+                                                        </h2>
+                                                    </div>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12"></div>
+                                    <div class="slds-col slds-size_5-of-12 slds-grid_align-end">
+                                        <div class="search-category">
+                                            <div onkeyup={handleSearchKeyUp}>
+                                            <lightning-input
+                                                data-id={idx}
+                                                name="search-category"
+                                                label="Search Category"
+                                                placeholder="Search Category Name..."
+                                                variant="label-hidden"
+                                                type="search">
+                                            </lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_12-of-12">
+                                        <div class="height-200">
+                                            <lightning-datatable
+                                                key-field="Id"
+                                                data-id={idx}
+                                                data={item.allCategories}
+                                                selected-rows={selectedRowIds}
+                                                columns={columns}
+                                                onrowselection={handleRowSelection}>
+                                            </lightning-datatable>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_12-of-12 right-align">
+                                <div class="slds-m-top_small slds-m-bottom_medium">
+                                    <lightning-button icon-name="utility:add" label="Add New Site" title="Add New Site" onclick={addNewSite} class="slds-m-left_x-small"></lightning-button>
+                                </div>  
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- ACP -->
+                    <template if:true={isCurrentMode4}>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_12-of-12">
+                                <div class="title-header">
+                                    <h2 class="slds-card__header-title"><lightning-formatted-rich-text value="Target Type"></lightning-formatted-rich-text></h2>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <lightning-record-edit-form object-api-name="Contract" record-id={contractData.Id} record-type-id="0126A000000M9x9QAC">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_12-of-12">
+                                    <div class="site-selection">
+                                        <lightning-input-field variant="label-stacked" data-id="acp" required="true" data-name="TargetType__c" field-name="TargetType__c" value={contractData.TargetType__c} onchange={handleChangeContractFields}> </lightning-input-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_4-of-12">
+                                    <div class="site-selection">
+                                        <lightning-input-field disabled={isEdit} variant="label-stacked" data-id="acp" required="true" data-name="EBH_Site__c"  field-name="EBH_Site__c" value={contractData.EBH_Site__c} onchange={handleChangeContractFields}> </lightning-input-field>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_4-of-12">
+                                    <div class="site-selection">
+                                        <lightning-input-field disabled={isEdit} variant="label-stacked" data-id="acp" required="true" data-name="Additional_Contract_Site_s__c" field-name="Additional_Contract_Site_s__c" value={contractData.Additional_Contract_Site_s__c} onchange={handleChangeContractFields}> </lightning-input-field>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_4-of-12"></div>
+                            </div>
+                        </lightning-record-edit-form>
+                        
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_12-of-12">
+                                <div class="title-header">
+                                    <h2 class="slds-card__header-title"><lightning-formatted-rich-text value="Set Tier Thresholds"></lightning-formatted-rich-text></h2>
+                                </div>
+                                <p class="help-text"><lightning-formatted-rich-text value="Enter the Quarterly targets as required. Please note: only the rows with Period start date populated will have pricing created"></lightning-formatted-rich-text></p>
+                            </div>
+
+                        </div>
+                        <template for:each={pricingData} for:item="item" for:index="idx">
+                            <div class="slds-grid" key={item.Id}>
+                                <div class="slds-col slds-size_12-of-12 define-tiers-container">
+                                        <template if:true={isTargetTypePercentage}>
+                                            
+                                            <div class="slds-grid">
+                                                <div class="slds-col slds-size_12-of-12 tbl-data">
+                                                    <table class="slds-table" role="grid">
+                                                        <tr>
+                                                            <td rowspan="4" class="td-btn">
+                                                                <lightning-input type="number" step="0.01" formatter="currency" data-id={idx} label={item.GMV_Target_Label} data-name="EBH_GMVTarget__c" value={item.EBH_GMVTarget__c} onchange={handleChangePricingFields}> </lightning-input>
+                                                                <template if:false={isEdit}>
+                                                                <template if:true={item.isFirstIndex}>
+                                                                    <div class="casecade-btn">
+                                                                        <lightning-button icon-name="utility:copy" label="Cascade" title="Cascade" onclick={cascade} class="slds-m-left_x-small"></lightning-button>
+                                                                    </div>
+                                                                </template>
+                                                                </template>
+                                                            </td>
+                                                            <td rowspan="4"><lightning-input required="true" field-level-help="Period End Date will be auto calcuated" type="date" data-id={idx} label="Period Start Date" data-name="EBH_PeriodStartDate__c" value={item.EBH_PeriodStartDate__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                        </tr>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Accelerator Threshold" data-name="EBH_AcceleratorThreshold__c" value={item.EBH_AcceleratorThreshold__c}> </lightning-input></td>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Accelerator Rebate" data-name="EBH_AcceleratorTierrebate__c" value={item.EBH_AcceleratorTierrebate__c}> </lightning-input></td>
+                                                        <tr>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Main Tier Threshold" data-name="EBH_MainThreshold__c" value={item.EBH_MainThreshold__c}> </lightning-input></td>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Main Tier Rebate" data-name="EBH_RebateTier__c" value={item.EBH_RebateTier__c}> </lightning-input></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Decelerator Tier Threshold" data-name="EBH_DeceleratorThreshold__c" value={item.EBH_DeceleratorThreshold__c}> </lightning-input></td>
+                                                            <td><lightning-input type="number" disabled="true" formatter="percent-fixed" data-id={idx} step="0.01" label="Decelerator Tier Rebate" data-name="EBH_DeceleratorTier__c" value={item.EBH_DeceleratorTier__c}> </lightning-input></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            
+                                        </template>
+                                        <template if:false={isTargetTypePercentage}>
+                                            <div class="slds-grid">
+                                                <div class="slds-col slds-size_12-of-12 tbl-data">
+                                                    <table class="slds-table" role="grid">
+                                                        <tr>
+                                                            <td rowspan="4" class="td-btn">
+                                                                <lightning-input type="number" formatter="currency" step="0.01" data-id={idx} label={item.GMV_Target_Label} data-name="EBH_GMVTarget__c" value={item.EBH_GMVTarget__c} onchange={handleChangePricingFields}> </lightning-input>
+                                                                <template if:false={isEdit}>
+                                                                <template if:true={item.isFirstIndex}>
+                                                                    <div class="casecade-btn">
+                                                                        <lightning-button icon-name="utility:copy" label="Cascade" title="Cascade" onclick={cascade} class="slds-m-left_x-small"></lightning-button>
+                                                                    </div>
+                                                                </template>
+                                                                </template>
+                                                            </td>
+                                                            <td rowspan="4"><lightning-input required="true" field-level-help="Period End Date will be auto calcuated" type="date" data-id={idx} label="Period Start Date" data-name="EBH_PeriodStartDate__c" value={item.EBH_PeriodStartDate__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><lightning-input type="number" formatter="decimal" step="0.01" data-id={idx} label="Accelerator Tier Threshold" data-name="Pricing_Accelerator_Tier_Threshold__c" value={item.Pricing_Accelerator_Tier_Threshold__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                            <td><lightning-input type="number" formatter="percent-fixed" step="0.01" data-id={idx} label="Accelerator Tier Rebate" data-name="Pricing_Accelerator_Tier_rebate__c" value={item.Pricing_Accelerator_Tier_rebate__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><lightning-input type="number" formatter="decimal" step="0.01" data-id={idx} label="Main Tier Threshold" data-name="Pricing_Main_Tier_Threshold__c" value={item.Pricing_Main_Tier_Threshold__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                            <td><lightning-input type="number" formatter="percent-fixed" step="0.01" data-id={idx} label="Main Tier Rebate" data-name="Pricing_Main_Tier_rebate__c" value={item.Pricing_Main_Tier_rebate__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><lightning-input type="number" formatter="decimal" step="0.01" data-id={idx} label="Decelerator Tier Threshold" data-name="Pricing_Decelerator_Tier_Threshold__c" value={item.Pricing_Decelerator_Tier_Threshold__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                            <td><lightning-input type="number" formatter="percent-fixed" step="0.01" data-id={idx} label="Decelerator Tier Rebate" data-name="Pricing_Main_Tier_Threshold_of_Target__c" value={item.Pricing_Main_Tier_Threshold_of_Target__c} onchange={handleChangePricingFields}> </lightning-input></td>
+                                                        </tr>
+                                                        
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </template>
+                                </div>
+                            </div>
+                        </template>
+                        
+                    </template>
+                    
+                </template>
+                <template if:true={isCurrentStep2}>
+                    <template if:true={isCurrentMode3}>
+                        <lightning-accordion allow-multiple-sections-open active-section-name="Index0">
+                            <template for:each={selectPricingCategoryList} for:item="item" for:index="idx">
+                                <div class="slds-grid" key={item.key}>
+                                    <div class="slds-col slds-size_12-of-12 fvf-container">
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_12-of-12">
+                                                <table class="slds-table" role="grid">
+                                                    <tr>
+                                                        <td><lightning-input label="Site" value={item.EBH_Site__c} disabled="true"> </lightning-input></td>
+                                                        <td><lightning-input label="Category Name" value={item.selectedCategory.Category_Name__c} disabled="true"> </lightning-input></td>
+                                                        <td><lightning-input label="Category ID" value={item.selectedCategory.Category_Id__c} disabled="true"> </lightning-input></td>
+                                                        <td><lightning-input label="Listing Format" value={item.selectedCategory.EBH_ListingFormat__c} disabled="true"> </lightning-input></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_12-of-12">
+                                                <template if:true={item.isFirstIndex}>
+                                                    <lightning-accordion-section name="Index0" label="Define FVF Discounts">
+                                                        <div class="slds-grid define-fvf">
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <!-- <lightning-input required="true" min="0" type="number" formatter="currency" data-id={idx} step="0.01" label="Projected 12M GMV" data-name="EBH_Projected12MGMV__c" value={item.EBH_Projected12MGMV__c} onchange={handleChangeFields}> </lightning-input> -->
+                                                                <lightning-input required="true" min="0" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label1} data-name="EBH_Projected12MGMV__c" value={item.EBH_Projected12MGMV__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <lightning-input required="true" min="0" type="number" data-id={idx} label="Orders" data-name="Orders__c" value={item.Orders__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <!-- <lightning-input required="true" min="0" type="number" formatter="currency" data-id={idx} step="0.01" label="ASP" data-name="EBH_ASP__c" value={item.EBH_ASP__c} onchange={handleChangeFields}> </lightning-input> -->
+                                                                <lightning-input required="true" min="0" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label2} data-name="EBH_ASP__c" value={item.EBH_ASP__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-grid">
+                                                            <div class="slds-col slds-size_12-of-12">
+                                                                <table class="slds-table" role="grid">
+                                                                    <tr>
+                                                                        <td><lightning-formatted-rich-text class="header-title" value="T1"></lightning-formatted-rich-text></td>
+                                                                        <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Threshold Amount" data-name="ASPThreshold__c" value={item.selectedCategory.ASPThreshold__c}> </lightning-input></td> -->
+                                                                        <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label3} data-name="ASPThreshold__c" value={item.selectedCategory.ASPThreshold__c}> </lightning-input></td>
+                                                                        <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} step="0.01" label="Default FVF" data-name="VariableFVF__c" value={item.selectedCategory.VariableFVF__c}> </lightning-input></td>
+                                                                        <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} step="0.01" field-level-help="Up to threshold amount or above threshold amount." label="Discount Threshold Amount (up to)" data-name="ASP_threshold__c" value={item.ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                        <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} step="0.01" field-level-help="Up to threshold amount or above threshold amount." label={item.Label4} data-name="ASP_threshold__c" value={item.ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        <td><lightning-input min="0" type="number" class="black-color" formatter="percent-fixed" data-id={idx} step="0.01" label="Discount FVF" data-name="Variable_FVF__c" value={item.Variable_FVF__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                    </tr>
+                                                                    <template if:true={item.isT2Show}>
+                                                                        <tr>
+                                                                            <td><lightning-formatted-rich-text class="header-title" value="T2"></lightning-formatted-rich-text></td>
+                                                                            <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} label="Default Threshold Amount" step="0.01" data-name="GMVThreshold2__c" value={item.selectedCategory.GMVThreshold2__c}> </lightning-input></td> -->
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} label={item.Label3} step="0.01" data-name="GMVThreshold2__c" value={item.selectedCategory.GMVThreshold2__c}> </lightning-input></td>
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} label="Default FVF" step="0.01" data-name="VariableFVFaboveASPThreshold__c" value={item.selectedCategory.VariableFVFaboveASPThreshold__c}> </lightning-input></td>
+                                                                            <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} field-level-help="Where value is 0, this means infinity" label="Discount Threshold Amount (up to)" step="0.01" data-name="T2DiscountAmount__c" value={item.T2DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                            <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} field-level-help="Where value is 0, this means infinity" label={item.Label4} step="0.01" data-name="T2DiscountAmount__c" value={item.T2DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                            <td><lightning-input min="0" type="number" formatter="percent-fixed" data-id={idx} label="Discount FVF" step="0.01" data-name="Variable_FVF_above_ASP_threshold__c" value={item.Variable_FVF_above_ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        </tr>
+                                                                    </template>
+                                                                    <template if:true={item.isT3Show}>
+                                                                        <tr>
+                                                                            <td><lightning-formatted-rich-text class="header-title" value="T3"></lightning-formatted-rich-text></td>
+                                                                            <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Threshold Amount" data-name="GMVThreshold3__c" value={item.selectedCategory.GMVThreshold3__c}> </lightning-input></td> -->
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label3} data-name="GMVThreshold3__c" value={item.selectedCategory.GMVThreshold3__c}> </lightning-input></td>
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} step="0.01" label="Default FVF" data-name="Tier_2_bps_Discount__c" value={item.selectedCategory.Tier_2_bps_Discount__c}> </lightning-input></td>
+                                                                            <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} field-level-help="Where value is 0, this means infinity" step="0.01" label="Discount Threshold Amount (up to)" data-name="T3DiscountAmount__c" value={item.T3DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                            <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} field-level-help="Where value is 0, this means infinity" step="0.01" label={item.Label4} data-name="T3DiscountAmount__c" value={item.T3DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                            <td><lightning-input min="0" type="number" class="black-color" formatter="percent-fixed" data-id={idx} step="0.01" label="Discount FVF" data-name="T3DiscountFVF__c" value={item.T3DiscountFVF__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        </tr>
+                                                                    </template>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <!-- <td colspan="2"><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Per Order Fee" data-name="FixedFVF__c" value={item.selectedCategory.FixedFVF__c}> </lightning-input></td> -->
+                                                                        <td colspan="2"><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label5} data-name="FixedFVF__c" value={item.selectedCategory.FixedFVF__c}> </lightning-input></td>
+                                                                        <!-- <td colspan="2"><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Discount Per Order Fee" data-name="Fixed_FVF__c" value={item.Fixed_FVF__c} onchange={handleChangeFields}> </lightning-input></td>  -->
+                                                                        <td colspan="2"><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label6} data-name="Fixed_FVF__c" value={item.Fixed_FVF__c} onchange={handleChangeFields}> </lightning-input></td> 
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </lightning-accordion-section>
+                                                </template>
+                                                <template if:false={item.isFirstIndex}>
+                                                    <lightning-accordion-section name={idx} label="Define FVF Discounts">
+                                                        <div class="slds-grid define-fvf">
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <!-- <lightning-input required="true" min="0" type="number" formatter="currency" data-id={idx} step="0.01" label="Projected 12M GMV" data-name="EBH_Projected12MGMV__c" value={item.EBH_Projected12MGMV__c} onchange={handleChangeFields}> </lightning-input> -->
+                                                                <lightning-input required="true" min="0" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label1} data-name="EBH_Projected12MGMV__c" value={item.EBH_Projected12MGMV__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <lightning-input required="true" min="0" type="number" data-id={idx} label="Orders" data-name="Orders__c" value={item.Orders__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                            <div class="slds-col slds-size_4-of-12">
+                                                                <!-- <lightning-input required="true" min="0" type="number" formatter="currency" data-id={idx} step="0.01" label="ASP" data-name="EBH_ASP__c" value={item.EBH_ASP__c} onchange={handleChangeFields}> </lightning-input> -->
+                                                                <lightning-input required="true" min="0" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label2} data-name="EBH_ASP__c" value={item.EBH_ASP__c} onchange={handleChangeFields}> </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-grid">
+                                                            <div class="slds-col slds-size_12-of-12">
+                                                                <table class="slds-table" role="grid">
+                                                                    <tr>
+                                                                        <td><lightning-formatted-rich-text class="header-title" value="T1"></lightning-formatted-rich-text></td>
+                                                                        <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Threshold Amount" data-name="ASPThreshold__c" value={item.selectedCategory.ASPThreshold__c}> </lightning-input></td> -->
+                                                                        <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label3} data-name="ASPThreshold__c" value={item.selectedCategory.ASPThreshold__c}> </lightning-input></td>
+                                                                        <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} step="0.01" label="Default FVF" data-name="VariableFVF__c" value={item.selectedCategory.VariableFVF__c}> </lightning-input></td>
+                                                                        <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} step="0.01"  field-level-help="Up to threshold amount or above threshold amount." label="Discount Threshold Amount (up to)" data-name="ASP_threshold__c" value={item.ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                        <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} step="0.01"  field-level-help="Up to threshold amount or above threshold amount." label={item.Label4} data-name="ASP_threshold__c" value={item.ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        <td><lightning-input min="0" type="number" class="black-color" formatter="percent-fixed" data-id={idx} step="0.01" label="Discount FVF" data-name="Variable_FVF__c" value={item.Variable_FVF__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                    </tr>
+                                                                    <template if:true={item.isT2Show}>
+                                                                        <tr>
+                                                                            <td><lightning-formatted-rich-text class="header-title" value="T2"></lightning-formatted-rich-text></td>
+                                                                            <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} label="Default Threshold Amount" step="0.01" data-name="GMVThreshold2__c" value={item.selectedCategory.GMVThreshold2__c}> </lightning-input></td> -->
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} label={item.Label3} step="0.01" data-name="GMVThreshold2__c" value={item.selectedCategory.GMVThreshold2__c}> </lightning-input></td>
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} label="Default FVF" step="0.01" data-name="VariableFVFaboveASPThreshold__c" value={item.selectedCategory.VariableFVFaboveASPThreshold__c}> </lightning-input></td>
+                                                                            <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} field-level-help="Where value is 0, this means infinity" label="Discount Threshold Amount (up to)" step="0.01" data-name="T2DiscountAmount__c" value={item.T2DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                            <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} field-level-help="Where value is 0, this means infinity" label={item.Label4} step="0.01" data-name="T2DiscountAmount__c" value={item.T2DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                            <td><lightning-input min="0" type="number" formatter="percent-fixed" data-id={idx} label="Discount FVF" step="0.01" data-name="Variable_FVF_above_ASP_threshold__c" value={item.Variable_FVF_above_ASP_threshold__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        </tr>
+                                                                    </template>
+                                                                    
+                                                                    <template if:true={item.isT3Show}>
+                                                                        <tr>
+                                                                            <td><lightning-formatted-rich-text class="header-title" value="T3"></lightning-formatted-rich-text></td>
+                                                                            <!-- <td><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Threshold Amount" data-name="GMVThreshold3__c" value={item.selectedCategory.GMVThreshold3__c}> </lightning-input></td> -->
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label3} data-name="GMVThreshold3__c" value={item.selectedCategory.GMVThreshold3__c}> </lightning-input></td>
+                                                                            <td><lightning-input disabled="true" class="grey-color" type="number" formatter="percent-fixed" data-id={idx} step="0.01" label="Default FVF" data-name="Tier_2_bps_Discount__c" value={item.selectedCategory.Tier_2_bps_Discount__c}> </lightning-input></td>
+                                                                            <!-- <td><lightning-input min="0" class="black-color" type="number" formatter="currency" field-level-help="Where value is 0, this means infinity" data-id={idx} step="0.01" label="Discount Threshold Amount (up to)" data-name="T3DiscountAmount__c" value={item.T3DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td> -->
+                                                                            <td><lightning-input min="0" class="black-color" type="number" formatter="decimal" field-level-help="Where value is 0, this means infinity" data-id={idx} step="0.01" label={item.Label4} data-name="T3DiscountAmount__c" value={item.T3DiscountAmount__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                            <td><lightning-input min="0" type="number" class="black-color" formatter="percent-fixed" data-id={idx} step="0.01" label="Discount FVF" data-name="T3DiscountFVF__c" value={item.T3DiscountFVF__c} onchange={handleChangeFields}> </lightning-input></td>
+                                                                        </tr>
+                                                                    </template>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <!-- <td colspan="2"><lightning-input disabled="true" class="grey-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Default Per Order Fee" data-name="FixedFVF__c" value={item.selectedCategory.FixedFVF__c}> </lightning-input></td> -->
+                                                                        <td colspan="2"><lightning-input disabled="true" class="grey-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label5} data-name="FixedFVF__c" value={item.selectedCategory.FixedFVF__c}> </lightning-input></td>
+                                                                        <!-- <td colspan="2"><lightning-input min="0" class="black-color" type="number" formatter="currency" data-id={idx} step="0.01" label="Discount Per Order Fee" data-name="Fixed_FVF__c" value={item.Fixed_FVF__c} onchange={handleChangeFields}> </lightning-input></td>  -->
+                                                                        <td colspan="2"><lightning-input min="0" class="black-color" type="number" formatter="decimal" data-id={idx} step="0.01" label={item.Label6} data-name="Fixed_FVF__c" value={item.Fixed_FVF__c} onchange={handleChangeFields}> </lightning-input></td> 
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </lightning-accordion-section>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </lightning-accordion>
+                    </template>
+                </template>
+                <template if:true={isFeeTypeSection}> 
+                    <template if:false={isEdit}>                    
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_12-of-12">
+                            <div class="title-header">
+                                <h2 class="slds-card__header-title">Contract-level Features</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_6-of-12">
+                            <div class="padding-left">
+                                <template if:true={isShowETRSField}>
+                                    <lightning-input type="checkbox" data-name="EBH_eTRSEligible__c" value={isETRS} label="is eTRS eligible?" onchange={handleChangeeTRS}></lightning-input>
+                                </template>
+                                <lightning-input type="checkbox" data-name="Seller_Store_Subscription__c" value={isStoreSubscription} label="Store Subscription" onchange={handleChangeStoreSubscription}></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_6-of-12">
+                            <template if:true={isStoreSubscription}> 
+                                <div class="store-subscription">
+                                    <lightning-combobox data-id="EBH_StoreSubscription__c" data-name="EBH_StoreSubscription__c" label="Store Subscription" value={contractData.EBH_StoreSubscription__c} options={storSubScriptPicklistValues} onchange={handleChangeContractFields}></lightning-combobox>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    </template>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_12-of-12">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_12-of-12">
+                                    <div class="title-header">
+                                        <h2 class="slds-card__header-title">Category level Features</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <template for:each={selectPricingCategoryList} for:item="item" for:index="idx">
+                                <div class="slds-grid" key={item.Id}>
+                                    <div class="slds-col slds-size_12-of-12 fvf-container">
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_12-of-12">
+                                                <div class="slds-grid">
+                                                    <div class="slds-col slds-size_12-of-12">
+                                                        <table class="slds-table tbl-cpm">
+                                                            <tr>
+                                                                <!-- <template if:true={isCurrentMode4}>
+                                                                    <td><lightning-formatted-rich-text value={item.label}></lightning-formatted-rich-text></td>
+                                                                </template> -->
+                                                                <td><lightning-input label="Site" value={item.EBH_Site__c} disabled="true"></lightning-input></td>
+                                                                <td>
+                                                                    <template if:true={isCurrentMode3}>
+                                                                        <lightning-input label="Category Name" value={item.contractPricingMatrix.Category_Name__c} disabled="true"> </lightning-input>
+                                                                    </template>
+                                                                </td>
+                                                                <td>
+                                                                    <template if:true={isCurrentMode3}>
+                                                                        <lightning-input label="Category ID" value={item.contractPricingMatrix.Category_Id__c} disabled="true"> </lightning-input>
+                                                                    </template>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <template for:each={item.feeType} for:item="feetype" for:index="index">
+                                            <div class="slds-grid category-tree-table" key={feetype.key}>
+                                                <div class="slds-col slds-size_12-of-12 fee-type-container">
+                                                    <div class="slds-grid">
+                                                        <div class="slds-col slds-size_12-of-12 right-align">
+                                                            <template if:false={feetype.isFirstIndex}>
+                                                                <template if:false={isEdit}>
+                                                                <lightning-button variant="destructive-text" data-id={index} data-parent={idx} icon-name="utility:delete" label="Remove" title="Remove" onclick={removeFeeType} class="slds-m-left_x-small"></lightning-button>
+                                                            </template>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-grid">
+                                                        <div class="slds-col slds-size_5-of-12">
+                                                            <div class="features-category">
+                                                                <lightning-combobox data-id={index} data-parent={idx} data-name="TypeofFee__c" label="Feature Fee Type" value={feetype.TypeofFee__c} options={options} onchange={handleChangeFeatureFee} ></lightning-combobox>
+                                                                <template if:true={feetype.isFeatureFeeSubtitle}> 
+                                                                    <lightning-input type="number" formatter="decimal" step="0.01" max-length="5" max="99" data-id={index} data-parent={idx} label="Subtitle Custom" data-name="FeeValue__c" value={feetype.FeeValue__c} onchange={handleChangeFeatureFee}> </lightning-input>
+                                                                </template>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="slds-col slds-size_2-of-12"></div>
+                                                        <div class="slds-col slds-size_5-of-12">
+                                                            <div class="features-category">
+                                                                <lightning-combobox data-id={index} data-parent={idx} data-name="ListingFormat__c" label="Item Listing Format" value={feetype.ListingFormat__c} options={picklistValues} onchange={handleChangeFeatureFee} ></lightning-combobox>
+                                                            </div>
+                                                        </div>
+                                                    </div><br/>
+                                                    <div class="slds-grid">
+                                                        <div class="slds-col slds-size_5-of-12">
+                                                            <article class="slds-card">
+                                                                <div class="slds-card__header slds-grid">
+                                                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                                        <div class="slds-media__figure">
+                                                                            <lightning-icon icon-name={headerIcon} size="small"></lightning-icon>
+                                                                        </div>
+                                                                        <div class="slds-media__body">
+                                                                            <h2 class="slds-card__header-title">
+                                                                                <span>{headerTitle}</span>
+                                                                            </h2>
+                                                                        </div>
+                                                                    </header>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                        <div class="slds-col slds-size_2-of-12"></div>
+                                                        <div class="slds-col slds-size_5-of-12 slds-grid_align-end">
+                                                            <div class="search-contract-category">
+                                                                <div onkeyup={handleSearchCategoryKeyUp}>
+                                                                    <template if:true={isCurrentMode3}><!--Contract LA recordtype-->
+                                                                        <lightning-input
+                                                                            data-id={index} 
+                                                                            data-parent={idx}
+                                                                            data-level={item.contractPricingMatrix.Category_Level__c}
+                                                                            name="search-contract-category"
+                                                                            placeholder="Search Category Name..."
+                                                                            variant="label-hidden"
+                                                                            type="search">
+                                                                        </lightning-input>
+                                                                    </template>
+                                                                    <template if:true={isCurrentMode4}> <!--Contract ACP recordtype-->
+                                                                        <lightning-input
+                                                                            data-id={index} 
+                                                                            data-parent={idx}
+                                                                            name="search-contract-category"
+                                                                            placeholder="Search Category Name..."
+                                                                            variant="label-hidden"
+                                                                            type="search">
+                                                                        </lightning-input>
+                                                                    </template>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <template if:true={isCurrentMode3}>
+                                                        <template if:false={feetype.isNoLevelToSelect}>
+                                                            <lightning-accordion lightning-accordion allow-multiple-sections-open active-section-name="ExpandIndex0" onsectiontoggle={handleSectionToggle} data-id={index} data-parent={idx} data-site={item.EBH_Site__c} data-level={item.contractPricingMatrix.Category_Level__c}>
+                                                        
+                                                                <lightning-accordion-section name={item.isActivedIndex} label="Exclusion Categories List">
+                                                                    
+                                                                    <!-- Start feeTable-->
+                                                                    <div class="slds-grid">
+                                                                        <div class="slds-col slds-size_12-of-12">
+                                                                            <div class="height-200">
+                                                                                
+                                                                                <lightning-datatable
+                                                                                    key-field="Id"
+                                                                                    data-id={index}
+                                                                                    data-parent={idx}
+                                                                                    data={feetype.allCategories}
+                                                                                    columns={columns}
+                                                                                    onrowselection={handleContractCategoriesRowSelection}
+                                                                                    selected-rows={feetype.selectedRows}>
+                                                                                </lightning-datatable>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>   
+                                                                </lightning-accordion-section>  
+                                                            </lightning-accordion> 
+                                                        </template>
+                                                    </template>
+                                                    <template if:true={isCurrentMode4}>
+                                                        <lightning-accordion lightning-accordion allow-multiple-sections-open active-section-name="ExpandIndex0" onsectiontoggle={handleSectionToggle} data-id={index} data-parent={idx} data-site={item.EBH_Site__c}>
+                                                            <template if:false={isEdit}>
+                                                            <lightning-accordion-section name={item.isActivedIndex} label="Exclusion Categories List">
+                                                                <!-- Start feeTable-->
+                                                                <div class="slds-grid">
+                                                                        <div class="slds-col slds-size_12-of-12">
+                                                                            <div class="height-200">
+                                                                                <lightning-datatable
+                                                                                    key-field="Id"
+                                                                                    data-id={index}
+                                                                                    data-parent={idx}
+                                                                                    data={feetype.allCategories}
+                                                                                    columns={columns}
+                                                                                        onrowselection={handleContractCategoriesRowSelection}
+                                                                                        selected-rows={feetype.selectedRows}>
+                                                                                </lightning-datatable>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                            </lightning-accordion-section>   
+                                                            </template> 
+                                                            <template if:true={isEdit}>
+                                                                <lightning-accordion-section name={feetype.isActivedIndex} label="Exclusion Categories List">
+                                                                    <!-- Start feeTable-->
+                                                                    <div class="slds-grid">
+                                                                            <div class="slds-col slds-size_12-of-12">
+                                                                                <div class="height-200">
+                                                                                    <lightning-datatable
+                                                                                        key-field="Id"
+                                                                                        data-id={index}
+                                                                                        data-parent={idx}
+                                                                                        data={feetype.allCategories}
+                                                                                        columns={columns}
+                                                                                        onrowselection={handleContractCategoriesRowSelection}
+                                                                                        selected-rows={feetype.selectedRows}>
+                                                                                    </lightning-datatable>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+                                                                </lightning-accordion-section>  
+                                                            </template> 
+                                                        </lightning-accordion>
+                                                    </template>
+                                                    <!--<div class="slds-grid">
+                                                        <div class="slds-col slds-size_12-of-12">
+                                                            <div class="height-200">
+                                                                <lightning-datatable
+                                                                    key-field="Id"
+                                                                    data-id={index}
+                                                                    data-parent={idx}
+                                                                    data={feetype.allCategories}
+                                                                    columns={columns}
+                                                                    onrowselection={handleContractCategoriesRowSelection}>
+                                                                </lightning-datatable>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                        </template><!-- feeTable-->
+                                        
+                                        
+                                        <template if:false={isEdit}>
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_12-of-12 right-align">
+                                                <div class="slds-m-top_small slds-m-bottom_medium">
+                                                    <template if:true={isCurrentMode3}>
+                                                        <lightning-button data-parent={idx} data-level={item.contractPricingMatrix.Category_Level__c} icon-name="utility:add" label="Add" title="Add" onclick={addNewFeeType} class="slds-m-left_x-small"></lightning-button>
+                                                    </template>
+                                                    <template if:true={isCurrentMode4}>
+                                                        <lightning-button data-parent={idx} icon-name="utility:add" label="Add" title="Add" onclick={addNewFeeType} class="slds-m-left_x-small"></lightning-button>
+                                                    </template>
+                                                    
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        </template>
+                                        <!-- Start accordion feeTable-->
+                                        
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        </form>
+    </div>
+</template>

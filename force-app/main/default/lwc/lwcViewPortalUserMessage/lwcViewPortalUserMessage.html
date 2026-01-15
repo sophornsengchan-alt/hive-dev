@@ -1,0 +1,67 @@
+<template>
+    <div class="cls_contentWrapper">
+        <!-- <div class="listTop">
+            <template for:each={objMessageInfos} for:item="item">
+                <div key={item.mainMsg} class={item.className}>
+                    <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span><span> {item.detailMsg}</span>
+                    <span onclick={onShowDetail} class="backButton">
+                        <lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon>
+                    </span>
+                </div>
+            </template>
+        </div> -->
+            <!-- <div class="cls_message-info cls_overflow_content_message">
+                <lightning-formatted-rich-text value={outputText}></lightning-formatted-rich-text>
+            </div> -->
+          
+            <div class="cls_message-info cls_overflow_content_message" id="msgdiv">
+                <template if:false={displayLstResult}>
+                    <b>{outputText}</b>
+                </template>
+                
+                    <template for:each={lstResultMessage} for:item="itemh">
+                        <div key={itemh.id} class="portal_message">
+                            <lightning-formatted-text class="portal_title" value={itemh.Name}></lightning-formatted-text>
+                            <span class="right_content">
+                                <b class="portal_time">Date:&nbsp;&nbsp;</b><lightning-formatted-date-time class="portal_time" value={itemh.Start_time__c} time-zone="UTC"></lightning-formatted-date-time>
+                            </span>    
+                            <div class="portal_content_wrapper">
+                                <lightning-formatted-rich-text class="portal_content" value={itemh.Content__c}></lightning-formatted-rich-text>
+                            </div>                        
+                            <hr class="portal_line_break">
+                        </div>
+                    </template> 
+                    
+                
+                
+            </div>
+            
+       
+            <template if:true={displayPrevious}>
+                <div class="change_color_btn">
+                    <lightning-button variant="brand" label="" title="Previous" icon-name="utility:chevronleft" class="slds-m-left_x-small" onclick={onViewPreviousMessage}></lightning-button>
+                </div>
+            </template>
+            <template if:true={displayNext}>
+                <div class="change_color_btn">
+                    <lightning-button variant="brand" label="" title="Next" icon-name="utility:chevronright" class="slds-m-left_x-small" onclick={onViewNextMessage}></lightning-button>
+                </div>
+            </template>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <template if:true={displayLstResult}>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </template>
+
+    
+
+    
+</template>

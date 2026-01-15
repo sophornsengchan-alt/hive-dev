@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+       <target>lightning__FlowScreen</target>
+        <target>lightning__RecordPage</target>
+   </targets>
+   <targetConfigs>
+      <targetConfig targets="lightning__FlowScreen">
+         <property name="isReview" type="Boolean" label="isReview" description="Default False. True is in review step."></property>
+         <property name="choiceSelected" type="String" label="choiceSelected" description="Required in Review Screen to display table"></property>
+         <propertyType name="EBH_Pricing__c" extends="SObject" label="EBH_Pricing__c" description="EBH_Pricing__c" />
+         <property name="pricingData" type="{EBH_Pricing__c[]}" label="pricingData"></property>
+         <propertyType name="EBH_ContractPricingMatrix__c" extends="SObject" label="EBH_ContractPricingMatrix__c" description="EBH_ContractPricingMatrix__c" />
+         <property name="contractPricingMatrixData" type="{EBH_ContractPricingMatrix__c[]}" label="contractPricingMatrixData"></property>
+         <propertyType name="FeeType__c" extends="SObject" label="FeeType__c" description="FeeType__c" />        
+         <property name="feeTypeData" type="{FeeType__c[]}" label="feeTypeData" description="FeeType__c for Insertion Fee"></property>   
+         <property name="feeTypeDataRegulatory" type="{FeeType__c[]}" label="feeTypeDataRegulatory" description="FeeType__c for Regulatory Fee"></property>   
+         <property name="feeTypeDataFixedFee" type="{FeeType__c[]}" label="feeTypeDataFixedFee" description="FeeType__c for Fixed Fee"></property>  
+      </targetConfig>
+   </targetConfigs>
+</LightningComponentBundle>

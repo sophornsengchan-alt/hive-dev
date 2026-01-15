@@ -1,0 +1,14 @@
+<template>
+    <template if:true={hasSeekAccess}>
+        <div if:false={isOpen} class="surveyButton" onclick={openSurvey}>
+            {labels.Seek_Survey_Label}
+        </div>
+        <div if:true={isOpen} class="surveyContainer">
+            <lightning-button-icon class="slds-float_right" onclick={closeSurvey} icon-name="utility:close"  alternative-text="close" title="close"></lightning-button-icon>
+            <div class="iframe iframe-container" lwc:dom="manual"></div>
+            <template if:true={loading}>
+                <lightning-spinner variant="brand" size="large" ></lightning-spinner>
+            </template>
+        </div>
+    </template>
+</template>

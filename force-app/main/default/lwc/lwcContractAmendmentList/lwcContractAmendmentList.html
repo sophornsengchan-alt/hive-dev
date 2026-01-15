@@ -1,0 +1,230 @@
+<template>  
+    <div class="contract-amendment">
+        <lightning-card>
+            
+            <h3 slot="title" class="custom-header">
+                <lightning-icon icon-name="standard:contract" size="small"></lightning-icon>
+                <span class="title">Consolidated Pricing Summary ({count})</span>
+            </h3>
+            <hr class="margin-0"/>
+            <div class="container slds-scrollable_x">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="title-header">
+                            <h2 class="slds-card__header-title">Contract Level Features</h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="slds-table slds-table_bordered slds-table_col-bordered slds-cell-wrap slds-table_resizable-cols tbl-parent" role="grid">
+                    <tbody>
+                        <template if:true={isFeeTypeNoData}>
+                            <tr>
+                                <td class="text-center" colspan="2">No data </td>
+                            </tr>
+                        </template>
+                        <template if:false={isFeeTypeNoData}>
+                            <template for:each={feeTypeList} for:item="item" for:index="idx">                           
+                                <tr key={item.index}>
+                                    <td class="slds-cell_action-mode tbl-first-td" role="gridcell">
+                                        <!-- <lightning-button variant="base" label={item.Name} onclick={handleOpenRecord} class="slds-m-left_x-small btn-link" data-id={item.Id}></lightning-button> -->
+                                        <a href={item.recordLink} target="_blank">{item.Name}</a>
+                                    </td>
+                                    <td class="slds-cell_action-mode tbl-parent-value tbl-second-td" role="gridcell">
+                                        <table class="child-table">
+                                            <tr>
+                                                <td class="tbl-parent-value tbl-label">Contract Number:</td>
+                                                <td>
+                                                    <!-- <lightning-button variant="base" label={item.RelatedContract__r.ContractNumber} onclick={handleOpenRecord} class="slds-m-left_x-small btn-link" data-id={item.RelatedContract__r.Id}></lightning-button> -->
+                                                    <a href={item.contractLink} target="_blank">{item.RelatedContract__r.ContractNumber}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-label">Type of Fee:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.TypeofFee__c}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-label">Listing Format:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.ListingFormat__c}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-label">Fee Value:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.FeeValue__c}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-parent-value tbl-label">Primary Site:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.PrimarySite__c}</div>
+                                                </td>
+                                            </tr>
+                                            
+                                        </table>
+                                    </td>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+
+                </table>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="title-header">
+                            <h2 class="slds-card__header-title">Category Level Pricing & Features</h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="slds-table slds-table_bordered slds-table_col-bordered slds-cell-wrap slds-table_resizable-cols tbl-parent" role="grid">
+                    <tbody>
+                        <template if:true={isPricingNoData}>
+                            <tr>
+                                <td class="text-center" colspan="2">No data </td>
+                            </tr>
+                        </template>
+                        <template if:false={isPricingNoData}>
+                            <template for:each={pricingList} for:item="item" for:index="idx">                           
+                                <tr key={item.index}>
+                                    <td class="slds-cell_action-mode tbl-first-td" role="gridcell">
+                                        <table class="child-table">
+                                            <!-- <tr>
+                                                <td class="tbl-parent-value">Contract Number:</td>
+                                                <td>
+                                                    <lightning-button variant="base" label={item.pricing.EBH_ContractId__r.ContractNumber} onclick={handleOpenRecord} class="slds-m-left_x-small btn-link" data-id={item.pricing.EBH_ContractId__r.Id}></lightning-button>
+                                                </td>
+                                            </tr> 
+                                            <tr>
+                                                <td class="tbl-parent-value">Site:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.pricing.EBH_Site__c}</div>
+                                                </td>
+                                            </tr>
+                                            -->
+                                
+                                            <!-- <tr>
+                                                <td>Value:</td>
+                                                <td>
+                                                    <div class="slds-truncate">
+                                                        <template if:true={item.isLA}>{item.pricing.EBH_ListingValue__c}</template>
+                                                        <template if:true={item.isACP}>{item.pricing.EBH_ACPValue__c}</template>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Currency:</td>
+                                                <td>
+                                                    <div class="slds-truncate">
+                                                        {item.pricing.CurrencyIsoCode}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Non Cumulative?:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.pricing.NonCumulative__c}</div>
+                                                </td>
+                                            </tr> 
+                                            -->
+                                            <tr>
+                                                <td>Category:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.pricing.EBH_MetaCategory__c}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-parent-value">Site:</td>
+                                                <td>
+                                                    <div class="slds-truncate">{item.pricing.EBH_Site__c}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td>
+                                                    <div class="slds-truncate">
+                                                        {item.plutusStatus}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tbl-parent-value">Plutus Link:</td>
+                                                <td>
+                                                    <a href={item.plutusLink} target="_blank">{item.plutusLink}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                    <td class="slds-cell_action-mode tbl-second-td" role="gridcell">
+                                        <!-- <lightning-button variant="base" label={item.pricing.Name} onclick={handleOpenRecord} class="slds-m-left_x-small btn-link" data-id={item.pricing.Id}></lightning-button> -->
+                                        <a href={item.recordLink} target="_blank">{item.pricing.Name}</a>
+                                        <template if:true={item.isHasRelatedFeeType}>
+                                            <lightning-accordion allow-multiple-sections-open>
+                                                <lightning-accordion-section class="section-name" name={item.Name} label="Related Fee Types">
+                                                    <template for:each={item.feeTypes} for:item="feeType" for:index="idx"> 
+                                                        <table key={feeType.index} class="child-table">
+                                                            <tr>
+                                                                <td class="tbl-parent-value">Name:</td>
+                                                                <td>
+                                                                    <!-- <lightning-button variant="base" label={feeType.Name} onclick={handleOpenRecord} class="slds-m-left_x-small btn-link" data-id={feeType.Id}></lightning-button> -->
+                                                                     <a href={feeType.recordLink} target="_blank">{feeType.Name}</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Type of Fee:</td>
+                                                                <td>
+                                                                    <div class="slds-truncate">{feeType.TypeofFee__c}</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Listing Format:</td>
+                                                                <td>
+                                                                    <div class="slds-truncate">{feeType.ListingFormat__c}</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fee Value:</td>
+                                                                <td>
+                                                                    <div class="slds-truncate">{feeType.FeeValue__c}</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Primary Site:</td>
+                                                                <td>
+                                                                    <div class="slds-truncate">{feeType.PrimarySite__c}</div>
+                                                                </td>
+                                                            </tr>
+
+                                                             <tr>
+                                                                <td>Status:</td>
+                                                                <td>
+                                                                    <div class="slds-truncate">{feeType.plutusStatus}</div>
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                            <tr>
+                                                                <td class="tbl-parent-value">Plutus Link:</td>
+                                                                <td>
+                                                                    <a href={feeType.plutusLink} target="_blank">{feeType.plutusLink}</a>
+                                                                </td>
+                                                            </tr>
+
+                                                        </table>
+                                                    </template>
+                                                </lightning-accordion-section>
+                                            </lightning-accordion>
+                                        </template>
+                                    </td>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+
+                </table>
+            </div>
+        </lightning-card> 
+    </div>
+    
+</template>

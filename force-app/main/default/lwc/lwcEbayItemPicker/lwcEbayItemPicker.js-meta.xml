@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>        
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">            
+            <property name="pageSize" type="Integer" label="Page Size" description="The value should be {!pageSize}." /> 
+            <property name="searchLimit" type="Integer" label="Search Limit" description="The value should be {!searchLimit}." />
+            <property name="recordId" type="String" label="Record ID" description="The value should be {!recordId}." />
+            <property label="Title" name="title" type="String" default="Create a new deal"/>
+            <property label="Label Submit button" name="labelSubmitBtn" type="String" default="Submit Deal"/>            
+            <property label="Label Cancel button" name="labelCancelBtn" type="String" default="Cancel"/>
+            <property label="Successful Message" name="successMessage" type="String" default="Your deal has been successfully created."/> 
+            <property label="Title Metadata Name" name="titleMetadataName" type="String" /><!-- SB 22-2-2022 US-0011212 - Feedback - QA/BA/UAT/GCX-->
+        </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>

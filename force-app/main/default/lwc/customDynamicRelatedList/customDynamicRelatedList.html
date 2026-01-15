@@ -1,0 +1,41 @@
+<template>
+    <template if:true={errorMessage}>
+        <article class="slds-card">
+            <div class="slds-card__body slds-text-color_error slds-m-around_medium">
+                <p>An error occurred on {tableHeaderTitle} view</p>
+            </div>
+        </article>
+    </template>
+    <template lwc:if={showTable}>
+        <div class="slds-card__body slds-m-around_medium">
+        <c-dynamic-datatable records={allRecords} 
+            total-records={allRecords.length} 
+            columns={allColumns}
+            key-field="Id"
+            header-title={genTableHeaderTitle}
+            header-icon={headerIcon}
+            table-height={tableHeight}
+            show-pagination={showPagination}>
+            <template lwc:if={filterEnabled}>
+                <div slot="quickAction">
+                    <lightning-radio-group
+                        options={filterButtons}
+                        value={selectedFilter}
+                        type="button"
+                        variant="label-hidden"
+                        class=""
+                        onchange={handleRadioGroupValueChange}>
+                    </lightning-radio-group>
+                </div>
+            </template>
+            
+            <div slot="noRecord">
+                <c-lwc-illustration type="no_task" message={noRecordMessage} height={noRecordSvgHeight}></c-lwc-illustration>
+            </div>
+
+            <div slot="cardFooter"></div>
+        </c-dynamic-datatable>
+        </div>
+    </template>
+    
+</template>

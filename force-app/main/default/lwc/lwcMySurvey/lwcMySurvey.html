@@ -1,0 +1,31 @@
+<template>
+    <c-lwc-loading if:true={showProgress} message={progressMsg}></c-lwc-loading>
+    <div style="display: flex; flex-direction: column; min-height: 100vh;">
+        <lightning-card style="flex-grow: 1;">
+            <h3 slot="title">
+                <lightning-icon icon-name="standard:survey" size="small"></lightning-icon>
+                <span class="slds-var-p-left_x-small">My Assigned Surveys</span>
+            </h3>
+            <span slot="actions">
+                <lightning-button-icon icon-name="utility:refresh" alternative-text="Refresh" title="Refresh" onclick={handleRefresh}></lightning-button-icon>
+            </span>
+            <span slot="title" class="slds-text-heading_label-normal"> Survey assigned to you. You can response to a survey by clicking an action.</span>
+                
+            <div class="slds-p-horizontal_small">
+                <div class="slds-box slds-var-p-around_medium">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={listSurvey}
+                        columns={columns}
+                        show-row-number-column
+                        hide-checkbox-column
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </div>
+                
+            </div>
+        </lightning-card>
+    </div>
+
+     
+</template>

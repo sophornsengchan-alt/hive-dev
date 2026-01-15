@@ -1,0 +1,121 @@
+.stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
+.stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 5px solid #EBEBEB;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+}
+
+.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 5px solid #EBEBEB;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+}
+
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #EBEBEB;
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+.stepper-item.active .step-counter {
+    background-color: #0654ba;
+    color: white;
+    font-weight: bold;
+    transition: 0.5s ease;
+}
+
+.stepper-item.active::before {
+    position: absolute;
+    content: "";
+    border-bottom: 5px solid #0654ba;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 3;
+    transition: 0.5s ease;
+}
+
+/*MN-23112023-US-0014106: For Half a step, to show half line*/
+
+.stepper-item.active-notrans .step-counter {
+    background-color: #0654ba;
+    color: white;
+    font-weight: bold;
+    /* transition: 0.5s ease; */
+}
+
+.stepper-item.active-notrans::before {
+    position: absolute;
+    content: "";
+    border-bottom: 5px solid #0654ba;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 3;
+    /* transition: 0.5s ease; */
+}
+
+.stepper-item.active-half::before {
+    position: absolute;
+    content: "";
+    border-bottom: 5px solid #0654ba;
+    width: 50%;
+    top: 20px;
+    left: -50%;
+    z-index: 3;
+    /* transition: 0.5s ease; */
+}
+
+.small-size {
+    width: 50%;
+    margin:auto;
+}
+
+.stepper-item:first-child::before {
+    content: none;
+}
+.stepper-item:last-child::after {
+    content: none;
+}
+
+.excelImporter .active-half{
+    font-weight: bold;
+}
+
+.excelImporter .current-step{
+    font-weight: bold;
+}

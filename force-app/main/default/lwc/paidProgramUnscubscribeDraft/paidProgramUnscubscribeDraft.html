@@ -1,0 +1,12 @@
+<template>
+    <lightning-combobox 
+        id="inputEmail3" 
+        options={sellerOptions} 
+        required="true"
+        value={selectedSeller} 
+        onchange={handleChange} 
+        placeholder="Select Account" 
+        variant="label-hidden">
+    </lightning-combobox>
+    <lightning-button variant="brand" label="Unsubscribe" title="Unsubscribe" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+</template>

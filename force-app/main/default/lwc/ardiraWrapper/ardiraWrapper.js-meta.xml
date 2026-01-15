@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+ <target>lightning__FlowScreen</target>
+ </targets>
+ <targetConfigs>
+ <targetConfig targets="lightning__FlowScreen">
+ <property
+        name="surveyId"
+        type="String"
+        label="Survey Id"
+        description="Survey Record Id to identify the Survey record and load it for the participant"/>
+ <property
+        name="logicalId"
+        type="String"
+        label="Logical Id"
+        description="Unique value used to identify a survey"/>
+ <property
+        name="targetId"
+        type="String"
+        label="Target Id"
+        description="Id of the record associated with survey result representing the survey subject that was evaluated using the survey"
+      />
+ </targetConfig>
+ </targetConfigs>
+</LightningComponentBundle>

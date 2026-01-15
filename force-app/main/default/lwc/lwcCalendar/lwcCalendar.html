@@ -1,0 +1,225 @@
+<template>
+
+  <!-- Display tooltip on mouse houver -->
+  <!-- 07/10/2022/ CS/ US-0012099 - Fix calendar hover card falling out of screen -->
+  <div style="position:absolute; opacity: 0" class="ModelTooltip" >
+    <div style="width:460px;" class="slds-popover slds-popover_panel" role="tooltip" id="help">         
+        <article class="slds-card slds-card_narrow cls-tooltip-article">
+
+          <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__body">
+                <slot name="title" class="slds-hide"></slot>
+              </div>
+              <div class="slds-no-flex"><slot name="actions"></slot></div>
+            </header>	
+          </div>
+        
+          <div class="slds-card__body">
+            <slot>
+              <lightning-layout multiple-rows="true">
+                <template for:each={currentFieldsDisplay} for:item="item" for:index="index">
+                  <p key={item.fapi} class="tooltip-row">
+                    <lightning-layout-item padding="around-small" size="6" class="slds-p-bottom_x-small tooltip-label" flexibility="auto">
+                      {item.flabel}
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6" flexibility="auto" class="tooltip-value">
+                      
+  
+                      <lightning-formatted-date-time if:true={item.isdate} value={item.fval}></lightning-formatted-date-time>
+                      <lightning-formatted-number if:true={item.isnumber} value={item.fval}></lightning-formatted-number>
+                      <lightning-formatted-text if:true={item.istext} value={item.fval} ></lightning-formatted-text>
+                    </lightning-layout-item>
+                  </p>
+                </template>
+                
+              </lightning-layout>
+            </slot>
+          </div>
+        
+        </article>
+    </div>
+    <!-- <div style="width: 100px;position: absolute;left: 40%;height: 25px;">test</div> -->
+  </div> 
+
+  <!-- 07/10/2022/ CS/ US-0012099 - Fix calendar hover card falling out of screen -->
+  <!-- Display Calendar -->
+    <lightning-card  variant="Narrow" >
+      <div class="slds-grid">
+        <div class="slds-m-around_small">
+          <!--<div class="cls_calFilter customIcon" onclick={filterHandler}>
+              <lightning-icon size="small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default slds-float_right"
+                  icon-name="utility:filterList"></lightning-icon>
+          </div>-->
+          <!--//TH:12/10/2022:US-0012523:Add 'Filter' text-->
+          <div class="cls_calFilter customIcon slds-float_right" onclick={filterHandler}>
+            <lightning-icon size="small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+            icon-name="utility:filterList"></lightning-icon>
+            <span>{label.lblFilterText}</span>
+          </div>
+          <template if:true={showFilter}>
+            <div class="cls_calFilterArea">
+              <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+                
+                <!--TH:13/10/2022:US-0012523 - Filter on the Seller Portal Homepage calendar-->
+                <div class="slds-col slds-size_12-of-12 custom_combox filterArea1">
+                  <template if:true={isLoading}>
+                    <span class='cls-loading'>
+                      <img src="/img/loading32.gif"></img>
+                    </span>
+                  </template>
+                  <!-- <div class="slds-form-element">                 
+                    <div class="slds-form-element__control">                    
+                      <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-col">
+                          <div lang={lang} class="slds-form-element__label no-margin">Status</div> 
+                          <lightning-combobox onchange={handleChange} value={selectedStatus} variant="label-hidden" placeholder={label.LWC_Default_Picklist_Placeholder} data-apiname="Status__c" options={statusOptions}></lightning-combobox>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <!-- 
+                  <template if:false={isCouponNoAccess}>
+                    <lightning-button-menu label={label.ProductFilter} alternative-text="Show menu" class="padding-right-15">
+                      <lightning-checkbox-group name="Checkbox Group"
+                        options={productOptions}
+                        value={selectedProduct}
+                        onchange={handleProductChange} class="cls-status-filter"></lightning-checkbox-group>  
+                    </lightning-button-menu>
+                  </template>
+
+                  <lightning-button-menu label="Status" alternative-text="Show menu" class="padding-right-15">
+                    <lightning-checkbox-group name="Checkbox Group"
+                      options={statusOptions}
+                      value={selectedStatus}
+                      onchange={handleStatusChange} class="cls-status-filter"></lightning-checkbox-group>  
+                  </lightning-button-menu>
+
+                  <template if:true={isMuliAccount}>
+                    <lightning-button-menu label={label.SellerFilter} alternative-text="Show menu" class="padding-right-15">
+                      <lightning-checkbox-group name="Checkbox Group"
+                        options={sellerOptions}
+                        value={selectedSeller}
+                        onchange={handleSellerChange} class="cls-status-filter"></lightning-checkbox-group>  
+                    </lightning-button-menu>
+                  </template>
+                  -->
+                  <!-- NK:30/11/2022:US-0012917 -->
+                  <template if:true={isEnableProductFilter}>
+                    <template if:true={hasCouponAndDealAccess}>
+
+                      <lightning-button-menu label={label.ProductFilter} alternative-text="Show menu" class="padding-right-15">
+                        <lightning-checkbox-group name="Checkbox Group"
+                          options={productOptions}
+                          value={selectedProduct}
+                          onchange={handleProductChange} class="cls-status-filter"></lightning-checkbox-group>  
+                      </lightning-button-menu>
+  
+                    </template>
+                  </template>
+                  
+
+                  <lightning-button-menu label={label.StatusFilter} alternative-text="Show menu" class="padding-right-15">
+                    <lightning-checkbox-group name="Checkbox Group"
+                      options={statusOptions}
+                      value={selectedStatus}
+                      onchange={handleStatusChange} class="cls-status-filter"></lightning-checkbox-group>  
+                  </lightning-button-menu>
+
+                  <template if:true={hasLinkedAccCouponAccess}>
+                    <lightning-button-menu label={label.SellerFilter} alternative-text="Show menu" class="padding-right-15">
+                      <lightning-checkbox-group name="Checkbox Group"
+                        options={sellerOptions}
+                        value={selectedSeller}
+                        onchange={handleSellerChange} class="cls-status-filter"></lightning-checkbox-group>  
+                    </lightning-button-menu>
+                  </template>
+
+                  <div class="slds-float_right">
+                    <lightning-button variant="neutral" label={label.Clear} onclick={clearHandler}
+                    class="padding-right-15 custombtn custombtnclear">
+                    </lightning-button>
+                    <lightning-button variant="brand"  label={label.Apply} onclick={handleSearch}
+                    class="custombtn">
+                    </lightning-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+          
+          <div id="calendar" class="fullcalendarjs" lwc:dom="manual"></div>
+        </div>
+      </div>
+      
+      <!-- MN-08022022-US-0011105-NO LONGER NEED
+        <template if:true={selectedEvent}>
+        {selectedEvent.title}
+      </template> -->
+
+      <!-- MN-04042022-US-0011450-AC3-Calendar Key -->
+      <!-- <div class="cls-calKeySection">
+        <div><div class='cls-calKey cls-CampaignRunning'></div><span>{label.CampaignRunning}</span></div>
+        <br>
+        <div><div class='cls-calKey cls-CampaignEnded'></div><span>{label.CampaignEnded}</span></div>
+        <br>
+        <div><div class='cls-calKey cls-FutureCampaigns'></div><span>{label.FutureCampaigns}</span></div>      
+        <br>
+        <div><div class='cls-calKey cls-CampaignOpenforSubmission'></div><span>{label.CampaignOpenforSubmission}</span></div>      
+      </div> -->
+
+      <lightning-layout multiple-rows="true" class="slds-var-p-around_small">
+        
+        <template if:false={isDealNoAccess}>
+
+          <lightning-layout-item padding="around-small" size="8">
+            <lightning-layout multiple-rows="true" class="slds-p-around--none">                     
+              <!--
+              <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignEnded'></div>{label.CampaignEnded}</lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignRunning'></div>{label.CampaignRunning}</lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignOpenforSubmission'></div>{label.CampaignOpenforSubmission}</lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-FutureCampaigns'></div>{label.FutureCampaigns}</lightning-layout-item>
+              -->
+              <!--TH:US-0012012:10/08/2022-->
+              <!-- NK:30/11/2022:US-0012917 legendForDRC,legendForCS -->
+              <template if:true={legendForDRC}>
+                  <template if:true={isNA_AU}>
+                    <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-FutureCampaigns'></div>{label.FutureCampaigns_NA}</lightning-layout-item>    
+                    <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignOpenforSubmission'></div>{label.CampaignOpenforSubmission_NA}</lightning-layout-item>   
+                    <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignRunning'></div>{label.CampaignRunning_NA}</lightning-layout-item>          
+                    <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignEnded'></div>{label.CampaignEnded_NA}</lightning-layout-item>
+                  </template>
+                  <template if:false={isNA_AU}>
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-FutureCampaigns'></div>{label.FutureCampaigns}</lightning-layout-item>    
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignOpenforSubmission'></div>{label.CampaignOpenforSubmission}</lightning-layout-item>   
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignRunning'></div>{label.CampaignRunning}</lightning-layout-item>          
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CampaignEnded'></div>{label.CampaignEnded}</lightning-layout-item>
+                </template>
+              </template>
+            
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4"></lightning-layout-item>
+
+        </template>
+        
+        <template if:true={legendForCS}> 
+          <template if:false={isCouponNoAccess}>
+              <lightning-layout-item padding="around-small" size="8">
+                <lightning-layout multiple-rows="true" class="slds-p-around--none">                     
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CS_Past'></div>{label.Label_Legend_CS_Past}</lightning-layout-item>            
+                  <lightning-layout-item padding="around-small" size="3"><div class='slds-p-around--none cls-calKey cls-CS_Open'></div>{label.Label_Legend_CS_Open}</lightning-layout-item>
+                  <lightning-layout-item padding="around-small" size="4"><div class='slds-p-around--none cls-calKey cls-CS_Comming'></div>{label.Label_Legend_CS_Comming}</lightning-layout-item>
+                  <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
+                </lightning-layout>          
+              </lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="4"></lightning-layout-item>
+            </template> 
+        </template>
+        
+        
+      </lightning-layout>
+    </lightning-card>
+  </template>

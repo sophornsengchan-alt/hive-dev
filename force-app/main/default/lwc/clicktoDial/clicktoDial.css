@@ -1,0 +1,19 @@
+.slds-box {
+    border-radius: 0.5rem;
+    border: 1px solid #d8dde6;
+}
+
+.note-text {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+lightning-click-to-dial {
+    font-weight: 600;
+    color: #0176d3;
+}
+
+lightning-click-to-dial:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

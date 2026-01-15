@@ -1,0 +1,130 @@
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.paginationList {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.paginationList li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.paginationList li.active a {
+    background: #edf0f9;
+    border-radius: 3px;
+    color: #222;
+    padding: 10px;
+}
+
+.paginationList li a {
+    color: #767676;
+    font-weight: 800;
+}
+
+.paginationList.version2 li a {
+    color: #767676;
+    font-weight: 500 !important;
+}
+
+.progressContainer li{
+    display: inline-block;
+}
+.progressContainer li span{
+    padding: 5px;
+}
+
+.export-importer-paste_input{
+    color: transparent;
+}
+
+.text-color_informed {
+    color:orange !important;
+}
+
+[data-tip] {
+    position:relative;
+  
+}
+
+[data-tip]:before {
+    content:'';
+    /* hides the tooltip when not hovered */
+    display:none;
+    content:'';
+    display:none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #052d60;
+    position:absolute;
+    top:30px;
+    left:35px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+    position:absolute;
+    top:30px;
+    left:35px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+}
+
+[data-tip]:after {
+    display:none;
+    content:attr(data-tip);
+    position:absolute;
+    top:35px;
+    left:0px;
+    padding:5px 8px;
+    background: #052d60;
+    /* background: rgba(5,45,96,255); */
+    color:#fff;
+    z-index:9;
+    font-size: 0.75em;
+    height:28px;
+    line-height:18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space:nowrap;
+    word-wrap:normal;
+}
+
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+    display:block;
+}
+
+.export-importer-paste_input::-webkit-input-placeholder{
+    font-weight: bold;
+    color:black;
+}
+
+.export-importer-paste_input::-moz-placeholder{
+    font-weight: bold;
+    color:black;
+}
+
+.export-importer-paste_input:-ms-input-placeholder{
+    font-weight: bold;
+    color:black;
+}
+
+.export-importer-paste_input:-o-input-placeholder {
+    font-weight: bold;
+    color:black;
+}

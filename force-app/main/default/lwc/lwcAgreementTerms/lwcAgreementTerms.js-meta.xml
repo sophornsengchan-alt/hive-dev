@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Modal Title" name="modalTitle" type="String" default="Agree to the terms and conditions"/>
+            <property label="Label Accept Agreement" name="labelAcceptAgreement" type="String" default="Accept agreement"/>
+            <property label="Label Leave" name="labelLeave" type="String" default="Leave"/>
+            <property label="Logo Link" name="logoLink" type="String" default=""/>
+            <property label="Region" name="region" type="String" default=""/>
+            <property label="Region Download" name="regionDownload" type="String" default=""/>
+            <property label="Enable Tab View" name="enableTabView" type="Boolean" default="false"/>
+            <property label="Tab Item Number Per View" name="tabItemNumber" type="Integer" default="10"/>
+            <property label="Logout After Declined" name="logoutAfterDeclined" type="Boolean" default="false"/>
+            <property label="Header Right Side Content" name="headerRightSideContent" type="String" default=""/>
+            <property label="Footer Region" name="footerRegion" type="String" default=""/>
+            <property label="Enable Download Button" name="enableDownloadBtn" type="Boolean" default="false"/>
+            <property label="Download Button Label" name="downloadBtnLabel" type="String" default="Download PDF"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

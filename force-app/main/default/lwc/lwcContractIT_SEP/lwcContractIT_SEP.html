@@ -1,0 +1,31 @@
+<template>
+    
+    <template if:true={isItemBase}>
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} is-disable-search=true mdt-name ='FR_Contract_Coupon_ItemBase_List_View' map-col-header-overide={colHeaderItemBaseOverride} filter={additionalFilter}></c-lwc-list-view>
+        <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>        
+
+    </template>         
+
+    <template if:true={isCatBase}>      
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} mdt-name ='FR_Contract_Coupon_CatBase_List_View' is-disable-search="true" map-col-header-overide={colHeaderCatBaseOverride} filter={additionalFilter}></c-lwc-list-view>
+        <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>
+
+    </template>
+    
+    <div class="slds-box cls_marginBottom cls_marginTop">
+        <div class="cls_ListViewWrapper" onclick={onShowMenuCollape}>
+            <div class="listColumn">
+                <span class="cls_windowTitle cls_font-size_title">{Labels.accordionTitle_IT}</span>
+                <a><lightning-icon icon-name={iconMenuCollape} size="x-small" ></lightning-icon></a>
+            </div>    
+        </div>
+        <template if:true={displayMenuCollape}>
+            <div class="cls_accordion">
+                <lightning-formatted-rich-text value={aggrementText3}></lightning-formatted-rich-text>
+            </div>
+        </template>
+    </div>
+    
+</template>

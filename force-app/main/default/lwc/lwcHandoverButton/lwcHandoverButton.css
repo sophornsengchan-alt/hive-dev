@@ -1,0 +1,34 @@
+.card-no-border-top{
+    margin-top: -7px;
+    border-radius: 0px 0px 5px 5px !important;
+    
+}
+.detail-header {
+    font-weight: bold;
+}
+.container-field-data {
+    /* padding: 0px 10px*/
+} 
+.container-field-data label {
+    padding-top: 7px;
+    font-weight: bold;
+}
+.padding-top-5 {
+    padding-top: 5px;
+}
+.containter-main {
+    padding: 0 15px;
+}
+.required-sign {
+    color: #ba0517;
+}
+.field-required {
+    color: #ba0517;
+    font-size: 12px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}
+.empty-dev {
+    padding-top: 4px;
+}

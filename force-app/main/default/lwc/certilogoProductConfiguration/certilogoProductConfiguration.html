@@ -1,0 +1,288 @@
+<template>
+    <lightning-card hide-header="true">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <!-- Conditional rendering of the modal (child component) -->
+        <template if:true={isModalOpen}>
+            <c-certilogo-product-configuration-modal-action row-data={rowData} opportunity-id={opportunityId} selected-opp-products={selectedOppProducts} button-name={selectedButton} button-meta-data={selectedButtonMeta} button-validations={selectedButtonValidations} labels={Labels} onclosemodal={handleCloseModal} onpreviewfile={openfile} onloader={handleloding}></c-certilogo-product-configuration-modal-action>
+        </template>
+
+        <div class="slds-clearfix slds-p-around_medium custom-card-header">
+            <div class="slds-float_left slds-media__body">
+                <h2 class="slds-card__header-title"><span class="slds-truncate">{Labels.CertilogoProdConfig_Header}</span></h2>
+            </div>
+            <template if:true={viewMode}>
+                <div class="slds-float_right">
+                    <lightning-button-group>
+                       
+                        <template for:each={topButtons} for:item="button" for:index="idx">
+                            <lightning-button data-id={idx} key={button.metadata.MasterLabel} label={button.metadata.MasterLabel} title={button.metadata.MasterLabel} onclick={handleOpenModal}></lightning-button>
+                        </template>
+
+                        <template if:false={hasActiveConfirmOrder}>
+                            <lightning-button label={Labels.CertilogoProdConfig_BtnAddMore} title={Labels.CertilogoProdConfig_BtnAddMore} onclick={handleAddMore}></lightning-button>
+                            <lightning-button label={Labels.Edit} title={Labels.Edit} onclick={handleEdit}></lightning-button>
+                            <lightning-button label={Labels.Delete} icon-name="utility:delete" onclick={handleOpenModal}></lightning-button>
+                        </template>
+                        
+                    </lightning-button-group>
+                </div>
+            </template>
+            
+        </div>
+        
+        <!-- <template if:true={isError}>
+            <div class="error-section slds-m-around_small slds-p-around_medium">
+                <div class="slds-clearfix">
+                    <span>
+                        <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                        <span>{errorMessage}</span>
+                    </span>
+                </div>
+            </div>
+        </template> -->
+
+        <div class="table-container slds-m-top_medium">
+
+            <div class="expand-row slds-m-left_medium">
+                <lightning-input type="toggle" label="Expanded View" message-toggle-active="on" message-toggle-inactive="off" checked={isExpandedView} onchange={handleToggleChange}></lightning-input>
+            </div>
+
+            <article class="slds-card table-container custom-table-area">
+    
+                <table aria-multiselectable="true"
+                    class="slds-table slds-table_bordered slds-table_col-bordered slds-cell-wrap slds-table_resizable-cols" role="grid"
+                    aria-label="Product Configuration Table">
+    
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                             
+                            <th aria-sort="none" class="slds-cell_action-mode smallest-column" scope="col">
+                                <div class="slds-th__action slds-text-link_reset">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                        <span class="slds-truncate" title="Name">{Labels.CertilogoProdConfig_Col_No}</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="slds-text-align_right slds-cell_action-mode smallest-column" scope="col">
+                                <div class="slds-th__action slds-text-link_reset">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                        <span class="slds-truncate" title="Name"></span>
+                                    </div>
+                                </div>
+                            </th>
+                            
+                            <template for:each={tableColumn} for:item="col" for:index="idx">
+                                <th key={col} aria-sort="none" class="slds-cell_action-mode small-colum" scope="col">
+                                    <div class="slds-th__action slds-text-link_reset">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title={col}>{col}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                            </template>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={oppProducts} for:item="row" for:index="idx">                           
+                            <tr key={row.index}>
+                                
+                                <th rowspan={rowSpan} class="slds-cell_action-mode" scope="row">
+                                    <div class="slds-truncate" title={row.index}>{row.index}</div>
+                                </th> 
+                                <td rowspan={rowSpan} class="slds-text-align_center slds-cell_action-mode" role="gridcell">
+                                    <div class="slds-checkbox">
+                                        <lightning-input data-id={idx} onchange={handleChangeValue} type="checkbox" variant="label-hidden" name="select" checked={row.selected} disabled={editMode}></lightning-input>
+                                    </div>
+                                </td>   
+                                <th class="slds-cell_action-mode" scope="row">
+                                    <div class="slds-truncate" title={row.prod.ProductCode}>{row.prod.ProductCode}</div>
+                                </th>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <div class="slds-truncate" title={row.prod.Name}>
+                                        <a target="_blank" href={row.prodUrl} tabindex="0">{row.prod.Name}</a>
+                                    </div>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <div class="slds-truncate" title={row.prod.Billing_Category__c}>{row.prod.BillingType__c}</div>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <template if:true={row.viewMode}>
+                                        <div class="slds-truncate" title={row.oli.Quantity}>{row.oli.Quantity}</div> 
+                                    </template>
+                                    <template if:true={row.editMode}>
+                                        <lightning-input class="custom-large-cell-width" data-id={idx} onchange={calculateTotalPrice} message-when-value-missing={Labels.CertilogoProdConfig_ErrorMsg2} type="number" name="quantity" variant="label-hidden" required="true" value={row.oli.Quantity}></lightning-input>
+                                    </template>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <div class="slds-truncate" title={row.prod.UnitofMeasure__c}>{row.prod.QuantityUnitOfMeasure}</div>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <template if:true={row.viewMode}>
+                                        <div class="slds-truncate" title={row.oli.UnitPrice}>
+                                            <!-- {row.oli.UnitPrice} -->
+                                            <lightning-formatted-number value={row.oli.UnitPrice} maximum-fraction-digits="8" format-style="currency" currency-code={row.currencyCode} currency-display-as="code"></lightning-formatted-number>
+                                            <!-- <lightning-formatted-number value={row.oli.UnitPrice} format-style="currency" currency-code="EUR"></lightning-formatted-number> -->
+                                        </div>
+                                    </template>
+                                    <template if:true={row.editMode}>
+                                        <template if:true={row.isDiscount}>
+                                            <lightning-input class="custom-large-cell-width" data-id={idx} onchange={calculateTotalPrice} message-when-value-missing={Labels.CertilogoProdConfig_ErrorMsg2} type="number" formatter="number" name="unitPrice" variant="label-hidden" required="true" step="0.00001" value={row.oli.UnitPrice}></lightning-input>
+                                        </template>
+                                        <template if:false={row.isDiscount}>
+                                            <lightning-formatted-number value={row.oli.UnitPrice} maximum-fraction-digits="8" format-style="currency" currency-code={row.currencyCode} currency-display-as="code"></lightning-formatted-number>
+                                        </template>
+                                    </template>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <div data-id={idx} class="slds-truncate" title={row.oli.TotalPrice}>
+                                        <!-- {row.oli.TotalPrice} -->
+                                        <lightning-formatted-number value={row.oli.TotalPrice} maximum-fraction-digits="8" format-style="currency" currency-code={row.currencyCode} currency-display-as="code"></lightning-formatted-number>
+                                    </div>
+                                </td>
+                                <td class="slds-cell_action-mode" role="gridcell">
+                                    <div class="slds-truncate" title={row.oli.InvoiceStatus__c}>{row.oli.InvoiceStatus__c}</div>
+                                </td>
+                                
+                            </tr>
+                            
+                            <template if:true={isExpandedView}>
+                                <tr key={row.index}>
+                                    <td colspan="6" class="slds-p-around_none">
+                                        <table class="slds-table custom-style-exptable">
+                                            <thead>
+                                                <tr>
+                                                    <th aria-sort="none" class="slds-cell_action-mode" scope="col">
+                                                        <div class="slds-th__action slds-text-link_reset">
+                                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                                <span class="slds-truncate" title="Name">{Labels.CertilogoProdConfig_Col_LineDesc}</span>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <template if:true={row.isShowDeliverTo}>
+                                                        <th aria-sort="none" class="slds-cell_action-mode" scope="col">
+                                                            <div class="slds-th__action slds-text-link_reset">
+                                                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                                    <span class="slds-truncate" title="Name">{Labels.CertilogoProdConfig_Col_DeliverTo}</span>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </template>
+                                                    <template if:true={row.hasManufacturer}>
+                                                        <th aria-sort="none" class="slds-cell_action-mode" scope="col">
+                                                            <div class="slds-th__action slds-text-link_reset">
+                                                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                                    <span class="slds-truncate" title="Name">{Labels.CertilogoProdConfig_Col_ManuFacturer}</span>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </template>
+                                                    <template if:true={row.showFrequency}>
+                                                        <th aria-sort="none" class="slds-cell_action-mode" scope="col">
+                                                            <div class="slds-th__action slds-text-link_reset">
+                                                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                                    <span class="slds-truncate" title="Name">{Labels.CertilogoProdConfig_Col_Freq}</span>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </template>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="description-with">
+                                                        <template if:true={row.viewMode}>
+                                                            <div class="slds-truncate" title={row.oli.Description}>{row.oli.Description}&nbsp;</div>
+                                                        </template>
+                                                        <template if:true={row.editMode}>
+                                                            <lightning-textarea data-id={idx} onchange={handleChangeValue} required=true message-when-value-missing={Labels.CertilogoProdConfig_ErrorMsg2} class="custom-style-textarea" name="description" variant="label-hidden" value={row.oli.Description}></lightning-textarea>
+                                                        </template>
+                                                        
+                                                    </td>
+                                                    <template if:true={row.isShowDeliverTo}>
+                                                        <td>
+                                                            <template if:true={row.viewMode}>
+                                                                <div class="slds-truncate" title={row.deliverTo}>{row.deliverTo}</div>
+                                                            </template>
+                                                            <template if:true={row.editMode}>
+                                                                <div class="deliveryto-width">
+                                                                    <lightning-record-edit-form object-api-name="OpportunityLineItem">
+                                                                        <lightning-input-field data-id={idx} name="deliverTo" field-name="DeliveryTo__c" variant="label-hidden" value={row.oli.DeliveryTo__c} onchange={handleDeliveryToChangeValue}></lightning-input-field>
+                                                                    </lightning-record-edit-form>
+                                                                </div>
+                                                            </template>
+                                                        </td>
+                                                    </template>
+                                                    <template if:true={row.hasManufacturer}>
+                                                        <td>
+                                                            <div class="slds-truncate" title={row.deliverTo}>{row.manufacurer}</div>
+                                                        </td>
+                                                    </template>
+                                                    <template if:true={row.showFrequency}>
+                                                        <td class="custom-style-freqoption">
+                                                            
+                                                            <template if:true={row.viewMode}>
+                                                                <div class="slds-truncate" title={row.oli.Frequency__c}>{row.oli.Frequency__c}</div>
+                                                            </template>
+                                                            <template if:true={row.editMode}>
+                                                                <lightning-combobox data-id={idx} name="frequency" variant="label-hidden" value={row.oli.Frequency__c} options={frequencyPicklistValue.data.values} onchange={handleChangeValue}></lightning-combobox>
+                                                                
+                                                            </template>
+                                                        </td>
+                                                    </template>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </td>
+                                    <td colspan="2" class="col-buttons-group">
+                                        <div class="buttons-group">
+                                            <lightning-button-group>
+                                                <template for:each={row.listRowButton} for:item="rowButton" for:index="bttnidx">
+                                                    <template if:true={rowButton.isSplitLine}>
+                                                        <lightning-button data-id={rowButton.oli.Id} data-qty={rowButton.oli.Quantity} key={rowButton.fileId} label={rowButton.buttonName} title={rowButton.buttonName} onclick={handleOpenModal}></lightning-button>
+                                                    </template>
+                                                    <template if:false={rowButton.isSplitLine}>
+                                                        <lightning-button data-id={rowButton.fileId} key={rowButton.fileId} label={rowButton.buttonName} title={rowButton.buttonName} onclick={previewHandler}></lightning-button>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </lightning-button-group>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                            
+    
+                        </template>
+                        
+                    </tbody>
+    
+                </table>
+    
+            </article>
+        </div>
+        
+        <div class="slds-clearfix" slot="footer">
+            <div class="slds-float_right">
+                <template if:true={viewMode}>
+                    <lightning-button variant="neutral" label={Labels.Close} title={Labels.Close} class="slds-m-left_x-small" onclick={handleClose}></lightning-button>
+                </template>
+                <template if:true={editMode}>
+                    
+                    <lightning-button variant="neutral" label={Labels.lwcCancelbtn} title={Labels.lwcCancelbtn}  class="slds-m-left_x-small" onclick={handleCancel}></lightning-button>
+                    <lightning-button variant="brand" label={Labels.Save}  title={Labels.Save} class="slds-m-left_x-small" onclick={handleSave}></lightning-button>
+                    <lightning-button variant="brand" label={Labels.Save_and_Close}  title={Labels.Save_and_Close} class="slds-m-left_x-small" onclick={handleSaveClose}></lightning-button>
+                    
+                    
+                </template>
+                
+            </div>
+        </div>
+    </lightning-card>
+    
+
+</template>

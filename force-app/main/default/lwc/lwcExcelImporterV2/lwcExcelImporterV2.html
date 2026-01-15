@@ -1,0 +1,438 @@
+<template>
+
+    <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+    
+    <template if:true={hasNoPermission}>
+        <div><p>{Labels.Generic_Error_No_Permission_On_Cmp}</p></div>
+    </template>
+
+    <template if:true={isCmpReady}>
+
+        <div style="display: flow-root;">
+            <template if:false={classicModeOn}>
+                <div class="export-importer-template_name" style="float:left;">
+                    <h2 class="slds-section__title slds-text-title_bold">{templateLabel}</h2><br/>
+                </div>
+            </template>
+            <template if:true={showSwtich}>
+                <div class="switch-version" style="float: right;">
+                    <lightning-input type="toggle" label="Switch to Classic View" checked={classicModeOn} onchange={handleToggleChange} message-toggle-active="on" message-toggle-inactive="off"></lightning-input>
+                </div>
+            </template>
+        </div>
+        
+        
+        <template if:true={classicModeOn}>
+            <c-lwc-excel-importer template-name={templateName} hide-csv-link={hideCsvLink} csv-tpt-name={csvTptName} csv-tpt-fv={csvTptFv} redirect-obj-id={redirectObjId} parent-id={parentId} is-from-ltng-cmp={isFromLtngCmp} onhandlegoback={handleGoBack} ontoggleswitch={handleToggleSwtich}></c-lwc-excel-importer>
+        </template>
+            
+        <template if:false={classicModeOn}>
+            
+            
+            <template if:true={hasMainTitle}>
+                <div class="slds-grid slds-grid_align-center slds-text-align_center slds-p-bottom_medium"><h2 class="slds-section__title slds-text-title_bold">{mainTitle}</h2><br/><br/></div>
+            </template>
+            
+                
+
+            <c-lwc-progress-indicator current-step={currentStep} is-excel-importer-v2=true></c-lwc-progress-indicator>
+            <br/><br/>
+            <template if:true={step1}> 
+                <div class="step-header">
+                    <h1 class="slds-section__title">{Labels.lblStep1}</h1><br/>
+                    
+                    <lightning-formatted-rich-text value={selectedTemplateData.Step_1_Detail__c}></lightning-formatted-rich-text> 
+                    <lightning-button label='Back' title='Back' class="slds-m-left_x-small export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleFinish}></lightning-button>
+                    <lightning-button label='Next' title='Next' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleNextStep}></lightning-button>
+                </div>
+                
+
+                <div class="step1-body">
+
+                    <article class="slds-card field-guidance">
+                        <h2 class="slds-section__title slds-text-title_bold">{selectedTemplateData.Field_Guidance_Title__c}</h2>
+
+                        <table>
+                            <template for:each={tableFieldGuidance} for:item="row">
+                                <tr key={row}>
+                                    <template for:each={row} for:item="col">
+                                        <td key={col}>{col}</td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </table>
+                        
+                    </article>
+
+                </div>
+
+            </template>
+
+            <template if:true={step2r3r4}>
+                <div class="step-header">
+                    <template if:true={step2}>
+                        <h1 class="slds-section__title">{Labels.lblPreStep2}</h1><br/>
+                    
+                        <lightning-formatted-rich-text value={selectedTemplateData.Step_2_Detail__c}></lightning-formatted-rich-text> 
+                        <template if:true={isExceedMaximum}>
+                            
+                            <article class="error-section">
+                                    <div style="display:flow-root;">
+                                        <div style="float:left;">
+                                            <span>
+                                                <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                                                <span>{selectedTemplateData.Exceed_Maximum_Message__c}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                        </template>
+                        <div class="step-button-section" style="display: flow-root;">
+                            <div class="step-button-left" style="float: left;">
+                                <lightning-button label='Previous' title='Previous' class="slds-m-left_x-small export-importer-v2-action_btn_prev export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handlePrevStep}></lightning-button>
+                                <template if:true={isHasNoData}>
+                                    <lightning-button disabled={isHasNoData} label='Next' title='Next' class="slds-m-left_x-small disabled-button" variant="brand"></lightning-button>
+                                </template>
+                                <template if:false={isHasNoData}>
+                                    <template if:true={isExceedMaximum}>
+                                        <lightning-button disabled={isExceedMaximum} label='Next' title='Next' class="slds-m-left_x-small disabled-button" variant="brand"></lightning-button>
+                                    </template>
+                                    <template if:false={isExceedMaximum}>
+                                        <lightning-button label='Next' title='Next' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleValidateData}></lightning-button>
+                                    </template>
+                                    
+                                </template>
+                                
+                                
+                            </div>
+                            <div class="step-button-right" style="float: right;">
+                                <lightning-button label='Reset' title='Reset' class="slds-m-left_x-small export-importer-v2-action_btn_reset export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleReset}></lightning-button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <template if:true={step3}>
+                        <h1 class="slds-section__title">{Labels.lblStep3}</h1><br/>
+                    
+                        <lightning-formatted-rich-text value={selectedTemplateData.Step_3_Detail__c}></lightning-formatted-rich-text> 
+                        <template if:true={isHasError}>
+                            
+                            <template if:true={hasNoRecord}>
+
+                                <article class="error-section">
+                                    <div style="display:flow-root;">
+                                        <div style="float:left;">
+                                            <span>
+                                                <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                                                <span>There is no data to upload. Please press "Previous" button or press "Reset" button to go to the previous step.</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                            </template>
+
+                            <template if:false={hasNoRecord}>
+                                <article class="error-section">
+                                    <div style="display:flow-root;">
+                                        <div style="float:left;">
+                                            <span>
+                                                <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                                                <span>Your data contains errors.</span>
+                                            </span>
+                                        </div>
+                                        <div style="float:right;">
+                                            <a style="text-decoration: underline;" onclick={handleToggleViewErrorRows}>View Errors</a>
+                                        </div>
+                                    </div>
+                                    
+                                </article>
+                            </template>
+                            <div class="step-button-section" style="display: flow-root;">
+                                <div class="step-button-right" style="float: right;">
+                                    <lightning-button label='Download error records' title='Download error records' class="slds-m-left_x-small export-importer-v2-action_btn_reset export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleDownloadErrorRecord}></lightning-button>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template if:false={isHasError}>
+                            <article class="no-error-section">
+                                <h2 class="slds-section__title slds-text-title_bold">We have found no errors in your uploaded data.</h2>
+                                <p>Press the "Next" button continue.</p>
+                            </article>
+                        </template>
+                        <template if:true={isConfirmMsg}>
+                            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open popup-export">
+                                <div class="slds-modal__container">
+                                <!-- modal header start -->
+                                <header class="slds-modal__header">
+                                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleClose}>
+                                        <lightning-icon icon-name="utility:close"
+                                            alternative-text="close"
+                                            variant="inverse"
+                                            size="small" ></lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirmation</h2>
+                                </header>
+                            
+                                <!-- modal body start -->
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                        <p>Only successfully validated records will move forward</p>
+                                </div>
+                                <!-- modal footer start-->
+                                <footer class="slds-modal__footer">
+                                    <lightning-button label='Cancel' title='Cancel' class="slds-m-left_x-small export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleClose}></lightning-button>
+                                    <lightning-button label='Ok' title='Ok' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleNextStep}></lightning-button>
+                                </footer>
+                                
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                            
+                              <!-- <button onclick={handleClose}>Cancel</button>
+                              <button onclick={handleNextStep}>Ok</button> -->
+                        </template>
+
+                        <div class="step-button-section" style="display: flow-root; padding-bottom:15px;">
+                            <div class="step-button-left" style="float: left;">
+                                <lightning-button label='Previous' title='Previous' class="slds-m-left_x-small export-importer-v2-action_btn_prev export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handlePrevStep}></lightning-button>
+                                <template if:true={isHasSomeRecordsToGo}>
+                                    <lightning-button label='Next' title='Next' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleCheckIsCanNextStep}></lightning-button>
+                                </template>
+                                <template if:false={isHasSomeRecordsToGo}>
+                                    <lightning-button disabled={isHasError} label='Next' title='Next' class="slds-m-left_x-small disabled-button" variant="brand"></lightning-button>
+                                </template>
+                            </div>
+                            <div class="step-button-right" style="float: right;"> </div>
+                        </div>
+
+                        <div class="step-button-section" style="display: flow-root;">
+                            <div class="step-button-left" style="float: left; padding-top:8px;">
+                                
+                                <span>
+                                    Showing {displayNoRecord} of {totalNoRecord} entries
+                                </span>
+                                
+                                
+                            </div>
+                            <div class="step-button-right" style="float: right; display:inline-block;">
+                                <template if:true={isHasError}>
+                                    <span style="display:inline-flex; vertical-align: middle;">
+                                        <lightning-input type="toggle" label="" message-toggle-active="" message-toggle-inactive="" checked={showOnlyError} onchange={handleToggleShowOnlyError}></lightning-input>
+                                        <span style="margin-left: 5px; margin-right:5px;">Only View Rows with Errors</span>
+                                    </span>
+                                    <lightning-button label='Reset' title='Reset' class="slds-m-left_x-small export-importer-v2-action_btn_reset export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleReset}></lightning-button>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template if:true={step4}>
+
+                        <template if:false={isFinished}>
+                            <h1 class="slds-section__title">{selectedTemplateData.Step_4_Detail__c}</h1><br/>
+                        </template>
+    
+                        <template if:true={isFinished}>
+                            <h1 class="slds-section__title">Upload Complete</h1><br/>
+                        </template>
+                        
+                        <template if:false={isFinished}>
+                            <article class="uploading-section">
+                                <div style="display:inline-flex;">
+                                    
+                                    <div style="position: relative; width: 50px; height: 50px; float:left;">
+                                        <lightning-spinner alternative-text="Loading" variant="brand" size="small" class="finishing-loading"></lightning-spinner>
+                                    </div>    
+                                    <div style="float:right;">
+                                        <h2 class="slds-section__title slds-text-title_bold">Our system is uploading your data.</h2>
+                                        <p>We will let you know when we are done.</p>
+                                    </div>
+                                </div>
+                                
+                            </article>
+                        </template>
+    
+                        <template if:true={isFinished}>
+                            <template if:true={hasSuccessRecord}>
+                                <p style="color: green; font-weight: 500;">{numberOfSuccessRecord} record(s) have been created successfully.</p>
+                            </template>
+                            
+                            <template if:true={hasFailedRecord}>
+
+                                <p style="color: red; font-weight: 500;">{numberOfFailedRecord} record(s) failed.</p>
+
+                                <template if:true={isAllFailedRecord}>
+                                    <p>While your data was in the correct format for upload, errors occurred during processing. Unfortunately none of the records were successfully uploaded. Please review common errors and their resolutions and try again.</p>
+                                </template>
+
+                                <template if:false={isAllFailedRecord}>
+                                    <!-- <p>Your file has been partially processed. Some rows contain errors. Please download the file to review specific error reasons per row using the 'Download Failed Records' button on the right.</p> -->
+                                    <p>Your data was in the correct format for upload, but errors occurred during processing. Some data has been uploaded successfully, while some experienced issues. Please review common errors and resolutions below.</p>
+                                    
+                                </template>
+
+                                <p>To access a file with the failed records, click 'Download Failed Records' button on the right.</p>
+                                
+                            </template>
+
+                            <template if:true={isServerSideError}>
+                                <article class="error-section">
+                                    <div style="display:flow-root;">
+                                        <div style="float:left;">
+                                            <span>
+                                                <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                                                <span>There is an unexpected error occured during uploading process. Please contact our system administrator.</span>
+                                            </span>
+
+                                            <div class="slds-box cls_serverSideError">
+                                                <div class="cls_ListViewWrapper" onclick={handleShowErrorDetail}>
+                                                    <div class="listColumn">
+                                                        <span class="cls_windowTitle">Technical Error Detail</span>
+                                                        <a><lightning-icon icon-name={iconShowErrorDetail} size="x-small" class="arrow-icon"></lightning-icon></a>
+                                                    </div>    
+                                                </div>
+                                                <template if:true={displayErrorDetail}>
+                                                    <div class="cls_accordion">
+                                                        <lightning-formatted-rich-text value={msgServiceSideError}></lightning-formatted-rich-text>
+                                                    </div>
+                                                </template>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </article>
+                            </template>
+
+                            <p>Click the finish button to go to the {parentObjectLabel} page.</p>
+                            
+                        </template>
+                        
+                        <div class="step-button-section" style="display: flow-root;">
+                            <div class="step-button-left" style="float: left;">
+                                <template if:true={isFinished}>
+                                    <lightning-button label='Finish' title='Finish' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleFinish}></lightning-button>
+                                </template>
+                                <template if:false={isFinished}>
+                                    <lightning-button disabled=true label='Finish' title='Finish' class="slds-m-left_x-small disabled-button" variant="brand"></lightning-button>
+                                </template>
+                                
+                            </div>
+                            <div class="step-button-right" style="float: right;">
+                                <template if:true={showDownloadFailedRecordBtn}>
+                                    <lightning-button label='Download failed records' title='Download failed records' class="slds-m-left_x-small export-importer-v2-action_btn_reset export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handleDownloadFailedRecord}></lightning-button>
+                                </template>
+                            </div>
+                        </div>
+
+                    </template>
+
+                </div>
+
+                <div class="step2r3r4-body">
+
+                    <c-lwc-excel-importer is-excel-importer-v2=true template-name={templateName} hide-csv-link={hideCsvLink} csv-tpt-name={csvTptName} csv-tpt-fv={csvTptFv} redirect-obj-id={redirectObjId} parent-id={parentId} is-from-ltng-cmp={isFromLtngCmp} 
+                                            onhandlegoback={handleGoBack} ondataispasted={handleDataIsPasted} onuploadresult={handleCheckUploadResult} onsubmitresult={handleCheckSubmitResult} ondisplaynumberofrecords={handleDisplayNoOfRecords}
+                                            onserversideerror={handleServerSideError}></c-lwc-excel-importer>
+                    
+                    
+                    <template if:true={step3}>
+                        <!--
+                        <div class="step-button-section" style="display: flow-root;">
+                            <div class="step-button-left" style="float: left;">
+                                <lightning-button label='Previous' title='Previous' class="slds-m-left_x-small export-importer-v2-action_btn_prev export-importer-v2-action_btn_brandoutline" variant="brand-outline" onclick={handlePrevStep}></lightning-button>
+                                <template if:true={isHasError}>
+                                    <lightning-button disabled={isHasError} label='Next' title='Next' class="slds-m-left_x-small disabled-button" variant="brand"></lightning-button>
+                                </template>
+                                <template if:false={isHasError}>
+                                    <lightning-button label='Next' title='Next' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleNextStep}></lightning-button>
+                                </template>
+                            </div>
+                            <div class="step-button-right" style="float: right;"> </div>
+                        </div>
+                        -->
+
+                        <template if:true={isHasError}>
+
+                            <template if:false={hasNoRecord}>
+                                <template if:true={showCommonErrorTable}>
+                                    <br/>
+                                    <h2 class="slds-section__title slds-text-title_bold" style="font-size:large;">{Labels.step3HelpTitle}</h2>
+
+                                    <table class="common-error">
+                                        <tr>
+                                            <th>Issue</th>
+                                            <th>Error Message</th>
+                                        </tr>
+                                        <template for:each={tableCommonReasonStep3} for:item="row">
+                                            <tr key={row}>
+                                                <template for:each={row} for:item="col">
+                                                    <td key={col}>{col}</td>
+                                                </template>
+                                            </tr>
+                                        </template>
+                                    </table>
+
+                                    <br/>
+                                </template>
+                            </template>
+
+                        </template>
+                        
+                    </template>
+
+                    <template if:true={step4}>
+                        <template if:true={showDownloadFailedRecordBtn}>
+                            <template if:true={showCommonErrorTableStep4}>
+                                <br/>
+                                <h2 class="slds-section__title slds-text-title_bold" style="font-size:large;">{Labels.step3HelpTitle}</h2>
+
+                                <table class="common-error">
+                                    <template for:each={tableCommonReasonStep4} for:item="row">
+                                        <tr key={row}>
+                                            <template for:each={row} for:item="col">
+                                                <td key={col}>{col}</td>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                </table>
+
+                                <br/>
+                            </template>
+                        </template>
+                    </template>
+                    
+                </div>
+            </template>
+            <template if:true={isPopupBulkModel}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-2" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open popup-export">
+                    <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <!-- <h2 id="modal-heading-2" class="slds-text-heading_medium slds-hyphenate">Bulk Upload Coupon Sellers</h2> --> <!--MN-22042024-US-0015008-->
+                        <h2 id="modal-heading-2" class="slds-text-heading_medium slds-hyphenate">{templateLabel}</h2> <!-- MN-22042024-US-0015008: Change to use with dynamic variable -->
+                    </header>
+                
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                        <lightning-radio-group name="radioGroup"
+                                label="Options"
+                                options={options}
+                                value={bulkOptionValue}
+                                type="radio" onchange={handleOnChange}></lightning-radio-group>
+                    </div>
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                        <lightning-button label='Ok' title='Ok' class="slds-m-left_x-small export-importer-v2-action_btn_next" variant="brand" onclick={handleBulkUploadOption}></lightning-button>
+                    </footer>
+                    
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </template>
+    </template>
+    
+</template>

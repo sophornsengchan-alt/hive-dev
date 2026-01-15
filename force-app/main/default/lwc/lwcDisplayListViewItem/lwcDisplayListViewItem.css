@@ -1,0 +1,12 @@
+.cls_checkbox {
+    float: left;
+    margin-right: 15px;
+    margin-top: 5px;
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 15px 0px 5px;
+    padding: initial;
+    border: initial;
+}

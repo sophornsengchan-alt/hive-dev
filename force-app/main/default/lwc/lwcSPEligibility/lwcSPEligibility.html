@@ -1,0 +1,58 @@
+<template>
+  
+    <div class="slds-is-relative">
+
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+
+        <!-- SB 22.2.2024 US-0014476 -->
+        <template lwc:if={isBlocked}>
+            <div class="error slds-align_absolute-center" style="height: 4rem;">
+                {label.SPEligibilityBlockAccessMessage}
+            </div>
+        </template>
+        <template lwc:else>
+
+            <lightning-quick-action-panel header="SP Eligibility">
+
+                <div class="error" if:true={showErrorNoPermission}>
+                    {errorMsg}
+                </div>
+                
+                <template if:true={isEmailOut}>
+                    <!--LA-20-09-2022-US-0012611-->
+                    <!--<div class="color-orange"> IMPORTANT: Please note that this seller has opted out from Emails, and will therefore not receive the welcome email invitation. Please request an active opt in from the seller and update the Email Opt Out field BEFORE updating their access on this screen. </div>-->
+                    <div class="color-orange">
+                        <lightning-formatted-rich-text value={label.WarningMsgSPEligibilityEmailOptOut}></lightning-formatted-rich-text>
+                    </div><!--LA-20-09-2022-US-0012611-->
+                </template>
+                
+                <lightning-record-edit-form record-id={recordId}
+                                            object-api-name={objectApiName}
+                                            onsubmit={handleSubmit}
+                                            onsuccess={handleSuccess}
+                                            onerror={handleError}>
+                    <lightning-input-field field-name="SP_Main_Domain__c" class="slds-hide" value={spMainDomainValue}></lightning-input-field>
+                    <div if:true={spMainDomain} class="slds-p-bottom_x-small slds-p-horizontal_xx-small">
+                        <span class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.SP_Main_Domain__c}</span>
+                        <lightning-helptext content={label.SP_Main_Domain_Helptext}></lightning-helptext>
+                        <lightning-combobox variant="label-hidden" class="SP_Main_Domain__c" value={spMainDomainValue} options={spMainDomainOption} required onchange={handleChange} message-when-value-missing="Please select the Portal Domain for the seller, to make sure Seller receives the right domain URL and communication language."></lightning-combobox>
+                    </div>
+                    <lightning-input-field field-name="SP_Deals__c" if:true={spDeal}></lightning-input-field>
+
+                    <lightning-input-field field-name="SP_Coupons__c" if:true={spCoupon}></lightning-input-field>
+                    <lightning-input-field field-name="SP_Promotions_Manager__c" if:true={spProManage}></lightning-input-field>
+                    <lightning-input-field field-name="SP_Account_Management__c" if:true={spAccManagement}></lightning-input-field><!--BR-31-08-2023-US-0014084-->
+                    <!-- <lightning-button variant="neutral" label="Cancel"></lightning-button>
+                    <lightning-button variant="brand" class="slds-m-left_x-small" label="Save" type="submit"></lightning-button> -->
+                </lightning-record-edit-form>
+                <div slot="footer">
+                    <lightning-button variant="brand" label="Cancel" onclick={handleCancel}></lightning-button> 
+                    <lightning-button variant="brand" class="slds-m-left_x-small" label="Save" type="submit" onclick={handleSubmit}  if:false={showErrorNoPermission}></lightning-button>
+                </div>
+            
+            </lightning-quick-action-panel>
+        </template>
+    </div>    
+    
+    
+</template>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+   <apiVersion>52.0</apiVersion>
+   <isExposed>true</isExposed>
+   <targets>
+       <target>lightning__FlowScreen</target>
+        <target>lightning__RecordPage</target>
+   </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="isFromContractAmendment" type="Boolean" label="From Contract Amendment" description="Default False. False is not Contract Amendment, True is Contract Amendment."></property>
+            <property name="isEdit" type="Boolean" label="Edit Mode" description="Default False. False is New, True is Edit."></property>
+            <property name="isEditFromPricing" type="Boolean" label="Edit Pricing Mode" description="Default False. False is not Edit From Pricing, True is Edit Pricing Mode."></property>
+            <property name="mode" type="Integer" label="Mode" description="1= Path"></property>
+            <property name="isETRS" type="Boolean" label="isETRS" description="is eTRS eligible?"></property>
+            <property name="isStoreSubscription" type="Boolean" label="isStoreSubscription" description="Store Subscription"></property>
+            <property name="currentStep" type="Integer" label="Current Step" description="For Mode=1. It is an Active Step Index (ex: 1, 2, 3 etc..)"></property>
+            <propertyType name="EBH_Pricing__c" extends="SObject" label="EBH_Pricing__c" description="EBH_Pricing__c" />        
+            <property name="pricingData" type="{EBH_Pricing__c[]}" label="pricingData"></property>
+            <propertyType name="EBH_ContractPricingMatrix__c" extends="SObject" label="EBH_ContractPricingMatrix__c" description="EBH_ContractPricingMatrix__c" />        
+            <property name="contractPricingMatrixData" type="{EBH_ContractPricingMatrix__c[]}" label="contractPricingMatrixData"></property>
+            <propertyType name="FeeType__c" extends="SObject" label="FeeType__c" description="FeeType__c" />        
+            <property name="typeFeeData" type="{FeeType__c[]}" label="typeFeeData"></property>       
+            <property name="contractData" type="@salesforce/schema/Contract" label="contractData"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

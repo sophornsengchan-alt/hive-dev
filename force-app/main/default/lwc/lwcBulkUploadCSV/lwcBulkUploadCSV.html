@@ -1,0 +1,93 @@
+<template>
+    <template if:true={onShowLoadingSpinner}>
+        <div style="z-index: 99999 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+    <div class="cls_content slds-p-around_medium">
+
+        <template if:true={isDEUser}>
+            <div style="padding-bottom: 10px;">
+                <c-select-deal-retail-campaign site-number={siteNumber} placeholder={placeholder} placeholder-site={placeholderSite} input-label={inputLabel} onselectedchange={handleSelectedChange} onsiteselectedchange={handleSiteSelectedChange} input-label-site={inputLabelSite}></c-select-deal-retail-campaign>
+            </div>
+        </template>
+
+        <template for:each={allObjMessageInfos} for:item="item">
+            <div key={item.mainMsg} class={item.className}>
+                <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span><span> {item.detailMsg}</span>
+            </div>
+        </template>
+        
+        <div class="cls_contentWrapper">
+            <!-- Single file -->
+            <div class="slds-p-around_medium lgc-bg" style="float: left">
+                <!-- disableUploadFile == {disableUploadFile} -->
+                <template if:true={disableUploadFile}>
+                    <lightning-input disabled type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                </template>
+                <template if:false={disableUploadFile}>
+                    <lightning-input type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                </template>
+            </div>
+            <div class="slds-p-around_medium lgc-bg cls_padding-zero" style="float: left; margin-top: 25px;">
+                <!--<lightning-button disabled={isNoFile} variant="brand" label="Next" title="" onclick={handleClickUpload} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button disabled={disableSubmitBtn} variant="brand" label="Submit" title="Submit to create Coupon Items" onclick={handleClickSubmit} class="slds-m-left_x-small"></lightning-button>-->
+                <template if:true={disableNextBtn}>
+                    <a class="slds-button slds-button_brand mr-4 cls_disableButton" >{labelBtnNext}</a>
+                </template>
+                <!-- disableNextBtn == {disableNextBtn} -->
+                <template if:false={disableNextBtn}>
+                    <a class="slds-button slds-button_brand mr-2" onclick={handleClickUpload}>{labelBtnNext}</a>
+                </template>
+
+                <template if:true={disableSubmitBtn}>
+                    <a class="slds-button slds-button_brand mr-4 cls_disableButton" >{labelBtnSubmit}</a>
+                </template>
+                <!-- disableSubmitBtn == {disableSubmitBtn} -->
+                <template if:false={disableSubmitBtn}>
+                    <a class="slds-button slds-button_brand cls_margin-right" onclick={handleClickSubmit}>{labelBtnSubmit}</a>
+                </template>
+                
+            </div>
+            <div class="slds-p-around_medium lgc-bg cls_padding-zero" style="float: left; margin-top: 25px;">
+                <lightning-button variant="brand" label={labelBtnDownloadTemplate} title="" onclick={doDownloadCSVTemplate} class="mr-4"></lightning-button>
+            </div>
+            <div class="slds-p-around_medium lgc-bg cls_padding-zero" style="float: left; margin-top: 25px;">
+                <lightning-button variant="brand" label={label.Cancel} title="" onclick={cancelhandler} class=""></lightning-button>
+            </div>
+            <div class="slds-p-left_medium slds-p-bottom_medium lgc-bg cls_displayfileName">
+                {fileName}
+            </div>
+        </div>
+        
+
+        <div class="slds-p-around_medium cls_tableWrapper">
+            <template if:true={isShowTable}>
+                <b>{lbTotalRecord}: {totalRecord}</b>
+                <lightning-datatable
+                        hide-checkbox-column="true"
+                        data={jsonData}
+                        columns={columns}
+                        key-field="id">
+                </lightning-datatable> 
+            </template>
+
+            <template if:true={isShowMessage}>
+                <template if:true={showMessageResults.isHasSuccess}>
+                    <div class="">
+                        <span class="cls_span" ></span>
+                    </div>
+                </template>
+                <template if:true={showMessageResults.isHasError}>
+                    <div class="cls_message-info cls_message-error cls_float-left">
+                        <span class="cls_span" >{showMessageResults.totalSuccess} {label.DealRecordsCreatedPartSuccess}</span>
+                        <template for:each={showMessageResults.lstError} for:item="msgError">
+                            <span class="cls_span" key={msgError}> {msgError}</span>
+                        </template>
+                    </div>
+                </template>
+               
+            </template>
+        </div>
+    </div>
+</template>

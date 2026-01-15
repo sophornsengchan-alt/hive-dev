@@ -1,0 +1,80 @@
+.lookup-section{
+    margin-top: -0.6rem;
+    margin-left: -0.5rem;
+    position: absolute!important;
+    z-index: 9999999999999999999999;
+}
+ 
+.lookup-section .slds-dropdown{
+    position: fixed !important;
+    max-height: 120px;
+    max-width: fit-content;
+    overflow: auto;
+}
+
+/***************************/
+.slds-grid .slds-hyphenate {
+    width: 100%
+}
+
+.slds-grid .slds-truncate {
+    width: 100%
+}
+
+.lookup-container{
+    margin-top: -1rem;
+    margin-left: -0.5rem;
+    position: absolute !important;
+    z-index: 10000;
+}
+
+.lookup-container .slds-dropdown{
+    position: fixed !important;
+    max-height: 120px;
+    max-width: fit-content;
+    overflow: auto;
+}
+
+.picklist-section{
+    margin-top: -1rem;
+    margin-left: -0.5rem;
+    position: absolute !important;
+    min-width: 10%;
+	z-index: 99999999999999999999999999;
+}
+
+.picklist-section .slds-dropdown{
+    position: fixed !important;
+    max-height: 120px;
+    max-width: fit-content;
+    overflow: auto;
+}
+
+.slds-listbox{
+    z-index: 99999999999999999999999999!important;
+}
+
+.slds-table_edit_container .cell-content{
+    min-width: 100px
+}
+
+.lookup-value-cell{
+    min-width: 200px;
+    display: block;
+    color: #0070d2;
+    text-align: left;
+}
+.lookup-value-cell:hover{
+    color: rgb(1, 68, 134);
+    text-decoration: underline;
+}
+.lookup-value-cell:active{
+    border: none;
+    background: none;
+}
+.lookup-value-cell:focus{
+    box-shadow: none;
+}
+.lookup-empty-cell{
+    cursor: default;
+}

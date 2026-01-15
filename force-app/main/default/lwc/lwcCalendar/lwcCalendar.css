@@ -1,0 +1,205 @@
+div.cls_calFilter {    
+    cursor:pointer;
+    /*position: relative;
+    top: 26px;
+    */
+    position: absolute !important;
+    right:15px !important;
+    top:36px !important;
+    width: 10%;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    color: rgb(116, 116, 116);
+    text-align: center;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    line-height: 30px;
+    height: 2.6em;
+}
+
+.custom-fc-right {
+    padding-right: 50px !important;
+}
+.padding-right-15 {
+    padding-right: 15px;
+}
+.padding-right-35 {
+    padding-right: 35px;
+}
+.padding-bottom-15 {
+    padding-bottom: 15px;
+}
+.cls_calFilterArea{
+    position: absolute;
+    top:100px;
+    width: 100%;
+}
+
+.cls-status-filter {
+    /* width: 215px !important; */
+    width: max-content !important;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+}
+
+.cls-loading {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cls-tooltip-article {
+    box-shadow: none;
+}
+
+.tooltip-row {
+    display:inline-flex; 
+    width:100%;
+    padding-left:10px;
+}
+
+
+
+/* .tooltip-label {
+    width: 50%;
+}
+
+.tooltip-value {
+    width: 50%;
+} */
+
+/* MN-04042022-US-0011450 */
+/* SB 24.6.2022 US-0011958 - Change Requests Focus 75 - AC6 */
+.cls-calKeySection {
+    width: 20%;
+    margin-left: 17px;
+    margin-top: 10px;
+}
+
+.cls-calKey {
+    float: left;
+    height: 20px;
+    width: 20px;
+    /* margin-bottom: 15px; */
+    /* border: 1px solid black; */
+    clear: both;
+    margin-right: 17px;
+    
+}
+
+.cls-CampaignRunning {
+    /* background-color: #9FFEEC; */
+    /* background-color: #FBCD25; */
+    /* TH:US-0012012:10/08/2022:*/
+    background-color: #FDEBA8;
+}
+
+.cls-CampaignEnded {
+    /* background-color: #FFC300; */
+    /* background-color: #FFF8D6; */
+    /* TH:US-0012012:10/08/2022:*/
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #FBCD25;
+    border-width: 2px;
+}
+
+.cls-FutureCampaigns {
+    /* background-color: #FDFF7E; */
+    /*background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #FBCD25;
+    border-width: 2px;*/
+    /* TH:US-0012012:10/08/2022:*/
+    background-color: #FFF8D6;
+}
+
+.cls-CampaignOpenforSubmission {
+    /* background-color: #D2FF7E; */
+    /* background-color: #FDEBA8; */
+    /* TH:US-0012012:10/08/2022:*/
+    background-color: #FBCD25;
+}
+
+/*NK:18/05/2022: US-0010786 */
+.cls-CS_Comming {
+    /* background-color: #67B5F5; */
+    background-color: #71E3E2;
+}
+.cls-CS_Open {
+    /* background-color: #2095F5; */
+    background-color: #01718F;
+}
+.cls-CS_Past {
+    /* background-color: #AED5F5; */
+    background-color: #E6F5F4;
+}
+[data-goto]{
+    color: black;
+}
+.filterArea1{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.tooltip-width {
+    width: 100%;
+    float: left;
+}
+
+.tooltip-width {
+    width: 100%;
+    float: left;
+}
+
+.tooltip-text-title {
+    float: left;
+    padding-right: 30;
+}
+
+.tooltip-text-dis {
+    float: left;
+    width: 200px;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+
+.hidden-small-hover-mid:before {
+    width: 3rem;
+    height: 2rem;
+    position: absolute;
+    transform: rotate(0deg);
+    content: '';
+    background-color: inherit;
+    left: 45%;
+    bottom: -1.5rem;
+    /* opacity: 0; */
+}
+
+.hidden-small-hover-right:before {
+    width: 3rem;
+    height: 2rem;
+    position: absolute;
+    transform: rotate(0deg);
+    content: '';
+    background-color: inherit;
+    opacity: 0;
+    bottom: -1.5rem;
+    /* opacity: 0;  */
+}
+
+.hidden-small-hover-left:before {
+    width: 3rem;
+    height: 2rem;
+    position: absolute;
+    transform: rotate(0deg);
+    content: '';
+    background-color: inherit;
+    left: 0;
+    bottom: -1.5rem;
+    /* opacity: 0;  */
+}

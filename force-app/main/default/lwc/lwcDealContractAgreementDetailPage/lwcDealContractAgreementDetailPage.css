@@ -1,0 +1,52 @@
+div.lwcDealContractAgreementDetailPage li.slds-tabs_scoped__item:not(.slds-is-active) a.slds-tabs_scoped__link {
+    color: #5a5a5a !important;
+}
+.slds-card{
+    box-shadow:0px 2px 4px rgba(0,0,0,0.2);
+}
+
+.slds-card__body{    
+    font-size: 14px;
+}
+
+.hideChildCmp{
+    display: none;
+}
+.download-btn lightning-icon{
+    padding-right: 5px;
+}
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.btn-left{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.btn-right{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: right;
+}
+.download-icon {
+    --lwc-colorTextIconDefault: white;
+}
+.container {
+    padding: 15px 50px 15px 50px;
+    text-align: justify;
+}
+.div-table {
+    padding: 5px 0;
+}
+.div-table .table tr td {
+    border: 1px solid black;
+    padding:5px;
+}
+
+ul.contract-ul {
+    list-style-type: disc;
+    padding: 5px 50px;
+}

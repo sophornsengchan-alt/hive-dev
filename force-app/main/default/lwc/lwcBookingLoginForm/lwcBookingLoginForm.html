@@ -1,0 +1,18 @@
+<template>
+    <template if:true={isCalloutDone}>
+        <div class="clt-loginFormHeader">
+            {lblSellerPortal}
+        </div>
+        <template if:true={isDomainEU}>
+            <div class="slds-col slds-var-p-top_small">
+                {lblContinue_with_eBay_login}
+            </div>
+    
+            <div class="slds-var-p-around_x-small p-l-r-0">
+                <button class="slds-button slds-button_brand" style="display: block; width: 100%;" onclick={loginClick}>{lbleBay_Login}</button> <!--{Labels.eBay_Login}-->
+            </div> 
+    
+        </template>
+
+    </template>
+</template>

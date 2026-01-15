@@ -1,0 +1,18 @@
+<!--
+@ Component:  lookup.hml
+@ Purpose  :  column type: lookup for lighting data table (US-0012817 - Update Linked Customer View)
+@ Author   :  Sothea Horn (sohorn@ebay.com)
+@ Created  :  19.05.2025
+-->
+<template>
+    <c-custom-lookup 
+        value={typeAttributes.value}
+        object={typeAttributes.object} 
+        lookup-field={typeAttributes.lookupField} 
+        filter={typeAttributes.filter}
+        context={typeAttributes.context}
+        name-field={typeAttributes.nameField} 
+        custom-view-lookup-record={typeAttributes.customViewLookupRecord}
+        editable={typeAttributes.editable}>
+    </c-custom-lookup>
+</template>

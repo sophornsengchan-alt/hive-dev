@@ -1,0 +1,252 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+            <lightning-card hide-header="true">
+                <div class="slds-grid slds-wrap containter-main">
+                    <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+                        <div class="slds-clearfix slds-p-around_medium custom-card-header">
+                            <div class="slds-float_left slds-media__body">
+                                <h2 class="slds-card__header-title"><span class="slds-truncate"><lightning-formatted-text value="BD Handover" ></lightning-formatted-text></span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="slds-p-left_medium container-dev">
+                    <div class="slds-grid slds-wrap containter-main">
+                        <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+                            <template if:false={isReady}>
+                                <p><lightning-formatted-text value="Downstream Handover to dedicated Team(s) or Program(s)" ></lightning-formatted-text></p><br/>
+                                <p class="slds-text-title_bold"><lightning-formatted-text value="Please select the team to which this handover should be assigned." ></lightning-formatted-text></p><br/>
+                                <lightning-radio-group name="radioGroup"
+                                        label=""
+                                        options={options}
+                                        value={value}
+                                        type="radio"></lightning-radio-group>
+                            </template>
+                            <template if:true={isReady}>
+
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-size_12-of-12">
+                                        <p>
+                                            <lightning-formatted-text value="This form shows the information needed for a request to handover from BD to other downstream Team or Program." ></lightning-formatted-text>
+                                        </p><br/>
+                                        <p>
+                                            <lightning-formatted-text value="If any of the blank data for the Address, or Opportunity Information sections you will need to cancel this request and update the related records, then submit a new request." ></lightning-formatted-text>
+                                        </p><br/>
+                                    </div>
+                                </div>
+
+                                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                                    <lightning-record-edit-form object-api-name="Opportunity" record-id={recordId}>
+
+                                        <lightning-accordion-section name="Opportunity_Information" label="Opportunity Information" class="Opportunity-Information">
+                                            <div class="slds-grid slds-wrap slds-p-horizontal_small">
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-right_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Seller Name</label>
+                                                        <template if:true={records.Seller_Name__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Seller_Name__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Seller_Name__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Oracle ID</label>
+                                                        <template if:true={records.Oracle_ID__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Oracle_ID__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Oracle_ID__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Seller (lookup)</label>
+                                                        <template if:true={data.isSellerHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Seller__r.Name}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.isSellerHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-horizontal_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Seller (lookup) Oracle ID</label>
+                                                        <template if:true={data.isSellerHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Seller__r.EBH_OracleID__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.isSellerHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Focus Vertical</label>
+                                                        <template if:true={records.Focus_Vertical__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Focus_Vertical__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Focus_Vertical__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">SKUs</label>
+                                                        <template if:true={records.SKUs__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-number value={records.SKUs__c}></lightning-formatted-number></div>
+                                                        </template>
+                                                        <template if:false={records.SKUs__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-left_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Category</label>
+                                                        <template if:true={records.Category__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Category__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Category__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Estimated GMV</label>
+                                                        <template if:true={records.Estimated_GMV__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-number value={records.Estimated_GMV__c}></lightning-formatted-number></div>
+                                                        </template>
+                                                        <template if:false={records.Estimated_GMV__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </lightning-accordion-section>
+
+                                        <lightning-accordion-section name="Legal_Entity_Information" label="Legal Entity Information">
+                                            <div class="slds-grid slds-wrap slds-p-horizontal_small">
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-right_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Legal Entity Name</label>
+                                                        <template if:true={hasLegalEntity}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small">
+                                                                <lightning-formatted-text value={data.legalEntity_Name}></lightning-formatted-text><br/>
+                                                                <lightning-formatted-text value={data.legalEntity_Address}></lightning-formatted-text>
+                                                            </div>
+                                                        </template>
+                                                        <template if:false={hasLegalEntity}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-horizontal_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Country</label>
+                                                        <template if:true={records.Site__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Site__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Site__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Customer Type</label>
+                                                        <template if:true={records.Customer_Type__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Customer_Type__c}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={records.Customer_Type__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-left_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">ASP</label>
+                                                        <template if:true={records.ASP__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-number value={records.ASP__c}></lightning-formatted-number></div>
+                                                        </template>
+                                                        <template if:false={records.ASP__c}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </lightning-accordion-section>
+                                        
+                                        <lightning-accordion-section name="Additional_Information" label="Additional Information">
+                                            <div class="slds-grid slds-wrap slds-p-horizontal_small">
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-right_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">What has already been discussed with Seller</label>
+                                                        <template if:true={data.Discussed_Seller}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={data.Discussed_Seller}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.Discussed_Seller}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-horizontal_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_small">
+                                                        <label class="slds-form-element__label">Consultation in which Language <span class="slds-required">*</span></label>
+                                                        <div class="slds-form-element__control">
+                                                            <lightning-textarea variant="label-hidden" required="true" name="Consultation_Language" value={data.Consultation_Language} onchange={handleDataChange}></lightning-textarea>
+                                                        </div>
+                                                        <template if:true={isFieldRequired}>
+                                                            <div class="slds-text-color_error slds-p-top_xx-small">
+                                                                <p class="field-required"><lightning-formatted-text value="This field is required"></lightning-formatted-text></p>
+                                                            </div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-left_x-small">
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Contact Name</label>
+                                                        <template if:true={data.isContactHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Primary_Contact__r.Name}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.isContactHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Contact Email</label>
+                                                        <template if:true={data.isEmailHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={records.Primary_Contact__r.Email}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.isEmailHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-form-element slds-m-bottom_x-small">
+                                                        <label class="slds-form-element__label">Contact Phone and Mobile</label>
+                                                        <template if:true={data.isPhoneHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom slds-p-bottom_xx-small"><lightning-formatted-text value={data.Phone_Mobilephone}></lightning-formatted-text></div>
+                                                        </template>
+                                                        <template if:false={data.isPhoneHas}>
+                                                            <div class="slds-form-element__static slds-border_bottom empty-dev">&nbsp;</div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </lightning-accordion-section>
+                                    </lightning-record-edit-form>
+                                </lightning-accordion>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer">
+                        <div class="slds-text-align_right">
+                            <template if:false={isReady}>
+                                <lightning-button label="Next" onclick={handleNext} variant="brand"></lightning-button>
+                            </template>
+                            <template if:true={isReady}>
+                                <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
+                            </template>
+                        </div>
+                </div>
+            </lightning-card>
+</template>

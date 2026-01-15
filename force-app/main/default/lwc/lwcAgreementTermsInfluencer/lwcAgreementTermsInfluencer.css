@@ -1,0 +1,66 @@
+.titleBlock {    
+    height: 55px;
+}
+
+.titleBlock h1 {
+    font-weight: 700;
+}
+.overlay{
+    opacity:0.8;
+    background-color:#D4D4D4;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+
+.myContent-Wrapper{
+   padding: 5% 10%;
+   text-align: justify;
+}
+
+
+.headerSection1 .leftSection .slds-modal__title,
+.headerSection1 .rightSection{
+    vertical-align: middle;
+}
+
+.headerSection1 .leftSection{
+    width: 65%;
+    display: inline-block;
+}
+
+.headerSection1 .rightSection{
+    width: 35%;
+    display: inline-block;
+}
+
+.headerSection1 .leftSection > div,
+.headerSection1 .rightSection > div,
+.headerSection1 .leftSection > div h2{
+    display: inline-block;
+   
+}
+
+.headerSection1 .leftSection div > img{
+    width: 100px;
+}
+
+.actionContainer .downloadBtnSection,
+.actionContainer .actionBtnSection{
+    display: inline-block;
+}
+
+.actionContainer .downloadBtnSection{
+    width: 30%;
+}
+
+.actionContainer .actionBtnSection{
+    width: 70%;
+}
+
+.downloadBtn{
+    --sds-c-icon-color-foreground-default : #3e68ea;
+}

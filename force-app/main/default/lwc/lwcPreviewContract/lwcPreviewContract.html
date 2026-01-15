@@ -1,0 +1,33 @@
+<template>
+  
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+        <lightning-quick-action-panel header="Preview Contract">
+            <template if:true={isHaveRecordId}>
+            <div class="error" if:true={showErrorNoPermission}>
+                {errorMsg}
+            </div>
+            <c-lwc-contract-sign-agreement rec-id={recordId} onchildmethod={callFromChild} is-view-agreement-click={showViewAgreement} is-preview-contract={isPreviewContract}></c-lwc-contract-sign-agreement>
+            <lightning-record-edit-form record-id={recordId}
+                                        object-api-name={objectApiName}
+                                        onsubmit={handleSubmit}
+                                        onsuccess={handleSuccess}
+                                        onerror={handleError}>                      
+                <lightning-input-field field-name={Coupon_Seller_Stage} class="slds-hide" value={couponSellerStageValue}></lightning-input-field>
+            </lightning-record-edit-form>    
+            </template>
+            <div slot="footer">
+                <lightning-button variant="brand" label="Back" onclick={handleCancel}></lightning-button> 
+                <template if:false={isStageContractSend}>
+                    <lightning-button variant="brand" class="slds-m-left_x-small" label="Move to Contract Send" type="submit" onclick={handleSubmit}></lightning-button>
+                </template>
+                <template if:true={isStageContractSend}>
+                    <lightning-button variant="brand" class="slds-m-left_x-small" label="Move to Contract Send" disabled="true"></lightning-button>
+                </template>
+                
+            </div>
+        </lightning-quick-action-panel>
+    </div>    
+    
+    
+</template>

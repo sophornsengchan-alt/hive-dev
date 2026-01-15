@@ -1,0 +1,4 @@
+/* Target only labels inside lightning-input with the custom class */
+.my-custom {
+    display: none !important; /* Hide labels */
+}

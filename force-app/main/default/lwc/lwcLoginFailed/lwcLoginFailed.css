@@ -1,0 +1,79 @@
+/* .TRIGG_EBAY_CUSOM .loginFormContainer{
+    margin-top: 50px;
+}
+.TRIGG_EBAY_CUSOM h1{
+    color: #8EDFE1;
+    margin: 1.25rem 2rem;
+}
+.TRIGG_EBAY_CUSOM .loginFormContainer .loginFormWap{
+    margin-top: 0px;
+}
+.TRIGG_EBAY_CUSOM p{
+    font-size: 1.2rem;
+    color: #fff;
+}
+.TRIGG_EBAY_CUSOM a{
+    color: #8EDFE1;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.cls_contentWrapper {
+    text-align:left;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px 15px;
+} */
+
+.TRIGG_EBAY_CUSOM h1{
+    float: none;
+}
+
+.loginSection{
+    background: #ffffff;
+}
+
+.TRIGG_EBAY_CUSOM .loginFormContainer{
+    top: inherit;
+    width: 100%;
+    margin: 0px;
+    left: 0%;
+}
+.TRIGG_EBAY_CUSOM .loginFormContainer img:first-child{
+    display: block;
+    margin: 0px 16px 0px !important;
+    text-align: left;
+    width: 106px;
+}
+
+.TRIGG_EBAY_CUSOM .loginFormContainer .clt-loginFormHeader{
+    margin: 0; 
+    font-size: 36px;
+    font-weight: 700; 
+    font-style: normal; 
+    font-stretch: normal; 
+    line-height: 36px; 
+    letter-spacing: normal;
+    padding-bottom: 8px; 
+}
+
+.TRIGG_EBAY_CUSOM .loginFormContainer, .TRIGG_EBAY_CUSOM .loginFormContainer  a{
+    color: #151e27;
+}
+.TRIGG_EBAY_CUSOM .loginFormContainer  a{
+    text-decoration: underline;
+}
+
+.TRIGG_EBAY_CUSOM .loginFormContainer .loginFormWap{
+    width: 400px;
+    margin: 30px auto;
+}
+
+.cls-booking a {
+    text-decoration: underline !important;
+}
+
+a.custom {
+    text-decoration: underline !important;
+}

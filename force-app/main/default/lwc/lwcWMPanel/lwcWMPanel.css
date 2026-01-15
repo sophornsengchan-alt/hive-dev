@@ -1,0 +1,95 @@
+.panelH-default{
+    min-height: 500px !important;
+    max-height: 500px !important;
+    /* overflow-y: scroll; */
+}
+
+@-webkit-keyframes blinking {
+    from { background-color: red; }
+    to { background-color: inherit; }
+  }
+  @-moz-keyframes blinking {
+    from { background-color: red; }
+    to { background-color: inherit; }
+  }
+  @-o-keyframes blinking {
+    from { background-color: red; }
+    to { background-color: inherit; }
+  }
+  @keyframes blinking {
+    from { background-color: red; }
+    to { background-color: inherit; }
+  }
+  .blinking {
+    -webkit-animation: blinking 1s infinite; /* Safari 4+ */
+    -moz-animation:    blinking 1s infinite; /* Fx 5+ */
+    -o-animation:      blinking 1s infinite; /* Opera 12+ */
+    animation:         blinking 1s infinite; /* IE 10+ */
+  }
+  .dragOverTR{
+    background: #f1f2e9;
+    box-shadow: 0 0 10px 10px #d6d0c5 ;    
+    border-radius: 10px;
+  }
+  .dropZone{
+    box-shadow: 0 0 7px 7px #d6d0c5 ;
+    border-radius: 5px;
+  }
+  .drag-cur:hover{
+    cursor: -webkit-grab; cursor: grab;
+  }
+  .drag-cur:active{
+    cursor: -webkit-grabbing; cursor: grabbing;
+  }
+  
+  .fixTableHead { 
+    overflow-y: auto; 
+    height: 110px; 
+  } 
+  .fixTableHead thead th { 
+    position: sticky; 
+    top: 0; 
+  } 
+
+  .hasMoved{
+    background: #f161c159;
+    box-shadow: 0 0 2px 2px #d6d0c5;
+    border-radius: 0px;
+  }
+
+  .blinking-button {
+    background-color: #ea1e9d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+        background-color: #e80c0c;
+    }
+  }
+
+.fixApplyArea{
+  margin-bottom: -9px;
+  min-height: 44px;
+  max-height: 44px;
+}
+.apply-btn{
+  font-size: x-small;
+  font-weight: bold;
+  --sds-c-button-destructive-spacing-inline-start: 4px;
+  --sds-c-button-destructive-spacing-inline-end: 4px;
+  position: absolute;
+}
+.textNumInfo{
+  white-space: nowrap;
+  font-size: small;
+  justify-content: flex-end;
+}
+.btn-apply-label{
+  white-space: nowrap;
+}

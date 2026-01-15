@@ -1,0 +1,190 @@
+.sldsInputAdjust .slds-input{
+    line-height: 36px;
+    margin-top: 0px;
+}
+.cls_checkbox {
+    float: left;
+    margin-right: 15px;
+    margin-top: 5px;
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 15px 0px 5px;
+    padding: initial;
+    border: initial;
+}
+.contant-lwcListView {
+    display: flow-root;
+}
+
+.cls_search {
+    float : left;
+    width : 85%;
+    height: 57px;
+}
+.cls_disableFilter {
+    width: 100% !important;
+}
+.cls_fullWidth {
+    /* width: 100%; */
+}
+.cls_toggleCheckbox {
+    float : left;
+    width : 9%;
+}
+
+.cls_ListViewWrapper {
+    float : left;
+    width : 100%;
+}
+
+.cls_link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link{
+    color: #5e92da;
+}
+
+.cls_link a:hover {
+    color: #0056b3;
+    cursor: pointer;
+
+}
+.cls_customicon{    
+    cursor:pointer;
+    position: relative;
+    /* Sophal 13-04-2022 US-0011443 */
+    /* top: 21px;  */
+    display: inline-block;
+    width: 15%;
+    height: 38px;
+    text-align: right;
+}
+ /* Start - Sophal 13-04-2022 US-0011443 */
+.cls_customicon > .slds-button{
+    width: 90%;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    height: 100%;
+    color: rgb(116, 116, 116);
+    position: relative;
+}
+.cls_customicon > .slds-button > div {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+}
+.cls_customicon > .slds-button > div > .slds-icon {
+    width: 24px;
+    height: 24px;
+}
+.cls_customicon > .slds-button > div > span{
+    padding: 0px 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+@media only screen and (max-width: 768px) {
+    .cls_customicon > .slds-button > div > span{
+        display: none;
+    }
+}
+ /* End - Sophal 13-04-2022 US-0011443 */
+
+.cls_btnIntrest{    
+    float: right;
+    padding: 1%;
+}
+.myCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.overlay{
+    opacity:0.8;
+    background-color:#D4D4D4;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+/* MN-13012023-US-0013034 */
+.overlay-listview {
+
+    opacity:0.8;
+    background-color:#D4D4D4;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    margin-top: 20px;
+    position: relative;
+    margin-bottom: 40px;
+
+}
+
+/* FIX PAGINATION FOR DATA TABLES */
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.paginationList {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.paginationList li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.paginationList li.active a {
+    background: #edf0f9;
+    border-radius: 3px;
+    color: #222;
+    padding: 10px;
+}
+
+.paginationList li a {
+    color: #767676;
+    font-weight: 800;
+}
+.paginationDot {
+    color: #767676;
+    font-weight: 800;
+}
+.gotoInput{
+    width: 70px;
+}
+.gotoArrow{
+    position: relative;
+    left: -28px;
+    top: -1px;
+}
+.gotoInputContainer{
+    align-items: baseline;
+}
+
+/* .slds-input{
+    line-height: 36px;
+    margin-top: 1px;
+} */
+
+/* END FIX PAGINATION FOR DATA TABLES */

@@ -1,0 +1,192 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+    
+    <template lwc:if={isReady}>
+
+        <template lwc:if={hasErrorMessage}>
+            <!-- <lightning-modal-header label={label.InitiateCall_Header}> </lightning-modal-header> -->
+            <lightning-modal-body>
+                <div class="slds-text-color_error slds-text-align_center slds-text-heading_small">
+                    <span><lightning-formatted-rich-text value={errorMessage}></lightning-formatted-rich-text></span>
+                </div>
+            </lightning-modal-body>
+        </template>
+        <template lwc:else>
+            <!-- Cohort Seller Action Management Interface -->
+            <!-- <lightning-modal-header label={label.InitiateCall_Header}></lightning-modal-header> -->
+            <lightning-modal-body>
+                <lightning-layout multiple-rows="true">
+                    <template if:false={noRelatedRecord}>
+                        <lightning-layout-item size="12" padding="around-small" alignment-bump="right">
+                            <lightning-button label={label.InitiateCall_Mass_Edit} icon-name="utility:connected_apps" icon-position="left" variant="brand" onclick={handleMassEdit} class="slds-p-left_small slds-float_right"></lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <c-lwc-custom-datatable key-field="Id" data={listActions} columns={columnActions}
+                                selected-rows={selectedActions}
+                                default-sort-direction={defaultSortDirectionAction} sorted-direction={sortDirectionAction}
+                                sorted-by={sortedByAction} onsort={handleSortAction} show-row-number-column="true"
+                                onrowaction={handleRowAction}>
+                            </c-lwc-custom-datatable>
+                        </lightning-layout-item>
+                    </template>
+                    <template if:true={noRelatedRecord}>
+                        <lightning-layout-item size="12" padding="around-small">
+                            <div class="slds-illustration slds-illustration_small">
+                                <div class="slds-text-longform">
+                                    <img src="/img/search/no-results.png" />
+                                    <p class="slds-text-body_regular">{label.InitiateCall_No_Actions_In_List}</p>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+
+                    <!-- Cohort Seller Call Outcome Section -->
+                    <lightning-layout-item size="12">
+                        <lightning-record-edit-form record-id={recordId} object-api-name={parentObjApiName} aura:id="recordEditForm">
+                            <article class="slds-card">
+                                <div class="slds-card__body slds-card__body_inner">
+                                    <lightning-layout multiple-rows="true" vertical-align="stretch">
+                                        <lightning-layout-item padding="around-small" size="12" class="">
+                                            <div class="slds-grid slds-wrap">
+                                                <div class="slds-size_6-of-12">
+                                                    <div>
+                                                        <template lwc:if={isFromRecordInboundCall}>
+                                                            <lightning-record-edit-form object-api-name="Action__c" record-type-id={actionRecordTypeId}>
+                                                                <label class="slds-form-element__label" for="actionOutcomeId"><abbr title="required" class="slds-required">*</abbr>Call Outcome</label>
+                                                                <lightning-input-field required="true" variant = "label-hidden" field-name="Action_Outcome__c" name="Action_Outcome__c" value={recordInboundCallParentObj.Action_Outcome__c} onchange={handleRecordInboundCallParentObj}></lightning-input-field>
+                                                            </lightning-record-edit-form>
+                                                        </template>
+                                                        <template lwc:else>
+                                                            <lightning-input-field required="true" field-name="Call_Outcome__c" name="Call_Outcome__c" value={currentParentObj.Call_Outcome__c} onchange={handleParentObjFieldChange}></lightning-input-field>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-size_6-of-12 slds-p-left_xxx-small">																
+                                                    <template lwc:if={isNotAUProfileOnly}>
+                                                        <template if:false={isAccessGenesysPS}>
+                                                            <lightning-input label="SR Number" type="text" name="SRNumber" value={additionalParam.SRNumber} onchange={handleAdditionAllParamChange}></lightning-input>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div class="slds-size_6-of-12">		
+                                                    <template if:false={isAccessGenesysPS}>														
+                                                        <lightning-input-field field-name="Advisor_Comments__c" name="Advisor_Comments__c" value={currentParentObj.Advisor_Comments__c} onchange={handleParentObjFieldChange}></lightning-input-field>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </article>
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                </lightning-layout>
+                
+                <!-- Need to invoke it for using, but hidden -->
+                <div class="slds-assistive-text">{recordId}</div>
+            </lightning-modal-body>
+            
+            <lightning-modal-footer>
+                <div class="slds-grid slds-grid_align-center">
+                    <!-- <lightning-button lwc:if={hasPreviousStep} label={label.BackButton} icon-name="utility:left" icon-position="left" onclick={handleGoPreviousStep} class="slds-p-left_small"></lightning-button> -->
+                    <!-- <lightning-button lwc:if={isNotFromRecordInboundCall} label={scheduleNextCallButtonTitle} icon-name="utility:log_a_call" icon-position="right" variant="brand" onclick={handleScheduleNextCall} class="slds-p-left_small"></lightning-button> -->
+                    <lightning-button if:false={noRelatedRecord} label={label.InitiateCall_Save_Exit} icon-name="utility:save" icon-position="right" variant="brand" onclick={handleSaveExitMainScreen} class="slds-p-left_small"></lightning-button>
+                    <!-- <lightning-button label={label.Cancel} icon-name="utility:reply" icon-position="left" onclick={backToRecord} class="slds-p-left_small"></lightning-button> -->
+                </div>
+            </lightning-modal-footer>
+
+            <!-- Modal for Edit Action -->
+            <template lwc:if={showEditAction}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+                    <div class="slds-modal__container">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            <lightning-icon icon-name="utility:close" size="small" alternative-text="Indicates close" onclick={closeActionModal}></lightning-icon>
+                        </button>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{actionModalTitle}</h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <template if:true={showSpinner}>
+                                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                            </template>
+                            <lightning-record-edit-form record-id={currentActionId} object-api-name="Action__c" record-type-id={actionRecordTypeId}>
+                                <article class="slds-card">
+                                    <div class="slds-card__body slds-card__body_inner">
+                                        <template lwc:if={isMassEdit}>
+                                            <div class="slds-grid slds-grid_align-center">{msgActionSelected}</div>
+                                        </template>
+                                        <lightning-layout multiple-rows="true" vertical-align="stretch">
+                                            <lightning-layout-item padding="around-small" size="12">
+                                                <lightning-input-field field-name="Action_Outcome__c" name="Action_Outcome__c" value={currentAction.Action_Outcome__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Start_Date__c" name="Start_Date__c" value={currentAction.Start_Date__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Due_Date__c" name="Due_Date__c" value={currentAction.Due_Date__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Completed_Date__c" name="Completed_Date__c" value={currentAction.Completed_Date__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Status__c" name="Status__c" value={currentAction.Status__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Seller_facing_Dashboard_message__c" name="Seller_facing_Dashboard_message__c" value={currentAction.Seller_facing_Dashboard_message__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                <lightning-input-field field-name="Comments__c" name="Comments__c" value={currentAction.Comments__c} onchange={handleActionFieldChange}></lightning-input-field>
+
+                                                <template lwc:if={isAUProfile}>
+                                                    <div class="slds-grid slds-wrap">
+                                                        <div class="slds-size_6-of-12">
+                                                            <lightning-input-field field-name="LastCallDate__c" name="LastCallDate__c" value={currentAction.LastCallDate__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                        </div>
+                                                        <div class="slds-size_6-of-12">																
+                                                            <lightning-input-field field-name="SRNumber__c" name="SRNumber__c" value={currentAction.SRNumber__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                        </div>	
+                                                    </div>
+                                                </template>
+
+                                                <template lwc:if={isNotAUProfileOnly}>
+                                                    <lightning-input-field field-name="Detailed_Description__c" name="Detailed_Description__c" value={currentAction.Detailed_Description__c} onchange={handleActionFieldChange}></lightning-input-field>
+                                                </template>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </div>
+                                </article>
+                            </lightning-record-edit-form>
+                        </div>
+                        <div class="slds-modal__footer">
+                            <div class="slds-grid slds-grid_align-center">
+                                <lightning-button class="slds-p-left_small" name="cancel" label={label.Cancel} onclick={closeActionModal}></lightning-button>
+                                <lightning-button class="slds-p-left_small" variant="brand" name="done" label={label.InitiateCall_Done} onclick={handleDone}></lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+            <!-- END Modal for Edit Action -->
+
+            <!-- Modal for Schedule Next call -->
+            <!-- <template lwc:if={showEditSchedule}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+                    <div class="slds-modal__container">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            <lightning-icon icon-name="utility:close" size="small" alternative-text="Indicates close" onclick={closeScheduleNextCallModal}></lightning-icon>
+                        </button>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Schedule Next call</h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                            <template if:true={showSpinner}>
+                                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                            </template>
+                            <template lwc:if={finishUpdateBeforeCalendly}>
+                                <lightning-flow flow-api-name={flowBookACallScreen} flow-input-variables={inputVariables} onstatuschange={handleFlowStatusChange}></lightning-flow>
+                            </template>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template> -->
+            <!-- END Modal for Schedule Next call -->
+        </template>
+    </template>
+
+
+
+
+
+</template>

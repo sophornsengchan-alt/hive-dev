@@ -1,0 +1,214 @@
+.titleBlock {    
+    height: 55px;
+}
+
+.titleBlock h1 {
+    font-weight: 700;
+}
+.overlay{
+    opacity:0.8;
+    background-color:#D4D4D4;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+
+.myContent-Wrapper{
+   padding: 5% 10%;
+   text-align: justify;
+}
+
+.headerSection{
+   text-align: left;
+}
+
+.headerSection > img,
+.headerSection > div{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.headerSection > img{
+    width: 100px;
+}
+.headerSection > div h2{
+    display: inline-block;
+}
+
+.headerSection1 .fullSection .slds-modal__title,
+.headerSection2 .leftSection .slds-modal__title,
+.headerSection2 .rightSection{
+    vertical-align: middle;
+}
+
+.headerSection1 .fullSection{
+    width: 100%;
+    display: inline-block;
+}
+
+.headerSection2 .leftSection{
+    width: 65%;
+    display: inline-block;
+}
+
+.headerSection2 .rightSection{
+    width: 35%;
+    display: inline-block;
+}
+
+.headerSection1 .fullSection > div,
+.headerSection2 .leftSection > div,
+.headerSection2 .rightSection > div,
+.headerSection1 .fullSection > div > h2,
+.headerSection2 .leftSection > div h2{
+    display: inline-block;
+   
+}
+
+.headerSection1 .fullSection > div > img,
+.headerSection2 .leftSection div > img{
+    width: 100px;
+}
+
+.actionContainer .downloadBtnSection,
+.actionContainer .actionBtnSection{
+    display: inline-block;
+}
+
+.actionContainer .downloadBtnSection{
+    width: 30%;
+}
+
+.actionContainer .actionBtnSection{
+    width: 70%;
+}
+
+.downloadBtn{
+    --sds-c-icon-color-foreground-default : #3e68ea;
+}
+
+.slds-modal__container.slds-is-relative.tabViewModalContainer{
+    width: 90%;
+    padding: 0px;
+    max-width: 90%;
+    min-width: 90%;
+}
+
+.tabViewLeftSizeBar{
+    background: #F7F7F7;
+}
+
+.tabViewContainer{
+    height: 400px;
+}
+
+@media screen and ( min-height: 700px ) {
+    .tabViewContainer{
+        height: 500px;
+    }
+}
+@media screen and ( min-height: 800px ) {
+    .tabViewContainer{
+        height: 600px;
+    }
+}
+@media screen and ( min-height: 900px ) {
+    .tabViewContainer{
+        height: 700px;
+    }
+}
+@media screen and ( min-height: 1000px ) {
+    .tabViewContainer{
+        height: 800px;
+    }
+}
+
+.tabViewLeftSizeBar{
+    width: 40%;
+}
+.tabViewAgmBody{
+    width: 60%;
+}
+
+.tabViewLeftSizeBar,
+.tabViewAgmBody{
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.tabViewAgmSection,
+.leftSizeBarTab .tabItem{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.leftSizeBarTab .tabItem{
+    padding-bottom: 10px;
+}
+
+
+@media (min-width: 1001px) and (max-width: 1280px) {
+
+    .tabViewLeftSizeBar{
+        width: 30%;
+    }
+    .tabViewAgmBody{
+        width: 70%;
+    }
+
+    .tabViewAgmSection,
+    .leftSizeBarTab .tabItem{
+        padding-left: 1.5rem;
+        padding-right:1.5rem;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+
+    .tabViewLeftSizeBar{
+        width: 25%;
+    }
+    .tabViewAgmBody{
+        width: 75%;
+    }
+
+    .tabViewAgmSection,
+    .leftSizeBarTab .tabItem{
+        padding-left: 2rem;
+        padding-right:2rem;
+    }
+}
+
+
+.leftSizeBarTab .tabItem.hide{
+    display: none;
+}
+.leftSizeBarTab .tabItem.active{
+    color: #3e68ea;
+    font-weight: bold;
+}
+
+.tabViewAgmBody .tabViewAgmSection:first-child,
+.tabViewLeftSizeBar .leftSizeBarContainer{
+    padding-top: 1rem;
+}
+.tabViewAgmBody .tabViewAgmSection:last-child{
+    padding-bottom: 0px;
+}
+
+.leftSizeBarTab .tabItem.bottomItemPadding{
+    padding-bottom: 0px;
+}
+
+.leftSizeBarTab .tabItem.moreOnTop{
+    padding-bottom: 10px;
+}
+.leftSizeBarTab .tabItem.moreOnBottom{
+    padding-top: 10px;
+    padding-bottom: 0px;
+}

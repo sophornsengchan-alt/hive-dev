@@ -1,0 +1,23 @@
+.icon-primary-500 {
+    --slds-c-icon-color-foreground-default: #0ea5e9;
+}
+
+.icon-secondary-500 {
+    --slds-c-icon-color-foreground-default: #ec4899; 
+}
+
+.h-full {
+    height: 100%;
+}
+
+.pl-3 {
+    padding-left: 0.75rem;
+}
+
+.w-8 {
+    width: 2rem;
+}
+
+.h-8 {
+    width: 2rem;
+}

@@ -1,0 +1,26 @@
+.contant{
+    text-align: left;
+}
+.contant h1 {
+    font-size: 15px;
+    text-align: left;
+}
+.contant .error {
+    color: #ea001e !important;
+}
+.contant .warning {
+    color: #fe9339 !important;
+}
+.contant .success {
+    color: #2e844a !important;
+}
+.message-detail {
+    text-align: left;
+    padding-left: 0px;
+}
+.slds-p-horizontal_small {
+    text-align: left;
+}
+.message-info-text {
+    padding-left: 15px;
+}

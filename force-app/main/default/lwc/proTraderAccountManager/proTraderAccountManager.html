@@ -1,0 +1,66 @@
+<template>
+    <template if:false={registrationPage}>
+        <div class="row">
+            <div class="col-12 col-lg-10 offset-lg-1">
+                <div class="container text-center bg-F7F7F7 rounded rounded-4 py-4 py-md-5">
+                    <h4 class="title-24 mb-4">{label.ProTrader_Your_account_manager}</h4>
+                    <div class="row pt-2">
+                        <div class="col-12 col-sm-10 offset-sm-1 col-lg-6 offset-lg-3">
+                            <div class="row justify-content-center">
+                                <div class="col-3 col-lg-4 col-xl-103 align-items-center slds-align-middle">
+                                    <img src={cohortSellerData.accountManagerProfileUrl} class="img-fluid">
+                                </div>
+                                <div class="col-109 col-lg-8 col-xl-109 d-flex align-items-center">
+                                    <div class="box-account-manager rounded rounded-4 bg-FFFFFF">
+                                        <span class="fw-bold">{cohortSellerData.accountManagerName}</span>
+                                        <span>{cohortSellerData.accountManagerEmail}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <c-pro-trader-calendly-booked-calls cohort-seller-details={cohortSellerData} cohort-seller-id={cohortSellerId} 
+            account-manager-calendly-link={accManagerCalendlyLink} current-user={currentUser}></c-pro-trader-calendly-booked-calls>
+
+    </template>
+    <!--<c-ebay-branded-section></c-ebay-branded-section>-->
+    <template if:true={registrationPage}>
+        <div class="slds-grid g-0">
+            <div class="slds-col slds-size_12-of-12 text-center py-4 bg-F7F7F7">
+                <h2 class="panel-title">{label.Pro_Trader_Programme}</h2>
+            </div>
+        </div>
+        <div class="section-box--inner box-confirmation d-block">
+            <div class="slds-grid slds-wrap py-4">
+                <div class="slds-col slds-size_12-of-12">
+                    <!-- label.Pro_trader_grow_your_business
+                        NK:02/09/2024:US-0015523
+                        -->
+                    <p class="text-20 mb-4">{label.Pro_trader_grow_your_business_confirmed}</p>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_7-of-12 g-0">								
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_3-of-12 slds-medium-size_4-of-12 d-flex slds-align-center">
+                                    <img src={accManagerImage} class="img-fluid">
+                                </div>
+                                <div class="slds-col slds-size_9-of-12 slds-medium-size_8-of-12 slds-align-middle">
+                                    <div class="box-account-manager bg-F7F7F7">
+                                        <span class="d-block fw-bold mb-1">{accManagerName}</span>
+                                        <p class="d-block m-0 text-break">{accManagerEmail}</p>
+                                    </div>
+                                </div>
+                            </div>								
+                        </div>
+                        <div class="slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_5-of-12 mt-sm-3 mt-3 mt-md-0 slds-align-middle text-end">
+                            <button if:true={isEligibleFor_CatDashboard} onclick={handleShowDashboardClick} class="btn btn-blu">{label.ProTrader_Your_Dashboard}</button>
+                        </div>
+                    </div>
+                </div>				
+            </div>				
+        </div>
+    </template>
+</template>

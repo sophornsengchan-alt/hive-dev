@@ -1,0 +1,30 @@
+<template>
+    <div class="aslds-card card-padding card-no-border-top slds-p-bottom--medium" style="background:#fff; margin-top:-25px;">
+        <div class="slds-grid slds-grid_align-end">
+            <div class="slds-col">
+                <template if:true={isShowMessage}>
+                    <Strong>{labels.notAvailableForSubmissionmessage}</Strong>
+                </template>
+                &nbsp;
+                <lightning-button class="slds-m-top_small slds-m-right_small" onclick={onPrevPage} label={labels.BackButton}></lightning-button>
+            </div>
+            <!-- SB 23-2-2022 US-0011351 - Deal creation button on the DRC view page -->
+            <template if:true={buttonAvailable}>
+                <div class="slds-col">
+                    <lightning-button variant="brand" class="slds-m-top_small slds-m-right_small" onclick={singleDealClickHandler} label={labels.submitSingleDeal}></lightning-button>
+                </div>
+                <div class="slds-col">
+                    <lightning-button variant="brand" class="slds-m-top_small slds-m-right_small" onclick={bulkUploadClickHandler} label={labels.bulkUploadDeals}></lightning-button>
+                </div>
+            </template>
+            <!-- SB 23-2-2022 US-0011351 - Deal creation button on the DRC view page -->
+            <!-- SRONG 21-7-2023 US-0013839 - Create Deal button on Deal Window page -->
+            <template if:true={buttonAvailableForIT_AU_NA}>
+                <div class="slds-col">
+                    <lightning-button variant="brand" class="slds-m-top_small slds-m-right_small" onclick={bulkUploadClickHandler} label={labels.bulkUploadDeals}></lightning-button>
+                </div>
+            </template>
+        </div>
+    </div>
+    
+</template>

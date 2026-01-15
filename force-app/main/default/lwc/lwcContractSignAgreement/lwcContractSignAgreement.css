@@ -1,0 +1,30 @@
+.download-btn lightning-icon{
+    padding-right: 5px;
+}
+
+.cls_marginBottom{
+    padding:0px;
+    margin-bottom: 20px;
+}
+.cls_windowTitle {
+    font-weight: bold;
+}
+.cls_font-size_title {
+    font-size: 16px !important;
+}
+.cls_ListViewWrapper {
+    padding: 1rem;
+
+}
+.cls_ListViewWrapper .listColumn a {
+    width: 30px;
+    height: 30px;
+    /*line-height: 30px;*/
+    float: right;
+
+}
+.cls_accordion {
+    /*padding-top: 15px;*/
+    padding: 1rem;
+    
+}

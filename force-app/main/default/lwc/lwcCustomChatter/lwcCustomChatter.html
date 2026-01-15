@@ -1,0 +1,29 @@
+<template>
+    <div class="container_wrapper">
+        <div class="container_wrapper_text">
+            <template for:each={displayChatters} for:item="item">
+                <div key={item.id} class={item.container_ClassName}>
+                    <div class={item.className}>
+                        <span class="display_title">{item.title}</span>
+                        <br/>
+                        <lightning-formatted-rich-text value={item.value}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div data-id="canPost" class="container containerTextArea">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control textPost">
+                    <lightning-input-rich-text placeholder="Leave reply"
+                                            value={myTextVal}
+                                            required
+                                            message-when-bad-input={errorMessage}
+                                            valid={validity}
+                                            onchange={handleChangeText} >
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+            <a class="slds-button slds-button_brand slds-m-top_small mr-2 btnSend" onclick={onSendButton}>Send</a>
+        </div>
+    </div>
+</template>

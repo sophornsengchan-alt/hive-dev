@@ -1,0 +1,64 @@
+<template>   
+    <div class="contant">
+        <template if:true={isError}>
+            <div class="error">
+                <lightning-card>
+                    <div class="message-info-text">
+                        <lightning-formatted-rich-text value="Error: " ></lightning-formatted-rich-text><br/>
+                        <lightning-formatted-rich-text value={message} ></lightning-formatted-rich-text>
+                    </div>
+                    <template if:false={isMessageDetail}><br/></template>
+                    <template if:true={isMessageDetail}>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section name="detail" label="Detail">
+                                <lightning-formatted-rich-text value={messageDetail}></lightning-formatted-rich-text>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </template>
+                    
+                </lightning-card>
+            </div>
+        </template>
+
+        <template if:true={isWarning}>
+            <div class="warning">
+                <lightning-card>
+                    <div class="message-info-text">
+                        <lightning-formatted-rich-text value="Warning: " ></lightning-formatted-rich-text><br/>
+                        <lightning-formatted-rich-text value={message} ></lightning-formatted-rich-text>
+                    </div>
+                    <template if:false={isMessageDetail}><br/></template>
+                    <template if:true={isMessageDetail}>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section name="detail" label="Detail">
+                                <lightning-formatted-rich-text value={messageDetail}></lightning-formatted-rich-text>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </template>
+                    
+                </lightning-card>
+            </div>
+        </template>
+
+        <template if:true={isSuccess}>
+            <div class="success">
+                <lightning-card>
+                    <div class="message-info-text">
+                        <lightning-formatted-rich-text value="Success: " ></lightning-formatted-rich-text><br/>
+                        <lightning-formatted-rich-text value={message} ></lightning-formatted-rich-text>
+                    </div>
+                    <template if:false={isMessageDetail}><br/></template>
+                    <template if:true={isMessageDetail}>
+                        <lightning-accordion allow-multiple-sections-open>
+                            <lightning-accordion-section name="detail" label="Detail">
+                                <lightning-formatted-rich-text value={messageDetail}></lightning-formatted-rich-text>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </template>
+                    
+                </lightning-card>
+            </div>
+        </template>
+        
+    </div>
+</template>

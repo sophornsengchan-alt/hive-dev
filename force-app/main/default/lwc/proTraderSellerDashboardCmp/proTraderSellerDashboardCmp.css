@@ -1,0 +1,18 @@
+.container{
+    max-width: 1280px;
+}
+.page-padding{
+    padding-left: 18rem;
+    padding-right: 18rem;
+}
+.page-padding-portal{
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+.ebay-logo{
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.img-width{
+    width: 11rem;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Lwc Calendar</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+        <property label="Metadata" name="metadata" type="String" default=""/>
+        <property label="Enable Product Filter" name="enableProductFilter" type="String" default="YES"/>
+        <property label="Status Metadata" name="statusMetadata" type="String" default=""/>
+        <property label="Legend For" name="legendsFor" type="String" default=""/>
+        
+            <!-- moved to custom metadata 
+                <property label="Coupon Seller sObject Label" name="couponsobjectlabel" type="String" default="Coupon_Seller__c"/>
+            <property label="Coupon Seller sObject Api Name" name="couponsobjectapiname" type="String" default="Coupon_Seller__c"/>
+            <property label="Coupon Seller Start Date Filed Api Name" name="couponstartdate" type="String" default="Coupon_Contract_Due_Date__c"/>
+            <property label="Coupon Seller End Date Filed Api Name" name="couponenddate" type="String" default="Coupon_Contract_Due_Date__c"/>
+            <property label="Coupon Seller FIlter" name="couponfilter" type="String" default=""/>
+            <property label="Deal Retail Campaign sObject Label" name="dealretailcampsobjectlabel" type="String" default="Coupon_Seller__c"/>
+            <property label="Deal Retail Campaign sObject Api Name" name="couponsdealretailcampobjectapiname" type="String" default="Coupon_Seller__c"/>
+            <property label="Deal Retail Campaign Start Date Filed Api Name" name="dealretailcampstartdate" type="String" default="Coupon_Contract_Due_Date__c"/>
+            <property label="Deal Retail Campaign End Date Filed Api Name" name="dealretailcampddate" type="String" default="Coupon_Contract_Due_Date__c"/>
+            <property label="Deal Retail Campaign FIlter" name="dealretailcampfilter" type="String" default=""/> -->
+            <property label="Buttons shown on calendar" name="buttonsshowncalendar" type="String" datasource="apex://MyCalendarButtonsPicklist"/>
+                     
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

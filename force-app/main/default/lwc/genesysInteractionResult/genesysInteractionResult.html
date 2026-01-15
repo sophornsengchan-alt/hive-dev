@@ -1,0 +1,62 @@
+<template>
+    <template if:true={isFlowInProgress}>
+        <lightning-spinner size="small" alternative-text="Running backend flow..."></lightning-spinner>
+    </template>
+
+    
+    <template if:true={showConsent}>
+        <div class="backdropScoped"></div>
+
+        <section
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="consent-heading"
+            tabindex="-1"
+            class="slds-modal slds-modal_small slds-fade-in-open modalScoped"
+        >
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="consent-heading" class="slds-text-heading_small">{label.ConsentTextTitle}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>{consentText}</p>
+                </div>
+                <footer class="slds-modal__footer slds-grid slds-grid_align-end">
+                    <lightning-button
+                        label={label.ConsentYes}
+                        variant="brand"
+                        onclick={handleConsentYes}
+                    ></lightning-button>
+                    <lightning-button
+                        class="slds-m-left_small"
+                        label={label.ConsentNo}
+                        variant="neutral"
+                        onclick={handleConsentNo}
+                    ></lightning-button>
+                </footer>
+            </div>
+        </section>
+    </template>
+
+    <template if:true={hasDelay}>
+        <div class="backdropScoped"></div>
+
+        <section
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="delay-heading"
+            tabindex="-1"
+            class="slds-modal slds-modal_small slds-fade-in-open modalScoped"
+        >
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="delay-heading" class="slds-text-heading_small">Moving to next element…</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-flex slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                    <p class="slds-m-left_small">Please wait</p>
+                </div>
+            </div>
+        </section>
+    </template>
+</template>

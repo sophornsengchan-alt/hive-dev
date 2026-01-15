@@ -1,0 +1,152 @@
+<template>
+        <div class="cls-CouponUploadItems" style="overflow: hidden;">
+            <c-lwc-progress-indicator current-step={currentStep}></c-lwc-progress-indicator>
+            <br/>
+    
+            <!--<c-lwc-record-info record-id={recId} override-metadata-name="SEP_Coupon_Seller_UploadItems_Info"></c-lwc-record-info>
+            <div class="cls_message-info">
+                <span style="padding: 5px;font-weight: 600;">{Labels.INFORMATION} -</span>
+                <span>{uploadSizeAvailability_Message}</span>
+            </div>-->
+            <template if:true={onShowLoadingSpinner}>
+                <div style="z-index: 99999 !important;">
+                    <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;position: fixed;"></lightning-spinner>
+                </div>
+            </template>
+            <!--TH:US-0012494 - use toast message success instead-->
+            <!--<template if:true={uploadedSuccess}>
+                <c-lwc-record-info record-id={recId} override-metadata-name="SEP_Coupon_Seller_UploadItemsSucces_Info" message-type="Success"></c-lwc-record-info>
+            </template>-->
+    
+            <div class="cls_content slds-p-around_medium ">
+                <!-- Upload Single File Section - START -->
+                <template if:true={isStep1}>
+                    <c-lwc-record-info record-id={recId} override-metadata-name="SEP_Coupon_Seller_UploadItems_Info"></c-lwc-record-info>
+                    <div class="cls_message-info">
+                        <span style="padding: 5px;font-weight: 600;">{Labels.INFORMATION} -</span>
+                        <span>{uploadSizeAvailability_Message}</span>
+                    </div>
+                    <div class="cls_contentWrapper">
+                    
+                        <div class="slds-p-around_medium lgc-bg" style="float: left">
+                            <template if:true={disableUploadFile}>
+                                <lightning-input disabled type="file" label={lbInputFile}></lightning-input>
+                            </template>
+                            <template if:false={disableUploadFile}>
+                                <lightning-input type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                            </template>
+                        </div>
+                        <!--TH-01112022-US-0012494: Remove button-->
+                       <!-- <div class="slds-p-around_medium lgc-bg cls_padding-zero slds-m-left_xx-small" style="float: left; margin-top: 25px;">
+                        
+                            <template if:true={disableNextBtn}>
+                                <a class="slds-button slds-button_brand mr-2 cls_disableButton" >{Labels.btn_preview}</a>
+                            </template>
+                            <template if:false={disableNextBtn}>
+                                <a class="slds-button slds-button_brand mr-2" onclick={handleClickUpload}>{Labels.btn_preview}</a>
+                            </template>
+        
+                            <template if:true={disableSubmitBtn}>
+                                <a class="slds-button slds-button_brand mr-2 cls_disableButton" >{Labels.btn_submit}</a>
+                            </template>
+                            <template if:false={disableSubmitBtn}>
+                                <a class="slds-button slds-button_brand cls_margin-right slds-m-left_xx-small" onclick={handleClickSubmit}>{Labels.btn_submit}</a>
+                            </template>
+                            
+                        </div>-->
+                        <div class="slds-p-around_medium lgc-bg cls_padding-zero slds-m-left_xx-small" style="float: left; margin-top: 25px;">
+                            <lightning-button variant="brand" label={Labels.btn_downloadSampleFile} title="" onclick={doDownloadCSVTemplate} class="mr-4"></lightning-button>
+                        </div>
+                        
+                        <div class="slds-p-left_medium slds-p-bottom_medium lgc-bg cls_displayfileName">
+                            {fileName}
+                        </div>
+                    </div>
+                </template>
+                <!-- Upload Single File Section - END -->
+                <!-- Preview CSV Section - START -->
+                <template if:true={isStep2}>
+                    <template for:each={allObjMessageInfos} for:item="item">
+                        <div key={item.mainMsg} class={item.className}>
+                            <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span>
+                            <span>{item.detailMsg}</span>
+                        </div>
+                    </template>
+                    <template if:true={showMessageResults.isHasError}>
+                        <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                            <span class="cls_span">{showMessageResults.totalFail} {uploadResult_Message}</span>
+                        </div>
+                        <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                            <span class="cls_span" if:false={isFR}>{Labels.COUPON_UPLOAD_ITEM_FOLLOWING_RECORDS_CREATED_REASONS}:</span>
+                            <template for:each={showMessageResults.lstError} for:item="msgError">
+                                <span class="cls_span" key={msgError}> {msgError}</span>
+                            </template>
+                        </div>
+                    </template>
+                    <div class="slds-p-around_medium cls_tableWrapper">
+                        <template if:true={isShowTable}>
+                            <b>{Labels.txt_totalrecord}: {totalRecord}</b>
+                            <lightning-datatable
+                                    hide-checkbox-column="true"
+                                    data={jsonData}
+                                    columns={columns}
+                                    key-field="id" 
+                                    max-column-width = "3000">
+                            </lightning-datatable> 
+                            <c-lwc-paginator total-page={totalPage} onupdatepaginatorstate={updateCurrentPage} current-page={currentPage} number-of-record-per-page={numberOfRecordPerPage} > </c-lwc-paginator>
+                        </template>
+                    </div>
+                </template>
+                <!-- Preview CSV Section - END -->
+                <template if:true={isStep3}>
+                    <template for:each={allObjMessageInfos} for:item="item">
+                        <div key={item.mainMsg} class={item.className}>
+                            <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span>
+                            <span>{item.detailMsg}</span>
+                        </div>
+                    </template>
+                    <template if:true={isShowMessage}>
+                        <!-- //US-0012857 -->
+                        <!-- <template if:true={showMessageResults.isHasSuccess}>
+                            <div class="cls_message-info cls_message-success cls_float-left slds-size_full">
+                                <span class="cls_span" >{showMessageResults.totalSuccess} {Labels.coInvest_success_message}</span>
+                            </div>
+                        </template> -->
+                        <!-- end //US-0012857 -->
+                        <template if:true={showMessageResults.isHasError}>
+                            <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                                <span class="cls_span" if:false={isFR}>{Labels.COUPON_UPLOAD_ITEM_FOLLOWING_RECORDS_CREATED_REASONS}:</span>
+                                <template for:each={showMessageResults.lstError} for:item="msgError">
+                                    <span class="cls_span" key={msgError}> {msgError}</span>
+                                </template>
+                            </div>
+                            
+                        </template>
+                    
+                    </template>
+                </template>
+                <div style = "float: right; margin-top: 10px">
+                    <template if:true={isStep1}>
+                        <a class="slds-button slds-button_neutral mr-2" onclick={handleCancel}>{Labels.btn_cancel}</a>
+                    </template>
+                    <template if:true={isStep2}>
+                        <a class="slds-button slds-button_neutral mr-2" onclick={handleBack}>{Labels.btn_back}</a>
+                        <template if:true={disableSubmitBtn}>
+                            <a class="slds-button slds-button_brand mr-2 cls_disableButton">{Labels.btn_submit2}</a>
+                        </template>
+                        <template if:false={disableSubmitBtn}>
+                            <a class="slds-button slds-button_brand cls_margin-right slds-m-left_xx-small" onclick={handleClickSubmit}>{Labels.btn_submit2}</a>
+                        </template>
+                    </template>
+                    <template if:true={isStep3}>
+                        <a class="slds-button slds-button_neutral mr-2" onclick={handleBackToFirstStep}>{Labels.btn_back}</a>
+                        <template if:true={disableSubmitBtn}>
+                            <a class="slds-button slds-button_brand mr-2 cls_disableButton">{Labels.btn_submit2}</a>
+                        </template>
+                    </template>
+                    <!-- <a class="slds-button slds-button_brand mr-2" onclick={doUpdateDCAStatus}>{Labels.submitForReview}</a> -->
+                </div>
+            </div>
+    
+        </div>
+</template>

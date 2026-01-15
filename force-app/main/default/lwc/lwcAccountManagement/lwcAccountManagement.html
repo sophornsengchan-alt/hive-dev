@@ -1,0 +1,61 @@
+<template>
+    <template if:true={showPageContent}>
+        <div class="slds-p-horizontal_xx-large">
+            <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+            <!-- Seller is part of program -->
+            <section class="container" if:false={sellerIsNotPartOfAnyProgram}>
+                <form>
+                    <div class="slds-grid slds-wrap py-4">
+                        <abbr class="slds-required" title="required">* </abbr>
+                        <label for="inputEmail3" class="slds-col slds-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_1-of-12 col-form-label text-14 mb-2 mb-md-0 slds-align-middle">{label.AccountPickerLabel}</label>
+                        <div class="slds-col slds-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+                        <lightning-combobox id="inputEmail3" options={sellerOptions} required="true"
+                            value={selectedSeller} onchange={handleChange} placeholder={label.AccountPickerErrorMessage}
+                            message-when-value-missing={label.AccountPickerErrorMessage} variant="label-hidden"></lightning-combobox>
+                            <!-- field-level-help={label.AccountPickerHelpText} -->
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <template if:true={selectedSeller}>
+                <!-- Protrader program page -->
+                <c-pro-trader-program if:true={eligibleFor_Protrader_Program} selected-seller={selectedSeller}></c-pro-trader-program>
+                <!-- END Protrader program page -->
+
+                <!-- Book Account Manager page -->
+                <c-book-account-manager if:true={eligibleFor_BookAM} selected-seller={selectedSeller} metadata-name={metadataName}></c-book-account-manager>
+                <!-- END Book Account Manager page -->
+
+                <!-- Booking Account Management -->
+                <template if:true={selectedCohortSellerForAM}>
+                    <c-booking-advertising if:true={eligibleFor_Booking_Advertising} 
+                        seller-id={selectedSeller} 
+                        cohort-seller-id={selectedCohortSellerForAM}>
+                    </c-booking-advertising>
+                </template>
+                
+                <!--Booking Advertising -->
+                <template if:true={selectedCohortSellerForAds}>
+                    <template if:true={eligibleFor_Booking_AdsPartnerManager}> 
+                        <c-ebay-branded-section>
+                            <c-book-advertising-expert 
+                                seller-id={selectedSeller} 
+                                cohort-seller-id={selectedCohortSellerForAds}>
+                            </c-book-advertising-expert>
+                        </c-ebay-branded-section>
+                    </template>
+                </template>
+
+                <!-- Paid Program -->
+                <template if:true={eligibleFor_PaidProgram}> <!-- 07.01.2026 / Sophal Noch / US-0033990 -->
+                    <c-paid-program seller-id={selectedSeller}></c-paid-program>
+                </template>
+
+            </template>
+
+            <!-- Show Generic Error --> 
+            <c-lwc-generic-error-message if:true={sellerIsNotPartOfAnyProgram} metadata-name={label.GenericErrorMessageMetadataAccountManager1}></c-lwc-generic-error-message>
+            <!-- END Show Generic Error -->
+        </div>
+    </template>
+</template>

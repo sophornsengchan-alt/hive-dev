@@ -1,0 +1,41 @@
+/*MN-12012022-US-0010934*/
+.dwi-section {
+    display: inline-flex !important;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.dwi-detail-section {
+    width: 90%;
+    padding-top: 10px;
+    margin: auto;
+}
+
+.dwi-left-section {
+    width: 80%;
+    padding-left: 30px;
+}
+
+.dwi-right-section {
+    width: 25%;
+    padding-right: 11px;
+    text-align: right;
+    position: relative;
+    display: inline-flex;
+}
+@media (max-width: 1463px) {
+    .dwi-right-section {
+        padding-right: 55px;
+    } 
+}
+
+.dwi-child-section-button {
+    position: absolute;
+    right:0;
+}
+
+.dwi-child-section-button a.backButton {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}

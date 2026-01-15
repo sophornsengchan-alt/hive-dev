@@ -1,0 +1,52 @@
+<template>
+    
+
+    <template if:true={isItemBase}>
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} is-disable-search=true mdt-name ='UK_Contract_Coupon_ItemBase_List_View' map-col-header-overide={colHeaderItemBaseOverride} filter={additionalFilter}></c-lwc-list-view>
+        <br>
+        <lightning-formatted-rich-text value={Labels.Seller_Share_Description}></lightning-formatted-rich-text>
+        <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>        
+
+        <div class="slds-box cls_marginBottom">
+            <div class="cls_ListViewWrapper" onclick={onShowDetail}>
+                <div class="listColumn">
+                    <span class="cls_windowTitle cls_font-size_title">{Labels.lblAccordionTitle}</span>
+                    <a><lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon></a>
+                </div>    
+            </div>
+            <template if:true={displayDetail}>
+                <div class="cls_accordion">
+                    <lightning-formatted-rich-text value={termAndConditioins}></lightning-formatted-rich-text>
+                </div>
+            </template>
+        </div>
+
+    </template>         
+
+    <template if:true={isCatBase}>      
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} mdt-name ='UK_Contract_Coupon_CatBase_List_View' is-disable-search="true" map-col-header-overide={colHeaderCatBaseOverride} filter={additionalFilter}></c-lwc-list-view><br>         
+            <lightning-formatted-rich-text value={Labels.Seller_Share_DescriptionCategory}></lightning-formatted-rich-text>
+            <p>&nbsp;</p>
+            
+            <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>
+
+        <div class="slds-box cls_marginBottom">
+            <div class="cls_ListViewWrapper" onclick={onShowDetail}>
+                <div class="listColumn">
+                    <span class="cls_windowTitle cls_font-size_title">{Labels.lblAccordionTitle}</span>
+                    <a><lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon></a>
+                </div>    
+            </div>
+            <template if:true={displayDetail}>
+                <div class="cls_accordion">
+                    <lightning-formatted-rich-text value={termAndConditioins}></lightning-formatted-rich-text>
+                </div>
+            </template>
+        </div>
+
+    </template>
+       
+    
+</template>

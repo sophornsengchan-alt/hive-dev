@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-quick-action-panel header={label.Unlink_Parent_Legal_Entity}>
+            <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+            <fieldset class="slds-form-element">
+                <template if:false={isError}>
+                    <legend class="slds-form-element__legend slds-form-element__label slds-text-heading_small slds-m-bottom_x-small slds-text-align_center fullWidth">{label.Confirm_Parent_Legal_Entity_MSG}</legend>
+                </template>
+                <template if:true={isError}>
+                    <legend class="slds-form-element__legend slds-form-element__label slds-text-heading_small slds-m-bottom_x-small slds-text-align_center slds-text-color_error fullWidth">{errorMsg}</legend>
+                </template>
+            </fieldset>
+            <div slot="footer">
+                <lightning-button variant="neutral" label={label.Cancelled} onclick={handleClose}></lightning-button> 
+                <lightning-button variant="brand" class="slds-m-left_x-small" label={label.Yes} type="submit" onclick={handleUnlinkParent} disabled={isError}></lightning-button>
+            </div>
+        </lightning-quick-action-panel>
+    </div>
+</template>

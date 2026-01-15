@@ -1,0 +1,55 @@
+<template>
+    <section class="section-tasks main-section slds-p-horizontal_xx-large">
+        <div class="row justify-content-center position-relative filters task-main-div">
+            <div id="tasks-filters" class="col-12 col-sm-8 col-lg-8">      
+              <span class="your-task">{label.Pro_trader_Your_Tasks} </span>
+              <a class="btn slds-p-around_medium onprogress active-button" data-name="openTask" onclick={handleTaskAction}>{label.ProTrader_Opentask} <span class="bold-span">({openTaskCount})</span></a>
+              <a class="btn slds-p-around_medium completed" data-name="completedTask" onclick={handleTaskAction}>{label.ProTrader_Completed_tasks} <span class="bold-span">({closedTaskCount})</span></a>
+            </div>
+            <div class="col-12 col-sm-4 col-lg-4">
+              <span class="d-none d-lg-block note-category" data-name="noteCategory">{label.ProTrder_NotesfromCategorySpecialist}</span>
+            </div>
+          </div>
+
+        
+        <div class="empty-div"></div> 
+        <div if:true={noCohortTaskFound}>{label.Pro_Trader_No_task_assigned}</div>
+
+        <template if:true={filteredCohortSellerTaskList} for:each={filteredCohortSellerTaskList} for:item="cohortSellerTaskRecord">
+            <div for:each={cohortSellerTaskRecord} for:item="cell" key={cell.comments} class="task-row-div slds-p-around_medium">
+                <div class="slds-grid slds-wrap task-item slds-p-vertical_xx-small">  
+                    <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12">    
+                        <div class="slds-p-around_xx-small">
+                            <p>{cell.dueDate}</p>
+                        </div>
+                        <div class="slds-p-around_xx-small">   
+                            <div class="task-row-inner-div">
+                                <div class="slds-col slds-large-size_1-of-12 slds-medium-size_1-of-12 slds-size_1-of-12  slds-float_left slds-p-left_x-small slds-p-top_x-small">
+                                    <img class="gear-icon" src={proTrader_TaskItem_Gear_Icon}></img>
+                                </div> 
+                                <div class="slds-col slds-large-size_11-of-12 slds-medium-size_11-of-12 slds-size_11-of-12 description-text-color slds-p-left_xx-large">
+                                    <p>{cell.description}   
+                                    <!--<lightning-helptext icon-name="utility:info_alt" content={cell.helpText}></lightning-helptext>     -->
+                                        <span class="slds-p-left_small">
+                                            <template if:true={cell.helpText}><c-custom-help-text help-text={cell.helpText}></c-custom-help-text></template>
+                                        </span>
+                                    </p> 
+                                </div>
+                                    
+                                <p class="p-class slds-p-left_xx-large" if:true={cell.documentLink}>
+                                    <a class="hyperlink-pdf" href={cell.documentLink} target="_blank">{label.ProTrader_PDF_Link_Name}</a>
+                                </p>
+                            </div>
+                        </div> 
+                    </div>                   
+                    <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12 slds-m-top_large slds-m-bottom_x-large slds-p-top_x-large slds-p-bottom_large slds-p-left_small">
+                        <p class="slds-line-clamp_small">{cell.sellerFacingMessage}</p>
+                    </div>
+                    <!-- <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_6-of-12 desc-div">
+                        <p class="slds-p-left_large">{cell.comments}</p>
+                    </div> -->
+                </div>
+            </div>
+        </template>        
+    </section>
+</template>

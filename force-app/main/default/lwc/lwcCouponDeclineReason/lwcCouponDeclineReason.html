@@ -1,0 +1,49 @@
+<template>
+    <div class={getModalOpen}>
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container lwcCouponDeclineReason">
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="custom-style">
+                        <div class="container-text">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                                {Labels.please_Let_Me_Know}
+                            </h2>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <lightning-combobox class="validate"
+                                message-when-value-missing={Labels.requiredFieldForComment}
+                                required="true"
+                                name="progress"
+                                value={valueRejectionReasons}
+                                label={Labels.pLease_Selete_One}
+                                placeholder={Labels.select}
+                                options={optionsDeclinedReasons}
+                                onchange={handleRejectionReasonsChange} ></lightning-combobox>
+                            </div>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <lightning-textarea class="validate textAreaBody" message-when-value-missing={Labels.requiredFieldForComment} maxlength="300" type="text" required={requiredCommand} label={Labels.any_comments_you_would_like_to_add} value={valueReasonsCommand} onchange={handlReasonsCommentsChange}></lightning-textarea>   
+                            </div>
+                            <div>
+                                <label class="slds-form-element__label" for="actionOutcomeId"><abbr title="Required" class="slds-required">*</abbr>{Labels.required}</label>
+                            </div>   
+                        </div>
+                        <div class="contaner-btn">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal} title={Labels.lblBack}>{Labels.lblBack}</button>
+                            <button class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleSumbit} title={Labels.Submit}>{Labels.Submit}</button>                            
+                        </div>
+                    </div>
+
+                    <!-- <div class="conatain-button">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title={Labels.close}>{Labels.close}</button>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </div>
+ </template>

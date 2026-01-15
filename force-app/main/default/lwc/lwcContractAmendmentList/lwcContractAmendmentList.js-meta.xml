@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordAction</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+     <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property label="Record Id" name="recordId" type="String" default=""/>      
+            
+            <propertyType name="EBH_Pricing__c" extends="SObject" label="EBH_Pricing__c" description="EBH_Pricing__c" />      
+            <property label="Proposal Pricing" name="proposalPricing" type="{EBH_Pricing__c[]}"></property>  
+            
+            <propertyType name="FeeType__c" extends="SObject" label="FeeType__c" description="FeeType__c" />        
+            <property label="Proposal FeeType" name="proposalFeeType" type="{FeeType__c[]}"></property>     
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,49 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <template if:true={showPageContent}>
+    <div class="slds-grid g-0">
+        <div class="slds-col slds-size_12-of-12 text-center py-4 bg-F7F7F7">
+            <h2 class="panel-title">{label.Book_an_Advertising_Expert_Title}</h2>
+        </div>
+    </div>
+        <div class="section-box--inner box-confirmation d-block">
+            <div class="slds-grid slds-wrap py-4">
+                <div class="slds-col slds-size_12-of-12">
+                    <p class="text-18 mb-4">{label.Book_an_Advertising_Expert_Description}</p>
+                    <p class="text-14">{label.Book_an_Advertising_Expert_Sub_Description}</p>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_7-of-12 g-0">								
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_3-of-12 slds-medium-size_4-of-12 d-flex slds-align-center">
+                                    <img src={accManagerImage} class="img-fluid">
+                                </div>
+                                <div class="slds-col slds-size_9-of-12 slds-medium-size_8-of-12 slds-align-middle">
+                                    <div class="box-account-manager bg-F7F7F7">
+                                        <span class="d-block fw-bold mb-1">{accManagerName}</span>
+                                        <p class="d-block m-0 text-break">{accManagerEmail}</p>
+                                    </div>
+                                </div>
+                            </div>								
+                        </div>
+                        <!-- <div class="slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_5-of-12 mt-sm-3 mt-3 mt-md-0 slds-align-middle text-end">
+                            <div class="slds-grid slds-grid_vertical">
+                                <div class="slds-col">
+                                    <button onclick={handleBookCall} class="btn btn-blu">{label.Book_an_Appointment_Btn}</button>
+                                </div>
+                                <div class="slds-col slds-p-top_x-small">
+                                    <button onclick={handleAppointmentDetail} class="btn btn-blu">{label.MyAppointment}</button>
+                                </div>
+                            </div>
+                            
+                        </div> -->
+                        
+                    </div>
+                </div>				
+            </div>		
+        </div>
+        <div class="devpro">
+        <c-pro-trader-calendly-booked-calls cohort-seller-details={cohortSellerData}  cohort-seller-id={cohortSellerId} 
+        account-manager-calendly-link={accManagerCalendlyLink} utm-campaign="bookings" current-user={currentUser}></c-pro-trader-calendly-booked-calls>
+        </div>
+    </template>
+</template>

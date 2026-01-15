@@ -1,0 +1,51 @@
+<template>
+    <span>
+        <lightning-formatted-text value={labels.SubmitDealAnotherDCA}></lightning-formatted-text>
+        &nbsp;<a onclick={showPopup}><lightning-formatted-text value={labels.SubmitDealAnotherDCA_clickhere}></lightning-formatted-text></a>
+    </span>
+ 
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            
+            <div class="slds-modal__container">
+                <lightning-spinner alternative-text="Loading" size="large" variant="brand" if:true={showSpinner}></lightning-spinner>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1"><lightning-formatted-text value={labels.SubmitDealAnotherDCA_ModalHeader}></lightning-formatted-text></h1>
+                    <p class="slds-m-top_x-small">
+                        <lightning-formatted-text value={labels.SubmitDealAnotherDCA_ModalSubHeader}></lightning-formatted-text>
+                    </p>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p> 
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="12">
+                                <c-lwc-account-picker selected-acc-id={accountId} onaccountchange={handleAccountChange}></c-lwc-account-picker>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <lightning-combobox
+                                        data-element="pklCategory"
+                                        label="Category"
+                                        value={selectedCat}
+                                        placeholder="Select a Category"
+                                        options={picklistValuesCat}
+                                        onchange={handlePklCatChange}
+                                        required
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <lightning-input data-element="txtEmail" type="email" label="Category Manager's Email" pattern=".+@.+[.].+" required ></lightning-input>
+                            </lightning-layout-item>
+
+                        </lightning-layout>
+                    </p>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={hidePopup} class="slds-m-left_x-small" variant="neutral"></lightning-button>
+                    <lightning-button label="Continue to Upload Deals" onclick={handleContinue} class="slds-m-left_x-small" variant="brand"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  
+</template>

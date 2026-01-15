@@ -1,0 +1,77 @@
+<template>
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-primary-800 mb-4 pb-2 border-b-2 border-primary-200">Still need
+            help?
+        </h2>
+        <div class="bg-white text-lg rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+            <p class="mb-2">
+                <a 
+                    href="#" 
+                    class="text-primary-600 hover:text-primary-500"
+                >
+                    <span>Create a support ticket</span>
+                </a>
+            </p>
+            <p 
+                class="mb-2"
+            >
+                <span>Email: </span>
+                <a 
+                    href="mailto:dl-ebay-hive-support@ebay.com"
+                    class="text-primary-600 hover:text-primary-500"
+                >
+                    <span>Hive Support DL</span>
+                </a>
+            </p>
+            <p>
+                <a href="#" class="text-primary-600 hover:text-primary-500">
+                    <span>Hive Support Chatter Group</span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-2xl font-semibold text-primary-800 mb-4 pb-2 border-b-2 border-primary-200">
+            Other Feedback?
+        </h2>
+        <form class="bg-white text-lg rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-semibold mb-2">Name:</label>
+                <input type="text" id="name" name="name"
+                    class="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary-300 focus:border-primary-300">
+            </div>
+            <div class="mb-4">
+                <label 
+                    for="email" 
+                    class="block text-gray-700 font-semibold mb-2"
+                >
+                    Email:
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    class="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary-300 focus:border-primary-300"
+                >
+            </div>
+            <div class="mb-4">
+                <label for="feedback-type" class="block text-gray-700 font-semibold mb-2">Feedback Type:</label>
+                <select id="feedback-type" name="feedback-type"
+                    class="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary-300 focus:border-primary-300">
+                    <option value="bug-report">Suggestion</option>
+                    <option value="general-feedback">General Feedback</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-semibold mb-2">Message:</label>
+                <textarea id="message" name="message" rows="4"
+                    class="w-full p-2 border rounded-md focus:ring-2 focus:ring-primary-300 focus:border-primary-300"></textarea>
+            </div>
+            <button type="submit"
+                class="bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700 transition duration-300">Submit
+                Feedback
+            </button>
+        </form>
+    </div>
+</template>

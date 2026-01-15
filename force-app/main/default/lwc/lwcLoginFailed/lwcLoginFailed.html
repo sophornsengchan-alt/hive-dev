@@ -1,0 +1,78 @@
+<template>
+
+    <template if:true={isBooking}>
+        <div class="login-failed-booking slds-text-align_center">
+            <div class="loginFormContainer">
+                
+                <template if:true={isCalloutDone}>
+                    
+                    <div class="loginFormWap">   
+                        <h1>
+                            <lightning-formatted-rich-text value={lbllabel_1}></lightning-formatted-rich-text> <!--{Labels.label_1}-->
+                        </h1> 
+                        <h2>{lbllabel_eBayAccount}: {sellerUsername}</h2>
+                        <div class="cls_contentWrapper">
+                            <p>{errorMessageTranslated}</p>
+                            <p>
+                                <lightning-formatted-rich-text value={lbllabel_2}></lightning-formatted-rich-text> <!--{Labels.label_2}-->
+                            </p>
+                        </div>
+                        
+                        <div class="cls_contentWrapper">
+                            <p>
+                                <!-- <lightning-formatted-rich-text value={lbllabel_3}></lightning-formatted-rich-text> -->
+                                <a title={lbllabel_3} href={lbllabel_ssolink}>{lbllabel_3}</a>
+                            </p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            
+        </div>
+    </template>
+
+    <template if:false={isBooking}>
+        <div class="TRIGG_EBAY_CUSOM">  
+            <div class="loginSection">
+                <div class="main">
+                    <div class="loginFormContainer">
+                        
+                        <img src={logoImg}/><br/>
+                        
+                        <template if:true={isCalloutDone}>
+                            
+                                <div class="clt-loginFormHeader">
+                                    
+                                    {lbllabel_Title} <!-- {Labels.label_Title} -->
+                                    
+                                    
+                                </div>
+                            
+                            
+                            <div class="loginFormWap">   
+                                <h1>
+                                    <lightning-formatted-rich-text value={lbllabel_1}></lightning-formatted-rich-text> <!--{Labels.label_1}-->
+                                </h1> 
+                                <h2>{lbllabel_eBayAccount}: {sellerUsername}</h2>
+                                <div class="cls_contentWrapper">
+                                    <p>{errorMessageTranslated}</p>
+                                    <p>
+                                        <lightning-formatted-rich-text value={lbllabel_2}></lightning-formatted-rich-text> <!--{Labels.label_2}-->
+                                    </p>
+                                </div>
+                                
+                                <div class="cls_contentWrapper">
+                                    <p>
+                                        <!-- <lightning-formatted-rich-text value={lbllabel_3}></lightning-formatted-rich-text> -->
+                                        <a title={lbllabel_3} href={lbllabel_ssolink}>{lbllabel_3}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>    
+    </template>
+</template>

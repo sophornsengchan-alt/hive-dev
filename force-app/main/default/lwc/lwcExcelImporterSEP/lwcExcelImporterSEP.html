@@ -1,0 +1,22 @@
+<template>
+    
+    <template if:true={isCmpReady}>
+        <div class="export-importer-sep-container">
+            <div>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label">{templateSubtitle}</label>
+                    <div class="slds-form-element__control">
+                        <template if:true={isDisabled}>
+                            <input disabled type="text" variant="label-hidden" class={inputClass} placeholder={inputPlaceholder} onkeypress={handleKeyPress} onpaste={handlePasteData}/>
+                        </template>
+                        <template if:false={isDisabled}>
+                            <input type="text" variant="label-hidden" class={inputClass} placeholder={inputPlaceholder} onkeypress={handleKeyPress} onpaste={handlePasteData}/>
+                        </template>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</template>

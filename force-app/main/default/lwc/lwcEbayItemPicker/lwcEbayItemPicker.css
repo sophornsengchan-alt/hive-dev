@@ -1,0 +1,49 @@
+.slds-card{
+    height: 300px;
+}
+
+.THIS .dropdown {
+    overflow: visible !important;
+}
+
+/* [data-id="card"] article{
+    overflow: inherit;
+} */
+.TRIGG_EBAY_CUSOM .slds-card{
+    overflow-y: inherit;
+}
+/* :host {
+    --sds-c-card-body-overflow: 20px;
+    
+} */
+
+.topCard{
+    overflow: inherit; 
+    height: auto;
+}
+.my-badge:hover{
+    border-color: green;
+}
+.btnSearchCancel{
+    min-width: 85px;
+    display: inline-grid;
+    margin-bottom: 5px;
+}
+.cls_disableButton {
+    background-color: #c5c5c5 !important;
+    color: #fbfbfb !important;
+    border-color: #c5c5c5 !important;
+}
+.tooltip2 {
+    padding-left:2rem;
+    /*padding-top:5rem;*/
+    position:relative;
+  }
+
+  .tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    bottom: 150%;
+  }
+  .tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+  }

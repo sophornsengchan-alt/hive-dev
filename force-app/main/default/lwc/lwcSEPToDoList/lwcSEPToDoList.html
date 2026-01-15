@@ -1,0 +1,27 @@
+<template >
+    <lightning-card if:true={doShow} >
+        <h3 slot="title">
+            {label.cardHeader}
+        </h3>
+        <hr class="lineBreak" />
+        <p slot="footer" class="slds-grid slds-gutters">
+            <template for:each={toDoListItemsDTO} for:item="item">
+                <div key={item.toDoListItemMetadataRecord.DeveloperName}  class="slds-align_absolute-center slds-col"  >   
+                    <a class="slds-button slds-button_neutral slds-show button" href={item.toDoListItemMetadataRecord.Target_URL__c} title={label.hoverText}>
+                        <h2 class="label">
+                            {item.label}
+                        </h2>
+
+                        <h2 class="count" >
+                            {item.count}
+                        </h2>
+                    </a>
+                </div>
+            </template>
+            <!--TH:22/07/2022:US-0011674 - AC4: If there is no action to-do, show the below message -->
+            <template if:false={hasToDoListItem}>
+                <div class="slds-align_absolute-center slds-col"> <h2 class="label">{label.noActionToDoMessage}</h2></div>
+            </template>
+        </p>
+    </lightning-card>
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <div class="glean-app-container-2">
+        <!-- <div class="glean-app"></div> -->
+        <div if:true={isHasPermission} class="h100">
+            <div if:true={pageChangedDone}  class="h100">
+                <iframe src={gleanVFpageUrl} height="600px" width="100%" scrolling="no"></iframe>
+            </div>
+            <div if:false={pageChangedDone}>
+                Working on it...
+            </div>
+        </div>
+        <div if:false={isHasPermission}>
+            <div class="error-container">
+                <lightning-formatted-rich-text value={noPermissionMsg}></lightning-formatted-rich-text>
+            </div>
+        </div>
+    </div>
+</template>

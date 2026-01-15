@@ -1,0 +1,92 @@
+body {
+    background-size: cover;    
+    background-image: url("/resource/loginBackground"); /*choose image from static resource*/
+}
+
+
+.separator{
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.separator span{
+    padding: 0 15px; /* creates the space */
+}
+
+.separator .line{
+    flex: 1;
+    height: 1px;
+    background-color: #000;
+}
+
+a.forgot-password-text.cus-unlink {
+    text-decoration: none;
+    cursor: auto;
+}
+
+.center {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-button {
+
+    background-color: #6DE0F6;   
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-family: Arial;
+}
+
+.main-heading {
+
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.sub-heading {
+
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+/* .input-icon {
+
+    position: absolute;
+    margin: 0.9rem 0.7rem;
+
+} */
+
+/* .input-element {
+
+    padding: 0.5rem 0rem 0.5rem 2rem;
+    font-size: 16px;
+} */
+
+.text-align-center {
+    text-align: center;
+}
+
+.forgot-password-text {
+
+    color: #CCBFBF;
+    font-size: 14px;
+    text-align: left;
+}
+
+.error {
+    text-align: center;
+    word-break: break-word;
+    color: #ff9e9e;
+}
+
+.p-l-r-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}

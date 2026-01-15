@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>   
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>       
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">            
+            <property name="recordId" type="String" label="Record ID" description="The value should be {!recordId}." />   
+            <property name="isCloned" type="String" label="Is Cloned" description="The value should be {!isCloned}." />  
+            <property label="Title" name="title" type="String" default="Submit a new deal"/>           
+            <property label="Website Label" name="labelURLSite" type="String" default="Website"/>    
+            <property label="Product Title Label" name="labelProductTitle" type="String" default="Product title"/>    
+            <property label="Deal Site Label" name="labelDealSite" type="String" default="Deal site"/>    
+            <property label="Retail Campaign Label" name="labelRetailCampaign" type="String" default="Retail campaign"/>    
+            <property label="Format Label" name="labelFormat" type="String" default="Format"/>    
+            <property label="Quantity Label" name="labelQuantity" type="String" default="Quantity"/>  
+            <property label="Start Date Time Label" name="labelStartDateTime" type="String" default="Start Date"/> 
+            <property label="End Date Time Label" name="labelEndDateTime" type="String" default="End Date"/> 
+            <property label="Deal Price Label" name="labelDealPrice" type="String" default="Deal Price"/> 
+            <property label="Maximum Purchase Label" name="labelMaximumPurchase" type="String" default="Maximum Purchase"/>    
+            <property label="Seller Price Label" name="labelSellerPrice" type="String" default="Seller Price"/>    
+            <property label="RR or WAS Label" name="labelRRPorWAS" type="String" default="RRP or WAS"/>    
+            <property label="RRP or WAS Price Label" name="labelRRPorWASPrice" type="String" default="RRP or WAS Price"/>        
+            <property label="Item Number" name="labelItemNumber" type="String" default="Item Number"/>
+            <property name="labelNoProduct" type="String" label="Label Do not have product" default="I do not have a product to submit yet" />   
+            <property name="labelChooseItem" type="String" label="Label Choose Item" default="Choose an existing item from your store" />
+            <property label="Footer Header Text" name="footerHeaderText" type="String" default="Lorem ipsum dolor sit amet"/>         
+            <property label="Footer Text" name="footerText" type="String" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"/>
+            <property label="Label Submit button" name="labelSubmitBtn" type="String" default="Submit Deal"/>        
+                 
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,78 @@
+<template>
+    <div class="contentWrapper">
+        <template if:true={onShowLoadingSpinner}>
+            <div style="z-index: 99999 !important;">
+                <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;position: fixed;"></lightning-spinner>
+            </div>
+        </template>
+        <!-- Term and Agreement Modal -->
+        <template if:true={showTC}>
+            <c-lwc-agreement-terms-s-e-p agmt-mdt-name="IT_Bulk_Deal_Contract_Agreement_Terms" onagreementtermssepinit={onAgreementTermSEPInit} onagreementtermssepaccepted={onAgreementTermSEPAccepted}></c-lwc-agreement-terms-s-e-p>
+        </template>
+
+        <div class="slds-p-bottom_x-small">
+            <c-lwc-account-picker onaccountchange={handleAccountChange}></c-lwc-account-picker>
+        </div>
+
+        <!-- Deal List -->
+        <c-lwc-list-view mdt-name="IT_Deal_Contract_Approval_List_View" is-check-box=true oncallupdatecheckbox={updateCheckBox} oncallupdatenumberofitems={updateTotalRecord} filter={additionalFilter}></c-lwc-list-view>
+        <br>
+        <div style="position: relative;">
+            <div>
+                <lightning-input type="checkbox" onchange={handleCheckSignAgreement} class="agreementCheckbox"></lightning-input>
+            </div>
+            <div style="position: absolute;top: 1px;margin-left: 25px;">
+                <p><span style="color:red">*</span> {labels.lbCheckboxAgree} <a onclick={openTC}>{labels.lbTCagreement}</a>.</p>
+            </div>
+        </div>
+        <!-- Button -->
+        <template if:true={checkButtonAvailability}>
+            <div class="slds-text-align_right slds-var-p-bottom_medium">
+                <lightning-button class="slds-m-top_small slds-m-right_small" variant="brand" label={labels.btnApproveAll} onclick={handleApproveAll}></lightning-button>
+                <lightning-button class="slds-m-top_small slds-m-right_small" label={labels.btnDeclineAll} onclick={handleDeclineAll}></lightning-button>
+                <lightning-button-menu label={labels.btnMoreAction} menu-alignment="auto">
+                    <lightning-menu-item label={labels.btnApproveSelected} onclick={handleApproveSelected}> </lightning-menu-item>
+                    <lightning-menu-item label={labels.btnDeclineSelected} onclick={handleDeclineSelected}> </lightning-menu-item>
+                </lightning-button-menu>
+            </div>
+        </template>
+        <template if:false={checkButtonAvailability}>
+            <div class="slds-text-align_right slds-var-p-bottom_medium">
+                <lightning-button class="slds-m-top_small slds-m-right_small" variant="brand" label={labels.btnApproveAll} disabled="true"></lightning-button>
+                <lightning-button class="slds-m-top_small slds-m-right_small" label={labels.btnDeclineAll} disabled="true"></lightning-button>
+                <lightning-button-menu label={labels.btnMoreAction} disabled="true"></lightning-button-menu>
+            </div>
+        </template>
+        <!-- Decline Modal -->
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Header -->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{labels.lbDeclineReason}</h2>
+                    </header>
+                    <!-- Body -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-m-bottom_medium">
+                            <lightning-combobox
+                            class="Seller_Decline_Reason__c"
+                            label={labels.lbDeclineReason}
+                            placeholder={labels.lbDeclineReasonPlaceholder}
+                            options={optionsSellerDeclineReason}
+                            onchange={handleSellerDeclineReasonChange}
+                            value={sellerDeclineReason}
+                            required="true"
+                            ></lightning-combobox>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title={labels.btnCancel}>{labels.btnCancel}</button>
+                        <button class="slds-button slds-button_brand" onclick={handleSubmitDecline} title={labels.btnSave}>{labels.btnSave}</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </div>
+</template>

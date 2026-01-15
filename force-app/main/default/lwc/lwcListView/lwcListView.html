@@ -1,0 +1,165 @@
+<template>
+    <div class="slds-box contant-lwcListView">
+    <template if:true={isLoading}>
+        <div class="overlay">
+            <div class="myCenter">
+                <lightning-spinner
+                    alternative-text="Loading..." variant="brand">
+                </lightning-spinner>
+            </div>
+        </div>
+    </template>
+    <!-- <div>       
+         <c-deal-list-view-filter onsearch={searchListView} ></c-deal-list-view-filter>
+    </div>  -->
+    
+    <template if:false={isDisableSearch}>
+        
+        <div class="sldsInputAdjust">
+            <div class={classSearch} >
+                <!-- <lightning-input
+                    onchange={handleKeyChange}
+                    name="enter-search"
+                    type="search"
+                    style="line-height:36px;"
+                ></lightning-input> -->
+                <div>
+
+                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                        <svg class="slds-input__icon slds-input__icon_left slds-icon-text-default" focusable="false" data-key="search" aria-hidden="true" viewBox="0 0 52 52"><g><path d="M49.62 45.27L36.22 32a18.9 18.9 0 10-34.1-9.2A18.91 18.91 0 0032 36.27l13.3 13.3a1.45 1.45 0 002.1 0l2.1-2.1a1.68 1.68 0 00.12-2.2zm-28.7-11.5a12.9 12.9 0 1112.9-12.9 12.87 12.87 0 01-12.9 12.9z" fill-rule="evenodd"></path></g></svg>
+                        <input class="slds-input" type="search" onchange={handleKeyChange}
+                    name="enter-search" style="line-height:36px;">
+                      </div>
+
+
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- MN-02122021-US-0010808
+            <div class="cls_toggleCheckbox">
+            <template if:true={showDensity}>
+                <lightning-input label={lbDensity}  type="toggle" onchange={changeToggle} class="slds-float_right" checked={isShowHigh} message-toggle-active={activeMsg} message-toggle-inactive={inactiveMsg}>
+                </lightning-input>
+            </template>     
+        </div> 
+        -->
+        <!-- MN-23052022-US-0010437-Control visibility of filter feature-->
+        <template if:false={isDisableFilter}> 
+
+            <div class="cls_customicon customIcon" onclick={filterHandler}>
+                <div class="slds-button">
+                    <div>
+                        <lightning-icon size="small" class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                        icon-name="utility:filterList"></lightning-icon>
+                        <span>{label.lblFilterDeal}</span>
+                    </div>
+    
+                </div>
+            </div>
+        
+             <!-- <div class="cls_ListViewWrapper" if:true={filterCheck}>       
+                 <c-deal-list-view-filter onsearch={searchListView} onclear={clearFilter} ></c-deal-list-view-filter>
+             </div> -->
+             <template if:true={isLoadingFilter}>
+                <div class="overlay-listview">
+                    <div class="myCenter">
+                        <lightning-spinner
+                            alternative-text="Loading..." variant="brand">
+                        </lightning-spinner>
+                    </div>
+                </div>
+            </template>
+            <template if:false={isLoadingFilter}>
+             <div class="cls_ListViewWrapper" if:true={filterCheck}>       
+                <c-lwc-list-view-filter onsearch={searchListView} onclear={clearFilter} filter-object-name={filterObjectName} list-view-name={mdtName} record-type-id={recTypeId}></c-lwc-list-view-filter>
+            </div> 
+            </template>
+
+        </template>
+         
+    </template>
+
+    <!-- <div>
+        <button class="slds-button slds-button_brand" onclick={openModal}>Interested</button>
+    </div>
+    <div>
+        <button class="slds-button slds-button_neutral" onclick={openModal}>Not Interested</button>
+    </div> -->
+
+    <!-- <template if:true={isHasRecord}> -->
+        <div class="cls_ListViewWrapper">
+
+            <template if:true={isLoadingListView}>
+                <div class="overlay-listview">
+                    <div class="myCenter">
+                        <lightning-spinner
+                            alternative-text="Loading..." variant="brand">
+                        </lightning-spinner>
+                    </div>
+                </div>
+            </template>
+            <template if:false={isLoadingListView}>
+                <template if:true={isHasRecord}>
+                    <!-- MN-02122021-US-0010808 
+                        <template if:true={isShowHigh}>
+
+                        <div class="itemList">
+                            <template if:true={isCheckBox}>
+                            <div class="slds-card"> 
+                                <div class="listTop">
+                                    <div class="listColumnOne">
+                                        <input class="cls_checkbox" onclick={handleCheckAll} type="checkbox" name="" checked={isAllChecked}>
+                                        <div class="listColumn">
+                                        <span>All</span>
+                                        </div>
+                                
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </template>
+                        </div>
+            
+                        <div class="itemList">
+                            <template for:each={displayRecords} for:item="item">
+                                <c-lwc-display-list-view-item key={item.id} item={item} highlight-fields={displayHighlightFields} detail-fields={displayDetailFields} oncallupdatecheckbox={updateCheckBox} oncallupdatecheckboxall={updateCheckBoxAll} isshowcheckbox={isCheckBox} ></c-lwc-display-list-view-item>
+                            </template>
+                        </div>
+                    </template>
+                    
+            
+                    <template if:false={isShowHigh}>
+                        <c-lwc-display-list-view-low is-dsc={isDsc} all-record={displayRecords} highlight-fields={displayHighlightFields} oncallupdatecheckbox={updateCheckBox} oncallupdatecheckboxall={updateCheckBoxAll} oncallsortcolumns={sortColumns} isshowcheckbox={isCheckBox} s-object-name={sObjectName}></c-lwc-display-list-view-low> 
+                    </template> -->
+                    <!-- NK:31/08/2022:US-0012297:fieldsNoLink -->
+                    <c-lwc-display-list-view-low fields-no-link={fieldsNoLink} lv-name={mdtName} is-dsc={isDsc} all-record={displayRecords} hierarchy-relationship-name={hierarchyRelationshipName} highlight-fields={displayHighlightFields} oncallupdatecheckbox={updateCheckBox} oncallupdatecheckboxall={updateCheckBoxAll} oncallsortcolumns={sortColumns} onreload={reloadPage} isshowcheckbox={isCheckBox} s-object-name={sObjectName}></c-lwc-display-list-view-low> 
+                    
+                    <div class="slds-align_absolute-center">
+                        <template if:true={isShowBtnIntr} >                
+                            <div class="cls_btnIntrest">
+                                <button class="slds-button slds-button_brand" onclick={doInterest}>{lbButtonIntr}</button>
+                                <button class="slds-button slds-button_neutral" onclick={doNotInterest}>{lbButtonNotIntr}</button>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    
+                    <c-lwc-paginator total-page={totalPage} onupdatepaginatorstate={updateCurrentPage} current-page={currentPage} number-of-record-per-page={numberOfRecordPerPage} label-override={paginatorLabelOverride}> </c-lwc-paginator>
+                
+                </template>
+            </template>
+        </div>
+        
+    <!-- </template> -->
+
+    <template if:false={isLoadingListView}>
+        <template   if:false={isHasRecord}>
+            <p class="cls_ListViewWrapper">{messageNoRecord}</p>
+        </template>
+    </template>
+    
+    </div>
+
+</template>

@@ -1,0 +1,46 @@
+.card_box{
+    border-bottom: 1.5px solid #e6e5e5e0;
+}
+.link-icon {
+    padding: 3px 6px;
+    margin-left: 10px;
+}
+
+.useful-links-title {
+    text-transform: capitalize;
+    margin-top: 10px;
+    font-size: 22px !important;
+    font-weight: 800;
+    border-top: 2px solid #ccc;
+    letter-spacing: 0px;
+    padding: 25px 10px 0px 10px;
+}
+
+.useful-link {
+    padding: 0 15px 0 5px;
+}
+
+.useful-link h4 {
+    color: #6c6868b3;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.useful-link p {
+    margin-bottom: .5em;
+    color: #25292c;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+}
+
+.useful-link li {
+    font-size: 16px;
+    padding: 10px 0px 10px 30px;
+}
+
+.slds-card {
+    border-radius: 0px;
+    box-shadow: none;
+    margin-bottom: 0px;
+}

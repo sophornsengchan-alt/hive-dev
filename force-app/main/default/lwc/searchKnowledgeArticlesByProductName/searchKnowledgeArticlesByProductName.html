@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <div class="slds-align_absolute-center slds-m-around_medium">
+                <a href={hiveUniversityUrl} class="slds-button slds-button_brand" target="_blank">Search on Hive University</a>
+            </div>
+            <p class="slds-text-heading_medium slds-m-bottom_small">Knowledge Articles</p>
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+            <template if:true={data}>
+                <p class="slds-text-body_small slds-m-bottom_small">{data.length} article(s) found</p>
+                <div class="slds-scrollable_y" style="height: auto;">
+                    <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column="true">
+                    </lightning-datatable>
+                </div>
+            </template>
+            <template if:false={data}>
+                <p class="slds-text-body_small slds-text-color_weak">No articles found.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

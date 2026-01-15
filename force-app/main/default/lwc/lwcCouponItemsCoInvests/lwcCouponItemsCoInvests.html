@@ -1,0 +1,110 @@
+<template>
+
+    <template if:true={onShowLoadingSpinner}>
+        <div style="z-index: 99999 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;position: fixed;"></lightning-spinner>
+        </div>
+    </template>
+    <template if:true={isItemBase}>
+        <template if:true={isItemInReview}>
+            
+            <div class="cls_message-info slds-m-top_x-small">
+                <span style="padding: 5px">
+                    <lightning-formatted-rich-text value={Labels.errorMsg}></lightning-formatted-rich-text>
+                </span>
+            </div>
+        </template>
+        <template if:true={isValid}>
+            <!--TH:US-0012494 - remove the info message related to deletions, as we are not allowing this functionality anymore.-->
+           <!-- <c-lwc-record-info record-id={recId} override-metadata-name="SEP_Coupon_Seller_ItemsList_Info"></c-lwc-record-info>-->
+            
+            <template if:true={showButtons}>
+                <template if:true={isNegotiationAndItemBased}>
+                    <div class="slds-p-around_medium cls-button-area">
+                        <template if:true={disableBtnDelete}>
+                            <a class="slds-button slds-button_brand cls_disableButton" >{Labels.btnDelete}</a>
+                            <a class="slds-button slds-button_brand" onclick={handleSubmitAll}>{Labels.btnSubmitAll}</a>
+                        </template>
+                        <template if:false={disableBtnDelete}>
+                            <a class="slds-button slds-button_brand" onclick={handleConfirmDelete}>{Labels.btnDelete}</a>
+                            <a class="slds-button slds-button_brand cls_disableButton" >{Labels.btnSubmitAll}</a>
+                        </template>
+                    
+                    </div>
+                </template>
+                
+            </template>
+            <!--Start Sambath Seng 21.2.2023 US-0012746 - [AU] Accessibility Configurations -->
+            <template if:true={isAU}>
+                <c-lwc-list-view map-col-header-overide={mapColHeaderOveride} is-disable-filter=true mdt-name ='AU_Coupon_Items_Co_Invests' filter={additionalFilter} is-check-box={showCheckBox} oncallupdatecheckbox={updateCheckBox} oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view>
+            </template>
+            <template if:false={isAU}>
+                <c-lwc-list-view map-col-header-overide={mapColHeaderOveride} is-disable-filter=true mdt-name ='Coupon_Items_Co_Invests' filter={additionalFilter} is-check-box={showCheckBox} oncallupdatecheckbox={updateCheckBox} oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view>
+            </template>
+            <!--End Sambath Seng 21.2.2023 US-0012746 - [AU] Accessibility Configurations -->
+            <!-- display seller Share description -->
+            <template if:true={isDEPortalProfile}>
+                <div><br/>
+                    <p>{Labels.Seller_Share_Description}</p>
+                </div>
+            </template>
+            <template if:true={showButtons}>
+                <div class="btn-left">
+                    <button class="slds-button slds-button_neutral download-btn" onclick={handleDownload}>
+                        <lightning-icon icon-name="utility:download" variant="brand" size="x-small" ></lightning-icon>
+                        <span>{Labels.btnDownloadItems}</span>  
+                    </button>
+                </div>
+            </template>
+            
+            <template if:true={isModalOpen}>
+                
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        
+                        <header class="slds-modal__header" style="border: 0;">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close"
+                                    alternative-text="close"
+                                    variant="inverse"
+                                    size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                        </header>
+                        
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p>{Labels.deleteConfirmMsg}</p>
+                        </div>
+                        
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_brand" onclick={handleDelete} title={Labels.btnDelete2}>{Labels.btnDelete2}</button>
+                            <button class="slds-button slds-button_neutral" onclick={closeModal} title={Labels.btnCancel}>{Labels.btnCancel}</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+        </template>
+    </template> 
+    <template if:true={isCategoryBase}>
+        <h4 class="slds-text-heading_medium slds-m-bottom_x-small slds-m-top_medium">{Labels.categoryTitle}</h4>
+        <!--Start Sambath Seng 22.2.2023 US-0012746 - [AU] Accessibility Configurations -->
+        <template if:true={isAU}>
+            <c-lwc-list-view map-col-header-overide={mapColHeaderOveride} mdt-name ='AU_Coupon_Co_List_View' is-disable-search="true" filter={additionalFilter}></c-lwc-list-view>
+        </template>
+        <template if:false={isAU}>
+            <c-lwc-list-view map-col-header-overide={mapColHeaderOveride} mdt-name ='DE_Coupon_Co_List_View' is-disable-search="true" filter={additionalFilter}></c-lwc-list-view>
+        </template>
+        <!--End Sambath Seng 22.2.2023 US-0012746 - [AU] Accessibility Configurations -->
+        <br/>
+        <template if:true={isDEPortalProfile}>
+            <div>
+                <p>{Labels.Seller_Share_DescriptionCategory}</p>
+            </div>
+        </template>
+    </template>
+
+        
+
+</template>

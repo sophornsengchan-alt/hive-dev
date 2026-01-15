@@ -1,0 +1,147 @@
+<template>
+    <c-lwc-loading if:true={showProgress} message={progressMsg}></c-lwc-loading>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item flexibility="auto" size="12">
+            <lightning-card  title="WORK MANAGER">
+                <div slot="actions" class="slot-actions">
+                    <div class="slds-grid">
+                        <!-- <lightning-formatted-text value={panelNumInfo} class="slds-p-left--small slds-p-right--small slds-text-color_success slds-text-title_bold"></lightning-formatted-text> -->
+                        <!-- <lightning-button-icon icon-name="utility:add" size="small" title="Add New Panel"></lightning-button-icon> -->
+                    </div>
+                    
+                </div>   
+                <div class="slds-p-horizontal_small"> 
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item flexibility="auto"   size="4">
+                            <div class="slds-grid slds-text-align_left" id="listbtn1">
+                                <lightning-icon icon-name="custom:custom96" alternative-text="" title="" class="slds-var-p-right_x-small"></lightning-icon>
+                                <lightning-combobox
+                                    name="wm_page"
+                                    label=""
+                                    variant = "label-hidden"
+                                    value={current_page}
+                                    placeholder="Select Page"
+                                    options={wmPageOptions}
+                                    onchange={handleWMPageChange} 
+                                    class="slds-var-p-left_xxx-small"></lightning-combobox>                            
+        
+                                    <!-- <lightning-button label="New" title="New" onclick={handleNew} class="slds-m-left_x-small"></lightning-button>
+                                    <lightning-button label="Edit" title="Edit" onclick={handleEdit} class="slds-m-left_x-small"></lightning-button>
+                                    <lightning-button label="Remove" title="Remove" onclick={handleRemove} class="slds-m-left_x-small"></lightning-button> -->
+                                    <lightning-button label="Refresh" title="Refresh" onclick={handleRefresh} class="slds-m-left_x-small"></lightning-button>
+                                    <!-- <div class="slds-var-p-left_xx-small">
+                                        <lightning-button-menu alternative-text="Show menu" label="View">
+                                            <lightning-menu-item value="Approved Backlog" label="Approved Backlog"></lightning-menu-item>
+                                            <lightning-menu-item value="Next Sprint" label="Next Sprint"></lightning-menu-item>
+                                            <lightning-menu-item value="Current Sprint" label="Current Sprint"></lightning-menu-item>
+                                        </lightning-button-menu>
+                                    </div> -->
+                                    <img src="/img/loading32.gif" data-id="small-spinner" class="slds-var-p-left_xx-small slds-hidden"/>    
+                            </div>
+                            <div class="slds-var-p-top_small">
+                                <template for:each={listViewPanelOptions} for:item="item">
+                                    <lightning-button-stateful key={item.name} data-pname={item.name} data-pstate={item.visible}
+                                        label-when-off={item.label}
+                                        label-when-on={item.label}
+                                        label-when-hover={item.label}
+                                        icon-name-when-off="utility:steps"
+                                        icon-name-when-on="utility:check"
+                                        icon-name-when-hover="utility:close"
+                                        selected={item.visible}
+                                        onclick={panelViewChange}
+                                        class="view-panel-btns slds-var-p-right_xx-small">
+                                    </lightning-button-stateful>
+                                </template>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto"  size="4">
+                            
+                            <c-lwc-message ></c-lwc-message>
+
+                        </lightning-layout-item>
+
+                        <lightning-layout-item flexibility="auto"   size="4" class="lift-up">
+                            <div class="slds-card">
+                                <div class="slds-card__header slds-grid">
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                      <div class="slds-media__figure">
+                                        <lightning-icon icon-name="utility:filterList" size="small" alternative-text="Filters"></lightning-icon>
+                                      </div>
+                                      <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">          
+                                            <span class="slds-card__header-link slds-truncate slds-text-title_bold slds-text-title--caps">Filters</span>
+                                        </h2>
+                                      </div>
+                                      <div class="slds-no-flex">
+                                        <lightning-button-icon icon-name="utility:delete"    variant="bare" alternative-text="Reset" onclick={handleReset}  class="slds-m-left_xx-small" title="Reset all filters"></lightning-button-icon>
+                                        
+                                    </div>
+                                    </header>
+                                  </div>
+                                <div class="slds-card__body slds-card__body_inner card-body-lift-up">
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item flexibility="auto" size="6">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item flexibility="auto" size="12">
+                                                    <c-lwc-input-look-up data-id="lpk-product" onchildmethodlk={handleChildLookupMethod} sobject-name="HIVE_Products__c" field-label="HIVE Product" variant="label-stacked" icon-name="custom:custom57" place-holder="Search HIVE Products..." ></c-lwc-input-look-up>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" size="12">
+                                                    <div class="product-filter">
+                                                        <template for:each={listProductCriteria} for:item="item" >
+                                                            <lightning-pill label={item.label} key={item.id} onremove={handleRemoveFilterProduct} data-id={item.id} data-label={item.label} class="my-pill">
+                                                                <lightning-icon icon-name="custom:custom57" alternative-text="HIVE Product"></lightning-icon>
+                                                            </lightning-pill>
+                                                        </template>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>                                            
+                                        </lightning-layout-item>
+                                        <lightning-layout-item flexibility="auto" size="6">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item flexibility="auto" size="12" class="slds-var-m-bottom_x-small">
+                                                    <lightning-combobox
+                                                        data-fname="Component__c"
+                                                        name="filterComponent"
+                                                        label="Component"                                        
+                                                        value={selectedComponent}
+                                                        placeholder="Select component..."
+                                                        options={pklComponentsFilter}
+                                                        onchange={handleFilterComponentChange} 
+                                                        class=""></lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" size="12">
+                                                    <div class="component-filters">
+                                                        <template for:each={listComponentCriteria} for:item="item" >
+                                                            <lightning-pill label={item.label} key={item.id} onremove={handleRemoveFilterComp} data-id={item.id} data-label={item.label} class="my-pill">
+                                                                <lightning-icon icon-name="custom:custom40" alternative-text="Component"></lightning-icon>
+                                                            </lightning-pill>
+                                                        </template>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </div>
+                             
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+                
+            </lightning-card>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="auto" class="" size="12">
+                <!-- multiple-rows -->
+                <lightning-layout  class=""  > 
+                    <template for:each={wmPanelOfPage} for:item="panel" for:index="panelNum">
+                        <lightning-layout-item flexibility="auto"  size={panel.layoutSize} key={panel.panelName} class={panel.classes}>
+                            <c-lwc-w-m-panel data-pnameone={panel.panelName} panel={panel} page-info={currentWM.pageInfo} wm_panel_cols={wm_panel_cols} panel-index={panelNum} cur-sprint={curSprint} next-sprint={nextSprint} onpanelmethod={callFromChildPanel}></c-lwc-w-m-panel>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+
+            
+        </lightning-layout-item>
+    </lightning-layout>
+    
+</template>

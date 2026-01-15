@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default"> 
+            <property name="lbInputFile" type="String" label="Input File Label" default="Upload CSV" />
+            <property name="lbTotalRecord" type="String" label="Total Record Label" default="Total Record" />
+            <property label="Set Redirect To Url" name="redirectToUrl" type="String" default="/my-deal-lists"/>
+            <property label="Maximum Number of Record for Upload per Package" name="numberOfDealPerPk" type="String" default="120"/>
+            <property label="Button Next" name="labelBtnNext" type="String" default="Next"/> 
+            <property label="Button Submit" name="labelBtnSubmit" type="String" default="Submit"/> 
+            <property label="Button Download Template" name="labelBtnDownloadTemplate" type="String" default="Download Template"/>
+            <property label="Button Download Sample File" name="labelBtnDownloadSampleFile" type="String" default="Download Sample File"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

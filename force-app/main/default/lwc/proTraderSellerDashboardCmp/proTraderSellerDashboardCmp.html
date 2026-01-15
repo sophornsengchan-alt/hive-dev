@@ -1,0 +1,19 @@
+<template>
+    <div class={paddingInternalPage}>
+        <div class="spinner">
+            <template if:true={isLoading} >
+                <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+            </template>
+        </div>
+       
+        <c-lwc-generic-error-message if:true={noDataAvaialble} metadata-name={label.GenericErrorMessageMetadataName}></c-lwc-generic-error-message>
+
+        <c-pro-trader-store-performance-cmp if:true={isDataLoaded}
+            cohort-sellerand-category-performance-data={cohortSellerandCategoryPerformanceData}></c-pro-trader-store-performance-cmp>
+
+        <!--<c-ebay-branded-section> </c-ebay-branded-section>-->
+        <c-pro-trader-account-manager if:true={isDataLoaded} cohort-seller-data={cohortSellerandCategoryPerformanceData} cohort-seller-id={cohortSellerId} 
+                registration-page={isRegistrationPage}></c-pro-trader-account-manager>
+       
+    </div>
+</template>

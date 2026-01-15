@@ -1,0 +1,67 @@
+<template>
+    <div class="lwcDealContractAgreementDetailPage">
+        <lightning-tabset variant="scoped">
+            <lightning-tab label={Labels.tabLabel_Overview} value={Labels.tabLabel_Overview}>
+                <div class="recordFormWrapper">
+                    <!-- Start SB 1.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+                    <template if:true={hasUploadItemsAccess}>
+                        <div class="slds-size_1-of-1 slds-clearfix slds-m-bottom_xx-small">
+                            <a class="slds-button slds-button_brand slds-float_right" onclick={handleViewItem}>{Labels.tabLabel_UploadItems}</a>
+                        </div>
+                    </template>
+                    <!--End SB 1.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+                    <template if:true={showViewAgreement}>
+                        <div class="slds-size_1-of-1 slds-clearfix slds-m-bottom_xx-small">
+                            <a class="slds-button slds-button_brand slds-float_right" onclick={handleViewAgreementButton}>{Labels.contract_Agreement_Tab_View_Agreement}</a>
+                        </div>
+                    </template>
+                    <lightning-record-form
+                        object-api-name="Deal_Contract_Agreement__c"
+                        record-id={recId}
+                        layout-type="Full"
+                        density="comfy"
+                        mode="readonly"
+                        columns="2">
+                    </lightning-record-form>
+                    
+                </div>
+            </lightning-tab>
+            <!-- TH:05/09/2022:US-0012281 - Validation and upload of Deals -->
+            <!--SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+            <!-- <template if:true={hasUploadItemsAccess}>
+                <lightning-tab label={Labels.label_uploadDeal} value={Labels.label_uploadDeal}>
+                    <c-lwc-deal-bulk-upload-d-c-a rec-id={recId} onreloadlistview={handleReloadListView}></c-lwc-deal-bulk-upload-d-c-a>
+                </lightning-tab>
+            </template> -->
+            <!-- SRONG:15-09-2022-US-0012298 - Ability to sign Agreement in portal -->
+            <template if:true={isContractAgreement}>
+                <lightning-tab label={Labels.contract_Agreement_Tab_Label} value={Labels.contract_Agreement_Tab_Label}>
+                    <c-lwc-deal-contract-sign-agreement rec-id={recId}></c-lwc-deal-contract-sign-agreement>
+                </lightning-tab>
+            </template>
+            <!-- LA:07-09-2022-US-0012283 - Submit Deal Contract Agreement -->
+            <!--TH:27-09-2022-US-0012660 - remove <template if:true={hasDealItemsAccess}>-->
+            <!--SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+            <lightning-tab label={Labels.tabLabel_DealItems} value={Labels.tabLabel_DealItems}>
+                <template if:true={hasUploadItemsAccess}>
+                    <c-lwc-deal-bulk-upload-d-c-a ontab={handleOverviewTab} rec-id={recId} onreloadlistview={handleReloadListView}></c-lwc-deal-bulk-upload-d-c-a>
+                </template>
+                <template if:false={hasUploadItemsAccess}>
+                    <c-lwc-list-view fields-no-link={fieldsNoLink} mdt-name='PM_Deal_Item_List_Tab' optional-id={recId} filter={additionalStatusFilter} oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view><br>
+                    <template if:true={showButtons}>
+                        <div class="btn-right">
+                            <!--NK:10/10/2022-US-0012764: added spinner-->
+                            <img src="/img/loading24.gif" title="Loading..." if:true={showDownloadSpinner} class="slds-var-p-right_small"/>
+                            <button class="slds-button slds-button_brand download-btn" onclick={handleDownloadDealItems}>
+                                <lightning-icon class="download-icon" icon-name="utility:download" variant="brand" size="x-small" ></lightning-icon>
+                                <span>{Labels.btn_downloadDealItems}</span>  
+                            </button><br/>
+                        </div>
+                    </template>
+                </template>
+            </lightning-tab>
+
+            
+        </lightning-tabset>
+    </div>
+</template>

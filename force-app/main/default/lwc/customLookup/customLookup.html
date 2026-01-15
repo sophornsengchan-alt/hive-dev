@@ -1,0 +1,36 @@
+<!--
+@ Component:  customLookup.hml
+@ Purpose  :  Custom  Lookup picker looks similar standard lookup
+@ Author   :  Sothea Horn (sohorn@ebay.com)
+@ Created  :  19.05.2025 / US-0012817 - Update Linked Customer View
+-->
+<template>
+    <div class="lookupcontainer" id="lookup">
+        <div if:true={showLookup} class="lookup-container">
+            <div tabindex="0" class="container" style="position:fixed">
+                <lightning-record-picker label="lookup" placeholder="Search..." object-api-name={object} filter={filter}
+                    onchange={handleChange} class="slds-popover slds-popover_edit slds-popover__body"
+                    variant='label-hidden' value={value}>
+                </lightning-record-picker>
+            </div>
+        </div>
+ 
+        <div if:false={showLookup} class="slds-table_edit_container slds-is-relative">
+            <span class="slds-grid slds-cell-edit slds-align_absolute-center cell-content">
+                <div class="slds-truncate" title={lookupLabel}>
+                    <button title={lookupLabel} type="button" onclick={viewLookupRecord} class="slds-button slds-m-left_x-small lookup-value-cell">{lookupLabel}</button>
+                </div>
+                <span if:true={editable}>
+                    <button data-id={context} class="slds-button slds-button_icon slds-button_icon-small slds-cell-edit__button slds-m-left_x-small" tabindex="-1"
+                        title="Edit" onclick={handleEditIconClick}>
+                        <svg class="slds-button__icon slds-button__icon_hint slds-button__icon_lock slds-button__icon_small slds-button__icon_edit slds-icon slds-icon-text-default slds-icon_xx-small"
+                            aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.37.1#edit"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Edit</span>
+                    </button>
+                </span>
+            </span>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,62 @@
+<template>
+  <!-- add more condition of button name for the visiblity of the panel. we do not show empty panel, do we? -->
+  <div style="background:#fff; margin-top: -24px; margin-bottom: -24px;" class="slds-text-align--right slds-p-bottom--medium slds-p-top--small">
+    <template if:true={showDownloadDCA}>
+      <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={handleDownloadDCAClick} if:true={showDownloadDCA} label={labels.lblDCADownloadButton}></lightning-button>  
+    </template>
+
+    <template if:true={canResubmit}>
+      <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={showModalResubmit} if:true={canResubmit} label={labels.lblResubmit}></lightning-button>   
+            
+      <c-lwc-modal-resubmit-deal record-id={recordId} ></c-lwc-modal-resubmit-deal>
+    </template>
+
+    <template if:true={canReadjust}>
+      <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={showModalReadjust} if:true={canReadjust} label={labels.lblReadjust}></lightning-button> 
+      <c-lwc-modal-readjust-deal record-id={recordId} ></c-lwc-modal-readjust-deal>
+    </template>
+
+    <template if:true={canCancel}>
+      <lightning-button class="slds-m-top_small slds-m-right_small " onclick={showModalCancellation} if:true={canCancel} label={labels.lblCancellation}></lightning-button>   
+          
+      <c-lwc-deal-cancellation rec-id={recordId}></c-lwc-deal-cancellation>
+    </template>
+
+    <template if:false={canResubmitOrCanReadjust}>
+      
+      <lightning-button class="slds-m-top_small slds-m-right_small" onclick={cancelhandler}                     
+                label={labels.lblBackButton}></lightning-button>
+    
+  </template>
+
+  </div>
+
+  <!-- OLD VERSION -->
+  <!-- <div style="background:#fff; margin-top: -24px;" class="slds-text-align--right slds-p-bottom--medium slds-p-top--small"  if:true={canResubmit}>
+        <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={showModalResubmit} if:true={canResubmit} label={labels.lblResubmit}></lightning-button>   
+            
+        <c-lwc-modal-resubmit-deal record-id={recordId} ></c-lwc-Modal-Resubmit-Deal>
+
+    </div> -->
+
+    <!-- <div style="background:#fff; margin-top: -24px;" class="slds-text-align--right slds-p-bottom--medium slds-p-top--small"  if:true={canReadjust}>
+
+      <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={showModalReadjust} if:true={canReadjust} label={labels.lblReadjust}></lightning-button> 
+      <c-lwc-modal-readjust-deal record-id={recordId} ></c-lwc-Modal-Readjust-Deal>
+
+    </div> -->
+
+    <!-- <div style="background:#fff; margin-top: -24px;" class="slds-text-align--right slds-p-bottom--medium slds-p-top--small"  if:true={canCancel}>
+      <lightning-button class="slds-m-top_small slds-m-right_small " variant="brand" onclick={showModalCancellation} if:true={canCancel} label={labels.lblCancellation}></lightning-button>   
+          
+      <c-lwc-deal-cancellation rec-id={recordId}></c-lwc-deal-cancellation>
+    </div> -->
+    
+    <!-- <div class="aslds-card slds-p-bottom--medium card-padding card-no-border-topslds-p-bottom--medium slds-text-align--right slds-p-bottom--medium slds-p-top--small" if:false={canResubmitOrCanReadjust} style="border-radius: 0px 0px 5px 5px !important;margin-top: -24px; background:#fff;">
+          <div class="col-sm-6 text-right slds-text-align--right">
+            <lightning-button class="slds-m-top_small slds-m-right_small" onclick={cancelhandler}                     
+                      label={labels.lwcCancelButton}></lightning-button>
+          </div>
+    </div> -->
+  
+</template>

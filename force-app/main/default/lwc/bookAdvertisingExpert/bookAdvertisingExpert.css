@@ -1,0 +1,175 @@
+@import 'c/proTraderCommonCSS';
+
+.row{
+    margin-left: 6px;
+}
+.d-block {
+    display: block!important;
+}
+.devpro{
+    margin-top: -91px;
+}
+.py-4 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.panel-title {
+    font-size: 1.5rem;
+    font-family: var(--hive-portal-custom-font-bold);
+  }
+.col-102 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.col-3 {
+    flex: 0 0 auto;
+    width: 25%;
+}
+.text-20 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-family: var(--hive-portal-custom-font-regular);
+}
+.text-18 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: var(--hive-portal-custom-font-regular);
+}
+.btn {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+.btn.btn-blu {
+    color: #FFF;
+    background: #0064D2;
+    border: 1px solid #0064D2;
+}
+
+.mb-4 {
+    margin-bottom: 0.5rem!important;
+}
+
+.text-end {
+    text-align: right!important;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.d-flex {
+    display: flex!important;
+}
+@media screen and (min-width: 768px){
+    .section-box--inner {
+        padding: 0 45px;
+    }
+    .col-md-8 {
+        flex: 0 0 auto;
+        width: 66.66666667%;
+    }
+    .mt-md-0 {
+        margin-top: 0!important;
+    }
+    .justify-content-md-end {
+        justify-content: flex-end!important;
+    }
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+    .container, .container-md, .container-sm {
+        max-width: 720px;
+    }
+}
+@media screen and (max-width: 767.98px) {
+    .box-account-manager {
+        font-size: 1rem !important;
+        line-height: 1.25rem !important;
+        padding: 13px 18px !important;
+    }
+}
+@media (min-width: 576px){
+    .col-sm-10 {
+        flex: 0 0 auto;
+        width: 83.33333333%;
+    }
+}
+@media (min-width: 992px){
+    .col-lg-7 {
+        flex: 0 0 auto;
+        width: 58.33333333%;
+    }
+    .col-lg-5 {
+        flex: 0 0 auto;
+        width: 41.66666667%;
+    }
+    .ps-lg-5 {
+        padding-left: 3rem!important;
+    }
+    .col-lg-8 {
+        flex: 0 0 auto;
+        width: 66.66666667%;
+    }
+    .offset-lg-3 {
+        margin-left: 25%;
+    }
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 1200px){
+    .col-xl-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+    .col-xl-103 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+    .col-xl-109 {
+        flex: 0 0 auto;
+        width: 75%;
+    }
+}
+
+.container, .container-md, .container-sm {
+    max-width: 1320px;
+}
+.col-109 {
+    flex: 0 0 auto;
+    width: 75%;
+}
+
+.box-account-manager {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #0B1014;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 1rem;
+}
+.mt-3 {
+    margin-top: 2rem!important;
+}
+.text-break {
+    word-wrap: break-word !important;
+    word-break: break-word !important
+}
+.img-fluid {
+    max-width: 80%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.section-box--inner {
+    padding: 0 25px;  
+  }
+.box-register {
+font-size: 1rem;
+}

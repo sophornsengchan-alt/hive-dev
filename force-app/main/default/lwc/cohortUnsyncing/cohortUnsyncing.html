@@ -1,0 +1,25 @@
+<template>
+    <!-- Loading State -->
+    <lightning-spinner 
+        if:true={showSpinner} 
+        alternative-text="Processing cohort seller deactivation batch..."
+        size="medium"
+        class="slds-m-around_medium">
+    </lightning-spinner>
+
+    <!-- Success State - Show Cohort Action Component -->
+    <template if:true={isReady}>
+        <div class="slds-m-around_small">
+            <c-cohort-action 
+                cohort-id={bobId}>
+            </c-cohort-action>
+        </div>
+    </template>
+    
+    <!-- Error State -->
+    <template if:true={hasUpdateCohortError}>
+        <div class="slds-text-body_regular slds-m-top_x-small">
+            {updateCohortError}
+        </div>
+    </template>
+</template>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+		 <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default"> 
+            <property label="Header Message" name="headerMessage" type="String" default="Problem Logging In" />     
+            <property label="Error Message" name="errorMessage" type="String" default="We can't log you in because of an authentication error." />   
+            <property label="Help Message" name="helpMessage" type="String" default="For help, please" />  
+            <property label="Contact us Message" name="contactUsMessage" type="String" default="Contact Us" />
+            <property label="Start Here Label" name="startHereLabel" type="String" default="Start Here" />
+            <property label="After Start Here Text" name="afterStartHereText" type="String" default=", click on 'Contact Us' button at the bottom of the page." />
+            <property label="Start Here URL" name="startHereURL" type="String" default="https://www.ebay.com/help/home" />    
+            <property label="LogIn Message" name="logInMessage" type="String" default="Login With a Different Account" />   
+            <property label="Choose Portal" name="portal" type="String" datasource="eBay Seller Portal, Booking Portal" default="eBay Seller Portal"/>         
+        </targetConfig>
+        
+    </targetConfigs>
+</LightningComponentBundle>

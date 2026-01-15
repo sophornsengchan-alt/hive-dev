@@ -1,0 +1,57 @@
+<template>
+    <template if:true={fieldToDisplay}>
+    <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+        <template for:each={fieldToDisplay} for:item="item">  
+            <div class="slds-col slds-size_2-of-8 slds-max-medium--4-of-12 custom_combox" key={item.Id} if:true={item.pcklist}>
+                <div lang={lang}>{item.Field_Label__c}</div>
+                <lightning-combobox name={item.Field_API_Name__c} variant = "label-hidden"
+                    onchange={handleChange} options={item.picklistoptions} value={value}>
+                </lightning-combobox> 
+            </div>
+            <div class="slds-col slds-size_2-of-8 slds-max-medium--4-of-12" key={item.Id} if:true={item.typeDate}>
+                <div lang={lang} dir={dir}>{item.Field_Label__c}</div>
+                <lightning-input type="date" name={item.Field_API_Name__c} class="clndr" 
+                    onchange={handleChange} variant = "label-hidden">
+                </lightning-input> 
+            </div>
+            <!-- SC 15-05-2022 US-0010787 - - Configure fields available on filter for Coupon List Views -->
+            <template if:true={isLinkedAccounts}>
+                <div class="slds-col slds-size_2-of-8 slds-max-medium--4-of-12" key={item.Id} if:true={item.lookup}>
+                    <div lang={lang} dir={dir}>{item.Field_Label__c}</div>
+                    <lightning-combobox         
+                    name ={item.Field_API_Name__c}
+                    variant ="label-hidden"              
+                    label={item.Field_Label__c}
+                    value={accId}
+                    options={optionsSeller}
+                    onchange={handleChange} 
+                    class="accountPicker" 
+                    ></lightning-combobox>
+                </div>
+            </template>
+            <!-- SC 15-05-2022 US-0010787 - - Configure fields available on filter for Coupon List Views -->
+            <!-- Start SB 09.06.2023 US-0013316 -->
+            <div class="slds-col slds-size_2-of-8 slds-max-medium--4-of-12 custom_combox" key={item.Id} if:true={item.customPicklist}>
+                <div lang={lang}>{item.Field_Label__c}</div>
+                <lightning-combobox name={item.Field_API_Name__c} variant = "label-hidden"
+                    onchange={handleChange} options={item.custompicklistoptions} value={value}>
+                </lightning-combobox> 
+            </div>  
+            <!-- End SB 09.06.2023 US-0013316 -->
+        </template>
+        <div class="slds-col slds-size_6-of-8 slds-m-top_large">
+            <!-- <div class="slds-float_right"> -->
+                <div class="slds-float_left">
+                <lightning-button variant="neutral" label={labels.Clear} onclick={clearHandler}
+                class="slds-m-right_small custombtn custombtnclear">
+                </lightning-button>
+                <lightning-button variant="brand"  label={labels.Aplly} onclick={handleSearch}
+                class="slds-m-left_small custombtn">
+                </lightning-button>
+                
+            </div>
+            
+        </div>
+    </div>
+    </template>
+</template>

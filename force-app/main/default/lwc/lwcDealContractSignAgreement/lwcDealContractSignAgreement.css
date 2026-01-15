@@ -1,0 +1,27 @@
+.container {
+    padding: 15px 50px 15px 50px;
+    text-align: justify;
+}
+.div-table {
+    padding: 5px 0;
+}
+.div-table .table tr td {
+    border: 1px solid black;
+    padding:5px;
+}
+
+ul.contract-ul {
+    list-style-type: disc;
+    padding: 5px 50px;
+}
+.cancel-reason {
+    margin-right: 5px;
+}
+
+.decline-text {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+em{
+    color:red;
+}

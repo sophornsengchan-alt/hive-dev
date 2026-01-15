@@ -1,0 +1,72 @@
+.cls_wrapper {
+    width: 100%;
+    padding-bottom: 10px;
+}
+.cls_wrapper{
+    float: none !important;
+    /*overflow: auto !important;*/
+}
+.cls_search {
+    float : left;
+    width : 65%;
+}
+.cls_sortField {
+    float: left;
+    width: 35%;
+    padding: 0 0 0 5px;
+}
+
+.cls_search label {
+    display: none;
+}
+.cls_selectOpt {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ced4d9;
+}
+
+.cls_search input {
+    height: 34px;
+}
+
+.slds-input .slds-combobox__input {
+    height: 38px !important;
+}
+
+/* FIX PAGINATION FOR DATA TABLES */
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.paginationList {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.paginationList li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.paginationList li.active a {
+    background: #edf0f9;
+    border-radius: 3px;
+    color: #222;
+    padding: 10px;
+}
+
+.paginationList li a {
+    color: #767676;
+    font-weight: 800;
+}
+
+.itemList{
+    clear: both;
+}

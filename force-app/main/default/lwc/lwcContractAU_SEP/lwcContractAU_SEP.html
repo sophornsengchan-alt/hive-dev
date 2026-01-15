@@ -1,0 +1,23 @@
+<template>
+
+    <template if:true={isItemBase}>
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} is-disable-search=true mdt-name ='AU_Contract_Coupon_ItemBase_List_View' map-col-header-overide={colHeaderItemBaseOverride} filter={additionalFilter}></c-lwc-list-view>
+        <br>
+        <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>        
+
+        <lightning-formatted-rich-text value={termAndConditioins}></lightning-formatted-rich-text>
+
+    </template>         
+
+    <template if:true={isCatBase}>      
+        <lightning-formatted-rich-text value={aggrementText1}></lightning-formatted-rich-text>  
+            <c-lwc-list-view paginator-label-override={paginatorLabelOverride} fields-no-link={fieldsNoLink} mdt-name ='AU_Contract_Coupon_CatBase_List_View' is-disable-search="true" map-col-header-overide={colHeaderCatBaseOverride} filter={additionalFilter}></c-lwc-list-view><br>         
+            <p>&nbsp;</p>
+            <lightning-formatted-rich-text value={aggrementText2}></lightning-formatted-rich-text>
+
+        <lightning-formatted-rich-text value={termAndConditioins}></lightning-formatted-rich-text>
+
+    </template>
+    
+</template>

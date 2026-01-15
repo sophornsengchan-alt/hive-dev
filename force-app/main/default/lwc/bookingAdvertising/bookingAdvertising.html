@@ -1,0 +1,45 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <template if:true={showPageContent}>
+        <c-ebay-branded-section>
+            <div class="slds-grid g-0">
+                <div class="slds-col slds-size_12-of-12 text-center py-4 bg-F7F7F7">
+                    <h2 class="panel-title">{label.eBay_Account_Manager_Title}</h2>
+                </div>
+            </div>
+            <div class="section-box--inner box-confirmation d-block">
+                <div class="slds-grid slds-wrap py-4">
+                    <div class="slds-col slds-size_12-of-12">
+                        <p class="text-20 mb-4">{label.eBay_Account_Manager_Description}</p>
+                        <p class="text-18">{label.eBay_Account_Manager_Sub_Description}</p>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_7-of-12 g-0">								
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_3-of-12 slds-medium-size_4-of-12 d-flex slds-align-center">
+                                        <img src={accManagerImage} class="img-fluid">
+                                    </div>
+                                    <div class="slds-col slds-size_9-of-12 slds-medium-size_8-of-12 slds-align-middle">
+                                        <div class="box-account-manager bg-F7F7F7">
+                                            <span class="d-block fw-bold mb-1">{accManagerName}</span>
+                                            <p class="d-block m-0 text-break">{accManagerEmail}</p>
+                                        </div>
+                                    </div>
+                                </div>								
+                            </div>
+                        </div>
+                    </div>				
+                </div>		
+            </div>
+            <div class="devpro">
+                <!-- 29-08-2025 / Sophal Noch / US-0033187 : change utm-campaign bookings to seller_portal_am -->
+                <c-pro-trader-calendly-booked-calls 
+                    cohort-seller-details={cohortSellerData}
+                    cohort-seller-id={cohortSellerId} 
+                    account-manager-calendly-link={accManagerCalendlyLink} 
+                    utm-campaign="seller_portal_am" 
+                    current-user={currentUser}>
+                </c-pro-trader-calendly-booked-calls>
+            </div>
+        </c-ebay-branded-section>
+    </template>
+</template>

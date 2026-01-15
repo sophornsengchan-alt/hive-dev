@@ -1,0 +1,56 @@
+<template>
+    <div class="pagination">
+        <ul class="paginationList">
+            <li>
+                <!-- SB 21.11.2022 US-0012942 - Too long space under the contract page on SEP -->
+                <!-- <a onclick={onPrevPage} >
+                    <lightning-icon alternative-text={allLabels.prev} title={allLabels.prev} icon-name="utility:chevronleft" size="x-small" ></lightning-icon> 
+                    {label.prev}
+                </a> -->
+                <lightning-button-icon onclick={onPrevPage} icon-name="utility:chevronleft"  variant="container" alternative-text={allLabels.prev} title={allLabels.prev}></lightning-button-icon>
+            </li>
+            <li class={firstPageNum.clsActive}><a onclick={onChangePage} data-id={firstPageNum.value}>{firstPageNum.value}</a> </li>
+            <template if:true={hasMorePre}>
+                <li class="paginationDot">...</li>                        
+            </template>
+            <template for:each={displayPaginationLimit} for:item="page">
+                <li key={page.value} class={page.clsActive}>
+                    <a onclick={onChangePage} data-id={page.value}>{page.value}</a> 
+                </li>
+            </template>
+            <template if:true={hasMoreNext}>
+                <li class="paginationDot">...</li>                        
+            </template>
+            <li if:true={showLast} class={lastPageNum.clsActive}><a onclick={onChangePage} data-id={lastPageNum.value}>{lastPageNum.value}</a> </li>
+            
+            <li>
+                <!-- SB 21.11.2022 US-0012942 - Too long space under the contract page on SEP -->
+                <!-- <a onclick={onNextPage} >
+                    {label.next} 
+                <lightning-icon alternative-text={allLabels.next} title={allLabels.next} icon-name="utility:chevronright" size="x-small" ></lightning-icon></a> -->
+                <lightning-button-icon onclick={onNextPage} icon-name="utility:chevronright"  variant="container" alternative-text={allLabels.next} title={allLabels.next}></lightning-button-icon>
+            </li>
+            <li>
+                <span class="slds-list--horizontal gotoInputContainer">
+                    <span class="slds-var-p-top_x-small slds-var-p-right_x-small">{allLabels.goto}</span>
+
+                    <lightning-input
+                    name="gotopage"
+                    label={allLabels.goto}
+                    variant="label-hidden"
+                    type="number"
+                    min="1"
+                    step="1"
+                    onchange={handleGoToInput} 
+                    onkeypress={handleGoToInputKeyPress}
+                    class="gotoInput"></lightning-input>
+
+                    <!-- <lightning-icon size="small" icon-name="utility:chevronright" alternative-text="Go to page" title="Go to page" class="slds-var-p-top_xx-small slds-p-left--none gotoArrow"></lightning-icon> -->
+                    <lightning-button-icon onclick={handleGotoClick}  size="large" icon-name="utility:chevronright"  variant="bare" alternative-text="Go to page" title="Go to page" class="slds-var-p-top_xx-small slds-p-left--none gotoArrow"></lightning-button-icon>
+
+                </span>
+                
+            </li>
+        </ul>
+    </div>
+</template>

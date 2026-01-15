@@ -1,0 +1,31 @@
+<template>
+    <div id="mainDivLoading">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <header class="slds-modal__header slds-modal__header_empty">
+                <!-- <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h2> -->
+                    
+              </header>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="wave-center">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div> 
+                        <div class="wave"></div> 
+                        <lightning-formatted-text value={msg}></lightning-formatted-text>                       
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div> 
+                    </div>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+
+    </div>
+</template>

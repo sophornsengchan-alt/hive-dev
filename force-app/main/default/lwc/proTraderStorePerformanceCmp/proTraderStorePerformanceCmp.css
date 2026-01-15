@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'MarketSans';
+  src: url(/resource/MarketSansFont/ebay_market_sans/Web/TTF/MarketSans-Regular.ttf);
+}
+@font-face {
+  font-family: 'MarketSansBold';
+  src: url(/resource/MarketSansFont/ebay_market_sans/Web/TTF/MarketSans-Bold.ttf);
+}
+:host {
+    --font-size-h1: 2.25rem;
+    --font-size-h3: 1.5rem;
+    --font-size-number: 2rem;
+    --font-size-text-big: 1.125rem;
+    --font-size-text-big-small: 1rem;
+    --font-size-text-default: .875rem;
+    --sds-section-color:#EBEBEB;
+    --slds-c-accordion-heading-text-color:white;
+    --sds-c-accordion-heading-text-color-hover:rgb(236, 230, 230);
+    letter-spacing: 0.05rem;
+    display: block;
+    --sds-border-color:black;
+    --hive-portal-custom-font-regular: MarketSans, Helvetica, sans-serif;
+    --hive-portal-custom-font-bold: MarketSansBold, Helvetica, sans-serif;
+  }
+.main-section{
+    position: relative;
+    padding: 2rem 0;
+    /* background-color: #F7F7F7; */
+}
+
+/************************************************
+  Color Bar
+*************************************************/
+.color-bar { position: absolute; bottom: 0; width: 100%; height: 8px; background-color: #D34340; }
+.color-bar div { position: absolute; left: 50%; top: 0; width: 25%; height: 100%; background-color: #EBB13D; }
+.color-bar div::before,
+.color-bar div::after {content: ''; position: absolute; top: 0; width: 25%; height: 100%; }
+.color-bar div::before { left: -100%; width: 100%; background-color: #2565CB; }
+.color-bar div::after { right: -100%; width: 100%; background-color: #91B63D; }
+
+
+h1,h2,h3,h4,h5,h6 { margin-bottom: 0; font-weight: 700; font-family: var(--hive-portal-custom-font-regular); }
+h1 { font-size: var(--font-size-h1); color:#191919; }
+h3 { font-size: var(--font-size-h3); }
+h6 { font-size: var(--font-size-text-default); }
+p{ margin-bottom: 0; font-family: var(--hive-portal-custom-font-regular);}
+.your-performace{ font-size: 2.125rem; line-height: 2.5rem;font-family: var(--hive-portal-custom-font-bold); }
+.color-blue { color: #0064D2; }
+.color-gray { color: #767676; }
+.color-green { color: #86B817; }
+.color-red { color: #E53238; } 
+.description-font{ font-size: var(--font-size-text-default); }
+.number-font-size{ font-size: var(--font-size-number); font-family: var(--hive-portal-custom-font-bold);}
+
+.num-text {
+    font-weight: 700;
+    font-size: var(--font-size-text-big);
+    line-height: 1.2;
+    font-family: var(--hive-portal-custom-font-bold);
+}
+
+.green-up-icon{ --slds-c-icon-color-foreground-default: #91B63D; }
+.red-down-icon{ --slds-c-icon-color-foreground-default: #E0103A; }
+  
+@media (min-width: 992px) {
+  :host {
+    --font-size-h1: 2.25rem;
+    --font-size-h3: 1.5rem;
+    --font-size-number: 2.5rem;
+    --font-size-text-big: 1.25rem;
+    --font-size-text-big-small: 1rem;
+  }
+}
+
+.section-color{
+  
+  --slds-c-accordion-summary-color-background: var(--sds-section-color);
+  --lwc-colorTextIconDefault:var(--sds-section-color);
+  
+  
+}
+.table-responsive{
+  position: relative;
+  overflow: auto;
+  transform: translate3d(0, 0, 0);
+  justify-content: center!important;
+  vertical-align: middle;
+  font-size: 0.875rem;
+  border-radius: 16px;
+  vertical-align: middle;
+  box-shadow: 3px 3px 20px #0000001A;
+}
+
+.table-responsive thead tr th{
+  background-color: #F7F7F7;
+  font-family: var(--hive-portal-custom-font-bold);
+}
+.sub-category{
+  font-family: var(--hive-portal-custom-font-bold);
+}
+.td-class{
+  width: 20%;
+  border-bottom: 1px solid #C7C7C7;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.belowline{
+  border-bottom: 1px solid #C7C7C7;
+}
+.zero-box{
+  height: 10px;
+  width: 10px;
+  border-radius: 0px;
+  background-color: #bbbbbb;
+  display: inline-block;
+}
+.btn-view-report {
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #FFF;
+  background: #0064D2;
+  border: 1px solid #0064D2;
+  font-family: var(--hive-portal-custom-font-bold);
+}
+.btn-view-report:hover {
+  color: #0064D2;
+  border: 1px solid #0064D2;
+  background-color: #FFF;
+  font-family: var(--hive-portal-custom-font-bold);
+}

@@ -1,0 +1,593 @@
+.main-left-div{
+    min-height: 350px;
+    background-color: #F5F5F5;
+    color: #121258;
+}
+.default-text-font {
+    font-size: 16px !important;
+}
+.main-right-div{
+    min-height: 350px;
+    color: #121258;
+}
+.slds-grid .wrapper h3{
+    font-size: 24px;
+    line-height: 32px;
+}
+section {
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.youtube-video-wrapper {
+    background-size: cover;
+    overflow: hidden;
+    cursor: pointer;
+}
+.slds-grid .wrapper p {
+    font-size: 16px !important;
+}
+.cblue {
+    color: #382AEF !important;
+    font-weight: bold !important;
+}
+.page-padding{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.box-open-image{
+    width: 45%;
+}
+.calendly-button{
+    color: #FFFFFF;
+    border: #006EFC;
+    background: #006EFC;
+    padding: 0.55rem 24px;
+    font-size: 16px;
+    white-space: normal;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+}
+.calendly-button:focus {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+    box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .5)
+}
+.calendly-button:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc
+}
+.setup-call-fixed{
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    z-index: 9998;
+}
+
+.d-flex{
+    padding: 1.5rem !important;
+    display: flex!important;
+    align-items: center!important;
+}
+.px-1 {
+    padding-right: .25rem !important;
+    padding-left: .25rem !important
+}
+.px-4{
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.light-block {
+    background-color: #F5F5F5;
+}
+
+.wrapper {
+    color: #121258;
+}
+.ebay-banner{
+    font-size: 30px;
+    font-weight: 700 !important;
+    background: #121258;
+}
+.pt50 {
+    margin: 0 !important;
+    font-weight: 700 !important;
+}
+
+.column-form {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 28%;
+    min-height: 51rem;
+}
+
+.action-section {
+    text-align: center; 
+    align-items: center; 
+    padding: 1.5rem !important;
+}
+.btn-do-action{
+    text-align: left;
+}
+.title-light {
+    color: #C5E5FB;
+}
+.title-semi-dark {
+    color: #659EFF;
+}
+
+.sub-header{
+    padding: 1.2rem 0;
+    font-size: 1.5rem;
+    color: #121258;
+    background-color: #C5E5FB;
+}
+.padding-left-7rem{
+    padding-left: 7rem;
+}
+
+
+/* NEW CS */
+
+@font-face {
+    font-family: 'MarketSans';
+    src: url(/resource/MarketSansFont/ebay_market_sans/Web/TTF/MarketSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'MarketSansBold';
+    src: url(/resource/MarketSansFont/ebay_market_sans/Web/TTF/MarketSans-Bold.ttf);
+}
+
+:host {
+    /** set the font for all root/body text **/
+    --hive-portal-custom-font-regular: MarketSans, Helvetica, sans-serif;
+    --hive-portal-custom-font-bold: MarketSansBold, Helvetica, sans-serif;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    font-family: var(--hive-portal-custom-font-regular);
+}
+
+.bg-F7F7F7 {
+    background-color: #F7F7F7;
+}
+
+.text-center {
+    text-align: center!important;
+}
+.container{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;   
+}
+/* h1, h2, h3, h4, h5, h6 {
+    font-family: var(--hive-portal-custom-font-regular);
+} */
+.pt-2 {
+    padding-top: 0.5rem!important;
+}
+.align-items-center {
+    align-items: center!important;
+}
+
+.d-flex {
+    display: flex!important;
+}
+
+img, svg {
+    vertical-align: middle;
+}
+.title-24 {
+    font-size: 24px;
+    line-height: 29px;
+}
+.mb-4 {
+    margin-bottom: 1.5rem!important;
+    font-family: var(--hive-portal-custom-font-bold);
+}
+.justify-content-center {
+    justify-content: center!important;
+}
+
+.bg-FFFFFF {
+    background-color: #FFFFFF;
+}
+.box-account-manager span {
+    text-align: left;
+    display: block;
+}
+
+.fw-bold {
+    font-weight: 700!important;
+    font-family: var(--hive-portal-custom-font-bold);
+}
+
+@media (min-width: 992px){
+    .offset-lg-1 {
+        margin-left: 8.33333333%;
+    }
+    .col-lg-10 {
+        flex: 0 0 auto;
+        width: 83.33333333%;
+    }
+    .offset-lg-3 {
+        margin-left: 25%;
+    }
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 62%;
+    }
+   
+}
+
+@media (min-width: 768px){
+    .py-md-5 {
+        padding-top: 3rem!important;
+        padding-bottom: 3rem!important;
+    }
+}
+
+@media (min-width: 1200px){
+    .col-xl-9 {
+        flex: 0 0 auto;
+        width: 75%;
+    }
+}
+
+/* Acmatac Seing, 16.01.2024 */
+/* Copied from Bootstrap */
+.text-center {
+    text-align: center!important;
+}
+.mb-3 {
+    margin-bottom: 1rem !important
+}
+.mb-lg-3 {
+    margin-bottom: 1rem !important
+}
+.m-0 {
+    margin: 0 !important
+}
+.p-3 {
+    padding: 1rem !important
+}
+.py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important
+}
+.pe-lg-4 {
+    padding-right: 1.5rem !important
+}
+.ratio-16x9 {
+    --bs-aspect-ratio: 56.25%
+}
+.ratio {
+    position: relative;
+    width: 100%
+}
+
+.ratio::before {
+    display: block;
+    padding-top: var(--bs-aspect-ratio);
+    content: ""
+}
+
+.ratio>* {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+.d-grid {
+    display: grid !important
+}
+.d-none {
+    display: none !important
+}
+.d-block {
+    display: block !important
+}
+.text-start {
+    text-align: left !important
+}
+.text-end {
+    text-align: right !important
+}
+@media (min-width:768px) {
+    .text-md-end {
+        text-align: right !important
+    }
+}
+@media (min-width:992px){
+    .d-lg-none {
+        display: none !important
+    }
+    .d-lg-block {
+        display: block !important
+    }
+    .ps-lg-4 {
+        padding-left: 1.5rem !important
+    }
+}
+.ps-4 {
+    padding-left: 1.5rem !important
+}
+.g-0,
+.gx-0 {
+    --bs-gutter-x: 0
+}
+
+.g-0,
+.gy-0 {
+    --bs-gutter-y: 0
+}
+.px-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important
+}
+.pb-5 {
+    padding-bottom: 3rem !important
+}
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto
+}
+/* Copied from Bootstrap */
+/* Common CSS from Protrader Registration */
+.strong {
+  font-family: var(--hive-portal-custom-font-bold) !important;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+a.lnk {
+  color: #382AEF;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+}
+
+.bg-F7F7F7 {
+  background-color: #F7F7F7;
+}
+.bg-FFFFFF {
+  background-color: #FFFFFF;
+}
+.color-707070 {
+  color: #707070;
+}
+.color-3665F3 {
+  color: #3665F3;
+}
+
+.btn {
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-family: var(--hive-portal-custom-font-bold);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.btn.btn-blu {
+  color: #FFF;
+  background: #0064D2;
+  border: 1px solid #0064D2;
+}
+.btn.btn-blu:hover {
+  color: #0064D2;
+  border: 1px solid #0064D2;
+  background-color: #FFF;
+}
+.btn.btn-dark-blu {
+  color: #C5E5FB;
+  background: #121258;
+  border: 1px solid #121258
+}
+.btn.btn-dark-blu:hover {
+  color: #121258;
+  background: #C5E5FB;
+  border: 1px solid #121258
+}
+.btn.btn-light-blu {
+  color: #121258;
+  background: #C5E5FB;
+  border: 1px solid #121258;
+}
+.btn.btn-light-blu:hover {
+  color: #C5E5FB;
+  background: #121258;
+  border: 1px solid #121258;
+}
+.btn.btn-white {
+  color: #0064D2;
+  background: #FFFFFF;
+  border: 1px solid #0064D2;
+}
+.btn.btn-white:hover {
+  color: #FFFFFF;
+  background: #0064D2;
+  border: 1px solid #0064D2;
+}
+.btn-iinfo { 
+  display: inline-block;
+  z-index: 10;
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  background: url("../img/ico-information.png") no-repeat center / 100% auto;
+}
+.popover-header {
+  font-size: .8125rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  padding: 0.5rem 0.75rem;
+  color: #212529;
+  background: #FFFFFF;
+  border: 0;
+  border-radius: 8px;
+}
+
+.title-18 {
+  font-size: 18px;
+  line-height: 1.625rem;
+}
+.title-24 {
+  font-size: 24px;
+  line-height: 29px;
+}
+.title-30 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.title-34 {
+  font-size: 2.125rem;
+  line-height: 2.5rem;
+}
+.title-32 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+.text-20 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+.text-12 {
+  font-size: .75rem;
+  line-height: 1.25rem;
+}
+.text-14 {
+  font-size: .875rem;
+}
+.text-alert {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: #707070;
+}
+
+.table-responsive {
+  border-radius: 16px;
+}
+.form-select {
+  font-size: .875rem;  
+}
+.ico-attention {
+  width: 35px;
+}
+
+.box-border-3665F3 {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px #00000014;
+  border: 1px solid #3665F3;
+  border-radius: 8px;
+  padding: 55px 70px;
+}
+.box-border-C5E5FB {
+  color: #121258;
+  background: #C5E5FB;
+  box-shadow: 0px 0px 10px #00000014;
+  border-radius: 8px;
+  padding: 30px 70px;
+}
+.box-border-C5E5FB .btn,
+.box-border-3665F3 .btn {
+  min-width: 188px;
+}
+
+
+.section-box {
+  background-color: #FFFFFF;
+  box-shadow: 3px 3px 20px #0000001A;
+  border-radius: 0px 0px 16px 16px;
+}
+.section-box--inner {
+  padding: 0 25px;  
+}
+@media screen and (max-width: 767.98px) {
+  .main-container {
+    padding: 0 30px;
+  }
+  .section-box.section-box--1 {
+    border-radius: 0px;
+  }  
+  .d-flex{
+    padding: 0.5rem !important;
+  }
+}
+@media screen and (max-width: 991.98px) {
+  .box-border-3665F3,
+  .box-border-C5E5FB {
+    padding: 32px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section-box--inner {
+    padding: 0 45px;
+  } 
+}
+.inner-box {
+  background-color: #FFFFFF;
+  box-shadow: 3px 3px 15px #0000001A;;
+  border-radius: 13px;
+  display: block;
+  height: 100%;
+}
+
+.img-box {
+  position: relative;
+  text-align: center;
+}
+.img-box img {
+  border-radius: 16px;
+  object-position: 60% 0;
+}
+.rounded-circle{
+  border-radius: 50%;
+}
+.panel-title {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-family: var(--hive-portal-custom-font-bold);
+}
+
+/* Common CSS from Protrader Registration */

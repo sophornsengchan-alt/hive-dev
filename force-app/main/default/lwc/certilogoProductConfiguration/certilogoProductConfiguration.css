@@ -1,0 +1,134 @@
+@media screen and (max-width: 1799px){
+    .top-button-container {
+        width: 95%;
+        margin: auto;
+    }
+
+    .buttons-group {
+        width:100%;
+        margin: auto;
+        text-align: center;
+        font-size: xx-small;
+    }
+
+    .col-buttons-group {
+        padding: 0px 4px !important;
+        min-width: 405px !important;
+    }
+    
+
+   
+}
+@media screen and (min-width: 1800px){
+    .top-button-container {
+        width: 70%;
+        margin: auto;
+    }
+
+    .buttons-group {
+        width:100%;
+        margin: auto;
+        text-align: center;
+        font-size: small;
+    }
+
+    .col-buttons-group {
+        min-width: 480px !important;
+    }
+}
+
+/* .top-button-container {
+    width: 70%;
+    margin: auto;
+} */
+
+/* .bottom-button-container {
+    width: 70%;
+    margin: auto;
+    text-align: right;
+    padding-top: 45px;
+} */
+
+.custom-card-header {
+    background-color: #F3F3F3;
+    margin-top: -12px;
+}
+
+.custom-table-area {
+    max-height: 610px;
+    overflow:scroll;
+    min-height: 300px;
+}
+
+.expand-row {
+    padding-bottom: 10px;
+}
+
+/* .buttons-group {
+    width:100%;
+    margin: auto;
+    text-align: center;
+    font-size: small;
+} */
+
+.small-colum {
+    width:3.25rem;
+}
+
+.smallest-column {
+    width: 1rem;
+}
+
+.custom-style-textarea, .custom-style-recpicker div {
+    width: 400px !important; 
+}
+
+/* 
+.custom-style-recpicker label {
+    display: none ;
+} */
+
+.custom-style-exptable {
+    border-left: var(--lwc-borderWidthThin, 1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder, rgb(229, 229, 229)));
+}
+
+.custom-style-exptable th, .custom-style-exptable td {
+    border-width: 0px !important;
+}
+
+.custom-style-freqoption {
+    width: 210px !important;
+}
+
+/* Custom Error Section */
+div.error-section {
+    /* width: 30%; */
+    padding: 15px 15px;
+    background-color: rgb(197,29,61);
+    color: white;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    
+}
+
+div.error-section .error-icon {
+    --sds-c-icon-color-foreground-default: white !important;
+    padding-right: 10px;
+    vertical-align: text-bottom;
+}
+
+div.error-section span, article.error-section a {
+    color: white !important;
+    font-weight: 500;
+}
+
+.custom-large-cell-width{
+    width: 140px;
+}
+
+.deliveryto-width {
+    width: 300px !important;
+}
+.description-with {
+    width: 325px !important;
+}

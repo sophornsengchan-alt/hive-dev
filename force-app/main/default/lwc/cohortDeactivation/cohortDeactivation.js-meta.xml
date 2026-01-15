@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="isFromFlowChangeRequest" type="Boolean" label="Is From Flow Change Request" description="Is From Action Change Request" default="false"/>
+            <property name="recordId" type="String" label="Cohort Id" description="Cohort Id"/>
+            <property name="listBsId" type="String[]" label="List Cohort Seller Id" description="List Cohort Seller Id"/>
+            <property name="hideHeader" type="Boolean" label="Hide Header" description="Hide Header" default="false"/>
+            <property name="deactivateReqDesc" type="String" label="Deactivate Request Description" description="Deactivate Request Description"/>
+            <property name="deactivateReqNote" type="String" label="Deactivate Request Note" description="Deactivate Request Note"/>
+            <property name="implementAction" type="String" label="Implement Action" description="Implement Action"/>
+            <property name="isBatchRunning" type="Boolean" label="Is Batch Running" description="Is Batch Running" default="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

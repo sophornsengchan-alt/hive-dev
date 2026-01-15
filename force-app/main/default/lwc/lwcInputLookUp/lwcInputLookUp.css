@@ -1,0 +1,10 @@
+.lift-up20{
+    margin-top: -20px;
+  }
+  .lift-up-5{
+    margin-top: -5px;
+  }
+  .pill-list{
+    min-height: 65px;
+    overflow-y: scroll;
+  }

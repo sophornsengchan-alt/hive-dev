@@ -1,0 +1,27 @@
+.wrapper{
+    position: relative;
+    background-color: #F8F9FB;
+    overflow: hidden;
+}
+.content{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.button{
+    position:absolute;
+    bottom: 20px;
+    right: 20px;
+}
+img{
+    height: 100%;
+    margin-left: -100px;
+}
+
+
+.button-ab{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}

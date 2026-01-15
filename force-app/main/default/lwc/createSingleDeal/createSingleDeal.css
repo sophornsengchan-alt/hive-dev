@@ -1,0 +1,41 @@
+.titleBlock {    
+    height: 55px;
+    margin-bottom: 0px !important;
+}
+
+
+
+.no-margin{
+    display: inline-block;
+} 
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.cls_message-error{
+    background-color: #fff2f2;
+    color: red;
+}
+.cls_message-success{
+    background-color: #e7fbee;
+    color: #00ad0d;
+}
+.cls_input-error{
+    color: var(--lwc-colorTextError,rgb(234, 0, 30))
+}
+
+.card-padding {
+    box-shadow: none;
+}
+
+.slds-grid.slds-gutters{
+    margin-left:-25px;
+    margin-right:-25px;
+}
+.back_text{
+    font-size: 13px;
+}

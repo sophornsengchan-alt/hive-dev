@@ -1,0 +1,60 @@
+<template>
+   
+  <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+  <div class="main-div">
+      <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+        <lightning-input class="" data-id="input-search" label={fieldLabel} value={searchTextValue} variant = {variant} type="search" placeholder={placeHolder} onclick={onInputClick} onchange={onInputChange} onfocus={handleFocus} onblur={onLostFocus} ></lightning-input>
+        
+
+        <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+          <lightning-spinner alternative-text="Loading" size="x-small" class="slds-var-m-top_medium" if:true={isSeaching}></lightning-spinner>
+          <!-- <lightning-icon icon-name="utility:search"  variant="" alternative-text="search" title="search" class="slds-var-m-top_small" size="x-small" if:true={showSearchIcon}></lightning-icon> -->
+          <!-- <lightning-button-icon icon-name="utility:close"  variant="" alternative-text="Clear" title="Clear" class="slds-var-m-top_small" size="x-small" if:true={showClearBtn} onclick={handleClearSearch}></lightning-button-icon> -->
+        </span>
+      </div>        
+      <!-- -->
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open slds-grid slds-var-m-right_x-small"  if:true={showResult} >
+             
+                <!-- <div class="slds-grid slds-var-m-around_xx-small">                   
+                    <lightning-menu-item value="ActionShowAll" label={txtShowAllFor} class="slds-truncate" data-action="showAll" onclick={onItemClick} prefix-icon-name="utility:search"></lightning-menu-item>
+                </div> -->
+                
+                <div  class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid slds-dropdown_left slds-var-m-around_xx-small lift-up-5" data-id="main-drop" role="listbox" aria-label="" tabindex="0" aria-busy="false" onscroll={handleScroll} onblur={handleDropBlur}>
+                  <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                    <template for:each={listResult} for:item="item" for:index="index">
+                      <li class="slds-listbox__item" key={item.entityId} tabindex={index}  title={item.displayEntity1} onclick={onItemClick} data-id={item.entityId} data-label={item.displayEntity1}>
+                        <div  class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                          <span class="slds-media__figure slds-listbox__option-icon">
+                            <lightning-icon icon-name={iconName} alternative-text="" title="" size="small" class="slds-align-middle"></lightning-icon>  
+                          </span>
+                          <span class="slds-media__body">
+                            <lightning-formatted-rich-text value={item.displayEntity1} class="slds-listbox__option-text slds-listbox__option-text_entity"></lightning-formatted-rich-text>
+                          </span>
+                        </div>
+                      </li>
+                    </template>
+                    </ul>
+                  </div>
+        </div>
+    </div>
+
+    <!-- <div if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+              <header class="slds-modal__header">                
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Search for {fieldLabel}</h2>
+              </header>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore quis
+                  aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud
+                  ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+              </div>
+              <footer class="slds-modal__footer">                
+                <lightning-button label="Close" onclick={handleCloseModal} variant="neutral"></lightning-button>
+              </footer>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+    </div> -->
+</template>

@@ -1,0 +1,207 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+ 
+li.horizontalMenuItem {
+    display: inline-block;
+}
+
+li.groupMenuItem {
+    display: block;
+}
+
+div {
+    box-sizing: content-box;
+}
+
+[aria-expanded="true"] > .slds-tree__item .slds-button__icon .menu-icon,
+[aria-expanded="false"] > .slds-tree__item .slds-button__icon .menu-icon,
+.menu-icon
+{
+    transform: none !important;
+}
+
+a.menuLink
+{
+    color: var(--ccnavmenus-brandNavigationColorText, var(--dxp-c-link-text-color, var(--dxp-s-link-text-color,var(--dxp-g-brand, black)))) !important;
+    display: flex;
+    text-transform: var(--ccnavmenus-textTransform);
+    font-family: var(--ccnavmenus-fontFamily);
+    text-decoration: none;
+}
+
+a.menuLink:focus
+{
+    text-decoration: none;
+    outline: auto;
+}
+
+.slds-button:focus {
+    outline: auto;
+}
+
+.slds-tree__item > button
+{
+    color: var(--ccnavmenus-brandNavigationColorText, black);
+}
+
+c-tree-item[role="treeitem"][data-is-vertical="false"] {
+    display: inline-block;
+}
+
+.horizontal-groupDiv-1 c-tree-item[role="treeitem"][data-is-vertical="false"] {
+    display: block;
+}
+
+.slds-tree__item:hover {
+    /*MN-19062023-US-0013379-Fixed white background color*/
+    /* background-color: var(--ccnavmenus-brandNavigationBarBackgroundColor, #c9c9c9); */
+    box-shadow: inset 0 0px 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.slds-tree__item {
+    text-decoration: none !important;
+}
+
+c-tree-item[role="treeitem"][aria-selected="true"] > .slds-tree__item {
+    background-color: var(--ccnavmenus-brandNavigationBarBackgroundColor, white);
+    box-shadow: inset var(--ccnavmenus-brandNavigationBarBackgroundColor, white) 4px 0px 0px, 
+                inset 0 0px 0 20px rgba(255, 255, 255, 0.7);
+}
+
+c-tree-item[aria-level="1"] > div.slds-tree__item
+{
+    background-color: var(--ccnavmenus-brandNavigationBarBackgroundColor, white);
+}
+
+.vertical-groupDiv-1 {
+    background-color: var(--ccnavmenus-brandNavigationBackgroundColor, white);
+}
+
+.horizontal-groupDiv-1 {
+    position: absolute;
+    margin-top: 10px;
+    min-width: var(--ccnavmenus-horizontalItem-min-width, 20rem);
+    max-width: var(--ccnavmenus-horizontalItem-min-width, auto);
+    background-color: var(--ccnavmenus-brandNavigationBackgroundColor, white);
+    border: 1px solid gray;
+    z-index: 9999;
+    padding-right: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.horizontal-groupDiv-1:after, 
+.horizontal-groupDiv-1:before {
+	bottom: 100%;
+	left: 2.7rem;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.horizontal-groupDiv-1:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: var(--ccnavmenus-brandNavigationBackgroundColor, white);
+	border-width: 9px;
+    margin-left: -9px;
+}
+.horizontal-groupDiv-1:before {
+	border-color: rgba(0, 0, 0, 0);
+	border-bottom-color: #000000;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+button[title='Expand Tree Branch'].slds-is-disabled {
+    display: none;
+}
+
+c-tree-item[aria-level="1"][data-is-vertical="false"] > div {
+    padding-right: calc(var(--ccnavmenus-topLevelItemSpacing)/2);
+    padding-left: calc(var(--ccnavmenus-topLevelItemSpacing)/2);
+    position: relative;
+}
+
+
+div[role="ccnavMenu-treeItemCSS"] > div {
+    padding-left: var(--ccnavmenus-midLevelItemSpacing, 10px);
+}
+
+div[role="ccnavMenu-treeItemCSS"] > div[data-is-leaf="true"] {
+    padding-left: 32px;
+}
+
+[data-level="1"] > div[role="ccnavMenu-treeItemCSS"] > div[data-is-leaf="true"] {
+    padding-left: 0px;
+}
+
+li.groupMenuItem > c-tree-item > div[role="ccnavMenu-treeItemCSS"] {
+    padding-left: 11px;
+}
+
+.horizontal-groupDiv-1 > ul > li.groupMenuItem > c-tree-item > div[role="ccnavMenu-treeItemCSS"],
+ul > li.groupMenuItem > c-tree-item[data-is-vertical="true"][data-level="1"] > div[role="ccnavMenu-treeItemCSS"] {
+    padding-left: 0px;
+}
+
+.horizontalMenuItem:last-child .horizontal-groupDiv-1 {
+    transform: translateX(var(--ccnavmenus-horizontalGroup-translateX, -75%));
+}
+
+.horizontalMenuItem:last-child .horizontal-groupDiv-1:after {
+    margin-right: -9px;
+    margin-left: 0;
+    right: 2.7rem;
+    left: auto;
+}
+.horizontalMenuItem:last-child .horizontal-groupDiv-1:before {
+	margin-right: -10px;
+    margin-left: 0;
+    right: 2.7rem;
+    left: auto;
+}
+
+@media (max-width: 650)
+{
+    .horizontalMenuItem:last-child .horizontal-groupDiv-1 {
+        right: 0;
+    }
+    
+    .horizontalMenuItem:last-child .horizontal-groupDiv-1:after {
+        margin-right: -9px;
+        margin-left: 0;
+        right: 2.7rem;
+        left: auto;
+    }
+    .horizontalMenuItem:last-child .horizontal-groupDiv-1:before {
+        margin-right: -10px;
+        margin-left: 0;
+        right: 2.7rem;
+        left: auto;
+    }
+}
+
+@media (max-width: 499px)
+{
+
+    c-tree-item[role="treeitem"][data-is-vertical="false"] {
+        display: block;
+    }
+
+    .horizontal-groupDiv-2 {
+        position: relative;
+        margin-top: 0;
+    }
+
+    c-tree-item[aria-level="1"][data-is-vertical="false"] {
+        margin-right: 0;
+    }
+
+}

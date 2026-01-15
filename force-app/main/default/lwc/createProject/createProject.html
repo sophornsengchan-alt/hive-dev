@@ -1,0 +1,29 @@
+<template>
+    <div class="slds-is-relative">
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+
+    <template lwc:if={isReady}>
+        <div class="slds-text-align--center">
+            <c-lwc-message ></c-lwc-message>
+        </div>
+        <template lwc:if={step1}>
+            <c-initiate-call-contact-list header-name={label.Create_Project_Title} 
+                list-contact={listContact} 
+                column-contacts={columnContacts} 
+                selected-contacts={selectedContacts}
+                site-prefix={sitePrefix}
+                oncontactselected={handleContactSelected}
+            >
+            </c-initiate-call-contact-list>
+            
+            <lightning-modal-footer >
+                <div class="slds-grid slds-grid_align-center">
+                    <lightning-button label={label.Cancel}  icon-name="utility:undo" icon-position="left" onclick={backToRecord} class="slds-p-left_small"></lightning-button>
+                    <lightning-button lwc:if={hasContactList} label={label.Create_Btn} icon-name="utility:right" icon-position="right" variant="brand" onclick={createProject} class="slds-p-left_small" ></lightning-button>
+                </div>
+            </lightning-modal-footer>
+
+        </template>
+    </template>
+</div>
+</template>

@@ -1,0 +1,82 @@
+<template>
+    
+    <lightning-card> 
+        <!-- icon-name={sectionIcon} title="Hive University - My Assignments" -->
+        <div class="wrap-header-title"> 
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <div class="icon-trail-head-icon">
+                        <img class="logo" src={MyTrailHeadIcon}/>
+                    </div>
+                </div>
+                <div class="slds-media__body">
+                        <h2 class="slds-card__header-title" aria-level="2">
+                            <span class="slds-text-heading_small slds-truncate">Hive University - My Assignments</span>
+                        </h2>
+                </div>
+                <div class="slds-no-flex">
+                        <slot name="actions">
+                            <lightning-button-icon class='action-refresh' slot='actions'
+                            icon-name="utility:refresh"
+                            variant="neutral" alternative-text="Refresh"
+                            onclick={refreshAssignments}>
+                            </lightning-button-icon>
+                        </slot>
+                </div>
+            </header>
+        </div>
+        <div class="margin-bottom">
+            &nbsp;
+        </div>
+        
+        <template if:false={hasAnyAssignments}>
+            <div class="slds-align_absolute-center slds-p-around_small">
+                No Assignments <br />
+                Looks like you've met all your assignments.
+            </div>
+        </template>
+        <template if:true={hasAnyAssignments}>
+            <div if:true={paginatedTrailEntries} class='slds-clearfix'>
+                <template for:each={paginatedTrailEntries} 
+                    for:item="assignment"
+                >
+                    <div key={assignment.Id} class='assignment slds-float_left'>
+                        <c-th_trailhead-assignment_entry 
+                            assignment-entry={assignment}
+                            upcoming-event-window={upcomingEventWindow}
+                        ></c-th_trailhead-assignment_entry>
+                    </div>
+                </template>
+            </div>
+
+            <!-- pagination - can be in separate component -->
+            
+            <template if:true={shouldShowPagination}>
+                <div class='slds-clearfix slds-p-around_small'>
+                    <template if:true={hasNext}>
+                        <div class='slds-float_right'>
+                            <lightning-button
+                                label='Next' title='Show Next'
+                                variant='brand'
+                                onclick={next}
+                            ></lightning-button>
+                        </div>
+                    </template>
+                    <template if:true={hasPrevious}>
+                        <div class='slds-float_right'>
+                            <lightning-button
+                                label='Previous' title='Show Previous'
+                                variant='brand'
+                                onclick={previous}
+                            ></lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </template>
+
+        <div slot='footer' class='center-text'>
+            <a href={trailheadLinkAddress} target='_blank'>{trailheadLinkLabel}</a>
+        </div>
+    </lightning-card>
+</template>

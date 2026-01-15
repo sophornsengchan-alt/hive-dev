@@ -1,0 +1,174 @@
+<template>     
+    <lightning-card  title="" class="slds-var-p-around_x-small" if:true={isSellerAdmin}>
+        <div class="titleBlock slds-var-p-left_small">
+            <!-- <h1 class="slds-text-heading_large slds-m-bottom_medium" if:true={isStep1}>{Labels.LabelHeader}</h1> -->
+            <!-- <h1 class="slds-text-heading_large slds-m-bottom_medium" if:false={isStep1}>{Labels.LabelHeaderAddUser}</h1> -->
+            <!-- <br/> -->
+        </div>
+
+        <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+       <!--  ////////////////////////////////////////////// step 1 (landing) //////////////////////////////////////////////////////////////// -->
+        <span class="step1" if:true={isStep1}>        
+            <p class="slds-var-p-left_small">
+                <!-- <lightning-formatted-rich-text value={Labels.Label_step1_Text1} ></lightning-formatted-rich-text>                 -->
+            </p>
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_x-large" if:true={hasSomeContacts}>                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="slds-box list-contact" > 
+                        <lightning-layout multiple-rows="true" class="">                            
+                                
+                            <template for:each={getListContacts} for:item="usr">
+                                <lightning-layout-item padding="around-small" size="6" key={usr.Id}>
+                                    <div class="custom-box">{usr.Contact.Name}</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size="6" key={usr.Id}>
+                                    <div class="custom-box slds-text-align--right" if:true={isSellerAdmin} >                                        
+                                        <a class="slds-p-right_xx-large red-text" href="" data-usrid={usr.Id} data-conid={usr.ContactId}  onclick={handleRemoveConfirm}>{Labels.Label_Remove}</a>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                            
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+                </lightning-layout>
+            </span>
+            <p class="slds-p-horizontal_small slds-m-bottom_medium">
+                <lightning-formatted-rich-text value={Labels.Label_step1_Text2} ></lightning-formatted-rich-text>               
+            </p>
+            <p class="slds-p-horizontal_small slds-m-bottom_medium">
+                <lightning-formatted-rich-text value={Labels.Label_step1_Text3} ></lightning-formatted-rich-text>                
+            </p>
+            <p class="slds-p-horizontal_small slds-m-bottom_medium">
+                <lightning-formatted-rich-text value={Labels.Label_step1_Text4} ></lightning-formatted-rich-text>
+            </p>
+           
+        </span>
+
+        <!--  ////////////////////////////////////////////// step 2 contact info input //////////////////////////////////////////////////////////////// -->
+        <span class="step2 " if:true={isStep2}>
+            <p class="slds-var-p-left_small">
+                <lightning-formatted-rich-text value={Labels.Label_step2_Text1} ></lightning-formatted-rich-text>
+            </p>
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_x-large">                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="slds-box" data-id="boxAccounts"> 
+                        <lightning-layout multiple-rows="true">                            
+                                                       
+                                <lightning-layout-item padding="around-small" size="12" class="slds-p-bottom_xx-small">
+                                    <lightning-input placeholder="" max-length="40" value={newCont.firstName} type="text" label={Labels.LabelFirstName} data-name="contact_info" onchange={handleInputContactChange} data-id="input_firstname" variant="label-stacked" required message-when-value-missing={Labels.Msg_requiredField}></lightning-input>                                    
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size="12" class="slds-p-bottom_xx-small">
+                                    <lightning-input placeholder="" max-length="80" value={newCont.lastName} type="text" label={Labels.LabelLastName} data-name="contact_info" onchange={handleInputContactChange} data-id="input_lastname" variant="label-stacked" required message-when-value-missing={Labels.Msg_requiredField}></lightning-input>                                    
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size="12" class="slds-p-bottom_xx-small">
+                                    <lightning-input placeholder="" max-length="80" value={newCont.email} type="email"  label={Labels.LabelEmail} pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" data-name="contact_info" onchange={handleInputContactChange} data-id="input_email" variant="label-stacked" required message-when-value-missing={Labels.Msg_requiredField} message-when-type-mismatch={Labels.Msg_emailInvalid} message-when-pattern-mismatch={Labels.Msg_emailInvalid}></lightning-input>                                    
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size="12" class="slds-p-bottom_xx-small">
+                                    <label class="slds-form-element__label" for="actionOutcomeId"><abbr title="Required" class="slds-required">*</abbr>{Labels.LabelRequired}</label>
+                                </lightning-layout-item>
+
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+
+                </lightning-layout>
+                
+            </span>
+            
+            <!-- <p class="slds-var-p-left_small slds-text-color--error" >
+                 {Labels.LabelRequired}
+            </p> -->
+
+        </span>
+
+        <!--  ////////////////////////////////////////////// step 3 if(account-contact-relation >1 )//////////////////////////////////////////////////////////////// -->
+    <!--  MN-24042023-US-0013591-Disable step 3
+        <span class="step3 " if:true={isStep3}>
+            <p class="slds-var-p-left_small">
+                <lightning-formatted-rich-text value={Labels.Label_step3_Text1} ></lightning-formatted-rich-text>
+            </p>
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_x-large">                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="slds-box" data-id="boxAccounts"> 
+                        <lightning-layout multiple-rows="true">  
+
+                            <lightning-layout-item padding="around-small" size="12">
+                                <lightning-checkbox-group required variant="label-hidden" data-name="selectAccount" label="" options={optionAccouunts} value={selectedAccount} onchange={handleSelectAccount} message-when-value-missing=" "></lightning-checkbox-group>                             
+                            </lightning-layout-item>
+                            <!-
+                            <template for:each={optionAccouunts} for:item="accCont">
+                                <lightning-layout-item padding="around-small" size="12" key={accCont.Id}>
+                                    <!- <lightning-radio-group name="selectAccount" label="" options={optionAccouunts} value={selectedAccount} onchange={handleSelectAccount} ></lightning-radio-group>        ->
+                                    <lightning-checkbox-group required variant="label-hidden" data-name="selectAccount" label="" options={optionAccouunts} value={selectedAccount} onchange={handleSelectAccount} message-when-value-missing=" "></lightning-checkbox-group>                             
+                                </lightning-layout-item>
+                            </template>
+                            ->                              
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+                </lightning-layout>
+            </span>
+            <p class="slds-var-p-left_small slds-text-color--error" if:true={showStep2Error}>
+                <lightning-formatted-rich-text value={Labels.Label_step3_Error1} ></lightning-formatted-rich-text>                
+            </p>
+
+        </span>
+    -->
+    <!--  ////////////////////////////////////////////// Remove Contact Confirmation //////////////////////////////////////////////////////////////// -->
+    <span class="step4" if:true={showRemoveConfirm}>
+        <p class="slds-var-p-left_small">
+           
+        </p>
+        <span class="slds-var-p-around_x-large">            
+            <lightning-formatted-rich-text value={Labels.Label_ConfirmMSG} ></lightning-formatted-rich-text>
+        </span>       
+
+    </span>
+
+    <!--  ////////////////////////////////////////////// Message/Error Block (visible when submit error)//////////////////////////////////////////////////////////////// -->
+    <span class="step5" >
+        <p class="slds-var-p-left_small">
+            <lightning-formatted-rich-text  value={Labels.Msg_errorDuplicate} if:true={submitErrorDupicate} class="slds-text-color--error"></lightning-formatted-rich-text>
+            <lightning-formatted-rich-text value={Labels.Msg_staticError} if:true={submitErrorStatic} class="slds-text-color--error"></lightning-formatted-rich-text>
+            <lightning-formatted-rich-text value={getSuccessMessage} if:true={submitFinalSuccess} class="slds-text-color_success"></lightning-formatted-rich-text>
+            <lightning-formatted-rich-text value={Labels.Label_Confirm_Success} if:true={showRemoveConfirmSuccess} class="slds-text-color_success"></lightning-formatted-rich-text>
+            
+        </p>
+    </span>
+   
+
+ <!--  ////////////////////////////////////////////// button Block //////////////////////////////////////////////////////////////// -->
+        <p slot="footer" class="slds-text-align--right slds-var-p-right_large">
+            <span if:true={isStep1}> 
+                <lightning-button label={Labels.Label_home} title={Labels.Label_home} onclick={gohomeClick} class="slds-m-left_x-small" ></lightning-button>        
+                <lightning-button label={Labels.Label_addUser} title={Labels.Label_addUser} onclick={addUserClick} class="slds-m-left_x-small" variant="Brand"></lightning-button>
+            </span>
+
+            <span if:true={showCancelButton}>
+                <lightning-button label={labelBackCancel} title={Labels.Label_cancel} onclick={goCancelClick} class="slds-m-left_x-small"></lightning-button>
+            </span>
+            <span if:true={isStep2}>                      
+                <lightning-button label={Labels.Label_submit} title={Labels.Label_submit} onclick={addUserNextClick} class="slds-m-left_x-small" variant="Brand"></lightning-button>
+            </span>   
+            <span if:true={isStep3}>                
+                <lightning-button label={Labels.Label_submit} title={Labels.Label_submit} onclick={submitUserClick} class="slds-m-left_x-small" variant="Brand"></lightning-button>
+            </span> 
+            <span if:true={showRemoveConfirm}>                
+                <lightning-button label={Labels.Label_Confirm} title={Labels.Label_Confirm} onclick={handleRemove} class="slds-m-left_x-small" variant="Brand"></lightning-button>
+            </span> 
+            
+            
+        </p>
+    </lightning-card>
+</template>

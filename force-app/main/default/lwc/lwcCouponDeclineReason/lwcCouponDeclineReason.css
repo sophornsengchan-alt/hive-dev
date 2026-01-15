@@ -1,0 +1,55 @@
+.custom-style {
+    padding: 15px;
+    float: left;
+    width: 100%;
+}
+.slds-form-element__label {
+    font-size: 15px;
+}
+:host .lwcCouponDeclineReason{
+    --lwc-formLabelFontSize:15px;
+}
+
+.textAreaBody {
+    --sds-c-textarea-sizing-min-height:92px;
+}
+
+.hide {
+    display: none;
+}
+.label  {
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+
+.h1-cus {
+    font-size: 26px;
+    padding-bottom: 15px;
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+}
+
+.slds-modal__content.slds-p-around_medium {
+    border-radius: 5px;
+}
+.conatain-button {
+    width: 100%;
+    float: right;
+}
+.conatain-button button {
+    float: right;
+}
+
+.contaner-btn {
+    width: 100%;
+    float: right;
+    text-align: right;
+}
+
+.container-text {
+    float: left;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.cls_input-error{
+    color: var(--lwc-colorTextError,rgb(234, 0, 30))
+}

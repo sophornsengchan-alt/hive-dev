@@ -1,0 +1,127 @@
+@import 'c/proTraderCommonCSS';
+.mt-5 {
+    margin-top: 3rem!important;
+}
+.title-24 {
+    font-size: 24px;
+    line-height: 29px;
+}
+.text-center {
+    text-align: center!important;
+}
+.mt-3 {
+    margin-top: 1rem!important;
+}
+.mb-4 {
+    margin-bottom: 1.5rem!important;
+}
+.d-flex {
+    display: flex!important;
+}
+.box-border-3665F3 {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px #00000014;
+    border: 1px solid #3665F3;
+    border-radius: 8px;
+    padding: 55px 70px;
+}
+.box-border-C5E5FB {
+    color: #121258;
+    background: #C5E5FB;
+    box-shadow: 0px 0px 10px #00000014;
+    border-radius: 8px;
+    padding: 30px 70px;
+}
+.box-border-C5E5FB .btn, .box-border-3665F3 .btn {
+    min-width: 188px;
+}
+.btn.btn-dark-blu {
+    color: #C5E5FB;
+    background: #121258;
+    border: 1px solid #121258;
+}
+.text-14 {
+    font-size: .875rem;
+}
+.fw-bold {
+    font-weight: 700!important;
+    font-family: var(--hive-portal-custom-font-bold);
+}
+.font-bold{
+    font-family: var(--hive-portal-custom-font-bold);
+}
+.btn.btn-white {
+    color: #0064D2;
+    background: #FFFFFF;
+    border: 1px solid #0064D2;
+}
+.btn.btn-light-blu {
+    color: #121258;
+    background: #C5E5FB;
+    border: 1px solid #121258;
+}
+.btn {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.align-items-start {
+    align-items: flex-start!important;
+}
+.flex-column {
+    flex-direction: column!important;
+}
+.justify-content-center {
+    justify-content: center!important;
+}
+
+.color-3665F3 {
+    color: #3665F3;
+}
+
+@media (min-width: 992px){
+    .offset-lg-1 {
+        margin-left: 8.33333333%;
+    }
+    .col-lg-10 {
+        flex: 0 0 auto;
+        width: 83.33333333%;
+    }
+    .justify-content-lg-end {
+        justify-content: flex-end!important;
+    }
+}
+
+@media (min-width: 768px){
+    .justify-content-md-end {
+        justify-content: flex-end!important;
+    }
+    .mt-md-0 {
+        margin-top: 0!important;
+    }
+    .col-md-7 {
+        flex: 0 0 auto;
+        width: 58.33333333%;
+    }
+    .col-md-5 {
+        flex: 0 0 auto;
+        width: 41.66666667%;
+    }
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+    .fw-bold {
+        font-weight: 700!important;
+    }
+    .align-items-md-end {
+        align-items: flex-end!important;
+    }
+}

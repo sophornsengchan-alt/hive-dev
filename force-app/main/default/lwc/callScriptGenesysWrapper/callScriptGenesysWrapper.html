@@ -1,0 +1,34 @@
+<template>
+    <div class="flow-wrapper">
+        <!-- Loading state while fetching contact -->
+        <template if:true={isContactLoading}>
+            <div class="loading-message">
+                <lightning-spinner alternative-text="Loading contact..." size="medium"></lightning-spinner>
+                <p>Loading contact information...</p>
+            </div>
+        </template>
+        
+        <!-- Flow component when contact is loaded -->
+        <template if:true={hasRequiredParams}>
+            <lightning-flow
+                flow-api-name={flowApiName}
+                flow-input-variables={flowInputVariables}
+                onstatuschange={handleFlowFinish}>
+            </lightning-flow>
+        </template>
+        
+        <!-- Error message for missing params or contact load error -->
+        <template if:true={contactError}>
+            <div class="error-message">
+                <p>Error loading contact record. Please check the contact ID.</p>
+                <p>Contact ID: {currentContactId}</p>
+            </div>
+        </template>
+        
+        <template if:false={currentContactId}>
+            <div class="error-message">
+                <p>Missing required contactId parameter.</p>
+            </div>
+        </template>
+    </div>
+</template>

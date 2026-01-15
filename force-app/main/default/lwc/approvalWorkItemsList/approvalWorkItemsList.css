@@ -1,0 +1,22 @@
+/* Minimal CSS - using SLDS utilities for styling */
+
+/* Force minimum width for horizontal scrolling when needed */
+.slds-table {
+    min-width: 1400px;
+}
+
+/* Sticky header styling */
+.slds-theme_shade th {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Higher z-index to stay above lightning-helptext and other content */
+}
+
+/* Ensure scrollbars are visible when content overflows */
+.slds-scrollable_y {
+    overflow-y: auto !important;
+}
+
+.slds-scrollable_x {
+    overflow-x: auto !important;
+}

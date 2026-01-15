@@ -1,0 +1,192 @@
+<template>
+    <template if:true={onShowLoadingSpinner}>
+        <div style="z-index: 99999 !important;">
+            <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+
+    <template if:true={showUserGuide}>
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container slds-is-relative">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+    
+                        <div class="headerSection">
+                                <div class="slds-text-align_left">
+                                    <div class="slds-m-right_small"><img src={ebayLogo}></div>
+                                    <div><h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{label.UploadUserGuide}</h2></div>
+                                </div>
+                        </div>
+                    </header>
+    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <img src={dealbulkUploadITStep1} draggable="false" class="uploadGuideImg slds-p-bottom_medium"/>
+                        <img src={dealbulkUploadITStep2} draggable="false" class="uploadGuideImg slds-p-bottom_medium"/>
+                        <img src={dealbulkUploadITStep3} draggable="false" class="uploadGuideImg slds-p-bottom_medium"/>
+                        <img src={dealbulkUploadITStep4} draggable="false" class="uploadGuideImg"/>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <div class="actionContainer">
+                            <div class="slds-text-align_right">
+                                <button class="slds-button slds-button_neutral" onclick={handleUserGuideClose}>{label.closeBtn}</button>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+
+    <template if:true={isStep1}>
+        <lightning-formatted-rich-text value={label.dealBulkUpload_HelpMessage}></lightning-formatted-rich-text>
+        <br/>
+    </template>
+
+    <div class="cls_content slds-p-around_medium">
+
+        <c-lwc-progress-indicator current-step={currentStep}></c-lwc-progress-indicator>
+        <br/>
+        
+        <!-- STEP 1 Upload -->
+        <template if:true={isStep1}>
+            <div class="slds-p-bottom_x-small">
+                <c-lwc-account-picker selected-acc-id={accountId} onaccountchange={handleAccountChange}></c-lwc-account-picker>
+            </div>
+            <template for:each={allObjMessageInfos} for:item="item">
+                <div key={item.mainMsg} class={item.className}>
+                    <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span>
+                    <span>{item.detailMsg}</span>
+                </div>
+            </template>
+
+            <div class="cls_contentWrapper">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_3-of-3">
+                        <div class="slds-grid slds-gutters slds-p-around_small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <!--
+                                <div class="slds-p-around_medium lgc-bg" style="float: left">
+                                    <div class="tooltip">
+                                        <span class="cls_span tooltiptext">{label.PleaseSelectTheEBayAccount}</span>
+                                        <template if:true={disableUploadFile}>
+                                            <lightning-input disabled type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                                        </template>
+                                    </div>
+                                    <template if:false={disableUploadFile}>
+                                       <lightning-input type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                                    </template>
+                                    
+                                    <div class="slds-p-left_medium slds-p-bottom_medium slds-m-right_xx-small lgc-bg cls_displayfileName">
+                                        {fileName}
+                                    </div>
+                                </div>
+        
+                                <div class="slds-p-around_medium lgc-bg cls_padding-zero" style="float: left; margin-top: 25px;">
+                                    <div class="slds-p-around_medium slds-m-right_xx-small lgc-bg cls_padding-zero" style="display:inline;">
+                                        <lightning-button variant="brand" label={labelBtnDownloadTemplate} title="" onclick={doDownloadCSVTemplate} class="mr-4"></lightning-button>
+                                    </div>
+                                </div>
+                                -->
+                                
+                                <!-- MN-24072023-US-0013835 -->
+                                <div class="slds-p-around_medium">
+                                    <template if:true={disableUploadFile}>
+                                        <div class="tooltip displayInline copyPasteInput slds-m-right_x-small slds-m-top_x-small">
+                                            <span class="cls_span tooltiptext">{label.PleaseSelectTheEBayAccount}</span>
+                                            <c-lwc-excel-importer-s-e-p is-disabled={disableUploadFile} template-name={UPLOAD_IT_DEAL_MTD_NAME} is-double-height-input="true" onexcelimportersepresult={onPasteResult}></c-lwc-excel-importer-s-e-p>
+                                            
+                                        </div> 
+                                    </template>
+                                    <template if:false={disableUploadFile}>
+                                        <div class="displayInline copyPasteInput slds-m-right_x-small slds-m-top_x-small">
+                                            <c-lwc-excel-importer-s-e-p template-name={UPLOAD_IT_DEAL_MTD_NAME} is-double-height-input="true" onexcelimportersepresult={onPasteResult}></c-lwc-excel-importer-s-e-p>
+                                        </div>
+                                    </template>
+                                    <div class="displayInline slds-m-right_x-small slds-m-top_x-small">
+                                        <lightning-button variant="brand" label={label.dealBulkUploadBtnDownloadXL} title="" onclick={doDownloadExcelTemplate}></lightning-button>
+                                    </div>
+        
+                                    <div class="displayInline slds-m-top_x-small">
+                                        <!-- <a class="userGuideLink" href="" onclick={handleUserGuideOpen}><lightning-icon size="x-small" icon-name="utility:help_doc_ext" alternative-text="User Guide" title="User Guide"></lightning-icon>{label.dealBulkUploadBtnDownloadUserGuide}</a> -->
+
+                                        <a class="userGuideLink" target="_blank" href="/s/user-guide?sb=deal-bulk-upload-it"><lightning-icon size="x-small" icon-name="utility:help_doc_ext" alternative-text="User Guide" title="User Guide"></lightning-icon>{label.dealBulkUploadBtnDownloadUserGuide}</a>
+                                    </div>
+                                    
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div style = "float: right; margin-top: 10px">
+                <a class="slds-button slds-button_neutral mr-2" onclick={cancelhandler}>{label.Cancel}</a>
+            </div>
+        </template>
+
+        <!-- STEP 2 Preview -->
+        <template if:true={isStep2}>
+            <template for:each={allObjMessageInfos} for:item="item">
+                <div key={item.mainMsg} class={item.className}>
+                    <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span>
+                    <span>{item.detailMsg}</span>
+                </div>
+            </template>
+            <div style = "float: right; margin-top: 10px">
+                <a class="slds-button slds-button_neutral mr-2" onclick={handleBack}>{label.btn_back}</a>
+                <template if:true={disableSubmitBtn}>
+                    <a class="slds-button slds-button_brand mr-2 cls_disableButton">{labelBtnSubmit}</a>
+                </template>
+                <template if:false={disableSubmitBtn}>
+                    <a class="slds-button slds-button_brand cls_margin-right slds-m-left_xx-small" onclick={handleClickSubmit}>{labelBtnSubmit}</a>
+                </template>
+            </div>
+            <div class="slds-p-around_medium cls_tableWrapper">
+                <template if:true={isShowTable}>
+                    <b>{lbTotalRecord}: {totalRecord}</b>
+                    <lightning-datatable
+                            hide-checkbox-column="true"
+                            data={jsonData}
+                            columns={columns}
+                            key-field="id">
+                    </lightning-datatable> 
+                </template>
+            </div>
+        </template>
+            
+        <!-- STEP 3 Submit -->
+        <template if:true={isStep3}>
+            <template if:true={isShowMessage}>
+                <template if:true={showMessageResults.isHasError}>
+                    <div class="cls_message-info cls_message-success cls_float-left slds-size_full">
+                        <span class="cls_span" >{label.DealRecordsCreatedPartSuccess}</span>
+                    </div>
+                    <div class="cls_message-info cls_message-error cls_float-left">
+                        <span class="cls_span" >{label.DealRecordsCreatedPartError}</span>
+                        <template for:each={showMessageResults.lstError} for:item="msgError">
+                            <span class="cls_span" key={msgError}> {msgError}</span>
+                        </template>
+                    </div>
+                </template>
+            </template>
+            <div style = "float: right; margin-top: 10px">
+                <a class="slds-button slds-button_neutral mr-2" onclick={handleBackToFirstStep}>{label.btn_back}</a>
+                <template if:true={disableSubmitBtn}>
+                    <a class="slds-button slds-button_brand mr-2 cls_disableButton">{labelBtnSubmit}</a>
+                </template>
+            </div>
+        </template>
+
+    </div>
+</template>

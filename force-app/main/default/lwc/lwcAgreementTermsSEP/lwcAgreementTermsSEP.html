@@ -1,0 +1,125 @@
+<template>
+    <template if:true={isOverlay}>
+        <div class="overlay"></div>
+    </template>
+    <template if:false={showModal}>
+        
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class={tabViewModalContainerClass}>
+                <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+
+
+                    <div class="headerSection1">
+
+                        <template if:false={hasLogo}>
+                            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{modalTitle}</h2>
+                        </template>
+
+                        <template if:true={hasLogo}>
+                            <div class="slds-text-align_left fullSection">
+                                <div class="slds-m-right_small"><img src={logoLink}/></div>
+                                <div><h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">{modalTitle}</h2></div>
+                            </div>
+                        </template>
+
+                    </div>
+
+                </header>
+
+                <template if:false={enableTabView}>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                        <lightning-formatted-rich-text value={agreementContent}></lightning-formatted-rich-text>
+                    </div>
+                    
+                </template>
+
+                <template if:true={enableTabView}>
+
+                    <div class="tabViewContainer">
+
+                        <div class="tabViewLeftSizeBar">
+                            <div class="leftSizeBarContainer">
+                                <div class="leftSizeBarTab">
+                                    
+                                    <template if:true={hasItemOnTop}>
+                                        <div class="tabItem moreOnTop">
+                                            <span>...</span>
+                                        </div>
+                                    </template>
+
+
+                                    <template for:each={listAgreementObj} for:item="agreeObj">
+                                        <div key={agreeObj.key} class={agreeObj.tabClass}><span>{agreeObj.tabName}</span></div>
+                                    </template>
+
+                                    <template if:true={hasItemOnBottom}>
+                                        <div class="tabItem moreOnBottom">
+                                            <span>...</span>
+                                        </div>
+                                    </template>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+    
+                        <div class="slds-modal__content tabViewAgmBody" id="modal-content-id-3" onscroll={onAgreementTermScroll}>
+
+                            <template for:each={listAgreementObj} for:item="agreeObj">
+                                <div key={agreeObj.key} class="tabViewAgmSection">
+                                    <lightning-formatted-rich-text value={agreeObj.content}></lightning-formatted-rich-text>
+                                </div>
+                                
+                            </template>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </template>
+
+                <footer class="slds-modal__footer">
+                    <template if:true={hasFooterContent}>
+                        <div class="slds-m-bottom_small">
+                            <lightning-formatted-rich-text value={footerContent}></lightning-formatted-rich-text>
+                        </div>
+                    </template>
+                    
+
+                    <div class="actionContainer">
+                        
+                        <div class="slds-text-align_right actionBtnSection">
+
+                            <template if:false={hideLeaveBtn}>
+                                <button class="slds-button slds-button_neutral" onclick={closeModal}>{labelLeave}</button>
+                            </template>
+                            
+                            <template if:false={hideAcceptBtn}>
+                                <button class="slds-button slds-button_brand" onclick={acceptAgreement}>{labelAcceptAgreement}</button>
+                            </template>
+                            
+                        </div>
+                        
+                    </div>
+                   
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

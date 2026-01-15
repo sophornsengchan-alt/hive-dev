@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+   <apiVersion>52.0</apiVersion>
+   <isExposed>true</isExposed>
+   <targets>
+       <target>lightning__FlowScreen</target>
+        <target>lightning__RecordPage</target>
+   </targets>
+   <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="isPrevew" type="Boolean" label="isPrevew" description="is isPrevew?"></property>
+            <propertyType name="Qualitative_Targets__c" extends="SObject" label="Qualitative_Targets__c" description="Qualitative_Targets__c" />        
+            <property name="qualitativeTargetsData" type="{Qualitative_Targets__c[]}" label="qualitativeTargetsData"></property>   
+            <property name="qualitativeTargetsToDelete" type="{Qualitative_Targets__c[]}" label="qualitativeTargetsToDelete"></property>     
+            <property name="contractData" type="@salesforce/schema/Contract" label="contractData"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">  
+            <property name="customError" type="String" default="false"/>
+            <property name="titleName" type="String" />
+            <property name="titleValue" type="String" />  
+            <property name="baseUrl" type="String" /> 
+            <property name="customLabel" type="String" />   
+            <property name="labelHomeButton" type="String" /> 
+            <property name="adminEmailAddress" type="String" />        
+            <property name="metadataName" type="String" />            
+            <property name="metadataNameReadOnly" type="String" />         
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

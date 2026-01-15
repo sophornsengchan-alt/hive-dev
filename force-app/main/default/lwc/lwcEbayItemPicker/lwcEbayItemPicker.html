@@ -1,0 +1,182 @@
+<template>   
+    <template if:true={isStep0}>
+        <!-- <template if:true={isAccountSelectable}> -->
+            <!-- SB 22-2-2022 US-0011212 - Feedback - QA/BA/UAT/GCX-->
+            <template if:false={modalContainer}>
+                <!-- <c-lwc-help-text-generic metadata-name={titleMetadataName}></c-lwc-help-text-generic> -->
+            </template>
+    
+            <!-- SB 22-2-2022 US-0011212 - Feedback - QA/BA/UAT/GCX-->
+            <!-- <lightning-card title="Search ebay Item" class="slds-card_boundary" data-id="card"  if:true={ebayListContainer}> -->
+            <article class="slds-card topCard" if:true={ebayListContainer}>
+                <div class="slds-card__header">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure slds-m-right_xxx-small" style="width:100%;">
+                            <div class="">
+                                <div class="cls-lwcEbayItemPicker" style="width:165px !important; float:left;">
+                                    <!-- <span lang={lang}>{labels.Seller_Name}: <b>{sellerName}</b> </span> -->
+                                    <c-lwc-account-picker onaccountchange={handleAccountChange}></c-lwc-account-picker> <!--MN-27042022-US-0010950-->
+                                </div>
+                                <!--<template if:true={isEnableGotoDealBtn}>
+                                    <div class="slds-text-align_right" style="float:right; margin-top:25px;">                                              
+                                        <lightning-button variant="brand" label={labels.Leave} onclick={redirectToDeal}
+                                        class="slds-m-left_small custombtn">
+                                        </lightning-button>
+                                    </div> 
+                                </template>-->
+                                <div class="slds-text-align_right" style="float:right; margin-top:25px;"> 
+                                <template if:true={isEnableGotoDealBtn}>
+                                    <a class="slds-button slds-button_brand mr-2" onclick={redirectToDeal}>{labels.Leave}</a>
+                                </template>
+                                <!--TH:US-0012782:show Single deal creation button as disable instead of hide (with tooltip)-->
+                                <template if:false={isEnableGotoDealBtn}>
+                                    <div class="tooltip2">
+                                    <a class="slds-button slds-button_brand mr-2 cls_disableButton" aria-describedby="help2">{labels.Leave}</a>
+                                    <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left tooltiptext2" role="tooltip" id="help2" style="position:absolute;left:30px;text-align: left;">
+                                        <div class="slds-popover__body">{labels.hoverMessageOnSingleDealBtn}</div>
+                                    </div>
+                                    </div>  
+                                </template>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </header>
+                </div>
+
+                <!-- <template if:false={accountSelected}> 
+                    <div class="slds-media__body">
+                        &nbsp;
+                    </div>
+                </template> -->
+                <!-- <template if:true={accountSelected}> -->
+
+                    <template if:true={isAccountNoAccess}>
+                        <div class="slds-media__body">
+                            &nbsp;
+                        </div>
+                    </template>
+
+                    <template if:false={isAccountNoAccess}>
+                        <div class="slds-media__body">
+                            <div class="slds-grid slds-p-left_medium" >
+                                
+                                <div class="slds-col">
+                                    <template for:each={objMessageInfos} for:item="item">
+                                        <div key={item.mainMsg} class={item.className}>
+                                            <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span><span>
+                                                {item.detailMsg}</span>
+                                        </div>
+                                    </template>
+                                </div>  
+                                            
+                            </div>            
+                            <div class="slds-grid slds-p-horizontal_medium">
+                                <div class="slds-col slds-p-right_xx-small">
+                                    <div lang={lang} dir={dir}><span style="color: red; margin-right:2px;">*</span>{labels.Website}</div>
+                                    <lightning-combobox  value={defaultSite} variant="label-hidden" options={siteOptions} onchange={handleSiteChange} class="siteIdField inputValidate" required>
+                                    </lightning-combobox>
+                                </div>
+                                <div class="slds-col slds-p-right_xx-small ">
+                                    <div lang={lang} dir={dir}><span style="color: red; margin-right:2px;">*</span>{labels.Category}</div>
+                                    <lightning-combobox  value="" variant="label-hidden" options={categoryOptions} onchange={handleChange} class="inputValidate" required>
+                                    </lightning-combobox>
+                                </div>
+                                <div class="slds-col slds-p-right_xx-small">
+                                    <div lang={lang} dir={dir}>{labels.Brand}</div>
+                                    <!-- <lightning-input class="demo" variant="label-hidden" name="brand" type="text" onchange={storeBrandVaue}></lightning-input> -->
+                                    <!-- <lightning-combobox name="brand" variant="label-hidden" label={labels.Brand} if:false={hasNoBrand} value={brand} placeholder={label.BrandPlaceHolder} options={brandList} onchange={storeBrandVaue} ></lightning-combobox> -->
+                                    <lightning-combobox name="brand" variant="label-hidden" label={labels.Brand} if:false={hasNoBrand} value={brand} placeholder={label.LWC_Default_Picklist_Placeholder} options={brandList} onchange={storeBrandVaue} ></lightning-combobox>
+                                    
+                                    <!-- <lightning-combobox name="brand" variant="label-hidden" title={label.NoBrandToolTip} label={labels.Brand} if:true={hasNoBrand} value={brand} placeholder={label.BrandPlaceHolder} options={brandList} onchange={storeBrandVaue} ></lightning-combobox> -->
+                                    <lightning-combobox name="brand" variant="label-hidden" title={label.NoBrandToolTip} label={labels.Brand} if:true={hasNoBrand} value={brand} placeholder={label.NoBrandPlaceHolder} options={brandList} onchange={storeBrandVaue} ></lightning-combobox> 
+        
+                                </div>
+                                <div class="slds-col">
+                                    <div lang={lang} dir={dir}>{labels.Additional_Search}</div>
+                                    <lightning-input class="demo" variant="label-hidden" name="additionalSearch" type="text" onchange={storeBrandVaue}></lightning-input>
+                                </div>
+                                
+                            </div> 
+                            <div class="slds-grid slds-p-left_medium slds-p-vertical_x-small">
+                                <div class="slds-col">
+                                    <lightning-button variant="neutral" label={labels.Cancel} onclick={redirectToFutureDeals}
+                                    class="custombtn">
+                                    </lightning-button>  
+                                                    
+                                </div>
+                                <div class="slds-col">
+                                    <template for:each={distCatList} for:item='cat'>                             
+                                        <a  key={cat.categoryId} class="slds-p-around_x-small" onclick={handleDisCatClick} name={cat.categoryId}>                               
+                                    
+                                            <lightning-badge label={cat.categoryName} name={cat.categoryId} key={cat.categoryId} class="my-badge"></lightning-badge>
+                                        </a>
+                                    </template>
+                                </div>
+                                <div class="slds-col slds-text-align_right slds-p-right_medium">
+                                    <lightning-button variant="neutral" label={labels.Clear} onclick={clearFormdata} class="slds-m-left_small custombtn btnSearchCancel"></lightning-button>                        
+                                    <lightning-button variant="brand" label={labels.Search} onclick={searchEbayItem} class="slds-m-left_small custombtn btnSearchCancel"></lightning-button> 
+                                </div>          
+                            </div>         
+                            <div class="slds-grid slds-p-left_medium">
+                                <div>{label.search_result_ebayitem}</div>
+                                <template if:true={isLoading}>
+                                    <lightning-spinner alternative-text="Loading" variant="brand" size="large" >
+                                    </lightning-spinner>
+                                </template>
+                            </div>
+                            <div class="slds-p-around--medium">
+                                <lightning-layout multiple-rows="true">
+                                    <lightning-layout-item padding="around-small" class="slds-border--left slds-border--right slds-p-around--none">
+                                        <lightning-datatable data={records} columns={columns} key-field="id" hide-checkbox-column="true" onrowaction={handleRowAction}></lightning-datatable>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                </br>
+                                <lightning-layout horizontal-align="space">
+                                    <lightning-layout-item flexibility="auto" if:true={showPrevious}>
+                                        <lightning-button label={labels.Previous} icon-name="utility:chevronleft" onclick={previousHandler}>
+                                        </lightning-button>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item flexibility="auto">
+                                        {labels.Page} {currentPage} {labels.of} {totalPage}
+                                    </lightning-layout-item>
+                                    <lightning-layout-item flexibility="auto">
+                                        {labels.Total_Number_of_Items}:<span></style><b>{totalCount}</b></span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item flexibility="auto" if:true={showNext}>
+                                        <lightning-button label={labels.Next} icon-name="utility:chevronright" icon-position="right" onclick={nextHandler}></lightning-button>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        <!-- </lightning-card>            -->
+                        </div>
+                    </template>
+    
+                <!-- </template> -->
+    
+            </article>
+    
+    
+            <template if:true={modalContainer}>
+    
+            <!-- Modal/Popup Box LWC body starts here -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <c-create-single-deal title={title} row-data={rowData} label-cancel-btn={labelCancelBtn} 
+                label-submit-btn={labelSubmitBtn}
+                success-message={successMessage} show-component={modalContainer} account-id={sellerId}></c-create-single-deal>
+            </div>
+            </template>
+
+            <!-- Sophal 02-04-2022 US-0011156 -->
+            <template if:true={isAccountNoAccess}>
+                <c-lwc-generic-error-message is-deal-read-only=true metadata-name-read-only={DealReadOnlyErrorMessage}></c-lwc-generic-error-message>
+            </template>
+
+        <!-- </template> -->
+    </template>
+    <!-- Sophal 02-04-2022 US-0011156 -->
+    <template if:true={isStep1}>
+        <c-lwc-generic-error-message is-deal-read-only=true metadata-name-read-only={DealReadOnlyErrorMessage}></c-lwc-generic-error-message>
+    </template>
+</template>

@@ -1,0 +1,33 @@
+<template>
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-primary-800 mb-4 pb-2 border-b-2 border-primary-200">
+            Quick Links
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template if:true={knowledgeQuickLinks}>
+                <template for:each={knowledgeQuickLinks} for:item="link">
+                    <c-seller-crm-help-center-item 
+                        key={link.Title}
+                        id={link.Id}
+                        url-name={link.UrlName}
+                        title={link.Title}
+                        icon-url={link.IconURL__c}
+                        description={link.Summary}
+                    ></c-seller-crm-help-center-item>
+                </template>
+            </template>
+            <template if:true={quickLinks}>
+                <template for:each={quickLinks} for:item="link">
+                    <c-seller-crm-help-center-item 
+                        key={link.Title__c}
+                        title={link.Title__c}
+                        icon-name={link.Icon_Name__c}
+                        description={link.Description__c}
+                        icon-class="icon-primary-500"
+                        is-use-standard-icon={link.Use_Standard_Icon__c}
+                    ></c-seller-crm-help-center-item>
+                </template>
+            </template>
+        </div>      
+    </div>
+</template>

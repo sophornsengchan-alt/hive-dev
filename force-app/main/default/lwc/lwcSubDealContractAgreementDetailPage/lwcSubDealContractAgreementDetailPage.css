@@ -1,0 +1,11 @@
+.btn-right{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: right;
+}
+.download-icon {
+    --lwc-colorTextIconDefault: white;
+}
+.download-btn lightning-icon{
+    padding-right: 5px;
+}

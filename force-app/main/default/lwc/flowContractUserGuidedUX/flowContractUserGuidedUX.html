@@ -1,0 +1,102 @@
+<template>
+
+    <template if:true={showPath}>
+        <div class="stepper-wrapper">
+            <div class={cssClassNameStep1}>
+                <div class="step-counter">1</div>
+                <div class="step-name">Add Sellers</div>
+            </div>
+            <div class={cssClassNameStep2}>
+                <div class="step-counter">2</div>
+                <div class="step-name">Verify Legal Entity</div>
+            </div>
+            <div class={cssClassNameStep3}>
+                <div class="step-counter">3</div> 
+                <div class="step-name">Create Contract</div>
+            </div>
+        </div>
+        
+    </template>
+    <template if:true={showPath1}>
+        <div class="stepper-wrapper">
+            <div class={cssClassNameStep1}>
+                <div class="step-counter">1</div>
+                <div class="step-name">Select Pricing Type</div>
+            </div>
+            <div class={cssClassNameStep2}>
+                <div class="step-counter">2</div>
+                <div class="step-name">Define Pricing</div>
+            </div>
+            <div class={cssClassNameStep3}>
+                <div class="step-counter">3</div>
+                <div class="step-name">Category Selection</div>
+            </div>
+            <template if:true={isStandardVIP}>
+                <div class={cssClassNameStep4}>
+                    <div class="step-counter">4</div>
+                    <div class="step-name">Define Features</div>
+                </div>
+            </template>
+            
+        </div>
+        
+    </template>
+    <template if:true={showPath2}>
+        <div class="stepper-wrapper">
+            <div class={cssClassNameStep1}>
+                <div class="step-counter">1</div>
+                <div class="step-name">Select Category</div>
+            </div>
+            <div class={cssClassNameStep2}>
+                <div class="step-counter">2</div>
+                <div class="step-name">Define FVF Discounts</div>
+            </div>
+            <div class={cssClassNameStep3}>
+                <div class="step-counter">3</div> 
+                <div class="step-name">Define Features</div>
+            </div>
+        </div>
+        
+    </template>
+    <template if:true={showPath3}>
+        <div class="stepper-wrapper">
+            <div class={cssClassNameStep1}>
+                <div class="step-counter">1</div>
+                <div class="step-name">Define Tiers</div>
+            </div>
+            <div class={cssClassNameStep2}>
+                <div class="step-counter">2</div>
+                <div class="step-name">Define Features</div>
+            </div>
+        </div>
+        
+    </template>
+
+    <template if:true={showPath4}>
+        <div class="stepper-wrapper">
+            <div class={cssClassNameStep1}>
+                <div class="step-counter">1</div>
+                <div class="step-name">Add Sellers</div>
+            </div>
+            <div class={cssClassNameStep2}>
+                <div class="step-counter">2</div>
+                <div class="step-name">Verify Terms & Conditions Contract</div>
+            </div>
+            <template if:true={isTCContractFound}>
+                <div class={cssClassNameStep3}>
+                    <div class="step-counter">3</div> 
+                    <div class="step-name">Verify Sellers</div>
+                </div>
+                <div class={cssClassNameStep4}>
+                    <div class="step-counter">4</div> 
+                    <div class="step-name">Verify Legal Entity</div>
+                </div>
+                <div class={cssClassNameStep5}>
+                    <div class="step-counter">5</div> 
+                    <div class="step-name">Create Contract</div>
+                </div>
+            </template>   
+        </div>
+    </template> 
+    
+</template>

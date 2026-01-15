@@ -1,0 +1,118 @@
+<!--@ Change history: 11.12.2024 / Sothea Horn / US-0015300 - Generic LWC Exception handling & Application to program participation component-->
+<template>
+<lightning-card>
+    <div class="relative-one-rem">
+    <lightning-accordion allow-multiple-sections-open active-section-name="A" onsectiontoggle={handleToggleSection}>
+        <lightning-accordion-section name="A" label="Seller Managed Programs Participation">
+            <!--11.12.2024 / Sothea Horn / US-0015300 / add lwc to display message-->
+            <div class="lwc-message-container">
+                <c-lwc-message ></c-lwc-message>
+            </div>
+            <template if:true={hasRecord}>
+                <lightning-layout multiple-rows>
+                    <template for:each={adsBobSellers} for:item="bobSellerAds" for:index="index">
+                        <div key={bobSellerAds.node.Id} class="slds-size_2-of-4" title={bobSellerAds.node.BoB__r.Name.value} data-id={bobSellerAds.node.Id} onclick={navigateToBobSeller}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img style="width: 22.5px;" src={AdsGTMSegmentProgram}></img>
+                                    <span class="slds-p-left_small">Ads {bobSellerAds.node.Ads_GTM_Segment__c.value}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={results} for:item="rec" for:index="index">
+                        <div key={rec.node.Id} if:true={rec.node.EBH_RVSSeller__c.value} class="slds-size_2-of-4">
+                            <div class="slds-p-around_x-small bg_Program" style="cursor:unset;">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={ConciergeSellerProgram}></img>
+                                    <span class="slds-p-left_small">{label.lwcConciergeLabel}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={lttmBobSellers} for:item="bobSellerLttm" for:index="index">
+                        <div key={bobSellerLttm.node.Id} class="slds-size_2-of-4" title={bobSellerLttm.node.BoB__r.Name.value} data-id={bobSellerLttm.node.Id} onclick={navigateToBobSeller}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={ManagedSegmentProgram}></img>
+                                    <span class="slds-p-left_small">{bobSellerLttm.node.EBH_BOBSegment__c.value}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={onboardingProjectsUK} for:item="onboading" for:index="index">
+                        <div key={onboading.node.Id} class="slds-size_2-of-4" title={onboading.node.Name.value} data-id={onboading.node.Id} onclick={navigateToProject}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={OnboardingProgram}></img>
+                                    <span class="slds-p-left_small">{label.lwc_Start_Up_Scale_Up_Label}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={onboardingProjectsDE} for:item="onboading" for:index="index">
+                        <div key={onboading.node.Id} class="slds-size_2-of-4" title={onboading.node.Name.value} data-id={onboading.node.Id} onclick={navigateToProject}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={OnboardingProgram}></img>
+                                    <span class="slds-p-left_small">{label.lwc_Durchstarter_Label}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={onboardingProjectsAU} for:item="onboading" for:index="index">
+                        <div key={onboading.node.Id} class="slds-size_2-of-4" title={onboading.node.Name.value} data-id={onboading.node.Id} onclick={navigateToProject}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={OnboardingProgram}></img>
+                                    <span class="slds-p-left_small">{label.lwc_Kickstarter_Label}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template for:each={oneOffProjects} for:item="oneOffproject" for:index="index">
+                        <div key={oneOffproject.node.Id} class="slds-size_2-of-4" title={oneOffproject.node.Name.value} data-id={oneOffproject.node.Id} onclick={navigateToProject}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={OneOffAccountManagementProgram}></img>
+                                    <span class="slds-p-left_small">{oneOffproject.node.Project_Type__c.value}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- CSP:11072025:US-0033289 Start -->
+                    <template for:each={eBayLiveOnboardingProjects} for:item="eBayLiveOnboardingProject" for:index="index">
+                        <div key={eBayLiveOnboardingProject.node.Id} class="slds-size_2-of-4" title={eBayLiveOnboardingProject.node.Name.value} data-id={eBayLiveOnboardingProject.node.Id} onclick={navigateToProject}>
+                            <div class="slds-p-around_x-small bg_Program">
+                                <div class="bg_Program_dev_top">
+                                    <img class="gear-icon" src={OnboardingProgram}></img>
+                                    <span class="slds-p-left_small">{label.lwc_eBay_Live_Label}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- CSP:11072025:US-0033289 End -->
+                </lightning-layout>
+                <div class="slds-p-left_medium slds-text-heading_small">{sectionMessage}</div>
+            </template>   
+            <template if:false={hasRecord}>
+                <div class="slds-p-left_medium slds-text-heading_small">{label.This_seller_is_currently_not_part_of_any_managed_programs}</div>
+            </template>
+             
+        </lightning-accordion-section>
+        <!-- 27.11.2025 / Sothea Horn / US-0033849 START -->
+        <template if:true={hasPermissionSubmitChangeRequest}>
+            <div class="slds-var-m-around_medium no-margin-bottom no-margin-top">
+                <a onclick={handleShowChangeRequestFlow} 
+                title={label.Seller_Managed_Status_Change_Request_Help_text}>
+                {label.Suggest_a_change_to_this_seller_managed_status}
+                </a>
+            </div>
+        </template>
+        <!-- 27.11.2025 / Sothea Horn / US-0033849 END -->   
+    </lightning-accordion>
+</div>
+</lightning-card>
+    
+    
+</template>

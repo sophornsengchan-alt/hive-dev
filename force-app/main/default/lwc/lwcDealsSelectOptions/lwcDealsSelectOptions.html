@@ -1,0 +1,148 @@
+<template>
+    <!-- Start SB 4-4-2022 US-0011579 - Read Only Access to Deals -->
+    <!-- <div class="slds-notify_container slds-is-relative errorMessage">
+        <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+            <div class="slds-notify__content">
+                <p style="margin-bottom: 0px;">
+                    <lightning-formatted-rich-text value={label.lwcErrorDealReadonly}></lightning-formatted-rich-text>
+                </p>
+            </div>
+            <div class="slds-notify__close" onclick={closeMessageHandle} style="cursor: pointer;">
+                <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse" size="small" title="Close"></lightning-icon>
+            </div>
+        </div>
+    </div> -->
+    <!-- End SB 4-4-2022 US-0011579 - Read Only Access to Deals -->
+
+    <!-- Start - Sophal 08-04-2022 US-0011443 - General styling updates for Hive Seller Portal - Part 2 -->
+
+    <div class="lwcDealsSelectOptions-container"> 
+        <div class="slds-grid slds-gutters lwcDealsSelectOptions-subContainer1">
+            <!-- CSP:18/02/2025:US-0016413 - Seller Portal - Deals tab -->
+            <div if:true={isEligibleSubsidizedAndUnsubsidized} class="slds-col slds-size_1-of-2">
+                <div class="text-center">
+                    <h1 class="lwc-deal-label-btn"> {labels.SubsidizedDeals}</h1>
+                    <div 
+                        class="cursor-pointer slds-button slds-button_brand" 
+                        onclick={handleBtnSubsidizedDeals}
+                    >
+                        {labels.GetStarted}
+                    </div>
+                </div>
+            </div>
+            <div if:false={isEligibleSubsidizedAndUnsubsidized} class="slds-col slds-size_2-of-3">     
+                <div>
+                    <h2 class="slds-text-heading_medium">{headerTitle0}</h2>
+                </div>
+            </div>
+            <div if:true={isEligibleSubsidizedAndUnsubsidized} class="slds-col slds-size_1-of-2">
+                <div class="text-center">
+                    <h1 class="lwc-deal-label-btn">{labels.UnsubsidizedDeals}</h1>
+                    <div 
+                        class="cursor-pointer slds-button slds-button_brand" 
+                        onclick={handleBtn1}
+                    >
+                        {labels.GetStarted}
+                    </div>
+                </div>
+            </div>
+            <!-- end CSP:18/02/2025:US-0016413 - Seller Portal - Deals tab -->
+            <div if:false={isEligibleSubsidizedAndUnsubsidized} class="slds-col slds-size_1-of-3">
+                <template if:true={isMultipleOptions}>
+
+                    <div class="slds-button slds-button_brand slds-dropdown-trigger slds-dropdown-trigger_click">
+                        <span>{labelDownload0}</span>
+
+                        <lightning-icon icon-name="utility:chevrondown" size="x-small" class="white-icon"></lightning-icon> 
+                        
+                        <div class="slds-dropdown slds-dropdown_left">
+                            <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+
+                            <template if:true={enableTile1}>
+                                <li class="slds-dropdown__item" role="presentation" onclick={handleBtn1}>
+                                    <div>
+                                        <span class="slds-truncate">{headerTitle1} </span>
+                                    </div>
+                                </li>
+                            </template>
+
+                            <template if:true={enableTile2}>
+                                <li class="slds-dropdown__item" role="presentation" onclick={handleBtn2}>
+                                    <div>
+                                        <span class="slds-truncate">{headerTitle2}</span>
+                                    </div>
+                                </li>
+                            </template>
+
+                            <template if:true={enableTile3}>
+                                <li class="slds-dropdown__item" role="presentation" onclick={handleBtn3}>
+                                    <div>
+                                        <span class="slds-truncate">{headerTitle3}</span>
+                                    </div>
+                                </li>
+                            </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+                <template if:false={isMultipleOptions}>
+                    <template if:true={enableTile1}>
+                        <div class="slds-button slds-button_brand" onclick={handleBtn1}>{headerTitle1}</div>
+                    </template>
+                    <template if:true={enableTile2}>
+                        <div class="slds-button slds-button_brand" onclick={handleBtn2}>{headerTitle2}</div>
+                    </template>
+                    <template if:true={enableTile3}>
+                        <div class="slds-button slds-button_brand" onclick={handleBtn3}>{headerTitle3}</div>
+                    </template>
+                </template> 
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="row">
+        <template if:true={enableTile1}>
+            <div class="col-sm-4">         
+                <div class="tileCursor" onclick={handleBtn1}>              
+                        <div>
+                            <h2>{headerTitle1}</h2>
+                            <span class="backButton goButton"> 
+                                <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>                         
+                            </span>
+                        </div>                
+                        <p>{bodyText1}</p>
+                        <button type="button" class="slds-button customBtn">{labelDownload1}</button>                
+                </div> 
+            </div>
+        </template>
+        <template if:true={enableTile2}>
+            <div class="col-sm-4">
+                <div class="tileCursor" onclick={handleBtn2}>                   
+                            <h2>{headerTitle2}</h2>
+                            <span class="backButton goButton"> 
+                                <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>                         
+                            </span>
+                            <p>{bodyText2}</p>
+                            <button type="button" class="slds-button customBtn">{labelDownload2}</button>     
+                    </div>
+            
+            </div>
+        </template>
+        <template if:true={enableTile3}>
+            <div class="col-sm-4">
+                <div class="tileCursor" onclick={handleBtn3}>
+                    <h2>{headerTitle3}</h2>
+                    <span class="backButton goButton">       
+                        <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>                         
+                    </span>
+                    <p>{bodyText3}</p> 
+                    <a href="#" class="slds-button customBtn" onclick={handleBtn1}>{labelDownload3}</a>
+                                     
+                </div>
+            </div>
+        </template>
+    </div> -->
+    
+    <!-- End - Sophal 08-04-2022 US-0011443 - General styling updates for Hive Seller Portal - Part 2 -->
+</template>

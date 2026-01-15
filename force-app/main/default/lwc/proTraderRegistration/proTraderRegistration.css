@@ -1,0 +1,96 @@
+@import 'c/proTraderCommonCSS';
+
+/* *{ margin: 0; padding: 0;} */
+
+body { 
+  color: #0B1014 !important;
+  font-size: 1rem; 
+  line-height: 1.5;
+  background-color: #F7F7F7;
+}
+
+footer,
+header,
+section {
+  display: block;
+}
+
+/* h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-family: var(--hive-portal-custom-font-regular);
+} */
+
+.icon-play {
+  background-image : url(https://image.forbusiness.ebay.com/lib/fe9213737462077970/m/10/60135368-af47-4286-b557-7c389e128a79.svg);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  display:inline-block;
+  margin-right:5px;
+  margin-top:4px;
+}
+.button-play {
+  padding:14px 0;
+  border-radius: 1776.06px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  width: 154px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #191919;
+  background: #FFF;
+}
+.button-play:hover {
+  color: #191919;
+  background: #FFF;
+}
+
+.strip-color {
+  width: 100%;
+  height: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);    
+}
+.strip-color div:nth-child(1) {
+  background: #E53238;
+}
+.strip-color div:nth-child(2) {
+  background: #0064D2;
+}
+.strip-color div:nth-child(3) {
+  background: #F5AF02;
+}
+.strip-color div:nth-child(4) {
+  background: #86B817;
+}
+
+.pro-trader-boxes {
+  row-gap: 25px;
+  grid-template-columns: 1fr;
+}
+@media screen and (min-width: 768px) {
+  .pro-trader-boxes {
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.img-fluid-reg {
+  max-width: 77%;
+  height: auto
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important
+}
+
+.box-register {
+  font-size: 1rem;
+}

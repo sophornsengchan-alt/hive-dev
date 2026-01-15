@@ -1,0 +1,170 @@
+<template>
+    <lightning-card title="">
+         <div class="slds-p-around_small">
+            <template if:false={isReview}>
+                <lightning-layout horizontal-align="spread" class="slds-theme_shade slds-border_bottom slds-p-around_x-small slds-text-title_caps">
+                    <lightning-layout-item size={categoryColumnSize} padding="horizontal-small">Selected Category</lightning-layout-item>
+                    
+                    <template if:true={isChoiceOne}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.DiscountFVFColumnHeader} (%)</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceTwo}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.FixedFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceThree}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.InsertionFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceFour}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.RegulatoryFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                </lightning-layout>
+
+                <template for:each={enrichedContractPricingMatrixData} for:item="category">
+                    <lightning-layout key={category.Id} horizontal-align="spread" class="slds-p-around_x-small slds-border_bottom">
+                        <lightning-layout-item size={categoryColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                            <div>
+                                <div class="slds-text-body_regular">{category.Category_Name__c}</div>
+                                <div class="slds-text-color_weak slds-text-body_small">
+                                    Site: {category.EBH_Site__c} | ID: {category.Category_Id__c} | Level: {category.Category_Level__c}
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        
+                        <template if:true={isChoiceOne}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <!-- <span class="slds-text-color_error slds-p-left_xx-small">*</span> -->
+                                <lightning-input
+                                    variant="label-hidden" 
+                                    name="FVFBaseRateFeeValue"
+                                    type="number" 
+                                    formatter="decimal" 
+                                    min="0" 
+                                    max="100"
+                                    required="true"
+                                    data-category-id={category.Id}
+                                    value={category.currentFVFBaseRate}
+                                    onchange={handleFVFBaseRateChange}>
+                                </lightning-input>
+                                <span class="slds-p-left_x-small">%</span>
+                            </lightning-layout-item>
+                        </template>
+                        <template if:true={isChoiceTwo}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <!-- <span class="slds-text-color_error slds-p-left_xx-small">*</span> -->
+                                <lightning-input
+                                    variant="label-hidden" 
+                                    name="FixedFeeRateValue"
+                                    type="number" 
+                                    formatter="decimal" 
+                                    min="0" 
+                                    max="100"
+                                    required="true"
+                                    data-category-id={category.Id}
+                                    value={category.currentFixedfeetype}
+                                    onchange={handleFixedFeeChange}>
+                                </lightning-input>
+                                <!-- <span class="slds-p-left_x-small">%</span> -->
+                            </lightning-layout-item>
+                        </template>
+                            
+                        <template if:true={isChoiceThree}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <!-- <span class="slds-text-color_error slds-p-left_xx-small">*</span> -->
+                                <lightning-input
+                                    variant="label-hidden" 
+                                    name="InsertionFeeValue"
+                                    type="number" 
+                                    formatter="decimal"
+                                    min="0"
+                                    required="true"
+                                    data-category-id={category.Id}
+                                    value={category.currentInsertionfeetype}
+                                    onchange={handleInsertionFeeChange}>
+                                </lightning-input>
+                            </lightning-layout-item>
+                        </template>
+
+                        <template if:true={isChoiceFour}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <!-- <span class="slds-text-color_error slds-p-left_xx-small">*</span> -->
+                                <lightning-input
+                                    variant="label-hidden" 
+                                    name="RegulatoryFeeValue"
+                                    type="number" 
+                                    formatter="decimal"
+                                    min="0"
+                                    required="true"
+                                    data-category-id={category.Id}
+                                    value={category.currentRegulatoryfeetype}
+                                    onchange={handleRegulatoryFeeChange}>
+                                </lightning-input>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+            </template>
+
+           <template if:true={isReview}>
+                <lightning-layout horizontal-align="spread" class="slds-theme_shade slds-border_bottom slds-p-around_x-small slds-text-title_caps">
+                    <lightning-layout-item size={categoryColumnSize} padding="horizontal-small">Selected Category</lightning-layout-item>
+                    
+                    <template if:true={isChoiceOne}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.DiscountFVFColumnHeader} (%)</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceTwo}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.FixedFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceThree}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.InsertionFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                    <template if:true={isChoiceFour}>
+                        <lightning-layout-item size={choiceColumnSize} padding="horizontal-small">{label.RegulatoryFeeColumnHeader}</lightning-layout-item>
+                    </template>
+                </lightning-layout>
+                
+                <template for:each={enrichedContractPricingMatrixData} for:item="category">
+                    <lightning-layout key={category.Id} horizontal-align="spread" class="slds-p-around_x-small slds-border_bottom">
+                        <lightning-layout-item size={categoryColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                            <div>
+                                <div class="slds-text-body_regular">{category.Category_Name__c}</div>
+                                <div class="slds-text-color_weak slds-text-body_small">
+                                    Site: {category.EBH_Site__c} | ID: {category.Category_Id__c} | Level: {category.Category_Level__c}
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        
+                        <template if:true={isChoiceOne}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <span>{category.currentFVFBaseRate}%</span>
+                            </lightning-layout-item>
+                        </template>
+                        <template if:true={isChoiceTwo}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <span>{category.currentFixedfeetype}</span>
+                            </lightning-layout-item>
+                        </template>
+                        <template if:true={isChoiceThree}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <span>{category.currentInsertionfeetype}</span>
+                            </lightning-layout-item>
+                        </template>
+                        <template if:true={isChoiceFour}>
+                            <lightning-layout-item size={choiceColumnSize} class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                                <span>{category.currentRegulatoryfeetype}</span>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+            </template>
+        </div> 
+ 
+    </lightning-card>
+    
+    <template if:true={validationError}>
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+            <span class="slds-assistive-text">Error</span>
+            <h2>{validationError}</h2>
+        </div>
+    </template>
+
+</template>

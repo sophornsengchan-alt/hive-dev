@@ -1,0 +1,320 @@
+<template>
+    <template if:true={isOverlay}>
+        <div class="overlay"></div>
+    </template>
+    <template if:false={showModal}>
+        
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class={tabViewModalContainerClass}>
+                <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+
+                    <template if:false={hasRightSideContent}>
+
+                        <div class="headerSection1">
+
+                            <template if:false={hasLogo}>
+                                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{modalTitle}</h2>
+                            </template>
+
+                            <template if:true={hasLogo}>
+                                <div class="slds-text-align_left fullSection">
+                                    <div class="slds-m-right_small"><img src={logoLink}/></div>
+                                    <div><h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">{modalTitle}</h2></div>
+                                </div>
+                            </template>
+
+                        </div>
+
+                    </template>
+
+                    <template if:true={hasRightSideContent}>
+
+                        <div class="headerSection2" >
+                            <div class="slds-text-align_left leftSection">
+                                <template if:true={hasLogo}>
+                                    <div class="slds-m-right_small"><img src={logoLink}/></div>
+                                </template>
+                                <div><h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">{modalTitle}</h2></div>
+                            </div>
+
+                            <div class="slds-text-align_right rightSection">
+                                <lightning-formatted-rich-text value={headerRightSideContent}></lightning-formatted-rich-text>
+                            </div>
+                        </div>
+                    </template>
+
+                </header>
+
+
+                <template if:false={useOldVersion}>
+
+                    <template if:false={enableTabView}>
+
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                            <lightning-formatted-rich-text value={agreementContent}></lightning-formatted-rich-text>
+                        </div>
+                        
+                    </template>
+                    <template if:true={enableTabView}>
+
+                        <div class="tabViewContainer">
+
+                            <div class="tabViewLeftSizeBar">
+                                <div class="leftSizeBarContainer">
+                                    <div class="leftSizeBarTab">
+                                        
+                                        <template if:true={hasItemOnTop}>
+                                            <div class="tabItem moreOnTop">
+                                                <span>...</span>
+                                            </div>
+                                        </template>
+
+
+                                        <template for:each={listAgreementObj} for:item="agreeObj">
+                                            <div key={agreeObj.key} class={agreeObj.tabClass}><span>{agreeObj.tabName}</span></div>
+                                        </template>
+
+                                        <template if:true={hasItemOnBottom}>
+                                            <div class="tabItem moreOnBottom">
+                                                <span>...</span>
+                                            </div>
+                                        </template>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+        
+                            <div class="slds-modal__content tabViewAgmBody" id="modal-content-id-3" onscroll={onAgreementTermScroll}>
+
+                                <template for:each={listAgreementObj} for:item="agreeObj">
+                                    <div key={agreeObj.key} class="tabViewAgmSection">
+                                        <lightning-formatted-rich-text value={agreeObj.content}></lightning-formatted-rich-text>
+                                    </div>
+                                    
+                                </template>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </template>
+
+                </template>
+
+
+                <template if:true={useOldVersion}>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <template if:true={isNA}>
+                            
+                            <h2 style="text-align: center;">DAILY DEALS AGREEMENT</h2>
+                                <p>
+                                    This Daily Deals Agreement and Individual Deal Order Form shall serve to document the terms of a Deal on the eBay Site, and upon acceptance (including via email transmission ascertaining acceptance by the Seller) shall supersede all prior agreements and 
+                                    understandings (whether written or oral) between eBay and Seller, with respect to the subject matter hereof.
+                                </p>
+                                <br/><br/>
+                            <h2 style="text-align: center;">Recitals</h2>
+                                    <p>
+                                        Whereas, eBay runs a program (<b>“Daily Deals Program”</b>) on one or more eBay websites, including www.ebay.com, in which selected sellers offer items for sale at discounted prices in return for certain assistance by eBay to market those items to buyers; and 
+                                        Whereas, Seller is a registered user of eBay services and wishes to participate in the Daily Deals Program.                        
+                                    </p>
+                                <br/><br/>
+                            <h2 style="text-align: center;">Agreement</h2>
+                                <p> 
+                                    Now therefore, for good and valuable consideration, receipt of which is hereby acknowledged, eBay and Seller hereby agree as follows:
+                                </p>
+                                
+                                <p>
+                                    <b>1.	Deals.</b> During the Term (as defined below), Seller may be contacted by eBay and invited to list one or more items (collectively or individually referred to as
+                                    <b>“Specified Item”</b>, as applicable) on the eBay Site (as defined below) at discounted prices for a specified period of time 
+                                    (<b>“Deal”</b>). For certain Deals and subject to the terms and conditions of this Agreement, eBay may agree to pay a Subsidy Payment (defined below) to Seller to apply towards the discounted price of the Specified Item 
+                                    (<b>“Subsidized Deal”</b>).For each Deal, eBay and Seller will agree to the terms in writing, which may include email or through an online Deal submission portal, including at minimum the terms identified in Addendum C. 
+                                    For each Subsidized Deal, eBay will transmit the terms for the Subsidized Deal to Seller in writing, which may include email or through an online Deal submission portal, substantially in the form of Schedule 1 (attached to this Agreement). 
+                                    Seller shall confirm acceptance of the terms of the Subsidized Deal in writing, which may include email or through an online Deal submission portal. The terms and conditions of this Agreement shall govern each Deal, including each Subsidized Deal, 
+                                    and Seller’s participation in the Daily Deals Program. All terms for a specific Deal as agreed between eBay and Seller, including the terms of this Agreement, the terms in Addendum C, and Schedule 1 (for a Subsidized Deal) are referred to as the 
+                                    <b>“Deal Terms.”</b> Deal Terms may only be changed upon the mutual agreement of eBay and Seller in writing, which may include email or through an online Deal submission portal.
+                                    <br/><br/>
+                                    On the Deal Start Date/Time specified in the Deal Terms, Seller shall reduce the price of the Specified Item listed on the eBay Site to the Deal Price specified in the Deal Terms.  Seller shall list the Specified Item, with an accurate description of the Specified Item and its condition (e.g. new or refurbished), 
+                                    on the eBay Site in accordance with the Deal Terms for the duration of the Deal.  Seller shall maintain the price of the Specified Item on the eBay Site at or below the Deal Price until the Deal Stop Date/Time as specified in the Deal Terms. Upon the conclusion of the Deal, Seller shall immediately increase the price of the Specified Item to the List Price (defined below) or a higher price.  
+                                    eBay and Seller will each track the number of Specified Items sold on the eBay Site during the duration of the Deal. Seller shall strictly enforce the Quantity Limitation (Per Purchaser) (defined below) including without limitation, use of commercially reasonable efforts to check each address to which the Specified Item is shipped to confirm compliance with the Quantity Limitation (Per Purchaser).  
+                                    <b>“Quantity Limitation (Per Purchaser)”</b> means the maximum number of Specified Items that may be purchased by a single buyer as described in Schedule 1. For purposes of the Quantity Limitation (Per Purchaser), any buyer of a Specified Item that has the same address as another buyer (even if such buyer has a different User ID), 
+                                    or is otherwise working in concert with a larger group of buyers (whether formal agents of such buyer or not) shall be considered a “single buyer,” and shall be subject to the Quantity Limitation (Per Purchaser).  Seller acknowledges that eBay does not guarantee any sales from any Deal, whether or not subsidized.
+                                </p>
+                                <p>
+                                    <b>2. eBay Policies.</b> Seller acknowledges that it is a registered user on www.ebay.com, and if applicable, any other eBay sites identified for the Deal (collectively or individually referred to as 
+                                    <b>“eBay Site”</b>, as applicable).  Seller is subject to compliance with the eBay User Agreement, the eBay Privacy Policy, and all other policies applicable to Seller for the eBay Site (collectively, 
+                                    <b>“eBay Policies”</b>), which are incorporated by reference into this Agreement. In the event there is a conflict between the eBay Policies and this Agreement concerning a Deal or the Daily Deals Program, then the eBay Policies will control.  
+                                </p>
+                                <p>
+                                    <b>3.	User ID.</b> Only the User IDs of Seller approved by eBay in writing, which may include email or through an online Deal submission portal, for participation in the Daily Deals Program may participate in a Deal. 
+                                    Only the User IDs of Seller approved for a specific Deal by eBay in writing, which may include email or through an online Deal submission portal, may participate in such Deal.
+                
+                                </p>
+                                <p>
+                                    <b>4.	Pricing and Shipping.</b> Each Deal shall only apply to the Specified Item listed by Seller in fixed price format, and with free shipping, unless otherwise specified in the Deal Terms. 
+                                    Each Specified Item shall be offered with a price that is no greater than the price Seller charges purchasers for such Specified Item through any of Seller’s other distribution channels, with the exception of third party sites which are not controlled by Seller.
+                
+                                </p>
+                                <p>
+                                    <b>5.	Price Claims and Seller Discount. </b>
+                                    For each Deal, Seller shall provide eBay with the List Price of the Specified Item (defined below) in which eBay may display on the eBay Site with a description of the Deal. The  
+                                    <b>“List Price”</b> means the price (excluding shipping and handling fees, tax and duty, as applicable) at which the Seller, or the market generally, offers the Specified Item, or an item that is nearly identical to the Specified Item, for sale in good faith to buyers in the general public for a substantial period of time without discount. 
+                                    Seller shall inform eBay whether the List Price is based on Seller’s own pricing or the pricing of other sellers in the market.  
+                                    <br></br>
+                                    Seller represents and warrants to eBay that: (a) the List Price of the Specified Item provided by Seller to eBay is a reasonable representation of the undiscounted price at which buyers in the general public would be able to purchase the Specified Item in new condition if the Specified Item is new, 
+                                    or in refurbished condition if the Specified Item is refurbished; and (b) Seller has offered the Specified Item for sale at the List Price to buyers in the general public for at least ninety (90) of the one hundred eighty (180) days prior to the Deal Start Date/Time, or at least fifty percent (50%) of the sales made by Seller, 
+                                    or all sellers in the market which sell the Specified Item, in the twelve (12) months prior to the Deal Start Date/Time were made at the List Price.
+                                    <br></br>
+                                    Seller shall maintain a complete record to support the representations and warranties about the List Price made by Seller in this Section including, the locations, dates and times for which Seller offered to sell the Specified Item at the List Price, or the locations, date and times for which Seller found other sellers in the market offering to sell the Specified Item.  
+                                    On request from eBay, Seller shall provide such records to eBay promptly.  Without limiting the generality of the foregoing, Seller shall substantiate and document all claims made by Seller regarding the Specified Item – including, without limitation, claims related to performance, efficacy, price and/or savings for the Specified Item and products or services offered by Seller in connection with the Specified Item – in accordance with all applicable laws. 
+                                    Seller authorizes eBay to display a “% off” or “up to % off” on the eBay Site in connection with the Deal and based on the percentage difference between the List Price and the Deal Price described in the Deal Terms, to represent a discount to the List Price for the Specified Item. 
+                                    <br></br>
+                                    Seller acknowledges that eBay is relying on Seller’s representation and warranties related to the List Price and the Specified Item and agrees that Seller shall be solely responsible for compliance with all applicable laws related to the Deal offered by Seller on the eBay Site, including without limitation, 
+                                    all applicable laws related to pricing claims. Seller shall be responsible for any charges, fines or penalties that may be imposed on Seller or eBay as a result of Seller’s failure to comply with applicable law related to the Deal offered by Seller on the eBay Site, including without limitation, any inaccurate or misleading statement of the List Price. 
+                                    Seller shall seek the independent advice of a qualified attorney at Seller’s own expense with any questions Seller may have regarding compliance with laws or pricing claims in connection with the Deal. 
+                
+                
+                                </p>
+                                <p>
+                                    <b>6.	Seller Purchase Restrictions.</b> In no event shall Seller or any affiliate of Seller purchase the Specified Items in a Deal on any eBay Site, and Seller shall not collude with any third party to purchase or buy-back any Specified Item offered in a Deal for the benefit of Seller or any affiliate of Seller or to circumvent the Quantity Limitation (Per Purchaser) or any other aspect of the Deals Program.  
+                                    Seller shall strictly enforce the Quantity Limitation (Per Purchaser) including without limitation, use of commercially reasonable efforts to check each address to which the Specified Item is shipped to confirm compliance with the Quantity Limitation (Per Purchaser) and will use extra precautions in the event a buyer uses a freight forwarder address which might be utilized as a common address with another buyer. 
+                                    Seller shall not sell any Specified Item to a buyer which uses multiple user-IDs, registers new user-IDs, or uses an unregistered account, in each case for the purpose of circumventing the Quantity Limitation (Per Purchaser). 
+                                    <br></br>
+                                    In the event of Seller’s breach of this Section 6 (Seller Purchase Restrictions) and in addition to all other rights and remedies available to eBay pursuant to this Agreement, the Subsidy Payment payable by eBay shall be immediately cancelled for the Deal involving the breach of this Section 6 and/or all Subsidy Payments received by Seller from eBay in connection with such Deal shall be immediately refunded to eBay.  
+                                    Seller acknowledges that Seller’s breach of this Section 6 (Seller Purchase Restrictions) is a breach of the eBay Policies which may result in listing cancellations, revocation of benefits, suspension from the eBay platform, and/or termination of Seller’s account(s) on the eBay platform.
+                                </p>
+                                <p>
+                                    <b>7.	Risk Review of Designated Items.</b> For certain Designated Items (defined below), in the event Seller suspects in good faith a potential violation of the Quantity Limitation (Per Purchaser) by a buyer for such Designated Item, then Seller may request assistance from eBay in accordance with this Section 7 to investigate the buyer and the purchase for compliance with the Quantity Limitation (Per Purchaser) (<b>“Risk Review”</b>). 
+                                    <b>“Designated Items” </b> shall be Specified Items separately identified in the Deals Terms as <b>“Designated Items” </b> and may include, but are not limited to smartphones, tablets, cameras, and gift cards.  Seller will use all reasonable efforts to submit a request of Risk Review to eBay within twenty-four (24) hours of purchase of the Designated Items by buyer.  eBay will notify Seller of any detected violation of the Quantity Limitation (Per Purchaser) as soon as practicable, 
+                                    but in any event, will respond within twenty-four (24) hours of receipt of Seller’s request for a Risk Review <b>(“eBay Response Period”). </b> In the event eBay fails to respond to Seller within the eBay Response Period and Seller is required to complete the transaction that is the subject of the Risk Review, then Seller will remain eligible to receive the Subsidy Payment for purchase of the Designated Item, and eBay will not charge Seller with a “defect” for a shipping delay as a result of the request for Risk Review.
+                                </p>
+                                <p>
+                                    <b>8.	Subsidy Payment.</b> For each Subsidized Deal and each Specified Item in a Subsidized Deal, eBay and Seller shall describe in the Deal Terms the amount of the subsidy to be paid by eBay to Seller upon the sale of the Specified Item <b>(“Subsidy Payment”)</b> 
+                                    and the amount of the price discount to be provided by Seller <b>(“Seller Discount”). </b> Subject to the terms of this Agreement, upon the conclusion of the Deal on the Deal Stop Date/Time, the total Subsidy Payment for all of the Specified Items sold by Seller in the Deal up to the Maximum Subsidized Quantity and/or Quantity Limitation (Per Purchaser), as applicable, will be due from eBay to Seller and payable according to the terms of Section 9 (Deal Subsidy Reconciliation Statement and Payment Terms).  
+                                    No Subsidy Payment shall be due or payable for a Specified Item in the following circumstances: (i) if the Specified Item is returned by the buyer for a refund in accordance with the return policy of Seller; (ii) if the buyer fails to make full payment to Seller for the Specified Item; (iii) if the transaction for the Specified Item is cancelled any of the purchaser, Seller and/or eBay; (iv) if prior to the sale of the Specified Item, the Maximum Subsidized Quantity described in Schedule 1 was reached, 
+                                    or the Quantity Limitation (Per Purchaser) is reached for the buyer; (v) Seller breaches Section 6 (Seller Purchase Restrictions); (vi) if Seller elects not to cancel the sale of the Specified Item pursuant to a cancellation request from eBay pursuant to this Agreement (by way of example, attempted circumvention of the Quantity Limitation (Per Purchaser) by a buyer using multiple User-IDs); or (vii) for any Specified Items that are not sold as of the Deal Stop Date/Time; in each case, as determined by eBay according to its records. 
+                                
+                                </p>
+                                <p>
+                                    <b>9.	Deal Subsidy Reconciliation Statement and Payment Terms.</b>  Within sixty (60) days after the last day of the month during which the Deal Stop Date/Time occurred, eBay will send to Seller a Subsidy Reconciliation Statement in the form attached as Addendum A 
+                                    (<b>“Statement”</b>). The Statement will summarize the Deal Terms for all Deals completed by Seller during the applicable month, including the final number of units sold (per Specified Item), and the total Subsidy Payment due from eBay to Seller.  If Seller does not file an Error Report (as described below) within ten (10) business days of receipt of the Statement 
+                                    <b>(“Confirmation Date”),</b> then the Statement shall be deemed as accurate and accepted by Seller.
+                                    <br></br>
+                                    eBay will pay to Seller the total Subsidy Payments due pursuant to the Statement, if any, to Seller via PayPal within twenty (20) business days after the Confirmation Date. Within ten (10) days of receipt of the total Subsidy Payment, Seller shall confirm receipt to eBay in writing, which may include email or through an online Deal submission portal.
+                                    <br></br>
+                                    In the event Seller believes the Statement contains an error or omission, then Seller shall submit a report to eBay identifying such suspected error or omission using the form of Subsidy Statement Error Report attached as Addendum B
+                                    <b>(“Error Report”) </b> no later than the Confirmation Date.  Upon receipt of the Error Report, eBay shall review its reports and either reissue a corrected Statement to Seller or provide an explanation why the original Statement is correct. Unless otherwise mutually agreed by eBay and Seller, eBay will pay to Seller the total Subsidy Payments due via PayPal within twenty (20) business days of the final determination of the correct total amount of Subsidy Payment. 
+                                    <br></br>
+                                    Seller must review and report any error or omission regarding the Subsidy Payment for a Deal no later than ten (10) business days after: (i) receipt of the Statement if no Subsidy Payment is due; or (ii) receipt of the Subsidy Payment from eBay if a Subsidy Payment is due <b>(“Subsidy Final Settlement Date”).</b>  Seller shall be precluded from requesting any correction or adjustment to the Statement or Subsidy Payment after the Subsidy Final Settlement Date.
+                                    <br></br>
+                                    All communications between Seller and eBay related to Deal subsidy reconciliation and payment may be made via email, including the Statement and Error Report.
+                                </p>
+                                <p>
+                                    <b>10.	Books and Records.</b> For a period of at least two (2) years after the Deal Stop Date/Time, Seller shall keep and maintain all appropriate books and records related to the Deal, including but not limited to copies of the approved Deal Terms and records of the purchases, deliveries and returns for the Deal 
+                                    <b>(“Deal Records”). </b> Upon fifteen (15) days prior written request of eBay (which may include email), Seller shall provide copies of and access to the Deal Records to eBay for the purpose of verifying the accuracy of the Statements and any amounts paid by the Parties pursuant to the Deal.  In the event of (i) discrepancies found in the review of the Deal Records, and/or (ii) breach of this Agreement, including the Deal Terms, then eBay, 
+                                    in its sole discretion and without limiting any other rights or remedies available, may charge back to Seller the amount of any Subsidy Payments (or portion thereof) previously made to Seller, or withhold or cancel any current or future Subsidy Payment that may be payable. 
+                                </p>
+                                <p>
+                                    <b>11.	Seller Vetting and Standards.</b> Seller agrees to cooperate and provide reasonable information to eBay to allow eBay to conduct a background check, financial verification, inventory sourcing, and other review in connection with the Deals offered pursuant to this Agreement.  Such Seller Review will be specific for one or more categories or subcategories of inventory or industries and in connection with one or more specific suppliers of Seller. 
+                                    Seller shall notify eBay in writing, which may include email, as soon as practicable, but in any event within three (3) business days of any change in the category or subcategory for its inventory, and/or change one or more of its suppliers. Seller agrees to cooperate and provide reasonable information to eBay in the event eBay requests additional review due to the change in category, subcategory or supplier. Seller agrees to meet or exceed “Standard” Seller Status (as defined in the eBay Policies) at all times.
+                                </p>
+                                <p>
+                                    <b>12.	Confidentiality.</b> Seller shall not disclose to any third party, without the written consent of eBay, the terms of this Agreement or any Deal Terms, including without limitation, the amount of any Subsidy Payment received by Seller from eBay or the existence of any Subsidy Payment. 
+                                </p>
+                                <p>
+                                    <b>13.	No Publicity; eBay Promotion.</b> No party shall make any public statement or press release regarding the terms of this Agreement or any aspect thereof without the prior written approval of the other party, except as follows:  during the Term, eBay may promote the Deals in eBay’s sole discretion, including prominent placement, special titling, or otherwise.
+                                </p>
+                                <p>
+                                    <b>14.	Term and Termination; Survival.</b> This Agreement will take effect on the Effective Date and continue until terminated by either party on at least thirty (30) days’ prior written notice to the other party 
+                                    <b>(“Term”).</b> eBay may terminate this Agreement and/or any Deal immediately upon written notice to Seller and pursue any and all remedies (including a set-off, if applicable, of any currently pending or future payments due to Seller) if: (a) Seller breaches the terms of this Agreement and/or any Deal Terms; or (b) eBay discontinues or materially alters the Daily Deals Program. 
+                                    <br></br>
+                                    Sections 2 (eBay Policies), 7 (Risk Review of Designated Items), 9 (Deal Subsidy Reconciliation Statement and Payment Terms), 10 (Books and Records), 11 (Seller Vetting and Standards), 12 (Confidentiality), 14 (Term and Termination; Survival), 16 (Legal Disputes), and 17 (General) shall survive expiration or termination of this Agreement. 
+                                </p>
+                                <p>
+                                    <b>15.	Amendment.</b> Except for permitted changes to the Deal Terms described in Section 1 (Deals), this Agreement may be changed only by a writing signed by both parties or by Seller’s acceptance of online terms and conditions prior to submission of a Deal through an online Deal submission portal. Upon acceptance of online terms and conditions through an online Deal submission portal, those terms and conditions shall supersede the terms of this Agreement.
+                                </p>
+                                <p>
+                                    <b>16.	Legal Disputes.</b> Any claim or dispute at law or equity that has arisen or may arise between eBay and Seller relating in any way to or arising out of this or previous versions of the Daily Deals Agreement will be resolved in accordance with the provisions set forth in the Legal Disputes Section of the eBay User Agreement which is incorporated by reference into this Agreement.
+                                </p>
+                                <p>
+                                    <b>17.	General.</b> No party may assign its rights or obligations under this Agreement, including any Deal Terms, without the prior written consent of the other party, which consent shall not be unreasonably withheld; provided that, eBay may assign this Agreement and its obligations hereunder to any successor to its business by merger or consolidation or to any party acquiring substantially all of the assets or business of eBay. This Agreement may be executed in two or more counterparts, each of which shall be deemed an original and all of which together shall constitute one instrument. Each party agrees that the delivery of signatures to this Agreement by facsimile or electronic transmission will have the same force and effect as delivery of original signatures. This Agreement, including the Deal Terms and all documents referred to herein which are incorporated by this reference, sets forth the entire understanding and agreement of the parties regarding the subject matter thereof, and supersedes any and all oral or written agreements or understandings between the parties, including, but not limited to, any previous agreements related to the Daily Deals Program entered into by the parties.  The waiver of a breach of any provision of this Agreement shall not operate or be interpreted as a waiver of any other or subsequent breach. 
+                                </p>
+                                <br></br><br></br><br></br>
+                                <h2 style="text-align: center;">SCHEDULE 1</h2>
+                                <h2 style="text-align: center;">DEAL TERMS</h2>
+                                <p>
+                                    The item(s) specified in the following attachments have been selected to run on eBay Deals. Scheduled listings are preferred and listings are required to have clean images on white background squared at a minimum of 500x500. Please also add international shipping to all listings when possible. International shipping does not have to be free. 
+                                    <br></br>
+                                    If eBay is offering a subsidy on the item(s) identified below, please review and note that the subsidy applies only for the subsidy period starting and ending exactly at the times specified. If the listing is not scheduled, the price must drop at the start time and change right after the end time. eBay will honor completed transactions during this period only. eBay reserves the right to cancel a Deal or change the dates for a Deal at any time with written notice to Seller. 
+                                </p>
+    
+                        </template>
+    
+                        <template if:true={isAU}>   
+                            <div class="slds-m-bottom_large"><p>Grant application access: eBay Seller Portal (AU)</p></div>
+                            <div class="slds-m-bottom_large"><p>Ready to use eBay Seller Portal (AU)? Great! We need your consent to share your eBay data. Don't worry, we won't share your eBay password. You can change this at any time by editing your <a target="_blank" href="https://cgi1.ebay.com.au/aw-cgi/eBayISAPI.dll?UpdateMyeBayPreferences">account preferences</a>.</p></div>
+                            <div class="slds-m-bottom_large"><p>Please take the time to read eBay's terms of service and <a target="_blank" href="https://pages.ebay.com.au/help/policies/privacy-policy.html">privacy notice</a>, because these policies will apply when you use this service. Remember, we don't manage policies set by other companies.</p></div>
+                            <div class="slds-m-bottom_large"><p>By clicking on the "Agree" button, you're allowing us to link your eBay Seller Portal (AU) account with eBay.</p></div>
+                            <div class="slds-m-bottom_large"><p>No thanks, take me to <a target="_blank" href="https://sellerportal.ebay.com.au/s/">eBay homepage</a>.</p></div>
+                        </template>
+                    </div>
+    
+
+
+                </template>
+
+
+
+                <footer class="slds-modal__footer">
+                    <template if:true={hasFooterContent}>
+                        <div class="slds-m-bottom_small">
+                            <lightning-formatted-rich-text value={footerContent}></lightning-formatted-rich-text>
+                        </div>
+                    </template>
+                    
+
+                    <div class="actionContainer">
+
+                        <template if:true={hasDownloadContent}>
+                            <div class="slds-text-align_left downloadBtnSection">
+                                <button class="slds-button slds-button_neutral" onclick={handlDownload}>
+                                    <span class="slds-m-right_x-small"><lightning-icon class="downloadBtn" icon-name="utility:download" size="xx-small"></lightning-icon></span>
+                                    <span>{downloadBtnLabel}</span>
+                                </button>
+                            </div>
+                        </template>
+                        
+                        <div class="slds-text-align_right actionBtnSection">
+                            <template if:false={enableTabView}>
+                                <button class="slds-button slds-button_brand" onclick={acceptAgreement}>{labelAcceptAgreement}</button>
+                                <button class="slds-button slds-button_neutral" onclick={closeModal}>{labelLeave}</button>
+                            </template>
+                            <template if:true={enableTabView}>
+                                <button class="slds-button slds-button_neutral" onclick={closeModal}>{labelLeave}</button>
+                                <button class="slds-button slds-button_brand" onclick={acceptAgreement}>{labelAcceptAgreement}</button>
+                            </template>
+
+                        </div>
+                        
+                    </div>
+                   
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

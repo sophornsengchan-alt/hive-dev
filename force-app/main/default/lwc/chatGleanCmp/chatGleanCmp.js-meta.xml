@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <!-- Makes the component available on various Lightning pages -->
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__GlobalAction</target>
+        <target>lightning__UtilityBar</target>
+    </targets>
+    <targetConfigs>
+        <!-- Configuration for properties exposed in App Builder/Community Builder -->
+        <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage,lightning__UtilityBar">
+            <property name="chatIconUrl" type="String" label="Chat Icon URL" description="URL for the chat icon (e.g., a Static Resource URL like /resource/MyChatIcon)"/>
+            <property name="agentIconUrl" type="String" label="Agent Icon URL" description="URL for the agent icon displayed next to AI responses (e.g., /resource/MyGleanAILogo)"/>
+            <property name="height" type="String" default="600px"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

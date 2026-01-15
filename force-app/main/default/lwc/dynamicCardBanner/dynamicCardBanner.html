@@ -1,0 +1,31 @@
+<template>  
+    <template if:true={bannerMetadata}>  
+    <div style="cursor: pointer;" onclick={openurlintab}>
+        <div class="slds-grid slds-p-around_large banner">
+            <div class="slds-col slds-size_1-of-3">
+                <div class="slds-text-heading_large text_heading">
+                      <!-- {bannerMetadata.heading_content__c}     -->
+                        <a href="javascript:void(0)"  target="_blank">
+                            {bannerMetadata.heading_content__c}
+                        </a>            
+                </div>
+                <div class="slds-text-heading_small slds-m-vertical_x-small text">
+                    {bannerMetadata.card_text_content__c}
+                </div>
+                <div class="bckButton slds-p-vertical_xx-small slds-p-horizontal_medium slds-m-vertical_medium">                
+                   <!-- {bannerMetadata.Button_Label_Name__c} -->
+                   <a href="javascript:void(0)"  target="_blank">
+                        {bannerMetadata.Button_Label_Name__c}
+                    </a>
+                    <lightning-icon icon-name="utility:forward" class="icon slds-m-left_x-small" size="small" ></lightning-icon>                             
+                </div>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+                <a href="javascript:void(0)" target="_blank">
+                    <img src={img1} class="img"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    </template>
+</template>

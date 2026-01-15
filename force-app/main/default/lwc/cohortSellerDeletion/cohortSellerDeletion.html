@@ -1,0 +1,127 @@
+<template>
+
+    <lightning-quick-action-panel header={header}>
+
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    
+        <template if:true={step1}>
+
+            <div class="slds-m-bottom_x-small">
+
+                <template if:false={isAllSuccess}>
+                    
+                    <template if:false={isStep1BlockingError}>
+
+                        <template if:true={hasErrorOrConflicted}>
+                            <div class="slds-text-color_error slds-text-align_center slds-text-heading_small">
+                                <lightning-formatted-rich-text value={Labels.ErrorOrConflicted_Cohort_Sellers_To_Deactivate}></lightning-formatted-rich-text>
+                            </div>
+                        </template>
+
+                    </template>
+
+                    <template if:true={isStep1BlockingError}>
+                        <div class="slds-text-color_error slds-text-align_center slds-text-heading_small">
+                            <span><lightning-formatted-rich-text value={step1BlockingErrorMsg}></lightning-formatted-rich-text></span>
+                        </div>
+                    </template>
+
+                </template>
+
+
+                <template if:true={isAllSuccess}>
+                    <div class="slds-text-color_success slds-text-align_center slds-text-heading_medium">
+                        <span>{lbAllSuccessCohortSeller}</span>
+                    </div>
+                </template>
+
+
+
+            </div>
+
+            <template if:true={hasErrorOrConflicted}>
+                <div class="listTableContainer">
+                    <lightning-datatable
+                        key-field="tableDeactivateBs"
+                        columns={listToDeactivateColumn}
+                        data={listBsErrorRowToDisplay}
+                        hide-checkbox-column="false"
+                        enable-infinite-loading="true"
+                        onloadmore={handlerLoadMoreRow}
+                        >
+                    </lightning-datatable>
+                </div>
+            </template>
+
+
+        </template>
+
+        <template if:true={step2}>
+            
+            <div class="slds-align_absolute-center">
+
+                <template if:true={isUpdatingCohortSeller}>
+                    <div class="slds-text-align_center">
+                        
+                        <div class="slds-show_inline-block slds-text-heading_small">{lbUpdateCohortSellerStatusProgressMsg}
+                            <template if:false={hasDoneDeleted}>
+                                <div class="slds-show_inline-block">
+                                    <div class="slds-p-right_large slds-is-relative slds-show_inline-block loadingIcon">
+                                        <lightning-spinner variant="brand" alternative-text="Loading..." size="x-small"></lightning-spinner>
+                                    </div>
+                                </div>
+                            </template>
+
+                        </div>
+
+                    </div>
+                </template>
+
+                <template if:true={hasUpdateCohortError}>
+                    <div class="slds-text-color_error slds-text-align_center slds-text-heading_small">
+                        <span>{updateCohortError}</span>
+                    </div>
+                </template>
+
+            </div>
+
+        </template>
+
+        <template if:true={step3}>
+            <template if:true={isAsync}>
+                <c-cohort-action cohort-id={recordId} oncohortactionfinish={onCohortActionFinish}></c-cohort-action>
+            </template>
+        </template>
+    
+        <div slot="footer">
+            <template if:true={step1}>
+                
+                <lightning-button variant={closeBtnVariant} label={closeBtnLabel} type="submit" onclick={handleClose}></lightning-button> 
+
+                <lightning-button variant="brand" class="slds-m-left_x-small" label={deactivateButtonLabel} type="submit" onclick={handleConfirmDeactivateSeller} if:true={enableDeactivateButton}></lightning-button>
+            </template>
+            <template if:true={step2}>
+                <lightning-button variant={closeBtnVariant} class="slds-m-left_x-small" label={closeBtnLabel} type="submit" onclick={handleClose} disabled={step2IsBtnDisabled}></lightning-button>
+            </template>
+            <template if:true={step3}>
+
+                <template if:true={isBatchRunning}>
+                    <div class="slds-show_inline-block slds-text-align_center closeModalContainser">
+                        <span>{Labels.Close_Modal_When_BatchCohortAction_Running}</span>
+                     </div>
+                </template>
+
+                <div class="slds-show_inline-block">
+                    <lightning-button variant={closeBtnVariant} class="slds-m-left_x-small" label={closeBtnLabel} type="submit" onclick={handleClose} disabled={step3IsBtnDisabled}></lightning-button>
+                </div>
+
+
+            </template>
+            
+           
+        </div>
+
+    </lightning-quick-action-panel>
+
+
+</template>

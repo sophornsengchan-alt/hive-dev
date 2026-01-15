@@ -1,0 +1,72 @@
+<template>
+    <template if:true={isOverlay}>
+        <div class="overlay"></div>
+    </template>
+    <template if:true={showModal}>
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">{labels.lblCancel}</span>
+                    </button>
+
+
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{labels.lblTitle}</h2>
+
+                    
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium slds-p-bottom--none fix-picklist-visibility slds-is-relative slds-p-top--none div-readjust-deal">
+                     
+                        <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+                           
+                    
+                        <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId} onsubmit ={handleReSubmit} onsuccess={handleSuccess} onload={handleLoad} onerror={handleError}> 
+                            <div>
+                                <lightning-messages class="fix-error-size"> </lightning-messages>
+                            </div>
+                            
+                            <lightning-layout multiple-rows="true" >
+                                <lightning-layout-item padding="around-small" size="6"  >
+                                    <lightning-layout multiple-rows="true">
+
+                                        <lightning-layout-item  size="12"  class="  " >                                            
+                                            <lightning-input class="EBH_DealPrice__c" type="text" name="input_EBH_DealPrice__c" data-apiname="EBH_DealPrice__c" label={fieldLabels.EBH_DealPrice__c} value={singleDeal.EBH_DealPrice__c} variant="label-inline" message-when-value-missing={labels.lblRequiredDealPrice} required="true" onchange={handleFieldChange} ></lightning-input><!--type="number" formatter="decimal" step="0.01" max="9999999999999999.99" -->
+                                        </lightning-layout-item>
+                                        
+                                    </lightning-layout>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size="6" >
+                                    <lightning-layout multiple-rows="true">
+                                                                                
+                                        <lightning-layout-item  size="12"  class="  " >                                            
+                                            <lightning-input class="EBH_RRPWASPrice__c" type="text" name="input_EBH_RRPWASPrice__c" data-apiname="EBH_RRPWASPrice__c" label={fieldLabels.EBH_RRPWASPrice__c} value={singleDeal.EBH_RRPWASPrice__c} variant="label-inline" onchange={handleFieldChange} ></lightning-input><!--type="number" formatter="decimal" step="0.01" max="9999999999999999.99" -->
+                                        </lightning-layout-item>
+
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                                
+
+                                <lightning-layout-item padding="around-small" size="12"   >
+                                    <footer class="slds-modal__footer">
+                                        <lightning-button label={labels.lblCancel} title={labels.lblCancel}  onclick={doCloseModal} class="slds-m-left_x-small"></lightning-button>
+                                            <lightning-button variant="brand" label={labels.lblResubmit} title={labels.lblResubmit} onclick={handleReSubmit} class="slds-m-left_x-small"></lightning-button>
+                                    </footer>
+                                </lightning-layout-item>
+
+                            </lightning-layout>
+                                                    
+                        </lightning-record-edit-form>
+                    
+                </div>
+               
+            </div>
+        </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>      
+    </template>
+</template>

@@ -1,0 +1,124 @@
+<template>
+    <div class="lwc-deal-contract-sign-agreement">
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+        <template if:true={isHasData}>
+        <div class="container">
+            <div class="slds-align_absolute-center"><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Title}></lightning-formatted-rich-text></b></div><br/><br/>
+            <lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_TXT}></lightning-formatted-rich-text><br/><br/>
+            <lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_TXT_2}></lightning-formatted-rich-text><br/>
+            <lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_TXT_3}></lightning-formatted-rich-text><br/><br/>
+            <lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_TXT_4}></lightning-formatted-rich-text>
+            <div class="div-table">
+                <table class="table slds-table slds-table_cell-buffer slds-no-row-hover">
+                    <tr>
+                        <td><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Seller_ID}></lightning-formatted-rich-text></td>
+                        <td><lightning-formatted-rich-text value={dca.eBay_Seller__r.Name}></lightning-formatted-rich-text></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Title_2}></lightning-formatted-rich-text></b></td>
+                        <td><lightning-formatted-rich-text value={dca.Title__c}></lightning-formatted-rich-text></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_eBay_Funding}></lightning-formatted-rich-text> </b></td>
+                        <td>
+                            <!-- <template if:true={dca.eBay_Funding__c}> -->
+                                <lightning-formatted-number value={dca.eBay_Funding__c} format-style="decimal" minimum-fraction-digits="2"></lightning-formatted-number>
+                                <lightning-formatted-rich-text value="%"></lightning-formatted-rich-text>
+                            <!-- </template> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Deal_Page_Placement}></lightning-formatted-rich-text></b> </td>
+                        <td><lightning-formatted-rich-text value={dca.Deal_Page_Placement__c}></lightning-formatted-rich-text></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Deal_Start_Date_And_Price}></lightning-formatted-rich-text></b></td>
+                        <td><lightning-formatted-rich-text value={dca.Deal_Start_Date__c}></lightning-formatted-rich-text>&nbsp;<lightning-formatted-time value={dca.Deal_Start_Time__c}> </lightning-formatted-time></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Deal_Stop_Date_And_Price}></lightning-formatted-rich-text></b></td>
+                        <td><lightning-formatted-rich-text value={dca.Deal_End_Date__c}></lightning-formatted-rich-text>&nbsp;<lightning-formatted-time value={dca.Deal_End_Time__c}> </lightning-formatted-time></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Discount_Applied}></lightning-formatted-rich-text></b></td>
+                        <!-- <td><lightning-formatted-rich-text value={dca.Discount_Applied_in_Cart__c}></lightning-formatted-rich-text> </td> -->
+                        <td><lightning-formatted-rich-text value={isDiscountAppliedInCart}></lightning-formatted-rich-text></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Maximum_Subsidy}></lightning-formatted-rich-text></b></td>
+                        <!-- <td><lightning-formatted-rich-text value={dca.Max_Total_Subsidy__c}></lightning-formatted-rich-text> </td> -->
+                        <td><lightning-formatted-number value={dca.Max_Total_Subsidy__c} format-style="currency" currency-code="USD" currency-display-as="code"></lightning-formatted-number></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Maximum_Unit}></lightning-formatted-rich-text></b></td>
+                        <!-- <td><lightning-formatted-rich-text value={dca.Max_Unit_Subsidy__c}></lightning-formatted-rich-text> </td> -->
+                        <td><lightning-formatted-number value={dca.Max_Unit_Subsidy__c} format-style="currency" currency-code="USD" currency-display-as="code"></lightning-formatted-number></td>
+                    </tr>
+                    <tr>
+                        <td><b><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_PM_ID}></lightning-formatted-rich-text></b></td>
+                        <!-- <td><a href={linkPMID}>{dca.PM_Id__c}</a></td> -->
+                        <td><lightning-formatted-rich-text value={dca.PM_Id__c}></lightning-formatted-rich-text></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <ul class="contract-ul">
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_2}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_3}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_4}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_5}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_6}></lightning-formatted-rich-text></li>
+                    <li><lightning-formatted-rich-text value={Labels.contract_Agreement_Tab_Ul_TXT_7}></lightning-formatted-rich-text></li>
+                </ul>
+            </div>
+            <div class="slds-size_1-of-1 slds-clearfix slds-m-top_medium">
+                <!-- Right Button -->
+                <template if:true={isShowAgreeOrDecline}>
+                    <div class="slds-float_right">
+                        <button class="slds-button slds-button_neutral" disabled={isCouponSellerStageNotContractSend} onclick={openModal} title={Labels.button_Decline}>{Labels.contract_Agreement_Tab_I_Decline_Text}</button>
+                        <a class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleAgreeButtonClick}>{Labels.contract_Agreement_Tab_I_Agree_Text}</a>
+                    </div>
+                </template>
+                <lightning-button class="slds-float_right" onclick={handleDownloadPDF} label={Labels.lbl_DownloadAgreement} variant="brand" if:true={showDownloadPDF}></lightning-button>
+            </div>
+        </div>
+        <template if:true={isModalOpen}>
+        
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                
+                <lightning-record-edit-form onsubmit={handleSubmit} object-api-name="Deal_Contract_Agreement__c" record-id={recId} onsuccess={handleSuccess} onerror={handleError}>     
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><lightning-formatted-rich-text value={Labels.Contract_Agreement_Tab_Decline_Reason}></lightning-formatted-rich-text></h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium modal-content" id="modal-content-id-1">
+                        <div class="decline-text"><lightning-formatted-rich-text value={Labels.Contract_Agreement_Tab_Decline_Reason_Text}></lightning-formatted-rich-text></div>
+                        <div class="rejection_Reason">
+                            <p><em>* </em><lightning-formatted-rich-text value={Labels.Contract_Agreement_Tab_Rejection_Reason_Label}></lightning-formatted-rich-text></p>
+                            <lightning-input-field variant="label-hidden" field-name="Rejection_Reason__c" value={dca.Rejection_Reason__c} required></lightning-input-field><br/>
+                            <p><lightning-formatted-rich-text value={Labels.Contract_Agreement_Tab_Rejection_Comment_Label}></lightning-formatted-rich-text></p>
+                            <lightning-input-field variant="label-hidden" field-name="Rejection_Comments__c" value={dca.Rejection_Comments__c}></lightning-input-field>
+                        </div>
+                        <div><em>* </em><lightning-formatted-rich-text value={Labels.Contract_Agreement_Tab_Required}></lightning-formatted-rich-text></div>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral cancel-reason" onclick={closeModal}
+                            title={popbtncanlabel}>{Labels.Contract_Agreement_Tab_Decline_Reason_Cancel}</button>
+                        <button class="slds-button slds-button_brand" type="submit"
+                            title={popbtnconlabel}>{Labels.Contract_Agreement_Tab_Decline_Reason_Submit}</button>
+                        
+                    </footer>
+                </div>
+            </lightning-record-edit-form>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+    
+        </template>
+        </template>
+    </div>
+</template>

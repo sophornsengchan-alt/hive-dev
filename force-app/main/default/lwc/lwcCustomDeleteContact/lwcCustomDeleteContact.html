@@ -1,0 +1,35 @@
+<template>
+    <lightning-card  title={labels.Merge_Or_Delete_Contact}>
+      
+        <p class="slds-p-horizontal_small">
+            <span if:true={showSpinner}>
+                <img src="/img/loading32.gif" alt="Please wait..." />
+            </span>
+            <lightning-formatted-rich-text value={validationMsg} if:true={showMessge} class="slds-text-color--error"></lightning-formatted-rich-text>
+            <span if:true={showReason}>
+                 
+                <lightning-record-edit-form
+                    object-api-name="Case"
+                    record-type-id="0123u0000019nkx">
+                    <label class="slds-form-element__label" for="inputId">
+                        <abbr lwc-enmikoh2qu="" class="slds-required" title="required">*</abbr>
+                        {labels.Merge_Or_Delete_Contact_Reason}</label>
+                    <lightning-input-field field-name="Reason" required="true" variant="label-hidden"  data-fname="reason" onchange={handleFieldChanged}> </lightning-input-field>
+                    <!-- <lightning-input-field field-name="Summary__c" data-fname="summary__c" onchange={handleFieldChanged}> </lightning-input-field> -->
+                    <!-- <lightning-textarea data-fname="reason" required label="Summary" onchange={handleFieldChanged}></lightning-textarea> -->
+
+                </lightning-record-edit-form>
+                 
+            </span>
+           
+        </p>
+        <p class="slds-text-align_center slds-p-top_large slds-p-bottom_large slds-text-body_small">
+            {labels.Merge_Or_Delete_Contact_Additional_Info}
+        </p>
+
+        <p slot="footer" class="slds-var-m-bottom_xxx-small">
+            <lightning-button label="Cancel" onclick={doCancel} disabled={showSpinner}></lightning-button>
+            <lightning-button label="Submit" variant="brand" class="slds-var-p-left_small" onclick={doSubmit} if:true={showReason} disabled={showSpinner}></lightning-button>
+        </p>
+    </lightning-card>
+</template>

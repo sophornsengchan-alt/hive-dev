@@ -1,0 +1,165 @@
+<template>
+
+    <div class="titleBlock">
+        <a href="#" class="backButton"><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon> </a>
+        <h1>{title}</h1>
+    </div>
+    <lightning-record-edit-form 
+      onsuccess={handleSuccess}     
+      onsubmit={handleSubmit}
+      record-id={recordId}     
+      object-api-name="EBH_Deal__c">
+      <lightning-messages></lightning-messages>
+    <!-- <form> -->
+        <div class="row custom-input"> 
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-01">{labelURLSite}</label>
+                  <div class="slds-form-element__control">                    
+                    <lightning-input-field field-name="SiteURL__c" name="urlsite" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-02">{labelProductTitle}</label>
+                  <div class="slds-form-element__control">                    
+                    <lightning-input-field field-name="EBH_ProductTitle__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-03">{labelDealSite}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_DealSiteId__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-04">{labelRetailCampaign}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_DealRetailCampaign__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-05">{labelFormat}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_DealFormat__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-06">{labelQuantity}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_Quantity__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>            
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-08">{labelStartDateTime}</label>
+                  <div class="slds-form-element__control">                  
+                    <lightning-input-field field-name="EBH_DealStartDate__c" variant="label-hidden" value={startDate}></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-09">{labelEndDateTime}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_DealEndDate__c" variant="label-hidden" value={endDate}></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-11">{labelDealPrice}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_DealPrice__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-12">{labelMaximumPurchase}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_MaximumPurchases__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="slds-form-element">
+                  <label class="slds-form-element__label" for="form-element-13">{labelSellerPrice}</label>
+                  <div class="slds-form-element__control">
+                    <lightning-input-field field-name="EBH_SellerPrice__c" variant="label-hidden"></lightning-input-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="form-element-14">{labelRRPorWAS}</label>
+                <div class="slds-form-element__control">
+                  <lightning-input-field field-name="EBH_RecommendedRetailPriceWAS__c" variant="label-hidden"></lightning-input-field>
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="form-element-15">{labelRRPorWASPrice}</label>
+                <div class="slds-form-element__control">
+                  <lightning-input-field field-name="EBH_RRPWASPrice__c" variant="label-hidden"></lightning-input-field>
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="form-element-16">{labelItemNumber}</label>
+              <div class="slds-form-element__control">
+                <lightning-input-field field-name="EBH_eBayItemID__c" variant="label-hidden"></lightning-input-field>
+              </div>
+            </div>
+        </div>
+        </div> 
+        <br/>
+        <div class="slds-card card-padding">          
+              <div class="row">
+                <div class="col-sm-8 slds-align-middle">         
+                    <lightning-input type="checkbox" label={labelNoProduct} onchange={handleNoProduct}></lightning-input>
+                </div>      
+                <template if:false={isChecked}>
+                <div class="col-sm-8">     
+                  <lightning-input type="search" placeholder="Search..." onchange={handleKeyChange} class="slds-m-bottom_small" label={labelChooseItem}
+                  value={searchKey} variant="label-inline"></lightning-input>                  
+                </div> 
+                <div class="col-sm-8">
+                  <lightning-datatable key-field="Id" columns={columns} hide-checkbox-column="true" data={data} hide-table-header>
+                  </lightning-datatable> 
+                </div>
+              </template>       
+              </div>         
+            
+        </div>
+      
+    </div><br/>
+        <!-- </form> -->
+        <div class="slds-card card-padding">
+          <div class="row">
+            <div class="col-sm-8">
+              <span class="smallGrey">{footerHeaderText}</span>  
+             {footerText}
+            </div>
+            <div class="col-sm-4 text-right">             
+              <lightning-button class="slds-m-top_small" variant="brand"
+                         type="submit"
+                         label={labelSubmitBtn}></lightning-button>
+            </div>
+          </div>
+        </div>
+      </lightning-record-edit-form>
+</template>

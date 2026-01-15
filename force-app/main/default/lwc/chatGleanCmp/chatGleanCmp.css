@@ -1,0 +1,1080 @@
+/* ========================================
+   STANDALONE CHAT CONTAINER STYLES - HIVE BRANDING
+   19.11.2025 / Updated to Hive Theme
+   ======================================== */
+
+.chat-container-standalone {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #F4C92F 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-history-scrollable{
+    overflow-y: auto;
+}
+
+/* Loading Container */
+.custom-loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.custom-loading-content {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.loading-text {
+    margin-top: 1rem;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Main Chat Window */
+.custom-chat-window {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Custom Header - Hive Branding */
+.custom-header {
+    background: linear-gradient(135deg, #3D2817 0%, #5C3D2E 50%, #4A4A4A 100%);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #F4C92F;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-icon lightning-icon {
+    --slds-c-icon-color-foreground-default: white;
+}
+
+.chat-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.custom-action-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.custom-action-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.custom-action-button lightning-icon {
+    --slds-c-icon-color-foreground-default: white;
+}
+
+/* Custom Chat Body */
+.custom-chat-body {
+    flex: 1;
+    /* padding: 1.5rem; */
+    padding: 1rem;
+    overflow: visible;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chat-container {
+    background-color: #ffffff;
+    background-image: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(220, 235, 255, 0.3) 100%);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-glean-card.full-screen-mode .chat-container {
+    border-radius: 0;
+}
+
+/* Old SLDS styles removed - using custom chat messages styling instead */
+
+/* ========================================
+   MESSAGE BUBBLE STYLES
+   ======================================== */
+
+/* Inbound (Agent) message styles */
+.slds-chat-message__text.slds-chat-message__text_inbound {
+    background: linear-gradient(90deg, #A8C9FF 0%, #D8E7FF 100%);
+    color: #002D56;
+    border-radius: 18px;
+    padding: 10px 14px;
+    max-width: 95%;
+    margin-right: auto;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Outbound (User) message styles */
+.slds-chat-message__text_outbound {
+    border-radius: 18px;
+    background-color: #0070d2;
+    color: white;
+    max-width: 70%;
+}
+
+/* ========================================
+   HEADING STYLES
+   ======================================== */
+
+.chat-main-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.chat-main-heading .hive-text {
+    color: #004499;
+}
+
+/* ========================================
+   MESSAGE INPUT STYLES
+   ======================================== */
+
+.message-input-footer {
+    padding: var(--lwc-spacingMedium, 1rem);
+    background-color: #ffffff;
+    border-top: 1px solid var(--lwc-bordercolor, #dddbda);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    flex-shrink: 0;
+}
+
+.chat-glean-card.full-screen-mode .message-input-footer {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 1.5rem;
+}
+
+.message-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: visible;
+}
+
+.text-input-row {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+    position: relative;
+    overflow: visible;
+}
+
+/* ========================================
+   INPUT FIELD STYLES
+   ======================================== */
+
+.message-input-wrapper lightning-input {
+    padding: 0;
+    --sds-c-input-radius-border: 25px;
+    --sds-c-input-shadow: none;
+    --sds-c-input-color-border: transparent;
+    --sds-c-input-color-border-focus: transparent;
+    --sds-c-input-color-border-hover: transparent;
+    --sds-c-input-background-color: transparent;
+    --sds-c-input-text-color: #3e3e3c;
+    --sds-c-input-placeholder-color: #747474;
+    flex-grow: 1;
+    min-height: 2.5rem;
+    height: auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.message-input-wrapper lightning-input .slds-input {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    padding: 0.5rem 0.75rem;
+    height: auto;
+    min-height: 1.5rem;
+    line-height: 1.5;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+.send-button-icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --sds-c-icon-color-foreground-default: #b0b0b0;
+}
+
+/* ========================================
+   AGENT COMBOBOX STYLES
+   ======================================== */
+
+.agent-combobox {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 120px;
+    --sds-c-form-element-label-font-size: 0;
+    --sds-c-form-element-label-height: 0;
+    --sds-c-form-element-label-margin-bottom: 0;
+    position: relative;
+}
+
+.combobox-container {
+    position: relative;
+    flex: 1;
+    z-index: 1000;
+}
+
+/* Dropdown positioning styles */
+.agent-combobox .slds-combobox {
+    position: relative !important;
+}
+
+.agent-combobox .slds-dropdown {
+    position: absolute !important;
+    bottom: 100% !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
+    margin-bottom: 2px !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #d8dde6 !important;
+    background: white !important;
+    border-radius: 4px !important;
+}
+
+.agent-combobox .slds-dropdown .slds-listbox__option {
+    background: white !important;
+    border: none !important;
+}
+
+.agent-combobox .slds-dropdown .slds-listbox__option:hover {
+    background: #f3f2f2 !important;
+}
+
+/* ========================================
+   ICON STYLES
+   ======================================== */
+
+.agent-message-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.chat-button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+@media (max-width: 768px) {
+    .chat-glean-card:not(.full-screen-mode), 
+    .minimized-button-container {
+        bottom: 1rem;
+        right: 1rem;
+        width: calc(100% - 2rem);
+        max-width: none;
+    }
+
+    .agent-combobox .slds-dropdown {
+        max-height: 150px !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .chat-title {
+        font-size: 1rem;
+    }
+    
+    .custom-welcome-heading {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .agent-message-wrapper .custom-message-content {
+        max-width: 95%;
+        padding: 0.75rem 1rem;
+    }
+    
+    .user-message-wrapper .custom-message-content {
+        max-width: 85%;
+        padding: 0.75rem 1rem;
+    }
+    
+    .custom-chat-messages {
+        padding: 0 0.5rem;
+    }
+}
+
+/* ========================================
+   CUSTOM STYLES
+   ======================================== */
+
+.custom-welcome-heading {
+    /* font-size: 2rem; */
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    /* margin-bottom: 1.5rem; */
+    margin-bottom: 1rem;
+    color: #1f2937;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.hive-brand-text {
+    background: linear-gradient(135deg, #F4C92F, #FFA500, #FFD700);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* Chat Messages */
+.custom-chat-messages {
+    width: 100%;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* padding-bottom: 1rem; */
+    min-height: 0;
+}
+
+.chat-event-message {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.event-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.custom-message {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.agent-message-wrapper .custom-message {
+    flex-direction: row;
+}
+
+.user-message-wrapper .custom-message {
+    flex-direction: row-reverse;
+}
+
+
+.custom-agent-icon {
+    background: transparent; /* Remove gradient since the image will have its own styling */
+    border-radius: 50%;
+    padding: 0.25rem;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hive-assistant-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+   
+}
+
+.custom-agent-icon lightning-icon {
+    --slds-c-icon-color-foreground-default: white;
+}
+
+
+.custom-message-content {
+    flex: 1;
+    background: white;
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    max-width: 70%;
+}
+
+.agent-message-wrapper .custom-message-content {
+    max-width: 95%;
+}
+
+.user-message-wrapper .custom-message-content {
+    background: linear-gradient(135deg, #F4C92F, #FFA500);
+    color: white;
+    max-width: 70%;
+}
+
+.user-message-wrapper .message-text {
+    color: white;
+}
+
+.message-text {
+    color: #374151;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Custom Footer */
+.custom-chat-footer {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.custom-input-wrapper {
+    width: 100%;
+    margin: 0;
+}
+
+.input-row {
+    /* margin-bottom: 1rem; */
+}
+
+.custom-text-input {
+    --slds-c-input-radius-border: 12px;
+    --slds-c-input-shadow-focus: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    --slds-c-input-color-border: #d1d5db;
+}
+
+.controls-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.agent-selector {
+    flex: 1;
+}
+
+.custom-combobox {
+    --slds-c-input-radius-border: 12px;
+    --slds-c-input-shadow-focus: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    --slds-c-input-color-border: #d1d5db;
+}
+
+.custom-send-button {
+    background: linear-gradient(135deg, #F4C92F, #FFA500);
+    border-radius: 50%;
+    padding: 0.75rem;
+    border: none;
+    min-width: 44px;
+    height: 44px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.custom-send-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(244, 201, 47, 0.5);
+}
+
+.custom-send-button lightning-button-icon {
+    --slds-c-button-icon-color-foreground-default: white;
+}
+.custom-div-sed{
+    padding-top : 17px;
+}
+/* Authorization Screen */
+.custom-auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 3rem;
+    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+    top: -200px;
+}
+
+.auth-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-radius: 50%;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.auth-icon lightning-icon {
+    --slds-c-icon-color-foreground-default: white;
+}
+
+.auth-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.auth-description {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.custom-auth-button {
+    --slds-c-button-brand-color-background: linear-gradient(135deg, #F4C92F, #FFA500);
+    --slds-c-button-brand-text-color: #000000;
+    --slds-c-button-radius-border: 12px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    color: #000000 !important;
+    transform: translateY(0);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.custom-auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Scrollable Chat History - handled by .custom-chat-messages */
+
+.custom-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-chat-messages::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.custom-chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #F4C92F, #FFA500);
+    border-radius: 3px;
+}
+
+.custom-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-chat-body {
+        padding: 1rem;
+    }
+    
+    .custom-welcome-heading {
+        font-size: 1.5rem;
+    }
+    
+    .custom-chat-footer {
+        padding: 1rem;
+    }
+    
+    .controls-row {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .agent-selector {
+        width: 100%;
+    }
+    
+    .agent-message-wrapper .custom-message-content {
+        max-width: 95%;
+    }
+    
+    .user-message-wrapper .custom-message-content {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .chat-title {
+        font-size: 1rem;
+    }
+    
+    .custom-welcome-heading {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .agent-message-wrapper .custom-message-content {
+        max-width: 95%;
+        padding: 0.75rem 1rem;
+    }
+    
+    .user-message-wrapper .custom-message-content {
+        max-width: 85%;
+        padding: 0.75rem 1rem;
+    }
+    
+    .custom-chat-messages {
+        padding: 0 0.5rem;
+    }
+}
+
+/* Remove any default SLDS styling that might interfere */
+.chat-container-standalone * {
+    box-sizing: border-box;
+}
+
+/* Hide any Salesforce standard styling and prevent external scrolling */
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Loading animation for chat messages */
+.message-text img {
+    max-width: 40px;
+    height: auto;
+}
+
+/* Ensure icons display correctly in custom theme */
+.custom-header lightning-icon,
+.custom-agent-icon lightning-icon,
+.auth-icon lightning-icon {
+    color: inherit;
+}
+
+/* Enhanced focus states for accessibility */
+.custom-action-button:focus,
+.custom-send-button:focus,
+.custom-auth-button:focus {
+    outline: 2px solid #F4C92F;
+    outline-offset: 2px;
+}
+
+/* Animation for message entrance */
+.agent-message-wrapper,
+.user-message-wrapper {
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gradient text animation for HIVE brand */
+.hive-brand-text {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ========================================
+   14.11.2025 / AI Assistant / CONVERSATION STARTERS & NEW CHAT STYLES
+   ======================================== */
+
+/* New Chat Button in Header */
+.header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.new-chat-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.new-chat-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Conversation Starters Container */
+.conversation-starters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0 1.5rem 0;
+    padding: 0;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/* Conversation Starter Button - Hive Branding */
+.conversation-starter-button {
+    background: #ffffff;
+    border: 2px solid #F4C92F;
+    border-radius: 24px;
+    padding: 0.75rem 1.5rem;
+    color: #3D2817;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(244, 201, 47, 0.2);
+    text-align: left;
+    max-width: 300px;
+    line-height: 1.4;
+}
+
+.conversation-starter-button:hover {
+    background: linear-gradient(135deg, #F4C92F, #FFA500);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(244, 201, 47, 0.4);
+    transform: translateY(-2px);
+    border-color: #FFA500;
+}
+
+.conversation-starter-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(244, 201, 47, 0.3);
+}
+
+/* ========================================
+   HYPERLINK STYLES FOR HIVE ASSISTANT RESPONSES
+   ======================================== */
+
+/* Global link styles within chat messages */
+.custom-message-content a {
+    color: #0176d3 !important;
+    text-decoration: underline !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.custom-message-content a:hover {
+    color: #014486 !important;
+    text-decoration: none !important;
+    background-color: rgba(1, 118, 211, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.custom-message-content a:focus {
+    outline: 2px solid #0176d3;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Lightning formatted rich text link styles */
+lightning-formatted-rich-text a {
+    color: #0176d3 !important;
+    text-decoration: underline !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+lightning-formatted-rich-text a:hover {
+    color: #014486 !important;
+    text-decoration: none !important;
+    background-color: rgba(1, 118, 211, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Ensure links are visible in all message contexts */
+.message-text a {
+    color: #0176d3 !important;
+    text-decoration: underline !important;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.message-text a:hover {
+    color: #014486 !important;
+    background-color: rgba(1, 118, 211, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+
+/* Accessibility: Focus styles for keyboard navigation */
+.message-text a:focus,
+.custom-message-content a:focus,
+lightning-formatted-rich-text a:focus {
+    outline: 2px solid #F4C92F;
+    outline-offset: 2px;
+    background-color: rgba(244, 201, 47, 0.2);
+}
+
+/* Ensure links work well in both light and dark themes */
+@media (prefers-color-scheme: dark) {
+    .custom-message-content a,
+    .message-text a,
+    lightning-formatted-rich-text a {
+        color: #4fc3f7 !important;
+    }
+    
+    .custom-message-content a:hover,
+    .message-text a:hover,
+    lightning-formatted-rich-text a:hover {
+        color: #81d4fa !important;
+        background-color: rgba(79, 195, 247, 0.1);
+    }
+}
+
+/* ========================================
+   END OF HYPERLINK STYLES
+   ======================================== */
+
+/* ========================================
+   TABLE STYLES FOR HIVE ASSISTANT RESPONSES
+   ======================================== */
+
+/* Summary table styles - black background with black borders */
+.custom-message-content table,
+.message-text table,
+lightning-formatted-rich-text table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    margin: 1rem 0 !important;
+}
+
+.custom-message-content table th,
+.message-text table th,
+lightning-formatted-rich-text table th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    padding: 12px 16px !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    font-size: 14px !important;
+}
+
+.custom-message-content table td,
+.message-text table td,
+lightning-formatted-rich-text table td {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    vertical-align: top !important;
+}
+
+/* Header row styling */
+.custom-message-content table thead tr,
+.message-text table thead tr,
+lightning-formatted-rich-text table thead tr {
+    background-color: #000000 !important;
+}
+
+.custom-message-content table thead th,
+.message-text table thead th,
+lightning-formatted-rich-text table thead th {
+    background-color: #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+.custom-message-content table tbody tr,
+.message-text table tbody tr,
+lightning-formatted-rich-text table tbody tr {
+    background-color: #000000 !important;
+}
+
+/* Responsive table styling for mobile */
+@media (max-width: 768px) {
+    .custom-message-content table,
+    .message-text table,
+    lightning-formatted-rich-text table {
+        font-size: 13px !important;
+        display: block !important;
+        overflow-x: auto !important;
+    }
+    
+    .custom-message-content table th,
+    .custom-message-content table td,
+    .message-text table th,
+    .message-text table td,
+    lightning-formatted-rich-text table th,
+    lightning-formatted-rich-text table td {
+        padding: 10px 12px !important;
+        min-width: 120px !important;
+    }
+}
+
+/* Ensure table text is always visible */
+.custom-message-content table *,
+.message-text table *,
+lightning-formatted-rich-text table * {
+    color: #ffffff !important;
+}
+
+/* ========================================
+   END OF TABLE STYLES
+   ======================================== */
+
+/* ========================================
+   ATTACHMENT SECTION STYLES
+   08.12.2025 / Added attachment card styling
+   ======================================== */
+
+.attachment-section {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.attachment-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.attachment-card:hover {
+    background-color: #e8f4ff;
+    border-color: #0176d3;
+    box-shadow: 0 2px 8px rgba(1, 118, 211, 0.15);
+    transform: translateY(-1px);
+}
+
+.attachment-card:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(1, 118, 211, 0.2);
+}
+
+.attachment-icon {
+    flex-shrink: 0;
+}
+
+.attachment-link {
+    color: #0176d3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    transition: color 0.2s ease;
+}
+
+.attachment-card:hover .attachment-link {
+    color: #014486;
+    text-decoration: underline;
+}
+
+/* Ensure icon color */
+.attachment-card lightning-icon {
+    --slds-c-icon-color-foreground-default: #0176d3;
+}
+
+/* ========================================
+   END OF ATTACHMENT SECTION STYLES
+   ======================================== */
+
+/* ========================================
+   END OF CONVERSATION STARTERS & NEW CHAT STYLES
+   ======================================== */

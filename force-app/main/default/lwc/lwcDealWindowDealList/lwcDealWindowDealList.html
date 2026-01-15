@@ -1,0 +1,18 @@
+<template>
+    <template if:true={isITListView}>
+        <c-lwc-list-view message-no-record={Labels.noRecordMessage} fields-no-link={fieldsNoLink} mdt-name='IT_DW_Deals_List_Tab' is-disable-search="true" search-key={dwId} oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view><br>
+    </template>
+    <template if:false={isITListView}>
+        <c-lwc-list-view message-no-record={Labels.noRecordMessage} fields-no-link={fieldsNoLink} mdt-name='DW_Deals_List_Tab' is-disable-search="true" search-key={dwId} oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view><br>
+    </template>
+    <template if:true={showButtons}>
+        <div class="btn-right">
+            <img src="/img/loading24.gif" title="Loading..." if:true={showDownloadSpinner} class="slds-var-p-right_small"/>
+            <button class="slds-button slds-button_brand download-btn" onclick={handleDownloadDeals}>
+                <lightning-icon class="download-icon" icon-name="utility:download" variant="brand" size="x-small" ></lightning-icon>
+                <span>{btnDownloadLabel}</span>  
+            </button><br/>
+        </div>
+        
+    </template>
+</template>

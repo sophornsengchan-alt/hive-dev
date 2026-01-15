@@ -1,0 +1,39 @@
+.dropdown {
+    background: white;
+    border: 1px solid #ccc;
+    width: 100%; /* Ensure the dropdown width matches the search box width */
+    z-index: 1000;
+    max-height: 200px;
+    width: 25rem;
+    overflow-y: auto;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.dropdown-item:hover {
+    background-color: #f4f4f4; /* Add hover effect */
+}
+
+.custom-height {
+    height: calc(100vh - 440px); /* Adjust the height calculation as needed */
+}
+.tableHeight {
+    height: 100%;
+}
+
+:host {
+    --lwc-varFontSize5: 25px;
+  }
+.height_datatable_250{
+    height: 250px;
+}
+.custom-card-header {
+    background-color: #F3F3F3;
+    margin-top: -12px;
+}
+.width_input{
+    width: 25rem;
+}

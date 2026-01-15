@@ -1,0 +1,20 @@
+<template>
+   <lightning-combobox                       
+   label={inputLabelSite}
+   value={siteNumber}
+   placeholder={placeholderSite}
+   options={siteOptions}
+   onchange={handleSiteChange} required="true"                         
+></lightning-combobox>
+     <lightning-combobox                       
+                         label={inputLabel}
+                         value={drcId}
+                         placeholder={placeholder}
+                         options={options}
+                         onchange={handleChange}
+                         class="drcField"                   
+                      >
+      </lightning-combobox>
+  
+    
+</template>

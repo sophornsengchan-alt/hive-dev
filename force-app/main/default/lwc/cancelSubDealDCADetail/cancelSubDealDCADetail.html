@@ -1,0 +1,46 @@
+<template>
+    <div>
+        <lightning-card title="Cancel Contract" icon-name="custom:custom14">
+            <div class="slds-text-align--center">
+                <c-lwc-message ></c-lwc-message>
+            </div>
+            <div>
+                 
+                    <!-- <lightning-spinner alternative-text="Loading" size="large" if:true={showSpinner}></lightning-spinner> -->
+                    <c-lwc-loading if:true={showSpinner} message="Processing..."></c-lwc-loading>
+
+                <div if:false={hasError}>
+                    <div class="slds-m-around_medium">
+                        <p>
+                            <lightning-formatted-rich-text value={cofirmText}></lightning-formatted-rich-text>
+                        </p>
+                        <p class="slds-var-p-top_small">
+        
+                            <lightning-record-edit-form object-api-name="Deal_Contract_Agreement__c" record-id={recordId} id="recordForm">
+                                <lightning-messages></lightning-messages>
+                                <lightning-input-field data-id="Cancellation_Reason__c" readonly="true" required="true" field-name="Cancellation_Reason__c"> </lightning-input-field>
+                                
+                            </lightning-record-edit-form>
+                        </p>
+                        <p class="slds-var-p-top_small" if:false={processComplete}>
+                            Number of deal: 
+                            <lightning-formatted-number class="slds-var-p-left_small" value={dealCount}></lightning-formatted-number>
+                        </p>
+                                
+                        
+        
+                     </div>
+                </div>
+                <p class="slds-var-p-top_small" if:true={processComplete}>
+                    <lightning-formatted-rich-text class="slds-var-p-left_small" value={updatedResultText}></lightning-formatted-rich-text>
+                </p>
+                <div  slot="footer" class="footer">
+                    <lightning-button label={cancelButtonLabel} onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button label="Confirm" variant="brand" onclick={handleOK} class="slds-m-left_x-small" if:false={processComplete}></lightning-button>
+                </div>
+            </div>
+            
+        </lightning-card>
+          
+    </div>
+</template>

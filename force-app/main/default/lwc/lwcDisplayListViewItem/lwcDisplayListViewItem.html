@@ -1,0 +1,85 @@
+<template>
+    <div class="slds-card">
+        <div class="listTop">
+            <div class="listColumnOne">
+                <input class="cls_checkbox" onclick={handleCheckbox} data-index={item.index} checked={item.is_Checked} type="checkbox" name="">
+                <div class="listColumn">
+                   <span>{displayFirstCol.label}</span>
+                    <template if:true={displayFirstCol.isStatus}>
+                        <b>{displayFirstCol.value}</b>
+                    </template>
+                    <template if:true={displayFirstCol.isText}>
+                        <lightning-formatted-text value={displayFirstCol.value} ></lightning-formatted-text>
+                    </template>
+                </div>
+            </div>
+            <template for:each={displayHighlightFields} for:item="itemh">
+                <div key={itemh.id} class="listColumnTwo">
+                    <div class="listColumn">
+                        <span>{itemh.label}</span>
+                        <template if:true={itemh.isStatus}>
+                            <b>{itemh.value}</b>
+                        </template>
+                        <template if:true={itemh.isCheckBox}>
+                            <template if:true={itemh.value}>
+                                <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled="" checked="" />
+                            </template>
+                            <template if:false={itemh.value}>
+                                <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled=""/>
+                            </template>
+                        </template>
+                        <template if:true={itemh.isDate}>
+                            <lightning-formatted-date-time value={itemh.value} time-zone="UTC"></lightning-formatted-date-time>
+                        </template>
+                        <template if:true={itemh.isNumber}>
+                            <lightning-formatted-number value={itemh.value} maximum-fraction-digits="2"></lightning-formatted-number>
+                        </template>
+                        <template if:true={itemh.isHTML}>
+                            <lightning-formatted-rich-text value={itemh.value}></lightning-formatted-rich-text>
+                        </template>
+                        <template if:true={itemh.isText}>
+                            <lightning-formatted-text value={itemh.value} ></lightning-formatted-text>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            
+            <a onclick={onShowDetail} class="backButton">
+                <lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon>
+            </a>
+        </div>
+        <template if:true={displayDetail}>
+            <div class="listMiddle">
+                <template for:each={displayDetailsFields} for:item="itemd">
+                    <div key={itemd.id} class="listColumnTwo">
+                        <div class="listColumn">
+                            <span>{itemd.label}</span>
+                            <template if:true={itemd.isStatus}>
+                                <b>{itemd.value}</b>
+                            </template>
+                            <template if:true={itemd.isCheckBox}>
+                                <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled checked={itemd.value} />
+                            </template>
+                            <template if:true={itemd.isDate}>
+                                <lightning-formatted-date-time value={itemd.value} time-zone="UTC"></lightning-formatted-date-time>
+                            </template>
+                            <template if:true={itemd.isNumber}>
+                                <lightning-formatted-number value={itemd.value} maximum-fraction-digits="2"></lightning-formatted-number>
+                            </template>
+                            <template if:true={itemd.isHTML}>
+                                <lightning-formatted-rich-text value={itemd.value}></lightning-formatted-rich-text>
+                            </template>
+                            <template if:true={itemd.isText}>
+                                <lightning-formatted-text value={itemd.value} ></lightning-formatted-text>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="listBottom">
+                <a class="slds-button slds-button_brand mr-2" onclick={onViewDetail}>View Deal</a>
+                <!--<a class="slds-button slds-button_outline-brand" onclick={onCloneButton}>Clone deal</a>-->
+            </div>
+        </template>
+    </div>
+</template>

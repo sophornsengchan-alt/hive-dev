@@ -1,0 +1,75 @@
+<template>
+    <template if:true={isReady}>
+        <template if:false={isPrevew}>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_12-of-12 tbl-data">
+                    <div class="container-setting">
+                        <!-- <h2 class="slds-text-heading_medium slds-m-bottom_small text-center header-title"><lightning-formatted-rich-text value="Config Option 2"></lightning-formatted-rich-text></h2> -->
+                        <table class="slds-table" role="grid">
+                            <tr>
+                                <td><lightning-formatted-rich-text value="User Id"></lightning-formatted-rich-text></td>
+                                <td><lightning-formatted-rich-text value="Category"></lightning-formatted-rich-text></td>
+                                <td><lightning-formatted-rich-text value="Minimum Average Number of SKUs"></lightning-formatted-rich-text></td>
+                                <td><lightning-formatted-rich-text value="Products"></lightning-formatted-rich-text></td>
+                            </tr>
+                            <template for:each={qTargetsData} for:item="qtarget" for:index="idx">
+                                <tr key={qtarget.id}>
+                                    <td>
+                                        <lightning-record-picker matching-info={matchingInfo} display-info={displayInfo} variant="label-hidden" label="Seller Name" placeholder="Contract Seller Search..." object-api-name="EBH_ContractSeller__c" data-id={idx} name="Contract_Seller_Id__c" value={qtarget.Contract_Seller_Id__c} onchange={handleChangePicker}></lightning-record-picker>
+                                    </td>
+                                    <td>
+                                        <lightning-record-picker matching-info={matchingInfoCat} display-info={displayInfoCat} variant="label-hidden" label="Category Tree" placeholder="Category Tree Search..." object-api-name="Category_Tree__c" data-id={idx} name="Category_Tree_Id__c" value={qtarget.Category_Tree_Id__c} onchange={handleChangePicker} filter={filter}></lightning-record-picker>
+                                    </td>
+                                    <td>
+                                        <lightning-input data-id={idx} label="Number of SKUs" variant="label-hidden" data-name="Number_of_SKUs__c" value={qtarget.Number_of_SKUs__c} onchange={handleChange}> </lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-input data-id={idx} label="Products" variant="label-hidden" data-name="Products__c" value={qtarget.Products__c} onchange={handleChange}> </lightning-input>
+                                    </td>
+                                </tr>
+                            </template>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_12-of-12 right-align">
+                    <div class="slds-m-top_small slds-m-bottom_medium">
+                        <lightning-button icon-name="utility:add" label="Add" title="Add" onclick={addNewQualitativeTarget} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button variant="destructive-text" icon-name="utility:delete" label="Delete" title="Delete" onclick={deleteQualitativeTarget} class="slds-m-left_x-small"></lightning-button>
+                    </div>  
+                </div>
+            </div>
+        </template>
+        <template if:true={isPrevew}>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_6-of-12 tbl-data">
+                    <table class="slds-table tbl-preview" role="grid">
+                        <tr>
+                            <th><lightning-formatted-rich-text value="User Id"></lightning-formatted-rich-text></th>
+                            <th><lightning-formatted-rich-text value="Category"></lightning-formatted-rich-text></th>
+                            <th><lightning-formatted-rich-text value="Minimum Average Number of SKUs"></lightning-formatted-rich-text></th>
+                            <th><lightning-formatted-rich-text value="Products"></lightning-formatted-rich-text></th>
+                        </tr>
+                        <template for:each={qTargetsData} for:item="q">
+                            <tr key={q.id}>
+                                <td>
+                                    <lightning-formatted-rich-text value={q.Username__c}></lightning-formatted-rich-text>
+                                </td>
+                                <td>
+                                    <lightning-formatted-rich-text value={q.Category_Name_and_Number__c}></lightning-formatted-rich-text>
+                                </td>
+                                <td>
+                                    <lightning-formatted-rich-text value={q.Number_of_SKUs__c}></lightning-formatted-rich-text>
+                                </td>
+                                <td>
+                                    <lightning-formatted-rich-text value={q.Products__c}></lightning-formatted-rich-text>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </template>
+</template>

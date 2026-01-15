@@ -1,0 +1,259 @@
+<template>
+  <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+  <template if:true={hasNoPermission}>
+    <div><p>{Labels.Generic_Error_No_Permission_On_Cmp}</p></div>
+  </template>
+
+  <template if:true={isCmpReady}>
+    
+    <template if:false={isExcelImporterV2}> <!-- Keep everything untouched for Old Version START -->
+
+      
+      <template if:false={hideTemplateName}>
+
+        <div class="export-importer-template_name">
+
+          <!-- <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <input type="text" id="templateNameId" value={templateLabel} class="slds-input" disabled/>
+            </div>
+          </div> -->
+          <h2 class="slds-section__title slds-text-title_bold">{templateLabel}</h2>
+          <template if:true={isHasSubtitle}>
+            <p>{templateSubtitle}</p>
+          </template>
+        </div>
+        
+      </template>
+
+      <!--MN-09122023-US-0014505-START: Exceed Maximum Record: -->
+      <template if:true={showAmountRecordInfor}>
+
+          <br/>
+
+          <template if:true={isExceedMaximum}>
+
+            <template if:true={isUpsert}>
+              <template if:true={isAllowUpload}>
+                <div>
+                  <p style="font-weight: 600;">The maximum records is exceeded. You can only update the existing record.</p>
+                  <p>{selectedTemplateData.Exceed_Maximum_Message__c}</p>
+                </div>
+              </template>
+
+              <template if:false={isAllowUpload}>
+                <div>
+                  <p style="font-weight: 600; color: red;">The maximum records is exceeded. You can only update the existing record.</p>
+                </div>
+              </template>
+            </template>
+
+            <template if:false={isUpsert}>
+              <div>
+                <p style="font-weight: 600;">The maximum records is exceeded.</p>
+                <p>{selectedTemplateData.Exceed_Maximum_Message__c}</p>
+              </div>
+              <br/>
+              <lightning-button label='Back' title='Back' class="slds-m-left_x-small export-importer-action_btn_back" variant="neutral" onclick={handleGoBack}></lightning-button>
+            </template>
+              
+          </template>
+
+          <template if:false={isExceedMaximum}>
+
+            <template if:false={isExceedUploadAmount}>
+              <div>
+                <p>Please be aware that the maximum number of allowed uploads is <b>{maximumAmountRecord}</b> records</p>
+                <p>The remaining number of record to upload is <b>{remainRecordAmount}</b></p>
+              </div>
+            </template>
+
+            <template if:true={isExceedUploadAmount}>
+              <div>
+                <p style="color: red;">The total number of record to upload is <b>{uploadingAmountRecord}</b> record(s). It is exceeds the amount that the system allow to upload. Please press "Reset" button and reduce your uploading record to <b>{remainRecordAmount}</b> and try again.</p>
+              </div>
+            </template>    
+              
+          </template>
+
+          <br/>
+
+      </template>
+      <!--MN-09122023-US-0014505-END-->
+
+      <template if:true={isDisplayUploadFeature}> <!--MN-09122023-US-0014505 -->
+
+        <div class="slds-m-top_x-small export-importer-paste_content">
+          <div data-tip={Labels.ExcelImporter_Label_7}>
+            <!-- <lightning-input disabled={disablePasteContent} type="text" variant = "label-hidden" class="export-importer-paste_input" placeholder={Labels.ExcelImporter_Label_6} onkeypress={handleKeyPress} onpaste={handlePasteData}></lightning-input>  -->
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                  <input disabled={disablePasteContent} type="text" variant = "label-hidden" class="slds-input export-importer-paste_input" placeholder={inputPlaceholder} onkeypress={handleKeyPress} onpaste={handlePasteData}/>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <template if:false={hideDescr}>
+            <template if:true={hasDescr}>
+              <div class="slds-m-top_x-small export-importer-descr"><lightning-formatted-rich-text value={descr}></lightning-formatted-rich-text></div>
+            </template>
+        </template>
+
+        <template if:false={hideCsvLink}>
+          <template if:true={hasCsvDownloadFile}>
+            <div class="slds-m-top_x-small export-importer-template-link">
+              <a onclick={downloadCSVTemplate}>{Labels.ExcelImporter_Label_8}</a> 
+            </div>
+          </template>
+          
+        </template>
+
+        <template if:true={displayTableContent}>
+
+          <template if:false={hideActionBtns}>
+
+            <div class="slds-text-align_center slds-m-top_x-small slds-m-bottom_x-small export-importer-action_btns">
+              <span>
+                <template if:false={hideUploadBtn}>
+                  <lightning-button label='Upload' title='Upload' class="slds-m-left_x-small export-importer-action_btn_upload" variant="neutral" onclick={handleOnUpload} if:true={canUpload}></lightning-button>
+                  <lightning-button label='Upload' title='Upload' class="slds-m-left_x-small export-importer-action_btn_upload" variant="neutral" disabled if:false={canUpload}></lightning-button>          
+                </template>
+                <lightning-button label='Reset' title='Reset' class="slds-m-left_x-small export-importer-action_btn_reset" variant="neutral" onclick={handleResetData} if:false={hideResetBtn}></lightning-button>
+                <lightning-button label='Back' title='Back' class="slds-m-left_x-small export-importer-action_btn_back" variant="neutral" onclick={handleGoBack} if:false={hideBackBtn}></lightning-button>
+              </span>
+            </div>
+          </template>
+
+          <template if:false={hideListTable}>
+            
+
+            <div class="export-importer-table_section">
+
+              <template if:true={showProgress}>
+                <div class="slds-text-align_center export-importer-progress_bar">
+                  <ul class="progressContainer">
+                    <template if:true={isDMLProgress}>
+                      <li><span>{Labels.ExcelImporter_Label_2} {chunkIndex} / {totalChunkSize}</span></li>
+                    </template>
+                    <template if:false={isDMLProgress}>
+                      <li><span>{Labels.ExcelImporter_Label_12} {chunkIndex} / {totalChunkSize}</span></li>
+                    </template>
+                    
+                    <li>|
+                      <template if:true={isUpsert}>
+                        <span class={successMsgClassStyle}>{Labels.ExcelImporter_Label_Insert_Success} {numberOfInsertSuccessRecord}</span><!--TH:US-0013870 - show number of Insert success-->
+                        |<span class={successMsgClassStyle}>{Labels.ExcelImporter_Label_Update_Success} {numberOfUpdateSuccessRecord}</span><!--TH:US-0013870 - show number of Updated success-->
+                      </template>
+                      <template if:false={isUpsert}>
+                        <span class={successMsgClassStyle}>{Labels.ExcelImporter_Label_3} {numberOfSuccessRecord}</span>
+                      </template>
+                    </li>
+                    <li>|<span class={errorMsgClassStyle}>{Labels.ExcelImporter_Label_4} {numberOfFailedRecord}</span></li>
+                    <template if:true={showMainErrorMsg}>
+                      <!-- <li>|<span class={errorMsgClassStyle}>{Labels.ExcelImporter_Label_5} {mainErrorMsg}</span></li> -->
+                       <!-- NK:24/09/2024:US-0015465 -->
+                      <li>|<span class={errorMsgClassStyle}>{Labels.ExcelImporter_Label_5} <lightning-formatted-rich-text value={mainErrorMsg}></lightning-formatted-rich-text></span></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+
+              <!-- 01.07.2025/ CSP:US-0033008 Start -->
+              <template if:true={showValidateHeaderErrorMsg}>
+                <div class="slds-text-align_center export-importer-progress_bar">
+                  <ul class="progressContainer">
+                      <li><span class="slds-text-color_error"><lightning-formatted-rich-text value={validateHeaderErrorMsg}></lightning-formatted-rich-text></span></li>                      
+                  </ul>
+                </div>
+              </template>
+              <!-- 01.07.2025/ CSP:US-0033008 End -->
+    
+              <div class="pagination export-importer-pagination">
+                <ul class="paginationList">
+                    <li>
+                        <a onclick={onPrevPage} ><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon>{prevNav}</a>
+                    </li>
+                    <template for:each={displayPagination} for:item="page">
+                        <li key={page.value} class={page.clsActive}>
+                            <a onclick={onChangePage} data-id={page.value}>{page.value}</a> 
+                        </li>
+                    </template>
+                    <li>
+                        <a onclick={onNextPage}>{nextNav}<lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon></a>
+                    </li>
+                </ul>
+              </div>
+
+              <div class="export-importer-table_wrapper">
+                <c-lwc-custom-datatable
+                    class="export-importer-list_table"
+                    key-field="excelTableId"
+                    data={tableRows}
+                    columns={tableColumns}
+                    hide-checkbox-column="true">
+                </c-lwc-custom-datatable>
+                
+              </div>
+
+            </div>
+          </template>
+
+        </template>
+
+      </template> <!--MN-09122023-US-0014505 -->
+  
+    </template> <!-- END -->
+
+
+    <!--FOR VERSION 2 - START -->
+    <template if:true={isExcelImporterV2}>
+      <template if:true={showInput}>
+        <div class="slds-m-top_x-small export-importer-paste_content">
+          <div data-tip={Labels.ExcelImporter_Label_7}>
+            <!-- <lightning-input disabled={disablePasteContent} type="text" variant = "label-hidden" class="export-importer-paste_input" placeholder={Labels.ExcelImporter_Label_6} onkeypress={handleKeyPress} onpaste={handlePasteData}></lightning-input>  -->
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                  <input disabled={disablePasteContent} type="text" variant = "label-hidden" class="slds-input export-importer-v2-paste_input" placeholder={inputPlaceholder} onkeypress={handleKeyPress} onpaste={handlePasteData}/>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </template>
+      
+      <template if:true={showPreviewTable}>
+        <div class="export-importer-v2-table_wrapper">
+          <c-lwc-custom-datatable
+              class="export-importer-list_table"
+              key-field="excelTableId"
+              data={tableRows}
+              columns={tableColumns}
+              hide-checkbox-column="true">
+          </c-lwc-custom-datatable>
+          
+        </div>
+        <div class="pagination export-importer-pagination">
+          <ul class="paginationList version2">
+              <li>
+                  <a onclick={onPrevPage} ><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon></a>
+              </li>
+              <template for:each={displayPagination} for:item="page">
+                  <li key={page.value} class={page.clsActive}>
+                      <a onclick={onChangePage} data-id={page.value}>{page.value}</a> 
+                  </li>
+              </template>
+              <li>
+                  <a onclick={onNextPage}><lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon></a>
+              </li>
+          </ul>
+        </div>
+      </template>
+      
+
+    </template> 
+    <!--FOR VERSION 2 - END -->
+
+  </template>     
+</template>

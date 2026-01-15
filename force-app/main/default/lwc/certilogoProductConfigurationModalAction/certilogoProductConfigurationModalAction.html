@@ -1,0 +1,154 @@
+<template>
+
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <!-- Modal/Popup Header -->
+            <header class="slds-modal__header">
+                <template if:true={passValidation}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" 
+                            title="Close" onclick={handleCancel}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    </button>
+                </template>
+                <template if:false={passValidation}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" 
+                            title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    </button>
+                </template>
+                <h2 class="slds-text-heading_medium">{buttonLabel}</h2>
+            </header>
+
+            <!-- Modal/Popup Body -->
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <template if:true={isLoading}>
+                    <div class="slds-grid slds-gutters custom-loading">
+                        <div class="slds-col slds-align-middle slds-is-relative">
+                            <lightning-spinner alternative-text="Loading" variant="brand" size="small"></lightning-spinner>
+                        </div>
+                    </div>
+                    <template if:true={showAdditionalField}>
+                        <br/>
+                    </template> 
+                </template>
+
+                <template if:true={isError}>
+                    <div class="error-section slds-p-around_medium slds-m-bottom_medium">
+                        <div class="slds-clearfix">
+                            <span>
+                                <lightning-icon size="x-small" icon-name="utility:warning" alternative-text="Error" title="Error" class="error-icon"></lightning-icon>
+                                <span>{errorMessage}</span>
+                            </span>
+                        </div>
+                    </div>
+                </template>
+                
+                <template if:true={passValidation}>
+
+                    <template if:true={hasAdditionalFields}>
+                        <template if:true={showAdditionalField}>
+                            <lightning-card hide-header="true">
+                                
+                                <div class="slds-clearfix slds-p-around_medium custom-card-header">
+                                    <div class="slds-float_left slds-media__body">
+                                        <h3 class="slds-card__header-title slds-text-heading_small"><span class="slds-truncate">{labels.CertilogoProdConfig_AdditionalFieldsTitle}</span></h3>
+                                    </div>
+                                </div>
+                                
+                                <template if:true={isFormLoading}>
+                                    <div class="slds-grid slds-gutters custom-loading">
+                                        <div class="slds-col slds-align-middle slds-is-relative">
+                                            <lightning-spinner alternative-text="Loading" variant="brand" size="small"></lightning-spinner>
+                                        </div>
+                                    </div>
+                                </template>    
+                                <div class="slds-m-top_medium">
+    
+                                    <lightning-record-edit-form
+                                        object-api-name={objectApiName}
+                                        onerror={handleError}
+                                        onload={handleOnLoad}
+                                        class="custom-form">
+                                        
+                                         <!-- Create a grid for 2 columns -->
+                                        <div class="slds-grid slds-wrap">
+                                            <template if:true={fields}>
+                                                <template for:each={fields} for:item="field">
+                                                    <div key={field} class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                                        <lightning-input-field field-name={field.fieldName} required={field.isrequired}></lightning-input-field>
+                                                    </div>
+                                                </template>
+                                            </template>
+                                        </div>
+    
+                                    </lightning-record-edit-form>
+                                </div>
+                            </lightning-card>
+                        </template> 
+                        
+                    </template>
+
+                    <template if:false={hasAdditionalFields}>
+                        
+                        <template if:false={isSplitLineButton}>
+                            <h2>{confirmMsg}</h2>
+                        </template>
+
+                        <template if:false={isLoading}>
+                            <template if:true={isSplitLineButton}>
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <div class="center-content">
+                                        <lightning-input 
+                                        type="number" 
+                                        label="Enter Quantity for New Line" 
+                                        value={quantity} 
+                                        min="1" 
+                                        max={maxQuantity}
+                                        step="1" 
+                                        placeholder={qtyPlaceHolder}
+                                        message-when-range-overflow = {errorMessageQtyOverMax}
+                                        onchange={handleSplitLineQTYChange}
+                                        class="small-input"
+                                        required=true
+                                        data-field="qtyInput">
+                                    </lightning-input>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        
+
+                    </template>
+
+                    
+                        
+                    
+                </template>
+                
+            </div>
+
+            <!-- Modal/Popup Footer -->
+            <footer class="slds-modal__footer">
+                <template if:false={passValidation}>
+                    <lightning-button variant="neutral" label={labels.lwcCancelbtn} title={labels.lwcCancelbtn}  class="slds-m-left_x-small" onclick={closeModal}></lightning-button>
+                </template>
+                <template if:true={passValidation}>
+                    <lightning-button variant="neutral" label={labels.lwcCancelbtn} title={labels.lwcCancelbtn}  class="slds-m-left_x-small" onclick={handleCancel}></lightning-button>
+                    <template if:true={showSubmitButton}>
+                        <lightning-button disabled={isLoading} variant="brand" label={labels.Submit}  title={labels.Submit} class="slds-m-left_x-small" onclick={handleCustomSubmit}></lightning-button>
+                    </template>
+                </template>
+            </footer>
+        </div>
+        
+        
+
+    </section>
+
+    <!-- Backdrop for the modal -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>

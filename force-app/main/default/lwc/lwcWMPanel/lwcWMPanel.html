@@ -1,0 +1,144 @@
+<template>
+    <div data-divid={panel.panelName}>
+        <article class="slds-card">
+            <div class="slds-card__header fixApplyArea">
+              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <!-- <div class="header slds-grid"> </div> -->
+                    <lightning-layout>
+                        <lightning-layout-item   size="4" flexibility="auto" class="slds-grid ">
+                            <div class="slds-dropdown-trigger_click drop-panel"  data-panelname="drop-panel" data-apiname={panel.panelName} data-dropnum={panelNum} onblur={handleDropdownOutFocus}> 
+                                <lightning-button-icon icon-name="utility:down" size="x-small" data-btn="btnDropDownField" data-pname={panel.pType} data-pagenum={panelNum} onclick={showHideColSelection}></lightning-button-icon>
+                                <!-- <lightning-button-menu alternative-text="Show/Hide Collumns"  menu-alignment="auto" icon-size="x-small" class="force-menu-drop" onselect={handleMenuFieldColSelect}> -->
+                                    <div class="slds-is-nested slds-dropdown slds-dropdown_left slds-dropdown_length-with-icon-5 ">
+                                        <ul class="slds-dropdown__list"  aria-label="Show More">                                             
+                                            <template for:each={availableFields} for:item="field" for:index="index">
+                                                <!-- <lightning-menu-item value={field.value} label={field.label} key={field.value} data-pname={panel.pType} data-field={field.value} onclick={handleColumnAddRemove}></lightning-menu-item> -->
+                                                <!-- slds-dropdown__item slds-button_stretch-->
+                                                    <li class="slds-dropdown__item slds-grid " title={field.label} role="presentation" key={field.value} onclick={handleColumnAddRemove} data-fname={field.value} data-pname={panel.pType}>
+                                                        <lightning-icon if:true={field.checked} icon-name="utility:check" size="x-small" alternative-text={field.label} title={field.label} class="slds-p-left--xx-small slds-p-top--x-small"></lightning-icon>
+                                                        <lightning-icon if:false={field.checked} icon-name="utility:steps" size="x-small" alternative-text={field.label} title={field.label} class="slds-p-left--xx-small slds-p-top--x-small"></lightning-icon>
+                                                        
+                                                        <a href="#" role="menuitem" tabindex={index} class="slds-button_stretch">                                                                    
+                                                            <lightning-formatted-text value={field.label} class=""></lightning-formatted-text>
+                                                        </a>
+                                                    </li>
+                                                <!-- <span class="slds-truncate" title={field.label}>{field.label}</span> -->
+                                            </template>                                                
+                                        </ul>
+                                    </div>
+                                <!-- </lightning-button-menu> -->                
+                            </div> 
+
+                            <h2 class="slds-card__header-title ">
+                                <div class="slds-var-p-left_small">
+                                    <lightning-formatted-text value={panelLabel} title={panelLabel} class="slds-truncate"></lightning-formatted-text>
+                                </div>
+                            </h2>
+
+                        </lightning-layout-item>
+                        <lightning-layout-item   size="2" flexibility="auto" class="slds-text-align--right"> 
+                            <div class="apply-btn">
+                                <lightning-button variant="destructive" label="Apply Changes" title="Apply Changes"  class="btn-apply-label" onclick={handleApply} if:true={showApplyBtn}></lightning-button>
+                            </div>                                
+                        </lightning-layout-item>
+                        <lightning-layout-item   size="6" flexibility="auto" class="slds-text-align--right">
+                                <lightning-formatted-text value={panelNumInfo} class="slds-text-color_success slds-text-title_bold textNumInfo"></lightning-formatted-text>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                   
+                </div>
+              </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner slds-var-m-top_large">
+
+                <div class="slds-var-p-bottom_xx-small">
+                    <lightning-input name="search_in_panel" data-pid="search_in_panel" placeholder="Search..." value={textSearch} variant = "label-hidden" type="search" onkeyup={handleSearchInPanel} onchange={handleSearchChange}></lightning-input>
+                </div>
+                <div class="panelH-default slds-scrollable" data-panel={panel.panelName} ondrop={handlePanelDrop} ondragover={handlePanelDragOver}   ondragend={handlePanelDragEnd} >
+                    <!-- <lightning-datatable
+                        key-field="Id"
+                        columns={colHeader}
+                        data={listRecords}
+                        hide-checkbox-column
+                        default-sort-direction=""
+                        sorted-direction="asc"
+                        sorted-by=""
+                        onsort={onHandleSort}
+                        onrowaction={handleRowAction}                                        
+                        >
+                    </lightning-datatable>  slds-table_resizable-cols-   slds-table_fixed-layout -->
+                    <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid" aria-label="Table">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <!-- <th class="slds-text-align_right" scope="col" style="width:3.25rem">                             
+                                </th> -->
+                                <template for:each={colHeader} for:item="header" for:index="index"> <!-- slds-is-resizable  -->
+                                    <th aria-label={header.label} aria-sort="none" class="slds-is-sortable slds-is-resizable" scope="col" key={header.fieldName} >
+                                        <a class="slds-th__action slds-text-link_reset" href="#" role="button"  onclick={handleSort} data-fname={header.fieldName}>
+                                        <span class="slds-assistive-text">Sort by: </span>
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title={header.label}>{header.label}</span>     
+                                            <div if:true={header.sorted}>
+                                                <lightning-icon if:true={isSortDesc} icon-name="utility:arrowdown" class="slds-icon-text-default  " size="xx-small" alternative-text="ASC" title="ASC"></lightning-icon>
+                                                <lightning-icon if:true={isSortAsc} icon-name="utility:arrowup" class="slds-icon-text-default  " size="xx-small" alternative-text="DESC" title="DESC"></lightning-icon>
+                                            </div>     
+                                            <span class="slds-icon_container">                                              
+                                                <div if:false={header.sorted}>
+                                                    <lightning-icon icon-name="utility:arrowup" class="slds-icon-text-default slds-is-sortable__icon" size="xx-small" alternative-text="ASC" title="ASC"></lightning-icon>
+                                                </div>                                
+                                            </span>                                    
+                                        </div>
+                                        </a>
+                                        <div class="slds-resizable">
+                                        <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
+                                        <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                        </span>
+                                        </div>
+                                    </th>                            
+                                </template>
+                            </tr>                    
+                        </thead>
+                        <tbody>
+                            <template for:each={listDataTable} for:item="row" for:index="rindex">
+                                <tr aria-selected="false" class="slds-hint-parent" key={row.Id} draggable={isDraggable} data-panel={panel.panelName} data-id={row.Id} data-index={rindex} onchange={handleTRChange} ondrop={handleTRDrop} ondragend={handleDragEnd} ondragover={handleTRDragOver} ondragstart={handleTRDragStart} >                             
+                                    <!-- <td class="" role="gridcell" data-tdname={row.Id}>
+                                        <div class="">
+                                            <lightning-button-menu alternative-text="View/Edit" title="View/Edit" menu-alignment="auto" icon-size="x-small">
+                                                <lightning-menu-item value="view" label="View" onclick={handleRowAction} data-action="view" data-rowid={row.Id}></lightning-menu-item>
+                                                <lightning-menu-item value="edit" label="Edit" onclick={handleRowAction} data-action="edit" data-rowid={row.Id}></lightning-menu-item>                            
+                                            </lightning-button-menu>
+                                            </div>
+                                    </td> -->
+                                    <template for:each={row.listColVal} for:item="col" for:index="cindex" >
+                                        <td class="slds-text-align_left slds-truncate drag-cur" role="gridcell" key={col.index} data-tdname={row.Id}>
+                                            <lightning-formatted-text if:true={col.isText} value={col.val} title={col.val} class=""></lightning-formatted-text>
+                                            <lightning-formatted-url  if:true={col.isUrl} value={col.url} tooltip={col.val} label={col.val} target="_blank" class="slds-show slds-truncate"></lightning-formatted-url> 
+                                            <lightning-formatted-number if:true={col.isNum} value={col.val} tooltip={col.val} class=""></lightning-formatted-number>
+                                            <lightning-formatted-email if:true={col.isEmail} value={col.val} tooltip={col.val} class="slds-show slds-truncate"></lightning-formatted-email>
+                                        </td>
+                                    </template>
+                                </tr>
+                            </template>                   
+                        </tbody>
+                    </table>
+                </div>
+                 
+
+            </div>
+            <footer class="slds-card__footer"></footer>
+          </article>
+
+   
+
+    <di>
+        <!-- <lightning-record-form
+                object-api-name="copado__User_Story__c"
+                record-id="a3c7A000000hylVQAQ"
+                layout-type="Full"
+                mode="edit">
+            </lightning-record-form> -->
+    </di>
+</div>
+</template>

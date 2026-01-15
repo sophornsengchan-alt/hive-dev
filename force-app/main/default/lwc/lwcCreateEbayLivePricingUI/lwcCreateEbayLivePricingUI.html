@@ -1,0 +1,76 @@
+<template>
+
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+
+
+    <lightning-card title="">
+        
+        <lightning-layout horizontal-align="spread" class="slds-m-bottom_x-small">
+            <lightning-layout-item size="12">
+                <p class="slds-text-heading_medium">FVF Discount Tiers (3 Tiers):</p>
+                <p class="">Each <b>Minimum Sales for Tier ($)</b> defines the *starting point* for that specific tier.</p>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <div class="slds-p-around_small fvf-discount-tiers">
+
+            <template if:true={hasError}>
+                <lightning-layout horizontal-align="spread" class="slds-m-bottom_x-small">
+                    <lightning-layout-item size="6" padding="horizontal-small">
+                        <p class="slds-text-color_error">Sales Threshold and FVF Rate cannot be empty.</p> 
+                    </lightning-layout-item>
+                </lightning-layout>    
+            </template>
+
+            <!-- Header Row -->
+            <lightning-layout horizontal-align="spread" class="slds-theme_shade slds-border_bottom slds-p-around_x-small slds-text-title_caps">
+                <lightning-layout-item size="2" padding="horizontal-small">Tier</lightning-layout-item>
+                <lightning-layout-item size="5" padding="horizontal-small">{title}</lightning-layout-item>
+                <lightning-layout-item size="5" padding="horizontal-small">FVF Rate (%)</lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Tier 1 -->
+            <lightning-layout horizontal-align="spread" class="slds-p-around_x-small slds-border_bottom">
+                <lightning-layout-item size="2" class="slds-grid slds-grid_vertical-align-center" alignment="center" padding="horizontal-small">
+                    Tier 1
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="SalesThreshold1" type="number" formatter="decimal" step="0.01" data-name="GMVThreshold1__c" value={pricing.GMVThreshold1__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="FVFRate1" type="number" formatter="decimal" step="0.01" data-name="Tier1FVFdiscount__c" value={pricing.Tier1FVFdiscount__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Tier 2 -->
+            <lightning-layout horizontal-align="spread" class="slds-p-around_x-small slds-border_bottom">
+                <lightning-layout-item size="2" class="slds-grid slds-grid_vertical-align-center" alignment="center" padding="horizontal-small">
+                    Tier 2
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="SalesThreshold2" type="number" formatter="decimal" step="0.01" data-name="GMVThreshold2__c" value={pricing.GMVThreshold2__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="FVFRate2" type="number" formatter="decimal" step="0.01" data-name="Tier2FVFdiscount__c" value={pricing.Tier2FVFdiscount__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Tier 3 -->
+            <lightning-layout horizontal-align="spread" class="slds-p-around_x-small">
+                <lightning-layout-item size="2" class="slds-grid slds-grid_vertical-align-center" alignment="center" padding="horizontal-small">
+                    Tier 3
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="SalesThreshold3" type="number" formatter="decimal" step="0.01" data-name="GMVThreshold3__c" value={pricing.GMVThreshold3__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="5" class="slds-grid slds-grid_vertical-align-center" padding="horizontal-small">
+                    <lightning-input variant="label-hidden" name="FVFRate3" type="number" formatter="decimal" step="0.01" data-name="Tier3FVFdiscount__c" value={pricing.Tier3FVFdiscount__c} onchange={handleChangeTierFields}> </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+ 
+    </lightning-card>
+    
+</template>

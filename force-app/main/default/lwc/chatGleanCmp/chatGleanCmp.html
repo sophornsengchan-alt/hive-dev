@@ -1,0 +1,216 @@
+<template>
+    <!-- Standalone Chat Container -->
+    <div class="chat-container-standalone">
+
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+        </template>
+
+
+        <!-- Initial Loading State -->
+        <template if:true={isInitialLoading}>
+            <div class="custom-loading-container">
+                <div class="custom-loading-content">
+                    <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                    <p class="loading-text">
+                        {label.Glean_Msg_Initializing_HIVE_Assistant}
+                    </p>
+                </div>
+            </div>
+        </template>
+
+        <!-- Main Chat Interface -->
+        <template if:false={isInitialLoading}>
+            <template if:false={isMinimized}>
+                <div class="custom-chat-window">
+                    
+                    <!-- Custom Header Section -->
+                    <!-- 14.11.2025 / AI Assistant / Added New Chat button -->
+                    <div class="custom-header">
+                        <div class="header-content">
+                            <div class="header-icon">
+                                <lightning-icon icon-name="utility:info" alternative-text="Info" size="small"></lightning-icon>
+                            </div>
+                            <div class="header-title">
+                                <h2 class="chat-title">
+                                    {label.Glean_Const_Hive_Assistant}
+                                </h2>
+                            </div>
+                            <!-- New Chat Button -->
+                            <div  class="header-actions">
+                                 <template if:true={isGleanAuthenticated}>
+                                <lightning-button
+                                    label="New Chat"
+                                    icon-name="utility:refresh"
+                                    onclick={handleNewChat}
+                                    variant="neutral"
+                                    class="new-chat-button">
+                                </lightning-button>
+                                </template>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Authenticated Chat Content -->
+                    <template if:true={isGleanAuthenticated}>
+                        
+                        <!-- Custom Chat Content Area -->
+                        <div class="custom-chat-body">
+                            
+                            <!-- Welcome Heading -->
+                            <h1 class="custom-welcome-heading">{labelHowCan} <span class="hive-brand-text">{label.Glean_Const_Hive_Assistant}</span> {labelHelp}</h1>
+
+                            <!-- Chat Messages Container -->
+                            <div class="custom-chat-messages chat-history-scrollable">
+                                
+                                <!-- Agent Joined Event -->
+                                <div class="chat-event-message">
+                                    <span class="event-text">{label.Glean_Const_Hive_Assistant} {label.Glean_Const_Joined}</span>
+                                </div>
+
+                                <!-- Dynamic Chat Messages -->
+                                <template for:each={processedChatMessages} for:item="msg">
+                                    <div key={msg.id} class={msg.customMessageClass}>
+                                        <div class="custom-message">
+                                            
+                                            <!-- Agent Icon -->
+                                            <template if:true={msg.isAgent}>
+                                                <div class="custom-agent-icon">
+                                                    <img src={hiveIconUrl} alt="HIVE Assistant" class="hive-assistant-avatar"/>
+                                                    <!--<lightning-icon  icon-name="utility:agent_astro"  alternative-text="HIVE Assistant" size="small" class="hive-assistant-avatar"></lightning-icon>-->
+                                                </div>
+                                            </template>
+                                            
+                                            <!-- Message Content -->
+                                            <div class="custom-message-content">
+                                                <div class="message-text">
+                                                    <template if:true={msg.isLoading}>
+                                                        <img src={chatLoadingUrl} alt="Chat Loading" />
+                                                    </template>
+                                                    <template if:false={msg.isLoading}>
+
+                                                        <template if:true={msg.isAgent}>
+                                                            <span><lightning-formatted-rich-text value={msg.text}></lightning-formatted-rich-text></span>
+                                                        </template>
+                                                        <template if:false={msg.isAgent}>
+                                                            <span>{msg.text}</span>
+                                                        </template>
+                                                        
+                                                    </template>
+                                                </div>
+                                                <!-- Attachment Section -->
+                                                <template if:true={msg.attachmentTitle}>
+                                                    <div class="attachment-section">
+                                                        <div class="attachment-card" onclick={handleAttachmentClick} data-url={msg.attachmentUrl}>
+                                                            <lightning-icon icon-name="doctype:pdf" size="small" class="attachment-icon"></lightning-icon>
+                                                            <span class="attachment-link">
+                                                                {msg.attachmentTitle}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <!-- 14.11.2025 / AI Assistant / Conversation Starters - Moved below welcome message -->
+                                <template if:true={showConversationStarters}>
+                                    <div class="conversation-starters-container">
+                                        <template for:each={conversationStarters} for:item="starter">
+                                            <button 
+                                                key={starter}
+                                                class="conversation-starter-button"
+                                                data-starter={starter}
+                                                onclick={handleConversationStarter}>
+                                                {starter}
+                                            </button>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <!-- Timestamp -->
+                                <div class="chat-event-message">
+                                    <span class="event-text">{label.Glean_Const_Hive_Assistant} &bull; {currentTime}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Message Input Footer -->
+                        <div class="custom-chat-footer">
+                            <div class="custom-input-wrapper">
+                                
+                                <!-- Text Input -->
+                                <div class="input-row">                    
+                                    <lightning-input type="text"
+                                                   placeholder={labelMessageHiveAssistant}
+                                                   class="custom-text-input"
+                                                   onchange={handleInputChange}
+                                                   onkeydown={handleInputKeyDown}
+                                                   value={messageInput}
+                                                   disabled={isInputDisabled}>
+                                    </lightning-input>
+                                </div>
+                                
+                                <!-- Controls -->
+                                <div class="controls-row">
+                                    
+                                    <!-- Agent Selection -->
+                                    <div class="agent-selector">
+                                        <lightning-combobox name="agentSelection"
+                                                          value={selectedAgentId}
+                                                          placeholder="Agent"
+                                                          options={agentOptions}
+                                                          onchange={handleAgentChange}
+                                                          class="custom-combobox"
+                                                          dropdown-alignment="auto"
+                                                          disabled={isInputDisabled}>
+                                        </lightning-combobox>
+                                    </div>
+                                    
+                                    <!-- Send Button -->
+                                     <div class="custom-div-sed">
+                                        <lightning-button-icon icon-name="utility:send"
+                                                         variant="bare"
+                                                         alternative-text="Send"
+                                                         onclick={handleSendMessage}
+                                                         class="custom-send-button"
+                                                         disabled={isInputDisabled}>
+                                    </lightning-button-icon>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- Authorization Required Screen -->
+                    <template if:false={isGleanAuthenticated}>
+                        <div class="custom-auth-container">
+                            <div class="auth-icon">
+                                <lightning-icon icon-name="utility:lock" 
+                                              size="large">
+                                </lightning-icon>
+                            </div>
+                            
+                            <h3 class="auth-heading">
+                                {label.Glean_Const_Authorization_Required}
+                            </h3>
+                            
+                            <p class="auth-description">
+                                {label.Glean_Msg_Please_Authorize_HIVE_Assistant}
+                            </p>
+                            
+                            <lightning-button label={labelAuthorizeHiveAssistant} 
+                                            variant="brand" 
+                                            onclick={handleAuthorize}
+                                            icon-name="utility:unlock"
+                                            class="custom-auth-button">
+                            </lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

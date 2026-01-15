@@ -1,0 +1,32 @@
+.fix-picklist-visibility {    
+    overflow: visible;
+}
+.fix-error-size h2{
+    font-size: 1.2rem !important;
+}
+.resubmit-pro-title {
+    white-space: normal !important;
+}
+ 
+.my-spinner{
+    top: 15% !important;
+    bottom: 15% !important;
+ }
+
+.custom01 {
+    white-space: break-spaces !important;
+}
+
+.slds-modal__footer {
+    box-shadow: none;
+    border: none;
+}
+.cls_input-error{
+    color: var(--lwc-colorTextError,rgb(234, 0, 30))
+}
+
+.cls-startenddate {
+
+    white-space: normal !important;
+    
+}

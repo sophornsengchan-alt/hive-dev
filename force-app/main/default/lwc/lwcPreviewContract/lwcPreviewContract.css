@@ -1,0 +1,18 @@
+.color-orange {
+    color: rgb(254, 165, 0);
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 5px;
+    padding-bottom: 5px;
+}
+
+.error {
+    /* text-align: center; */
+    color: red;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 5px;
+    padding-bottom: 5px;
+}

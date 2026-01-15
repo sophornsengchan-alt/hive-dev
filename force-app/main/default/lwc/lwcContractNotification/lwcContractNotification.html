@@ -1,0 +1,15 @@
+<template >
+    <lightning-card if:true={doShow}>
+        <div class="notification-card">
+            <p><span class="attention">Attention</span>: There is/are contract(s) already in effect for this seller.
+                <br/>Please review the existing contract(s) before proceeding.
+                <br/>Click to view the live contract(s):</p><br/>
+            <template for:each={contractSellers} for:item="conSeller">
+                <div key={conSeller.EBH_BusinessName__r.Name}>
+                    <p>{conSeller.EBH_BusinessName__r.Name}: {conSeller.EBH_ContractNumber__r.RecordType.Name} - <a href={conSeller.url} target="_blank">{conSeller.EBH_ContractNumber__r.ContractNumber}</a>, {conSeller.EBH_ContractNumber__r.StartDate} <b>-</b> {conSeller.EBH_ContractNumber__r.EndDate} </p>
+                </div>
+                
+            </template>
+        </div>
+    </lightning-card>
+</template>

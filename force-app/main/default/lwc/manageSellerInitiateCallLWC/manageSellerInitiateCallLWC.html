@@ -1,0 +1,66 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+    
+    <template lwc:if={isReady}>
+
+        <template lwc:if={hasErrorMessage}>
+            <lightning-modal-header label={label.InitiateCall_Header}> </lightning-modal-header>
+            <lightning-modal-body>
+                <div class="slds-text-color_error slds-text-align_center slds-text-heading_small">
+                    <span><lightning-formatted-rich-text value={errorMessage}></lightning-formatted-rich-text></span>
+                </div>
+            </lightning-modal-body>
+            <lightning-modal-footer>
+                <div class="slds-grid slds-grid_align-center">
+                    <lightning-button label={label.Close} icon-name="utility:undo" icon-position="left" onclick={backToRecord} variant="brand" class="slds-p-left_small"></lightning-button>
+                </div>
+            </lightning-modal-footer>
+        </template>
+        <template lwc:else>
+            <template lwc:if={step1}>
+
+                <c-initiate-call-contact-list header-name={label.InitiateCall_Header} 
+                    list-contact={listContact} 
+                    column-contacts={columnContacts} 
+                    selected-contacts={selectedContacts}
+                    site-prefix={sitePrefix}
+                    is-from-record-inbound-call={isFromRecordInboundCall}
+                    oncontactselected={handleContactSelected}
+                >
+                </c-initiate-call-contact-list>
+                
+                <lightning-modal-footer >
+                    <div class="slds-grid slds-grid_align-center">
+                        <lightning-button label={label.Cancel}  icon-name="utility:undo" icon-position="left" onclick={backToRecord} class="slds-p-left_small"></lightning-button>
+                        <lightning-button lwc:if={hasContactList} label={label.Next} icon-name="utility:right" icon-position="right" variant="brand" onclick={handleNextStep} class="slds-p-left_small" ></lightning-button>
+                    </div>
+                </lightning-modal-footer>
+    
+            </template>
+    
+            <template lwc:elseif={step2}>
+    
+                <c-initiate-call 
+                record-id={recordId} 
+                parent-obj-info={cohortSellerObjInfo} 
+                use-calendly={useCalendly} 
+                has-previous-step={hasPreviousStep}
+                selected-contacts={selectedContacts}
+                is-from-record-inbound-call={isFromRecordInboundCall}
+                oninitiatecallapexinit={handleApexInit} 
+                oninitiatecallapexsave={handleApexSave} 
+                ongopreviousstep={handleGoPreviousStep}
+                >
+                </c-initiate-call>
+    
+            </template>
+        </template>
+    </template>
+
+
+
+
+
+</template>

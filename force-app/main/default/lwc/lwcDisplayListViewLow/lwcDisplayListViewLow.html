@@ -1,0 +1,134 @@
+<template>
+    <div class="slds-card cls_slds-card">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <table class="slds-table slds-table_striped list-view-table">
+                    <tr>
+                        <template if:true={isshowcheckbox}>
+                        <th><input onclick={handleCheckboxAll} checked={isCheckAll} type="checkbox" name=""></th>
+                        </template>
+                        <template for:each={displayHighlightFields} for:item="header">
+                            <!--<th key={header.label}>{header.label}</th>-->
+
+                            <th key={header.label} data-index={header.index} data-type={header.type} data-id={header.fieldName} > <!-- onclick={handleSort} -->
+                                <!-- <a class="slds-th__action slds-text-link--reset">
+                                    <span class="slds-assistive-text">Sort</span>
+                                    <span class="slds-truncate" title={header.label}>{header.label}</span>
+                                    <span class="slds-truncate cls_icon-sort" >
+                                        <lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon>
+                                    </span>
+                                </a>  -->
+                                <div class="slds-th__action slds-text-link--reset" onmouseenter={handleHover} onmouseleave={handleHover} onclick={handleSort} data-index={header.index} data-id={header.fieldName} data-type={header.type}>
+                                    <span class="slds-assistive-text">Sort</span>
+                                    <span class="slds-truncate" title={header.label}>{header.label}</span>
+                                    <!-- <span class="slds-truncate cls_icon-sort" >
+                                        <lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon>
+                                    </span> -->
+                                    <div class="slds-grid slds-grid_vertical pad-left" data-index={header.index} data-id={header.fieldName} data-type={header.type}>
+                                        <!-- onclick={handleSort} -->
+                                            <a class="sort asc slds-col slds-hide" data-direction="asc" data-index={header.index}>
+                                                <lightning-icon icon-name="utility:arrowup" size="xx-small" ></lightning-icon>
+                                            </a>
+                                            <!-- onclick={handleSort} -->
+                                            <a class="sort desc slds-col slds-hide"  data-direction="desc" data-index={header.index}>
+                                                <lightning-icon icon-name="utility:arrowdown" size="xx-small" ></lightning-icon>
+                                            </a>
+                                        
+                                    </div>
+                                
+                                </div> 
+                            </th>
+                        </template>
+                        <!--<th align="right"></th>-->
+                    </tr>
+                    <template for:each={displayRecords} for:item="item">
+                        <tr key={item.id}>
+                            <template if:true={isshowcheckbox}>
+                                <td><input onclick={handleCheckbox} data-index={item.index} checked={item.is_Checked} type="checkbox" name=""></td>
+                            </template>
+                            <template for:each={item.cols} for:item="col">
+                                <td key={col.index}>
+                                    <template if:true={col.isHierarchy} >
+                                        <div if:true={col.isExpandable} onclick={handleExpand} data-id={item.id} class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="cursor: pointer;">
+                                            <lightning-icon if:true={col.iconName} icon-name={col.iconName} size="x-small"></lightning-icon>
+                                        </div>
+                                        <div if:false={col.isExpandable} class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="cursor: pointer;">
+                                            <lightning-icon if:true={col.iconName} icon-name={col.iconName} size="xx-small" class="slds-m-left_small"></lightning-icon>
+                                        </div>
+                                    </template>
+
+                                    <template if:true={col.isResubmit} >
+                                        <a class="green cls_link cls_resubmit" data-index={item.index} data-id={item.id} onclick={onOpenModal} style="color: #5e92da;">{col.value}</a>
+                                        <div style="white-space: normal;"><!--TH:US-0011517:31.03.2022-->
+                                        <c-lwc-modal-resubmit-deal onreload={reloadPage} key={item.id} record-id={item.id} via-list-view=true></c-lwc-Modal-Resubmit-Deal>
+                                        </div>
+                                    </template>
+
+                                    <template if:true={col.isEnterEID} >
+                                        
+                                        <a class="green cls_link cls_resubmit" data-index={item.index} data-id={item.id} onclick={onOpenModal} style="color: #5e92da;">{col.value}</a>
+                                        <c-lwc-modal-resubmit-deal onreload={reloadPage} key={item.id} record-id={item.id} via-list-view=true is-eid=true></c-lwc-Modal-Resubmit-Deal>
+                                        
+                                    </template>
+
+                                    <template if:true={col.isCancellation} >
+                                        <template if:true={col.isShow}>
+                                            <a class="green cls_link cls_resubmit" data-index={item.index} data-id={item.id} onclick={onOpenCancellationModal} style="color: #5e92da;">{col.value}</a>
+                                            <div style="white-space: normal;"><!--TH:US-0011517:31.03.2022-->
+                                                <c-lwc-deal-cancellation onreload={reloadPage} key={item.id} rec-id={item.id} via-list-view=true></c-lwc-deal-cancellation>
+                                            </div>
+                                        </template>
+                                    </template>
+                                    
+                                    <template if:true={col.isLink} >
+                                        <!--<a class="green" data-id={item.id} onclick={onOpenDetail}>{col.value}</a>-->
+                                        <a class="green cls_link" data-id={item.id} data-record={col.id2} onclick={onOpenDetail} style="color: #5e92da;">{col.value}</a>
+                                    </template>
+                                    <!-- TH:US-0016318 -->
+                                    <template if:true={col.isAction} >
+                                        <a class="green cls_link" data-id={item.id} data-record={col.id2} href={col.url} style="color: #5e92da;">{col.value}</a>
+                                    </template>
+                                    <!-- End US-0016318 -->
+                                    <template if:true={col.isStatus}>
+                                        <b><lightning-formatted-text value={col.value} ></lightning-formatted-text></b>
+                                    </template>
+                                    <template if:true={col.isCheckBox}>
+                                        <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled checked={col.value} />
+                                    </template>
+                                    <template if:true={col.isDate}>
+                                        <lightning-formatted-date-time value={col.value} time-zone="UTC"></lightning-formatted-date-time>
+                                    </template>
+                                    <template if:true={col.isTime}>
+                                        <lightning-formatted-date-time value={col.value} hour="2-digit" minute="2-digit" time-zone="UTC">
+                                        </lightning-formatted-date-time>
+                                    </template>
+                                    <template if:true={col.isNumber}>
+                                        <lightning-formatted-number value={col.value} maximum-fraction-digits="2"></lightning-formatted-number>
+                                    </template>
+                                    <template if:true={col.isHTML}>
+                                        <lightning-formatted-rich-text value={col.value}></lightning-formatted-rich-text>
+                                    </template>
+                                    <template if:true={col.isText}>
+                                        <!-- <lightning-formatted-text value={col.value} ></lightning-formatted-text> -->
+                                        <div class="custom-wrap">{col.value}</div>
+                                    </template>
+                                </td>
+                            </template>
+                            <!-- <td align="right"><a class="slds-button slds-button_outline-brand smallCta" data-id={item.id} onclick={onOpenDetail}>View Deal</a></td> -->
+
+                        </tr>
+                    </template>
+                    
+                </table>
+
+                <div class="dotHolder">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</template>

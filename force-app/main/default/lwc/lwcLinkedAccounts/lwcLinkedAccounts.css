@@ -1,0 +1,25 @@
+.titleBlock h1 {
+    font-weight: 700;
+    overflow:hidden !important;
+}
+
+.redb-box{
+    border-color: red;
+}
+.default-contacts-H{
+    min-height: 135px;
+}
+.red-text{
+    color:red !important;
+}
+.list-account{
+    background-color: #f3f2f2;
+    border-color:#f3f2f2 ;
+    max-height: 260px;
+    overflow-y: scroll; 
+}
+.unlinkScreenContainer h1{
+    float: none;
+    text-align: center;
+    margin: 0px;
+}

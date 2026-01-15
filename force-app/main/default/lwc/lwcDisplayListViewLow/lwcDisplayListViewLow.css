@@ -1,0 +1,54 @@
+.cls_slds-card {
+    overflow-x: auto;
+}
+.cls_float-left {
+    float : left;
+}
+.cls_icon-sort {
+    padding: 7px;
+}
+
+.custom-wrap {
+    white-space: normal;
+}
+
+a{
+    color: #009EDB;
+}
+.sort-arrow-active {
+    --sds-c-icon-color-foreground-default: rgb(1, 118, 211);
+}
+
+.sort-column-active {
+    box-shadow: var(--lwc-brandAccessible,#0099DE) 0 0 0 1px inset;
+}
+
+.pad-left {
+    padding-left: 5px;
+}
+
+.fix-picklist-visibility {    
+    overflow: visible;
+}
+
+.fix-error-size h2{
+    font-size: 1.2rem !important;
+}
+ 
+.my-spinner{
+    top: 15% !important;
+    bottom: 15% !important;
+ }
+
+ .cls_resubmit {
+    text-decoration: underline !important;
+    font-weight: 600 !important;
+ }
+
+ .slds-table tbody th{
+     background:#F8F8F8;
+ }
+
+ .slds-table_striped tbody tr:nth-of-type(even)>td, .slds-table_striped tbody tr:nth-of-type(even)>th, .slds-table--striped tbody tr:nth-of-type(even)>td, .slds-table--striped tbody tr:nth-of-type(even)>th{
+     background:#F3F8FC;
+ }

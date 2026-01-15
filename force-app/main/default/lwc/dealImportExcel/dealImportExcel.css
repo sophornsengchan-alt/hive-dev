@@ -1,0 +1,8 @@
+.cls_message-error{
+    background-color: #fff2f2;
+    color: red;
+    width: 100%;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}

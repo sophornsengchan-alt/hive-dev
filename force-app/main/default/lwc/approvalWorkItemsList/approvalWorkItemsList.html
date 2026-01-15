@@ -1,0 +1,135 @@
+<template>
+        <lightning-card title={cardTitle} icon-name="standard:approval">
+        <div class="slds-card__body slds-card__body_inner">
+            
+            <!-- Loading spinner -->
+            <template lwc:if={isLoading}>
+                <div class="slds-align_absolute-center slds-p-around_medium">
+                    <lightning-spinner alternative-text={labels.loadingMessage} size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Error message -->
+            <template lwc:if={error}>
+                <div class="slds-box slds-box_x-small slds-theme_error slds-m-bottom_small">
+                    <div class="slds-media slds-media_center">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="utility:error" alternative-text="Error" size="x-small" variant="inverse"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-text-color_inverse">{error}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Data table with approval work items -->
+            <template lwc:if={hasApprovalWorkItems}>
+                <div class="slds-card slds-m-top_small">
+                    <div class="slds-scrollable_x slds-scrollable_y" style="max-height: 400px;">
+                        <!-- Custom table with lightning-helptext support -->
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" style="min-width: 1400px;">
+                            <thead class="slds-theme_shade">
+                                <tr class="slds-line-height_reset">
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 250px;">
+                                        <div class="slds-truncate" title={labels.approvalWorkItemName}>{labels.approvalWorkItemName}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 200px;">
+                                        <div class="slds-truncate" title={labels.approvalConditionName}>{labels.approvalConditionName}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 120px;">
+                                        <div class="slds-truncate" title={labels.status}>{labels.status}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 180px;">
+                                        <div class="slds-truncate" title={labels.reviewedBy}>{labels.reviewedBy}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 220px;">
+                                        <div class="slds-truncate" title={labels.assignedTo}>{labels.assignedTo}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 300px;">
+                                        <div class="slds-truncate" title={labels.comments}>{labels.comments}</div>
+                                    </th>
+                                    <th class="slds-text-title_caps slds-p-around_small slds-text-align_left" scope="col" style="width: 160px;">
+                                        <div class="slds-truncate" title={labels.reviewedDate}>{labels.reviewedDate}</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={approvalWorkItems} for:item="item">
+                                    <tr key={item.Id} class="slds-hint-parent">
+                                        <!-- Approval Work Item Name -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.approvalWorkItemName}>
+                                            <div class="slds-truncate">
+                                                <a href={item.approvalWorkItemUrl} target="_blank">{item.Name}</a>
+                                            </div>
+                                        </td>
+                                        <!-- Approval Condition Name -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.approvalConditionName}>
+                                            <div class="slds-truncate">{item.ApprovalConditionName}</div>
+                                        </td>
+                                        <!-- Status -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.status}>
+                                            <div class="slds-truncate">{item.Status}</div>
+                                        </td>
+                                        <!-- Reviewed By -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.reviewedBy}>
+                                            <div class="slds-truncate">{item.ReviewedBy}</div>
+                                        </td>
+                                        <!-- Assigned To with conditional lightning-helptext -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.assignedTo}>
+                                            <div class="slds-grid slds-grid_align-start slds-grid_vertical-align-center">
+                                                <template lwc:if={item.AssignedToIsGroup}>
+                                                    <template lwc:if={item.AssignedToMembers}>
+                                                        <lightning-helptext content={item.AssignedToMembers} icon-name="standard:groups" class="slds-m-right_x-small"></lightning-helptext>
+                                                    </template>
+                                                    <template lwc:else>
+                                                        <lightning-icon icon-name="standard:groups" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                                    </template>
+                                                    <span class="slds-truncate">{item.AssignedTo}</span>
+                                                </template>
+                                                <template lwc:else>
+                                                    <lightning-icon icon-name="standard:user" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                                    <span class="slds-truncate">{item.AssignedTo}</span>
+                                                </template>
+                                            </div>
+                                        </td>
+                                        <!-- Comments -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.comments}>
+                                            <div class="slds-truncate">{item.Comments}</div>
+                                        </td>
+                                        <!-- Reviewed Date -->
+                                        <td class="slds-p-around_small slds-text-align_left" data-label={labels.reviewedDate}>
+                                            <div class="slds-truncate">{item.ReviewedDate}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Empty state when no approval work items -->
+            <template lwc:if={isLoading}>
+                <!-- Empty template to prevent showing empty state while loading -->
+            </template>
+            <template lwc:elseif={hasApprovalWorkItems}>
+                <!-- Empty template to prevent showing empty state when we have items -->
+            </template>
+            <template lwc:else>
+                <div class="slds-align_absolute-center slds-p-around_large">
+                    <div class="slds-illustration slds-illustration_small" aria-hidden="true">
+                        <img src="/img/chatter/Desert.svg" class="slds-illustration__svg" alt="" />
+                        <div class="slds-text-color_weak">
+                            <h3 class="slds-text-heading_medium">{labels.noItemsFoundTitle}</h3>
+                            <p class="slds-text-body_regular">
+                                {labels.noItemsFoundDescription}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

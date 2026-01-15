@@ -1,0 +1,7 @@
+.icon-primary-500 {
+    --slds-c-icon-color-foreground-default: #0ea5e9;
+}
+
+.icon-secondary-500 {
+    --slds-c-icon-color-foreground-default: #ec4899; 
+}

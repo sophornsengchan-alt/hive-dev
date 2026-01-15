@@ -1,0 +1,156 @@
+<template>
+    <div class="slds-card">
+        <div class="cls_windowwrapper">
+            <div class="listColumn">
+                <span class="cls_windowTitle cls_font-size_title">{windowTitle}</span>
+            </div>
+            <div class="listColumn slds-float_right cls_float_right">
+                    <b class="cls_Categories_title cls_font-size_title">{focusCategories}</b>
+            </div>
+        </div>
+        <div class="cls_contentWrapper">
+            <div class="listTop listTop-Override">
+                <template for:each={displayHighlightFields} for:item="itemh">
+                    <div key={itemh.id} class="listColumnTwo">
+                        <div class="listColumn">
+                            <span>{itemh.label}</span>
+                            <template if:true={itemh.isStatus}>
+                                <b class={statusName}>{itemh.value}</b>
+                            </template>
+                            <template if:true={itemh.isCheckBox}>
+                                <template if:true={itemh.value}>
+                                    <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled="" checked="" />
+                                </template>
+                                <template if:false={itemh.value}>
+                                    <input type="checkbox" name="options" value="checkbox-unique-id-73" disabled=""/>
+                                </template>
+                            </template>
+                            <template if:true={itemh.isDate}>
+                                <lightning-formatted-date-time value={itemh.value} time-zone="UTC"></lightning-formatted-date-time>
+                            </template>
+                            <template if:true={itemh.isNumber}>
+                                <lightning-formatted-number value={itemh.value} maximum-fraction-digits="2"></lightning-formatted-number>
+                            </template>
+                            <template if:true={itemh.isHTML}>
+                                <lightning-formatted-rich-text value={itemh.value}></lightning-formatted-rich-text>
+                            </template>
+                            <template if:true={itemh.isText}>
+                                <lightning-formatted-text value={itemh.value} ></lightning-formatted-text>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+                
+                <a onclick={onShowDetail} class="backButton">
+                    <lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon>
+                </a>
+            </div>
+        </div>
+        
+        <template if:true={displayDetail}>
+            <template for:each={item.Deal_Window_Items__r} for:item="junction">
+
+                <!-- <div key={junction.id} class="slds-grid slds-gutters" >
+                    <div class="slds-col slds-size_1-of-3 slds-m-left_large">
+                        <span><b><a href="\/{junction.Id}"></a>{junction.NA_Retail_Campaign_Title__c}</b></span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-3">
+                        <span>
+                            <lightning-formatted-date-time value={junction.NA_Retail_Campaign_Start_Date__c} time-zone="UTC"></lightning-formatted-date-time> to <lightning-formatted-date-time value={junction.NA_Retail_Campaign_End_Date__c} time-zone="UTC"></lightning-formatted-date-time>
+                        </span>
+                    </div>
+
+                </div> -->
+
+                <ul class="" key={junction.id}>
+                    <li class="slds-item">
+                        <!-- <div class="slds-grid slds-gutters dwi-section">
+                            <div class="dwi-left-section">
+                                <span class="cls_windowTitle">{junction.NA_Retail_Campaign_Title__c}</span>
+                            </div>
+                            <div class="dwi-right-section">
+                                <div>
+                                    <span>
+                                        <lightning-formatted-date-time value={junction.NA_Retail_Campaign_Start_Date__c} time-zone="UTC"></lightning-formatted-date-time> to <lightning-formatted-date-time value={junction.NA_Retail_Campaign_End_Date__c} time-zone="UTC"></lightning-formatted-date-time>
+                                    </span>
+                                </div>
+                                
+                                <div class="dwi-child-section-button">
+                                    <a onclick={onShowChildDetail} class="backButton">
+                                        <lightning-icon icon-name={iconShowChildDetail} size="xx-small" ></lightning-icon>
+                                    </a>
+                                </div>
+
+                            </div>
+                                
+                        </div> -->
+
+                        <c-lwc-rt-campaign-display retail-campaign={junction}></c-lwc-rt-campaign-display>
+                        
+                        
+                    </li>
+                    
+                    
+                </ul>
+                
+            </template>
+            <br/>
+            <div class="cls_contentWrapper">
+                <template for:each={displayDetailsFields} for:item="item">
+                    <div key={item.id} class={item.cls_rowName}>
+                        <div class="cls_colunmTwo">
+                            <div class="listColumn cls_paggding_right">
+                                <lightning-formatted-text value={item.name} ></lightning-formatted-text>
+                            </div>
+                            <div class="listColumn">
+                                <b class={item.cls_status}>{item.status}</b>
+                            </div>
+                        </div>
+                        <div class="cls_colunmTwo">
+                            <div class="listColumn cls_float_right">
+                                <lightning-formatted-date-time value={item.startDate} time-zone="UTC"></lightning-formatted-date-time> to <lightning-formatted-date-time value={item.endDate} time-zone="UTC"></lightning-formatted-date-time>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    
+                </div>
+            </div>
+            <div class="listBottom">
+                <a class="slds-button slds-button_brand mr-2" onclick={onShowDealRelatedList}>
+                    <template if:true={displayDetailDealRelatedList} >
+                        {label.LWCBtnHideMyDeal}
+                    </template>
+                    <template if:false={displayDetailDealRelatedList} >
+                        {label.LWCBtnMyDeal}
+                    </template>
+                </a>
+                <template if:true={disableButton}>
+                    <template if:false={hideButtonSingleDeal}>
+                        <a class="slds-button slds-button_brand mr-2 cls_disableButton" title="You cannot create a deal inside a time frame that is now closed.">{labelBtnSingleDeal}</a>
+                    </template>
+                    <a class="slds-button slds-button_brand mr-2 cls_disableButton" title="You cannot create a deal inside a time frame that is now closed." >{labelBtnMultipleDeals}</a>
+                </template>
+
+                <template if:false={disableButton}>
+                    <template if:false={hideButtonSingleDeal}>
+                        <a class="slds-button slds-button_brand mr-2" onclick={onCreateDeal}>{labelBtnSingleDeal}</a>
+                    </template>
+                    <a class="slds-button slds-button_brand mr-2" onclick={onBulkUploadDeals}>{labelBtnMultipleDeals}</a>
+                </template>
+            </div>
+            <template if:true={displayDetailDealRelatedList} >
+                <div style="padding: 7px;">
+                    <!--<c-lwc-list-view search-key={itemId} mdt-name='My_Deal_Related_List' message-no-record='No Deal Available' is-show-density=false is-show-btn-intr=false lb-button-intr=false is-check-box=false is-disable-search=true></c-lwc-list-view>-->
+                    <c-lwc-my-deal-list-view record-id={itemId} mdt-name-my-deal='My_Deal_Related_List' message-no-record-my-deal={label.LWCNoDealAbailable}></c-lwc-my-deal-list-view>
+                </div>
+            </template>
+        </template>
+    </div> 
+    <!--<template if:true={isBulkUploadDeal}>
+        <c-lwc-bulk-upload-c-s-v></c-lwc-bulk-upload-c-s-v>
+    </template>-->
+</template>

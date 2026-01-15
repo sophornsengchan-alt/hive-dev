@@ -1,0 +1,5 @@
+.card-no-border-top{
+    margin-top: -7px;
+    border-radius: 0px 0px 5px 5px !important;
+    
+}

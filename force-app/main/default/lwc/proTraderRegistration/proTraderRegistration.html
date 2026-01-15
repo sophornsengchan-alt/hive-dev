@@ -1,0 +1,116 @@
+<template >
+    <div>
+        <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+		<c-confirm-dialog is-show={showConfirmDialog} is-show-confirm={showConfirmLabel} title={label.Pro_Trader_Title} message={label.Pro_Trader_Message} cancel-label={label.Pro_Trader_Go_Back} confirm-label={label.Pro_Trader_Confirm} onconfirm={onConfirmHandler} oncancel={onCancelHandler}></c-confirm-dialog>
+       
+		<template if:true={showPageContent}>
+			<div class="slds-grid g-0">
+				<div class="slds-col slds-size_12-of-12 text-center py-4 bg-F7F7F7">
+					<h2 class="panel-title">{label.Pro_Trader_Programme}</h2>
+				</div>
+			</div>
+			<div class="section-box--inner box-register">
+				<div class="slds-grid slds-wrap py-4">
+					<!--if the Registration period is over, we need to display the below error message: -->    
+					<template if:true={registrationIsOver} >
+						<lightning-formatted-rich-text class="default-text-font" value={label.ProTraderRegistrationIsOverMSG} ></lightning-formatted-rich-text>
+					</template>   
+					<template if:false={registrationIsOver} >
+						<div class="slds-col slds-size_12-of-12 slds-large-size_5-of-12 pe-lg-4 slds-m-bottom_large">
+							<div class="video-container slds-m-bottom_large mb-lg-3">
+								<div class="ratio ratio-16x9 img-box" if:true={isVideoAvailable}>
+									<iframe  frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+										src={label.WelcomeToProTraderProgram}>
+									</iframe> 
+								</div>
+							</div>
+							<div class="slds-grid slds-wrap">
+								<div class="slds-col slds-size_12-of-12">
+									<h3 class="title-18 mb-3"><strong>{label.Pro_trader_grow_your_business}</strong></h3>
+									<!-- <p class="text-14">{updatedInvitationLabel}</p> 
+									 NK:02/09/2024:US-0015523
+									 -->
+									 <p ><lightning-formatted-rich-text value={updatedInvitationLabel} class="text-14" ></lightning-formatted-rich-text></p>
+									
+									<p class="text-14 d-block d-lg-none"><lightning-formatted-rich-text value={label.Pro_trader_Interested}></lightning-formatted-rich-text></p>
+								</div>
+							</div>
+						</div>
+						<div class="slds-col slds-size_12-of-12 slds-large-size_7-of-12 ps-lg-4">
+							<h3 class="title-24 slds-m-bottom_large"><strong>{label.Benefits_of_the_ProTrader_Programme}</strong></h3>						
+							<div class="d-grid pro-trader-boxes">
+								<div class="p-3 inner-box">
+									<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_3-of-12">
+											<img src={protrader_free_of_charge} class="img-fluid-reg">
+										</div>
+										<div class="slds-col slds-size_9-of-12">
+											<p class="m-0"><lightning-formatted-rich-text value={label.ProTrader_FeeOfCharge} ></lightning-formatted-rich-text></p>
+										</div>
+									</div>								
+								</div>
+								<div class="p-3 inner-box">								
+									<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_3-of-12">
+											<img src={protrader_calendar} class="img-fluid-reg">
+										</div>
+										<div class="slds-col slds-size_9-of-12">
+											<p class="m-0"><lightning-formatted-rich-text value={label.ProTrader_TradingSupport} ></lightning-formatted-rich-text></p>
+										</div>
+									</div>								
+								</div>
+								<div class="p-3 inner-box">								
+									<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_3-of-12">
+											<img src={protrader_headset} class="img-fluid-reg">
+										</div>
+										<div class="slds-col slds-size_9-of-12">
+											<p class="m-0"><lightning-formatted-rich-text value={label.ProTrader_Guidance} ></lightning-formatted-rich-text></p>
+										</div>
+									</div>								
+								</div>
+								<div class="p-3 inner-box" if:true={isExclusiveDealAvailable}>								
+									<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_3-of-12">
+											<img src={protrader_tag} class="img-fluid-reg">
+										</div>
+										<div class="slds-col slds-size_9-of-12">
+											<p class="m-0"><lightning-formatted-rich-text value={label.ProTrader_EclusiveDeal} ></lightning-formatted-rich-text></p>
+										</div>
+									</div>								
+								</div>
+								<div class="p-3 inner-box">								
+									<div class="slds-grid slds-wrap">
+										<div class="slds-col slds-size_3-of-12">
+											<img src={protrader_guidance} class="img-fluid-reg">
+										</div>
+										<div class="slds-col slds-size_9-of-12">
+											<p class="m-0"><lightning-formatted-rich-text value={label.ProTrader_SpecialistGuidance} ></lightning-formatted-rich-text></p>
+										</div>
+									</div>								
+								</div>
+							</div>
+						</div>
+					</template>
+					
+				</div>
+				<div if:false={registrationIsOver} class="slds-grid slds-wrap py-4">
+					<div class="slds-col slds-size-small_0-of-12 slds-size-large_5-of-12">
+						<!--  NK:02/09/2024:US-0015523 -->
+						<span class="text-14 d-none d-lg-block"><lightning-formatted-rich-text value={label.Pro_trader_Interested}></lightning-formatted-rich-text></span>
+					</div>
+					<div class="slds-col slds-size-small_12-of-12 slds-large-size_7-of-12 text-end">
+						<button class="btn btn-blu" onclick={handleCalendlyClick}>{label.Pro_trader_setup_a_call}</button>
+					</div>
+				</div>
+			</div>
+            <!-- Show calendly modal -->
+            <c-calendy-scheduling-cmp  if:true={isCohortSellerActivated_Success} oncalendlyeventscheduled={handleCalendlyEventScheduled} 
+                oncalendlymodalclose={handleCalendlyModalClose} calendly-link={accManagerCalendlyLink}
+                email={currentUser.Contact.Email} name={currentUser.Contact.Name} custom-answer1={cohortSeller.Seller_Name__c}
+                custom-answer2={currentUser.Contact.Phone} utm-campaign="seller_portal_protrader" utm-content={cohortSeller.Id}
+                utm-source={currentUser.Id} utm-term={currentUser.ContactId} >
+            </c-calendy-scheduling-cmp>
+        </template>
+    </div>
+</template>

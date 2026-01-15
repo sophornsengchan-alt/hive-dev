@@ -1,0 +1,113 @@
+.cls_content {
+    float: left;
+    width: 100%;
+    background-color: #ffffff;
+}
+.cls_contentWrapper {
+    /*border: 1px solid #e9ecee;*/
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px 15px;
+    /*background-color: #8EDFE1;*/
+    background: #fff;
+    /* border: 1px solid #e70e0e; */
+    border: 1px solid #0654ba;
+    border-radius: 2px;
+}
+
+.cls_displayfileName {
+    width: 100%;
+    float: left;
+}
+
+.cls_tableWrapper {
+    float: left; 
+    width: 100%; 
+    overflow-x: scroll;
+}
+.cls_disableButton {
+    background-color: #c5c5c5 !important;
+    color: #fbfbfb !important;
+    border-color: #c5c5c5 !important;
+}
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    scroll-behavior: smooth;
+}
+
+.cls_message-error{
+    background-color: #fff2f2;
+    color: red;
+}
+.cls_message-success{
+    background-color: #e7fbee;
+    color: #00ad0d;
+}
+
+.hide{
+    display: none;
+}
+
+.cls_overflow_content_message{
+    /* margin: 0 auto; */
+    /* width: 55%; */
+    width: 100%;
+    min-width: 50px;
+    /* max-width: 500px; */
+    min-height: 25px;
+    max-height: 150px;
+    padding: 10px 20px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin-right:2%;
+    float: left;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .cls_overflow_content_message::-webkit-scrollbar {
+    display: none;
+} */
+
+.change_color_btn{
+    /* background-color: #8cf9ff; */
+    float: left;
+    display: none;
+}
+.portal_content span p {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+.portal_message .portal_title{
+    font-size: 22px !important;
+}
+.portal_message .portal_content{
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    margin-top: 0;
+    margin-bottom: 0 !important;
+    /*only for Paragrah too close for single Paragrah*/
+    /* line-height: 0.5 !important;  */
+}
+.portal_message .right_content{
+    float: right;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    position: relative;
+    top: 12px;
+}
+.portal_content_wrapper{
+    padding-top: 1rem;
+}
+.portal_line_break{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.portal_time{
+    font-size: 13px !important;
+}

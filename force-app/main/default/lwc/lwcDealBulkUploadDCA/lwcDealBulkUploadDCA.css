@@ -1,0 +1,107 @@
+.read-only-container.read-only {
+    pointer-events: none;
+    opacity: 0.6; /* Optional: to visually indicate that the fields are read-only */
+}
+/* .cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+} */
+
+.cls_content {
+    float: left;
+    width: 100%;
+    background-color: #ffffff;
+}
+.cls_contentWrapper {
+    border: 1px solid #e9ecee;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.cls_displayfileName {
+    width: 100%;
+    float: left;
+}
+
+.cls_tableWrapper {
+    float: left; 
+    width: 100%; 
+    /* overflow-x: scroll; */
+}
+.cls_disableButton {
+    background-color: #c5c5c5 !important;
+    color: #fbfbfb !important;
+    border-color: #c5c5c5 !important;
+}
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.cls_message-error{
+    background-color: #fff2f2;
+    color: red;
+}
+.cls_message-success{
+    background-color: #e7fbee;
+    color: #00ad0d;
+}
+
+.hide{
+    display: none;
+}
+.cls_span {
+    width: 100%;
+    float: left;
+}
+
+.cls_float-left {
+    float: left;
+}
+.cls_margin-right {
+    margin-right: 10px !important;
+}
+.cls_padding-zero {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* FIX PAGINATION FOR DATA TABLES */
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.paginationList {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.paginationList li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.paginationList li.active a {
+    background: #edf0f9;
+    border-radius: 3px;
+    color: #222;
+    padding: 10px;
+}
+
+.paginationList li a {
+    color: #767676;
+    font-weight: 800;
+}

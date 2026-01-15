@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Setting Name" name="mdtName" type="String" default=""/>
+            <property label="Domain for hidden create single deal" name="profileHiddenBtnSingleDeal" type="String" default=""/>
+            <property label="Message No Record" name="messageNoRecord" type="String" default=""/>
+            <property label="btn Create Single Deal" name="labelBtnSingleDeal" type="String" default="Create Single Deal"/>
+             
+            <property label="btn Create Multiple Deals" name="labelBtnMultipleDeals" type="String" default="Create Multiple Deals"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

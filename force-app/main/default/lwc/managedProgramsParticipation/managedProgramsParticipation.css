@@ -1,0 +1,39 @@
+.gear-icon{
+    width : 20px;
+}
+.bg_Program{
+    background-color: #aacbffa1;
+    font-size: 12px;
+    color: black;
+    height: 58px;/*TH:US-0015823 : Change from 70px to 75px */
+    border-color: white;
+    line-height: 12px;
+    text-align: center;
+    margin: 3px;
+    cursor:pointer;
+}
+.bg_Program_dev_top{
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.caption {
+    display: block;
+}
+
+.relative-one-rem{
+    position: relative;
+    bottom: 1rem;
+}
+/* 11.12.2024 / Sothea Horn / US-0015300 / set min width for message block */
+.lwc-message-container{
+    --slds-c-toast-sizing-min-width: 90%;
+}
+.no-margin-bottom{
+    margin-bottom: 0px
+}
+.no-margin-top{
+    margin-top: 0px
+}

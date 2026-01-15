@@ -1,0 +1,15 @@
+<template>
+    
+    <lightning-combobox                       
+        label={label.field_label}
+        value={accId}
+        placeholder={label.field_placeholder}
+        options={options}
+        onchange={handleChange} 
+        required="true"  
+        field-level-help={label.field_helptext}  
+        class="accountPicker" 
+        message-when-value-missing={label.field_errorMsg}
+    ></lightning-combobox>
+    
+</template>

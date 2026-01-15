@@ -1,0 +1,4 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <c-confirm-dialog is-show={showConfirmDialog} is-show-confirm={showConfirmBtn} title={labels.Export_Deal_Title} message={msgPopUp} cancel-label={labels.lwcCancelbtn} confirm-label={labels.MgUser_Confirm} oncancel={onCancelHandler} onconfirm={onConfirmHandler}></c-confirm-dialog>
+</template>

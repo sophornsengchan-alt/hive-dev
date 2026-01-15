@@ -1,0 +1,90 @@
+/* Account Glean Summary Component Styles */
+
+.auth-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.summary-container {
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.summary-header {
+    background-color: #f3f2f2;
+    border-bottom: 1px solid #dddbda;
+}
+
+.summary-content {
+    background-color: #ffffff;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.summary-text {
+    line-height: 1.6;
+    color: #3e3e3c;
+}
+
+/* Loading state */
+.slds-align_absolute-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rich text formatting */
+.summary-text h1,
+.summary-text h2,
+.summary-text h3,
+.summary-text h4,
+.summary-text h5,
+.summary-text h6 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.summary-text h1 { font-size: 1.5rem; }
+.summary-text h2 { font-size: 1.25rem; }
+.summary-text h3 { font-size: 1.125rem; }
+.summary-text h4 { font-size: 1rem; }
+
+.summary-text ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-text li {
+    margin-bottom: 0.25rem;
+}
+
+.summary-text strong {
+    font-weight: 700;
+}
+
+.summary-text em {
+    font-style: italic;
+}
+
+.summary-text a {
+    color: #0070d2;
+    text-decoration: none;
+}
+
+.summary-text a:hover {
+    text-decoration: underline;
+}
+
+/* Table styling */
+.summary-text table {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-text table td {
+    padding: 0.5rem;
+}

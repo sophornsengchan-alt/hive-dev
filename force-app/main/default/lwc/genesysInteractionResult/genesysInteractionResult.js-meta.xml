@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+        <target>lightning__UtilityBar</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="interactionId" type="String" label="Interaction ID" description="The Genesys conversation interaction ID."/>
+            <property name="region" type="String" role="inputOnly" label="Region" description="User region for consent logic."/>
+            <property name="userConsent" type="Boolean" label="User Consent" description="Whether the user consented to call recording in boolean"/>
+            <property name="userConsentResponse" type="String" label="User Consent Response full value"/>
+            <property name="queueName" type="String" label="Queue Name" description="Queue from which the call was placed."/>
+            <property name="recordingState" type="String" label="Recording State" description="Recording status or flag to pass to backend flow."/>
+            <property name="backendFlowApiName" type="String" label="Backend Flow API Name" description="API name of autolaunched flow to run in background"/>
+            <property name="participantIds" type="String[]" label="External Participant IDs" description="IDs of participants with purpose 'external'."/>
+            <property name="participantId" type="String" label="Single Participant ID" description="IDs of participant"/>
+            <property name="taskId" type="String" role="outputOnly" label="Task ID" description="Task Id created by Genesys Call Log response."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,135 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading} >
+            <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+        </template>
+    </div>
+    <div class="main-section">   
+        <h4 class="slds-text-align_center slds-p-vertical_x-large your-performace">{label.ProTrader_Your_performance}</h4>
+
+        <div class="slds-grid slds-wrap slds-p-vertical_x-large">
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_center">
+                <div class="number-font-size" data-name="share-sales-block" >{_cohortSellerandCategoryPerformanceData.shareofSales}%</div>
+                <div class="slds-p-around_small num-text ">{label.Protrader_Share_of_sales}
+                    <span class="slds-p-left_small">
+                        <lightning-helptext icon-name="utility:info_alt" content={translatedLabels.shareSalesHelpText}></lightning-helptext>
+                    </span>
+                </div>
+                <div class="description-font slds-p-bottom_large">{updatedShareOfSalesLabel}</div>             
+            </div>          
+
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_center">
+                <div class="number-font-size" data-name="total-sales-block"> 
+                    <lightning-formatted-number value={_cohortSellerandCategoryPerformanceData.totalSalesCohort} format-style="currency" 
+                    currency-code={currency} minimum-fraction-digits="2"></lightning-formatted-number>
+                </div>
+                <div class="slds-p-around_small num-text">{label.Pro_trader_Total_sales}
+                    <span class="slds-p-left_small"><lightning-helptext icon-name="utility:info_alt" content={translatedLabels.totalSalesHelpText}></lightning-helptext></span>
+                </div>
+                <div class="description-font slds-p-bottom_large">{updatedTotalSalesLabel}</div>
+
+            </div>
+
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_center">
+                <div class="number-font-size" data-name="ranking-block">{_cohortSellerandCategoryPerformanceData.cohortRanking}</div>
+                <div class="slds-p-around_small num-text">{label.Pro_trader_ranking}
+                    <span class="slds-p-left_small"><lightning-helptext icon-name="utility:info_alt" content={translatedLabels.totalRankingHelpText}></lightning-helptext></span>
+                </div>
+                <div class="description-font slds-p-bottom_large">{updatedRankingLabel}</div>
+            </div>
+
+            <!--arrow-->
+            
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="share-sales-prev-month" icon-name={iconName}></lightning-icon>
+                <div data-name="share-sales-prev-month-value"><strong>{_cohortSellerandCategoryPerformanceData.shareofSalesPreviousMonth}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_month}</p>
+            </div>
+
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="share-sales-prev-year" icon-name={iconName}></lightning-icon>
+                <div data-name="share-sales-prev-year-value"><strong>{_cohortSellerandCategoryPerformanceData.shareofSalesPreviousYear}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_year}</p>
+            </div>
+
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="total-sales-prev-month" icon-name={iconName}></lightning-icon>
+                <div data-name="total-sales-prev-month-value" ><strong>{_cohortSellerandCategoryPerformanceData.totalSalesPreviousMonth}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_month}</p>
+            </div>
+
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="total-sales-prev-year"  icon-name={iconName}></lightning-icon>
+                <div data-name="total-sales-prev-year-value"><strong>{_cohortSellerandCategoryPerformanceData.totalSalesPreviousYear}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_year}</p>
+            </div>
+
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="ranking-prev-month" icon-name={iconName}></lightning-icon>
+                <div data-name="ranking-prev-month-value"><strong>{_cohortSellerandCategoryPerformanceData.rankingPreviousMonth}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_month}</p>
+            </div>
+
+            <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_2-of-12 slds-text-align_center">
+                <lightning-icon size="x-small" data-name="ranking-prev-year"  icon-name={iconName} alternative-text="up!" title="up"></lightning-icon>
+                <div data-name="ranking-prev-year-value"><strong>{_cohortSellerandCategoryPerformanceData.rankingPreviousYear}%</strong></div>
+                <p class="description-font"> {label.Pro_trader_vs_previous_year}</p>
+            </div>
+        </div>
+
+        <div class="slds-text-align_center slds-p-vertical_x-large">
+            <a class="btn-view-report" onclick={viewDetailReport} >{label.Pro_Trader_View_detailed_report}</a>
+        </div>
+
+        <div class="color-bar">
+            <div>             
+            </div>
+        </div>
+    </div>
+   
+       
+        <c-section-cmp class="section-color slds-p-top_large slds-p-bottom_large" title={title}>
+            <div class="table-responsive">
+                <table if:true={newsubCategoryColumn}  class="slds-table" style="table-layout: fixed;">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                           
+                            <th for:each={newsubCategoryColumn} for:item="column" key={column.label} class="belowline slds-cell-wrap slds-text-align_center">
+                                <div class="slds-p-around_large" title={column.label}><strong>{column.translatedLabel}</strong>
+                                    <!--<span if:true={column.showHelpText}><lightning-helptext icon-name="utility:info_alt" content={column.inlineHelpText}></lightning-helptext></span>-->
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr for:each={subCategoryData} for:item="subCategory" key={subCategory.subCategoryName} for:index="index" class="slds-hint-parent">
+                            <td for:each={subCategory} for:item="cell" key={cell.subCategoryName} class="td-class">
+                               
+                                <div if:true={cell.subCategoryName} class="slds-p-around_medium sub-category">{cell.subCategoryName}</div>
+                                <div if:true={cell.categoryShareSales} class="slds-p-around_medium">{cell.categoryShareSales}%</div>
+                                <div if:true={cell.categoryShareSalesPreviousMonth} class="slds-p-around_medium">{cell.categoryShareSalesPreviousMonth}%</div>
+                                <div if:true={cell.categoryTotalSales} class="slds-p-around_medium">
+                                    <lightning-formatted-number value={cell.categoryTotalSales} format-style="currency" 
+                                    currency-code={currency} minimum-fraction-digits="2"></lightning-formatted-number>
+                                </div>
+                                <div if:true={cell.categoryTotalSalesPreviousMonth} class="slds-p-around_medium">{cell.categoryTotalSalesPreviousMonth}%</div>
+                                <div if:true={cell.categoryRanking} class="slds-p-around_medium">{cell.categoryRanking}</div>
+                                <div if:true={cell.categoryRankingPreviousMonth} class="slds-p-around_medium">{cell.categoryRankingPreviousMonth}</div>
+
+                            </td>
+                        </tr>
+                      </tbody>
+                    
+                </table>
+            </div>  
+            <div>
+                <p if:false={isCurrencyUSD} class="description-font slds-p-top_small">{updateCategoryInfoLabel}</p>
+            </div>
+        </c-section-cmp>
+
+       <c-pro-trader-task-cmp cohort-sellerand-category-performance-data={_cohortSellerandCategoryPerformanceData} class="slds-p-horizontal_xx-large"></c-pro-trader-task-cmp>
+       <c-pro-trader-bench-mark-cmp cohort-sellerand-category-performance-data={_cohortSellerandCategoryPerformanceData}></c-pro-trader-bench-mark-cmp>
+       
+
+</template>

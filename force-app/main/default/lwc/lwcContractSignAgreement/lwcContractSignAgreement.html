@@ -1,0 +1,139 @@
+<!-- SB 14.6.2022 US-0010429 Create component -->
+<!-- NK:31/08/2022:US-0012297:fieldsNoLink -->
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <div class="slds-size_1-of-1 slds-clearfix slds-var-p-top_xx-small">
+    <div if:false={isPreviewContract}>
+        <!-- Right Button -->
+        <!-- LA 16.6.2022  -->
+        <!-- LA 22.6.2022: UAT feedback to remove btn from this cmp  -->
+        <!--<div class="slds-float_left">
+            <button class="slds-button slds-button_neutral download-btn" onclick={handleDownload}>
+                <lightning-icon icon-name="utility:download" variant="brand" size="x-small" ></lightning-icon>
+                <span>{Labels.btnDownloadItems}</span>  
+            </button>
+        </div>-->
+        <!-- Right Button -->
+        <template if:true={isShowContractAgreeButton}>
+            <div if:false={isUK}>
+                <div if:false={isAU}>
+                    <div class="slds-float_right slds-var-p-bottom_medium">
+                        <!-- <a class="slds-button slds-button_neutral" onclick={handleDeclineButtonClick}>{Labels.button_Decline}</a> -->
+                        <lightning-formatted-rich-text value={Labels.msgPreInfo} class="slds-var-p-right_xx-small"></lightning-formatted-rich-text>
+                        <button class="slds-button slds-button_neutral" disabled={isCouponSellerStageNotContractSend} onclick={handleDeclineButtonClick} title={Labels.button_Decline}>{Labels.button_Decline}</button>
+                        <a class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleAgreeButtonClick} title={Labels.button_Agree}>{Labels.button_Agree}</a>
+                    </div>
+                </div>
+                <div if:true={isAU}>
+                    <div class="slds-var-p-bottom_medium">
+                        <lightning-input type="checkbox" label={Labels.msgContractSignConfirm} onchange={handleCheck2SignContract}></lightning-input>
+                        <br/>
+                        
+                        <button class="slds-button slds-button_neutral" disabled={isCouponSellerStageNotContractSend} onclick={handleDeclineButtonClick} title={Labels.button_Decline}>{Labels.button_Decline}</button>
+                        <template if:true={isCheck2SignContract}>
+                            <a class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleAgreeButtonClick} title={Labels.button_Agree}>{Labels.button_Agree}</a>
+                        </template>
+                        <template if:false={isCheck2SignContract}>
+                            <a class="slds-button slds-button_brand slds-m-left_x-small" disabled="true" title={Labels.button_Agree}>{Labels.button_Agree}</a>
+                        </template>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div if:true={isUK}>   
+                <div class="slds-float_right slds-var-p-bottom_medium">
+                    <!-- <a class="slds-button slds-button_neutral" onclick={handleDeclineButtonClick}>{Labels.button_Decline}</a> -->
+                    <lightning-formatted-rich-text value={Labels.msgPre_Info_UK} class="slds-var-p-right_xx-small"></lightning-formatted-rich-text>
+                    <button class="slds-button slds-button_neutral" disabled={isCouponSellerStageNotContractSend} onclick={handleDeclineButtonClick} title={Labels.button_Decline_UK}>{Labels.button_Decline_UK}</button>
+                    <a class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleAgreeButtonClick} title={Labels.button_Agree_UK}>{Labels.button_Agree_UK}</a>
+                </div>
+            </div>
+            <!-- SRONG TIN - US-0033261  -->
+            <!-- <div if:true={isCA}>   
+                <div class="slds-float_right slds-var-p-bottom_medium">
+                    <lightning-formatted-rich-text value={Labels.msgPre_Info_UK} class="slds-var-p-right_xx-small"></lightning-formatted-rich-text>
+                    <button class="slds-button slds-button_neutral" disabled={isCouponSellerStageNotContractSend} onclick={handleDeclineButtonClick} title={Labels.button_Decline_UK}>{Labels.button_Decline_UK}</button>
+                    <a class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleAgreeButtonClick} title={Labels.button_Agree_UK}>{Labels.button_Agree_UK}</a>
+                </div>
+            </div> -->
+        </template>
+        <lightning-button class="slds-float_right slds-var-p-bottom_medium" onclick={handleDownloadPDF} label={Labels.lbl_DownloadAgreement} variant="brand" if:true={showDownloadPDF}></lightning-button>
+    </div>
+    </div>
+    <div class="slds-scrollable_y" style={dynamicAgreementHeight}>
+         <!-- <div if:false={isUK}> -->
+        <div if:true={isDESite}>
+            <lightning-formatted-rich-text value={agreementTextBody1}></lightning-formatted-rich-text>
+            <template if:true={isItemBased}>
+                <c-lwc-list-view fields-no-link={fieldsNoLink} is-disable-search=true mdt-name ='Coupon_Items_Co_Invests_Sign_Contract' filter={additionalFilter}></c-lwc-list-view>
+                <br>
+            </template>
+            
+            <template if:true={isDEPortal}> 
+                <template if:false={isMcCoupon}> <!-- Hide this accordion from Master Coupon -->
+                    <template if:true={isCategoryBase}>
+                        <c-lwc-list-view fields-no-link={fieldsNoLink} mdt-name ='DE_Contract_Coupon_Co_List_View' is-disable-search="true" filter={additionalFilter}></c-lwc-list-view><br>
+                    </template>
+                    
+                </template>
+                <div class="slds-box cls_marginBottom">
+                    <div class="cls_ListViewWrapper" onclick={onShowDetail}>
+                        <div class="listColumn">
+                            <span class="cls_windowTitle cls_font-size_title">{Labels.accordionTitle}</span>
+                            <a><lightning-icon icon-name={iconShowDetail} size="x-small" ></lightning-icon></a>
+                        </div>    
+                    </div>
+                    <template if:true={displayDetail}>
+                        <div class="cls_accordion">
+                            <lightning-formatted-rich-text value={TermConditionText}></lightning-formatted-rich-text>
+                        </div>
+                    </template>
+                </div>
+                
+            </template>
+            <lightning-formatted-rich-text value={agreementTextBody2} if:true={isShowContractAgreeButton}></lightning-formatted-rich-text>
+        </div>
+        <div if:true={isUK}>            
+            <div if:true={templateReady}>                
+                <c-lwc-contract-u-k_-s-e-p is-item-base-contract={isItemBased} is-cat-base-contract={isCategoryBase} contract-template={fullTemplate} additional-filter={additionalFilter}></c-lwc-contract-u-k_-s-e-p>                               
+            </div>            
+        </div>
+        <div if:true={isFR}>            
+            <div if:true={templateReady}>                
+                <c-lwc-contract-f-r_-s-e-p is-item-base-contract={isItemBased} is-cat-base-contract={isCategoryBase} contract-template={fullTemplate} additional-filter={additionalFilter}></c-lwc-contract-f-r_-s-e-p>                               
+            </div>            
+        </div>
+        <div if:true={isIT}>            
+            <div if:true={templateReady}>                
+                <c-lwc-contract-i-t_-s-e-p is-item-base-contract={isItemBased} is-cat-base-contract={isCategoryBase} contract-template={fullTemplate} additional-filter={additionalFilter}></c-lwc-contract-i-t_-s-e-p>                               
+            </div>            
+        </div>
+        <div if:true={isAU}>            
+            <div if:true={templateReady}>                
+                <c-lwc-contract-a-u_-s-e-p is-item-base-contract={isItemBased} is-cat-base-contract={isCategoryBase} contract-template={fullTemplate} additional-filter={additionalFilter}></c-lwc-contract-a-u_-s-e-p>
+            </div>            
+        </div>
+        <!-- SRONG TIN - US-0033261  -->
+        <div if:true={isCA}>            
+            <div if:true={templateReady}>                
+                <c-lwc-contract-c-a_-s-e-p is-item-base-contract={isItemBased} is-cat-base-contract={isCategoryBase} contract-template={fullTemplate} additional-filter={additionalFilter}></c-lwc-contract-c-a_-s-e-p>
+            </div>            
+        </div>
+        <div if:false={isPreviewContract}>
+            <!-- SB 12.07.2023 US-0012639 -->
+            <div if:false={isCouponSellerStageNotContractSend} class="slds-var-p-top_medium">
+                <button class="slds-button slds-button_neutral download-btn" onclick={handleDownloadDraftPdf}>
+                    <lightning-icon icon-name="utility:download" size="x-small" ></lightning-icon>
+                    <span>{Labels.draftPdfDownloadButton}</span>  
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div if:false={isPreviewContract}>
+        <a href ={urlPdfDownload} download={fileNamePDF} stytle="display:none" class="a_downloadPDF"></a>  
+        <c-lwc-coupon-decline-reason is-modal-open={showDeclineReason} rec-id={recId} rec-contact-id={contactId}></c-lwc-coupon-decline-reason>
+    </div>
+    
+</template>

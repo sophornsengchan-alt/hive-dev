@@ -1,0 +1,40 @@
+<template>
+    <div class="mainDev">
+    <template if:true={showPageContent}>
+        <div class="slds-p-horizontal_xx-large">
+            <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+            <!-- Seller is part of program -->
+            <section class="container" if:false={sellerIsNotPartOfAnyProgram}>
+                <form>
+                    <div class="slds-grid slds-wrap py-4">
+                        <abbr class="slds-required" title="required">* </abbr>
+                        <label for="inputEmail3" class="slds-col slds-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_1-of-12 col-form-label text-14 mb-2 mb-md-0 slds-align-middle">{label.AccountPickerLabel}</label>
+                        <div class="slds-col slds-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+                        <lightning-combobox id="inputEmail3" options={sellerOptions} required="true"
+                            value={selectedSeller} onchange={handleChange} placeholder={label.AccountPickerErrorMessage}
+                            message-when-value-missing={label.AccountPickerErrorMessage} variant="label-hidden"></lightning-combobox>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <template if:true={selectedSeller}>
+                 <c-ebay-branded-section>
+                    <template if:true={selectedSellerIsEligible}> 
+                        <c-book-advertising-expert seller-id={selectedSeller} cohort-seller-id={currentCohortSellerId}></c-book-advertising-expert>
+                    </template>
+                    <template if:false={selectedSellerIsEligible}>
+                        <div class="section-box--inner box-register py-4 slds-card__body">
+                            <lightning-formatted-text value={label.Account_Not_Eligible_Msg} ></lightning-formatted-text>
+                        </div>
+                        
+                    </template>
+                </c-ebay-branded-section> 
+            </template>
+
+            <!-- Show Generic Error --> 
+            <c-lwc-generic-error-message if:true={sellerIsNotPartOfAnyProgram} metadata-name={label.GenericErrorMessageMetadataAccountManager1}></c-lwc-generic-error-message>
+            <!-- END Show Generic Error -->
+        </div>
+    </template>
+</div>
+</template>

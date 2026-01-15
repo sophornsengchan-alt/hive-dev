@@ -1,0 +1,37 @@
+<template>
+    
+    <div class={getModalOpen}>
+        
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container lwcDealCancellation">
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium slds-p-bottom--none slds-is-relative slds-p-top--none" id="modal-content-id-1">
+
+                    <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+                    
+                    <div class="custom-style">
+                        <div class="container-text">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                                {Labels.lblTitle}
+                            </h2>
+                            
+                            <div class="slds-m-bottom_medium">
+                                <lightning-textarea class="validate textAreaBody" maxlength="250" type="text" label={Labels.lblFieldLabel} value={valueCancellationReason} required=true onchange={handlReasonsCommentsChange}></lightning-textarea>   
+                            </div>
+                            <div>
+                                <label class="slds-form-element__label"><abbr title="Required" class="slds-required">*</abbr>{Labels.required}</label>
+                            </div>
+                        </div>
+                        <div class="contaner-btn">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal} title={Labels.lblCancel}>{Labels.lblCancel}</button>
+                            <button disabled={isDisabled} class="slds-button slds-button_brand slds-m-left_x-small" onclick={handleCancellation} title={Labels.lblCancellationButton}>{Labels.lblCancellationButton}</button>
+                        </div>
+                    </div>
+ 
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </div>
+ </template>

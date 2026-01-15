@@ -1,0 +1,31 @@
+:host{
+    --slds-c-accordion-heading-text-color:white;
+    --sds-c-accordion-heading-text-color-hover:rgb(236, 230, 230);
+    letter-spacing: 0.05rem;
+    display: block;
+    --sds-border-color:black;
+    --font-size-h3: 1.5rem;
+  }
+  
+  .slds-is-open .chevron_icon{
+    transform: rotateY(0deg) rotate(90deg);
+  }
+  .chevron_icon{
+    --slds-c-icon-color-foreground-default:black;
+    right: 2.5rem;
+    top: 2rem;
+  }
+  .slds-accordion__content{
+    display: none;
+  }
+  .slds-is-open>.slds-accordion__content {
+    display: block;
+  }
+  .title-class{
+    font-size: var(--font-size-h3);
+    color: black;
+    font-weight: bold;
+  }
+  .box-shadow{
+    box-shadow: 0px 0px 10px 5px #f5f5f5;
+  }

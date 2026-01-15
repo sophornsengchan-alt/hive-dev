@@ -1,0 +1,60 @@
+.center-text {
+    text-align:center;
+}
+
+.header-title {
+    float: left;
+}
+
+.icon-trail-head-icon {
+    width: 24px;
+    float: left;
+    /* position: absolute;
+    top: 16px;
+    width: 24px;
+    left: 16px; */
+}
+
+.icon-trail-head-icon img{
+    border-radius: 5px;
+}
+
+.wrap-header-title {
+    float: left;
+    width: 100%;
+    padding: 0px 15px;
+    position: absolute;
+    top: 8px;
+}
+
+.margin-bottom {
+    float: left;
+    width: 100%;
+}
+
+.slds-card__header-title {
+ 
+}
+
+.assignment {
+    /**
+        note the width is fixed, to ensure an even 'grid' feel.
+        min-width/max-width also will work,
+        but will produce a 'staggered' list of items.
+        
+        Normally the aura:flexipageRegionInfo component should help
+        but it seems it won't meet the needs in all cases,
+        and only "works" when sent from an aura component.
+        (Testing on various devices actually found
+         it did not always work even then.)
+    **/
+    /** @TODO: review auto. previously set to `width: 330px;` **/
+    width: 100%;
+    min-height: 70px;
+    padding-right: 10px;
+}
+.customIcon{
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+}

@@ -1,0 +1,189 @@
+<template>
+    <div style="overflow: hidden;">
+        <div class="slds-var-p-bottom_large slds-var-p-top_x-small">
+            <lightning-formatted-rich-text value={Labels.PMDeal_Info_UploadText1_DCA}></lightning-formatted-rich-text>
+        </div>
+        <!-- SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals -->
+        <c-lwc-progress-indicator current-step={currentStep}></c-lwc-progress-indicator>
+        <!-- SB progress indicator -->
+        <br/>
+        <lightning-layout >
+            <lightning-layout-item   size="4" >
+                <div  class="slds-p-bottom_x-small read-only-container read-only">
+                    <c-lwc-account-picker selected-acc-id={selectedAccountId} onaccountchange={handleAccountChange}></c-lwc-account-picker>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+        
+        <template if:true={isStep1}>
+            <div class="cls_message-info">
+                <lightning-formatted-rich-text value={Labels.PMDeal_Info_CapTitle_DCA}></lightning-formatted-rich-text>
+                <lightning-formatted-rich-text value={PMDeal_Info_UploadLimit_DCA}></lightning-formatted-rich-text>
+            </div>
+        </template>
+        <template if:true={isStep2}>
+            <div class="cls_message-info" style="display: flex;">
+                <span style="margin-top: -2px;margin-right: 4px;">
+                    <lightning-icon icon-name="utility:warning" alternative-text="Warning!" variant="warning" size="x-small"></lightning-icon>
+                </span>
+                <span>
+                    <lightning-formatted-rich-text value={Labels.SEP_DCA_UploadDeals_Info_Preview}></lightning-formatted-rich-text>
+                </span>
+            </div>
+        </template>
+        <!-- End SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals -->
+        <template if:true={isLimitRecordsSubmitted}>
+            <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                <span class="cls_span">{PMDeal_Error_UploadLimit_DCA}</span>
+            </div>
+        </template>
+        <!-- end Change history: 28-10-2022 / Chetra Sarom / US-0012778 -->
+
+        <template if:true={onShowLoadingSpinner}>
+            <div style="z-index: 99999 !important;">
+                <lightning-spinner alternative-text="Uploading......" size="medium" style="z-index: 10000 !important;position: fixed;"></lightning-spinner>
+            </div>
+        </template>
+        <!--<template if:true={uploadedSuccess}>
+            <c-lwc-record-info record-id={recId} override-metadata-name="SEP_DCA_UploadDealsSucces_Info" message-type="Success"></c-lwc-record-info>
+        </template>-->
+
+        <div class="cls_content slds-p-around_medium ">
+            <!-- Upload Single File Section - START -->
+            <!-- Start SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+            <template if:true={isStep1}>
+                <div class="cls_contentWrapper">
+                    
+                    <div class="slds-p-around_medium lgc-bg" style="float: left">
+                        <template if:true={disableUploadFile}>
+                            <lightning-input disabled type="file" label={lbInputFile}></lightning-input>
+                        </template>
+                        <template if:false={disableUploadFile}>
+                            <lightning-input type="file" label={lbInputFile} onchange={handleFilesChange}></lightning-input>
+                        </template>
+                    </div>
+                    <!-- <div class="slds-p-around_medium lgc-bg cls_padding-zero slds-m-left_xx-small" style="float: left; margin-top: 25px;">
+                    
+                        <template if:true={disableNextBtn}>
+                            <a class="slds-button slds-button_brand mr-2 cls_disableButton" >{Labels.btn_next}</a>
+                        </template>
+
+                        <template if:false={disableNextBtn}>
+                            <a class="slds-button slds-button_brand mr-2" onclick={handleClickUpload}>{Labels.btn_next}</a>
+                        </template>
+
+                        <template if:true={disableSubmitBtn}>
+                            <a class="slds-button slds-button_brand mr-2 cls_disableButton" >{Labels.btn_submit}</a>
+                        </template>
+
+                        <template if:false={disableSubmitBtn}>
+                            <a class="slds-button slds-button_brand cls_margin-right slds-m-left_xx-small" onclick={handleClickSubmit}>{Labels.btn_submit}</a>
+                        </template>
+                        
+                    </div> -->
+                    <div class="slds-p-around_medium lgc-bg cls_padding-zero slds-m-left_xx-small" style="float: left; margin-top: 22px;">
+                        <lightning-button variant="brand" label={Labels.btn_downloadSampleFile} title="" onclick={doDownloadCSVTemplate} class="mr-4"></lightning-button>
+                    </div>
+                    
+                    <div class="slds-p-left_medium slds-p-bottom_medium lgc-bg cls_displayfileName">
+                        {fileName}
+                    </div>
+                </div>
+            </template>
+            <!-- Upload Single File Section - END -->
+
+            <!-- Preview CSV Section - START -->
+            <!--Start SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals-->
+            <template if:true={isStep2}>
+                <template for:each={allObjMessageInfos} for:item="item">
+                    <div key={item.mainMsg} class={item.className}>
+                        <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span>
+                        <span>{item.detailMsg}</span>
+                    </div>
+                </template>
+                <template if:true={showMessageResults.isHasError}>
+                    <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                        <span class="cls_span">{showMessageResults.totalError} {Labels.uploadResult_Message}.</span>
+                    </div>
+                    <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                            <span class="cls_span">{Labels.PM_Deal_Error_Reason} :</span>
+                            <template for:each={showMessageResults.lstError} for:item="msgError">
+                                <span class="cls_span" key={msgError}> {msgError}</span>
+                            </template>
+                        </div>
+                </template>
+                <div class="slds-p-around_medium cls_tableWrapper">
+                    <template if:true={isShowTable}>
+                        <b>{Labels.txt_totalrecord}: {totalRecord}</b>
+                        <lightning-datatable
+                                hide-checkbox-column="true"
+                                data={jsonData}
+                                columns={columns}
+                                key-field="id">
+                        </lightning-datatable> 
+                        <!-- <div class="pagination">
+                            <ul class="paginationList">
+                                <li>
+                                    <a onclick={onPrevPage} ><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon> {Labels.prev}</a>
+                                </li>
+                                <template for:each={displayPagination} for:item="page">
+                                    <li key={page.value} class={page.clsActive}>
+                                        <a onclick={onChangePage} data-id={page.value} >{page.value}</a> 
+                                    </li>
+                                </template>
+                                <li>
+                                    <a onclick={onNextPage} >{Labels.next} <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon></a>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals -->
+                        <c-lwc-paginator total-page={totalPage} onupdatepaginatorstate={updateCurrentPage} current-page={currentPage} number-of-record-per-page={numberOfRecordPerPage} > </c-lwc-paginator>
+                    </template>
+                </div>
+            </template>
+            <template if:true={isStep3}>
+                <template if:true={isShowMessage}>
+                    <!-- <div class="cls_message-info cls_message-success cls_float-left slds-size_full">
+                        <span class="cls_span" >{showMessageResults.totalSuccess} {Labels.DealRecordsCreatedPartSuccess}</span>
+                    </div> -->
+                    <template if:true={showMessageResults.isHasError}>
+                        <div class="cls_message-info cls_message-error cls_float-left slds-size_full">
+                            <span class="cls_span">{Labels.PM_Deal_Error_Reason} :</span>
+                            <template for:each={showMessageResults.lstError} for:item="msgError">
+                                <span class="cls_span" key={msgError}> {msgError}</span>
+                            </template>
+                        </div>
+                        
+                    </template>
+                
+                </template>
+            </template>
+            <!-- Preview CSV Section - END -->
+            <!--US-0012660 - Submit button in Seller Portal to change the status of DCA-->
+            <div style = "float: right;margin-top:10px">
+                <!-- <a class="slds-button slds-button_brand mr-2" onclick={doUpdateDCAStatus}>{Labels.submitForReview}</a> -->
+                <!-- SB 3.11.2022 US-0012877 - Simplify Item Upload Process for PM Deals -->
+                <template if:true={isStep1}>
+                    <a class="slds-button slds-button_neutral mr-2" onclick={handleCancel}>{Labels.btn_cancel}</a>
+                </template>
+                <template if:true={isStep2}>
+                    <a class="slds-button slds-button_neutral mr-2" onclick={handleBack}>{Labels.btn_back}</a>
+                    <template if:true={disableSubmitBtn}>
+                        <a class="slds-button slds-button_brand mr-2 cls_disableButton">{Labels.btn_submit}</a>
+                    </template>
+                    <template if:false={disableSubmitBtn}>
+                        <a class="slds-button slds-button_brand cls_margin-right slds-m-left_xx-small" onclick={handleClickSubmit}>{Labels.btn_submit}</a>
+                    </template>
+                </template>
+                <template if:true={isStep3}>
+                    <a class="slds-button slds-button_neutral mr-2" onclick={handleReupload}>{Labels.btn_back}</a>
+                    <template if:true={disableSubmitBtn}>
+                        <a class="slds-button slds-button_brand mr-2 cls_disableButton">{Labels.btn_submit}</a>
+                    </template>
+                </template>
+            </div>
+
+        </div>
+    </div>
+</template>

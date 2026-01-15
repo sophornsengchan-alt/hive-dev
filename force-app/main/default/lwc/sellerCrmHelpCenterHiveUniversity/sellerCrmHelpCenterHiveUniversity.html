@@ -1,0 +1,29 @@
+<template>
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-primary-800 mb-4 pb-2 border-b-2 border-primary-200">
+            Gain More Knowledge with Hive University
+        </h2>
+        <template if:true={hiveUniversityLinks}>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template for:each={hiveUniversityLinks} for:item="link">
+                    <c-seller-crm-help-center-item 
+                        key={link.Title__c}
+                        title={link.Title__c}
+                        icon-name={link.Icon_Name__c}
+                        description={link.Description__c}
+                        icon-class="icon-secondary-500"
+                        is-use-standard-icon={link.Use_Standard_Icon__c}
+                    ></c-seller-crm-help-center-item>
+                </template>
+            </div>
+        </template>
+        <template if:false={hiveUniversityLinks}>
+            <p class="text-gray-500">
+                <lightning-formatted-rich-text 
+                    value=" No resources available at the moment. Please check back later."
+                >
+                </lightning-formatted-rich-text> 
+            </p>
+        </template>
+    </div>
+</template>

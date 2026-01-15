@@ -1,0 +1,269 @@
+<template>
+
+    <lightning-card  title="" class="slds-var-p-around_x-small">
+
+        <div class="titleBlock slds-var-p-left_small">
+            <!-- <h1 class="slds-text-heading_large slds-m-bottom_medium">{Labels.LabelHeader}</h1> -->
+        </div>
+        <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+        <!--  ////////////////////////////////////////////// step0 landing page //////////////////////////////////////////////////////////////// -->
+        <span class="" if:true={isStep0}>
+            <p class="slds-var-p-left_small">
+                <!-- <lightning-formatted-rich-text value={Labels.Label_Text1} ></lightning-formatted-rich-text> -->
+            </p>
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_x-large" if:true={hasSomeAccounts}>                     
+                    <lightning-layout-item padding="around-small" size="2"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="8" class="slds-box list-account" > 
+                        <lightning-layout multiple-rows="true" class="">                            
+                            <lightning-layout-item padding="around-small" size="12" if:true={mainHasGroup}>
+                                <lightning-formatted-rich-text value={text_label_group_main_name} ></lightning-formatted-rich-text>
+                            </lightning-layout-item>
+                            <template for:each={getListAccounts} for:item="accCont">
+                                
+                                <lightning-layout-item padding="around-small" size="4" key={accCont.Id}>
+                                    <div class="custom-box">{accCont.Account.Name}</div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size="4" key={accCont.Id}>
+                                    <div class="custom-box" if:true={accCont.isAdmin}>{Labels.Label_AdminAccount}</div>
+                                </lightning-layout-item>
+                                
+                                <lightning-layout-item padding="around-small" size="4" key={accCont.Id}>
+                                    <template if:true={enableUnlink}>
+                                        <template if:false={accCont.isAdmin}>
+                                            <div class="custom-box slds-text-align--right">
+                                                <a class="slds-p-right_xx-large red-text" href="" data-acccontid={accCont.Id} data-accid={accCont.Account.Id} data-accname={accCont.Account.Name} onclick={handleUnlinkConfirm}>{Labels.Label_Unlink}</a>                          
+                                            </div>
+                                        </template>
+                                    </template>
+                                </lightning-layout-item>
+                            </template>
+                            
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="2"> </lightning-layout-item> 
+                </lightning-layout>
+            </span>
+
+            <p class="slds-p-horizontal_small slds-m-bottom_medium">
+                <lightning-formatted-rich-text value={Labels.Label_Text2} ></lightning-formatted-rich-text>               
+            </p>
+            <p class="slds-p-horizontal_small slds-m-bottom_medium">
+                <lightning-formatted-rich-text value={Labels.Label_Text3} ></lightning-formatted-rich-text>               
+            </p>
+            
+        </span>
+
+        <!--  ////////////////////////////////////////////// step1 authentication success, no Group then create here //////////////////////////////////////////////////////////////// -->
+        <span if:true={isStep1}>
+            <!-- <p class="slds-p-left--x-large">
+                <lightning-formatted-rich-text value={text_Step1_text1} ></lightning-formatted-rich-text>
+            </p>
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_small">                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="" > 
+                        <lightning-layout multiple-rows="true" class="">         
+                             
+                            <lightning-layout-item padding="around-small" size="12">
+                                <div class="slds-text-align_center slds-text-heading--large">{mainAccName}</div>
+                            </lightning-layout-item>
+                            
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+                </lightning-layout>
+            </span> -->
+            <lightning-layout multiple-rows="true" class="slds-var-p-around_small">                     
+                <lightning-layout-item padding="around-small" size="12">
+                    <p class="slds-p-horizontal_small">
+                        <lightning-formatted-rich-text value={text_Step1_text2} ></lightning-formatted-rich-text>               
+                    </p>
+                </lightning-layout-item>
+                
+                <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6"> 
+                    <p class="slds-p-horizontal_small">
+                        <lightning-input placeholder="" max-length="255" value={newGroupName} type="text" label={Labels.Label_GroupName} data-name="group_info" onchange={handleInputGroupChange} data-id="input_groupname" variant="label-stacked" required message-when-value-missing={Labels.Msg_requiredField}></lightning-input>                                              
+                    </p>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="12"> 
+                    <!-- <p class="slds-var-p-left_small slds-text-color--error" >
+                        {Labels.LabelRequired}
+                   </p> -->
+                   <label class="slds-form-element__label" for="actionOutcomeId"><abbr title="Required" class="slds-required">*</abbr>{Labels.LabelRequired}</label>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+           
+            
+        </span>
+
+        <!--  ////////////////////////////////////////////// step1 error linking seller not exist in HIVE ////////////////////////////////// -->
+        <span if:true={isStep11}>
+            <p class="slds-p-horizontal_small">                 
+                <lightning-formatted-rich-text value={Labels.Label_AccountNotExist_MSG} if:true={isStep11} class="slds-text-color--error"></lightning-formatted-rich-text>
+            </p>
+        </span>
+        <!--  ////////////////////////////////////////////// final step error. process to link and create group account error ///////////////////////// -->
+        <span if:true={isStep22}>
+            <p class="slds-p-horizontal_small">                 
+                <lightning-formatted-rich-text value={Labels.Text_Error_static} if:true={isStep22} class="slds-text-color--error"></lightning-formatted-rich-text>
+            </p>
+        </span>
+        <!--  ////////////////////////////////////////////// final step Succss. process to link and create group account complete OK //////////////////// -->
+        <span if:true={isStep21}>
+            <p class="slds-p-horizontal_small">                 
+                <lightning-formatted-rich-text value={Labels.Text_Step2_Success} if:true={isStep21} class="slds-text-color_success"></lightning-formatted-rich-text>
+            </p>
+        </span>
+        <!--  ////////////////////////////////////////////// step3  authentication success, A is NOT a Portal Group (RT), Group A exists Group B not //////////////////////////////////////////// -->
+        <!--  ////////////////////////////////////////////// step3(same msg) authentication success, A is Portal Group.  Group B has NO group /////////////////////////////////////////////////// -->
+        <span if:true={isStep3}>
+            <!-- <p class="slds-p-left--x-large">
+                <lightning-formatted-rich-text value={text_Step1_text1} ></lightning-formatted-rich-text>
+            </p> -->
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_small">                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="" > 
+                        <lightning-layout multiple-rows="true" class="">         
+                             
+                            <lightning-layout-item padding="around-small" size="12" class="slds-text-align_center">
+                                <!-- <div class="slds-text-align_center slds-text-heading--large">{mainAccName}</div> -->
+                                <lightning-formatted-rich-text value={text_Step3_text2} ></lightning-formatted-rich-text>
+                            </lightning-layout-item>
+                            
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+                </lightning-layout>
+            </span>
+            <!-- <lightning-layout multiple-rows="true" class="slds-var-p-around_small">                     
+                <lightning-layout-item padding="around-small" size="12">
+                    <p class="slds-p-horizontal_small">
+                        <lightning-formatted-rich-text value={text_Step3_text2} class=""></lightning-formatted-rich-text>               
+                    </p>
+                </lightning-layout-item>
+                
+            </lightning-layout> -->
+           
+            
+        </span>
+         <!--  ////////////////////////////////////////////// step4  authentication success, A has no Group.  Group B does //////////////////////////////////////////////////////////////// -->
+        <span if:true={isStep4}>
+            
+            <span>
+                <lightning-layout multiple-rows="true" class="slds-var-p-around_small">                     
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="6" class="" > 
+                        <lightning-layout multiple-rows="true" class="">         
+                             
+                            <lightning-layout-item padding="around-small" size="12">
+                                <!-- <div class="slds-text-align_center slds-text-heading--large">{mainAccName}</div> -->
+                                <lightning-formatted-rich-text value={text_Step4_text1} class=""></lightning-formatted-rich-text>     
+                            </lightning-layout-item>
+                            
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3"> </lightning-layout-item> 
+                </lightning-layout>
+            </span>
+                
+        </span>
+         <!--  ////////////////////////////////////////////// step5  authentication success, A and B already have group //////////////////////////////////////////////////////////////// -->
+         <span if:true={isStep5}>
+             
+                    <p class="slds-p-horizontal_small">
+                        <lightning-formatted-rich-text value={text_Step5_text1} ></lightning-formatted-rich-text>               
+                    </p>
+            
+        </span>
+        <!--  ////////////////////////////////////////////// step51  When Seller by mistake try to link to the current group //////////////////////////////////////////////////////////////// -->
+        <span if:true={isStep51}>
+                    
+            <p class="slds-p-horizontal_small">
+                <lightning-formatted-rich-text value={text_Step51_text1} ></lightning-formatted-rich-text>               
+            </p>
+
+        </span>
+        
+         <!--  ////////////////////////////////////////////// step6  Unlink confirmation Page //////////////////////////////////////////////////////////////// -->
+         <span if:true={isStep6}>
+            <div class="unlinkScreenContainer">
+                <p class="slds-p-horizontal_small">
+                    <lightning-formatted-rich-text value={label_text4} ></lightning-formatted-rich-text>
+                </p>
+                
+                <h1 class="slds-var-p-around_xx-large">{unlinkAccount.accName}</h1>
+
+
+                <p class="slds-p-horizontal_small">
+                    <lightning-formatted-rich-text value={Labels.Label_Text5} ></lightning-formatted-rich-text>
+                </p>
+                
+            </div>
+         </span>
+         <!--  ////////////////////////////////////////////// step7  Unlink error Page //////////////////////////////////////////////////////////////// -->
+         <span if:true={isStep7}>
+            <div>
+                <p class="slds-p-horizontal_small">   
+                    <lightning-formatted-rich-text value={label_text7} class="slds-text-color--error"></lightning-formatted-rich-text>
+                </p>
+
+            </div>
+         </span>
+         <!--  ////////////////////////////////////////////// step8  Unlink success Page //////////////////////////////////////////////////////////////// -->
+         <span if:true={isStep8}>
+            <div>
+                <p class="slds-p-horizontal_small">
+                    <lightning-formatted-rich-text value={Labels.Label_Text6} class="slds-text-color_success"></lightning-formatted-rich-text>
+                </p>
+
+            </div>
+         </span>
+        <!--  ////////////////////////////////////////////// button Block //////////////////////////////////////////////////////////////// -->
+        
+        <p slot="footer" class="slds-text-align--right slds-var-p-right_large">
+            <span> 
+                <lightning-button label={Labels.Label_Back} title={Labels.Label_Back} onclick={gohomeClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep0} ></lightning-button>        
+                <lightning-button label={Labels.Label_AddAcc} title={Labels.Label_AddAcc} onclick={addAccountClick} class="slds-m-left_x-small" variant="Brand" if:true={isStep0}></lightning-button>
+                
+                <lightning-button label={Labels.Label_BackButton} title={Labels.Label_BackButton} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={showBackButton}></lightning-button>
+                
+                <lightning-button label={Labels.Label_Cancel} title={Labels.Label_Cancel} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep1}></lightning-button>
+                <lightning-button label={Labels.LabelConfirm} title={Labels.LabelConfirm} onclick={startCreateGroup} class="slds-m-left_x-small" variant="Brand" if:true={isStep1}></lightning-button>
+
+                <lightning-button label={Labels.Label_Cancel} title={Labels.Label_Cancel} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep3}></lightning-button>
+                <lightning-button label={Labels.LabelConfirm_short} title={Labels.LabelConfirm_short} onclick={addAccountToExistingGroup} class="slds-m-left_x-small" variant="Brand" if:true={isStep3}></lightning-button>                
+                
+                <lightning-button label={Labels.Label_Cancel} title={Labels.Label_Cancel} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep4}></lightning-button>
+                
+                <lightning-button label={Labels.Label_BackButton} title={Labels.Label_BackButton} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep5}></lightning-button>
+                <lightning-button label={Labels.Label_BackButton} title={Labels.Label_BackButton} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep51}></lightning-button>
+
+                <lightning-button label={Labels.Label_Cancel} title={Labels.Label_Cancel} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep6}></lightning-button>
+                <lightning-button label={Labels.LabelConfirm_short} title={Labels.LabelConfirm_short} onclick={removeAccountClick} class="slds-m-left_x-small" variant="Brand" if:true={isStep6}></lightning-button>
+
+                <lightning-button label={Labels.Label_Cancel} title={Labels.Label_Cancel} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep7}></lightning-button>
+
+                <lightning-button label={Labels.Label_BackButton} title={Labels.Label_BackButton} onclick={backClick} class="slds-m-left_x-small" variant="neutral" if:true={isStep8}></lightning-button>
+                
+            </span>
+        </p>
+
+    </lightning-card>
+    
+    
+    
+</template>

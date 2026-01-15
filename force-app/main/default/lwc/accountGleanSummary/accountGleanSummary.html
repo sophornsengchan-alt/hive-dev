@@ -1,0 +1,106 @@
+<template>
+    <lightning-card title="HIVE Assistant - AI Account Summary" icon-name="custom:custom14">
+        
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-align_absolute-center slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading summary..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Main Content -->
+        <template if:false={isLoading}>
+            <div class="slds-card__body slds-card__body_inner">
+                
+                <!-- Authorization Required -->
+                <template if:false={isAuthenticated}>
+                    <div class="slds-align_absolute-center slds-p-around_medium">
+                        <div class="auth-container">
+                            <lightning-icon icon-name="utility:lock" size="large"></lightning-icon>
+                            <p class="slds-text-heading_small slds-m-top_small">
+                                {label.Glean_Const_Authorization_Required}
+                            </p>
+                            <p class="slds-text-body_regular slds-m-top_x-small slds-m-bottom_small">
+                                {label.Glean_Msg_Please_Authorize_HIVE_Assistant}
+                            </p>
+                            <lightning-button 
+                                label={labelAuthorizeHiveAssistant}
+                                variant="brand" 
+                                onclick={handleAuthorize}
+                                icon-name="utility:unlock">
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Authenticated - Show Button and Summary -->
+                <template if:true={isAuthenticated}>
+                    
+                    <!-- Summary Button -->
+                    <template if:false={showSummary}>
+                        <div class="slds-align_absolute-center slds-p-around_medium">
+                            <lightning-button 
+                                label="Get AI Account Summary"
+                                variant="brand" 
+                                onclick={handleGetSummary}
+                                icon-name="utility:summary"
+                                disabled={isSummaryLoading}>
+                            </lightning-button>
+                        </div>
+                    </template>
+
+                    <!-- Summary Display -->
+                    <template if:true={showSummary}>
+                        <div class="summary-container">
+                            <!-- Summary Header -->
+                            <div class="summary-header slds-p-around_small">
+                                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                                    <div class="slds-col">
+                                        <h3 class="slds-text-heading_small">
+                                            <lightning-icon icon-name="utility:summary" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                            Summary for {accountName}
+                                        </h3>
+                                    </div>
+                                    <div class="slds-col slds-no-flex">
+                                        <lightning-button-group>
+                                            <lightning-button 
+                                                label="Refresh"
+                                                icon-name="utility:refresh"
+                                                onclick={handleGetSummary}
+                                                disabled={isSummaryLoading}>
+                                            </lightning-button>
+                                            <lightning-button 
+                                                label="Close"
+                                                icon-name="utility:close"
+                                                onclick={handleCloseSummary}>
+                                            </lightning-button>
+                                        </lightning-button-group>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Loading -->
+                            <template if:true={isSummaryLoading}>
+                                <div class="slds-p-around_medium slds-align_absolute-center">
+                                    <img src={chatLoadingUrl} alt="Loading summary..." />
+                                    <p class="slds-text-body_regular slds-m-top_small">
+                                        Generating summary...
+                                    </p>
+                                </div>
+                            </template>
+
+                            <!-- Summary Content -->
+                            <template if:false={isSummaryLoading}>
+                                <div class="summary-content slds-p-around_medium">
+                                    <div class="summary-text">
+                                        <lightning-formatted-rich-text value={summaryText}></lightning-formatted-rich-text>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>

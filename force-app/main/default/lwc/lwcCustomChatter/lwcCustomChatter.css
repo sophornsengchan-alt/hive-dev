@@ -1,0 +1,94 @@
+.container_wrapper {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+.container_wrapper_text {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 20px;
+    min-height: 25px;
+    max-height: 500px;
+    overflow-y: scroll;
+    /* -ms-overflow-style: none; */
+    scrollbar-width: none;
+}
+.container_wrapper_text::-webkit-scrollbar{
+    /* display: none; */
+    /* -ms-overflow-style: none; */
+    scrollbar-width: none;
+}
+
+.container {
+    border: 1px solid #edf0f9;
+    background-color: #edf0f9;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    color: #6e889f;
+}
+
+.darker {
+    border-color: #224a68;
+    background-color: #224a68;
+    color: #a2d0d4;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.display_title {
+    font-size: 10px;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.textPost{
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.containerTextArea {
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+}
+
+.cls_container {
+    padding-right: 20%;
+}
+
+.cls_container-darker {
+    padding-left: 20%;
+}
+
+.btnSend {
+    margin-right: 0px !important;
+    float: right;
+}

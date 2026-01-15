@@ -1,0 +1,214 @@
+<template>
+    <div class="lwcCouponSellerDetailPage">
+        <template if:true={finishedRender}>
+        <!-- 12/12/2025 / CSP: US-0033567 -->
+        <template if:true={isProgramCouponSeller}>
+            <div class="slds-size_1-of-1 slds-clearfix slds-var-p-top_xx-small">
+                <div class="slds-float_right slds-var-p-bottom_medium">
+                     {Labels.Program_Coupon_Overview_Text}
+                </div>
+            </div>
+        </template>
+        <lightning-tabset variant="scoped">
+            <lightning-tab label={Labels.tabLabel_Overview} value="tab1" onactive={handlerFocusTab}>
+                <!-- Record Detail Section - START -->
+
+                <!-- 10-10-2022/ Chetra Sarom / US-0012679 -->
+                <template if:true={isCouponReadyForItemUpload}>
+                    <div class="cls_message-info">
+                        <span style="padding: 5px;font-weight: 600;">{Labels.INFORMATION} -</span>
+                        <span><lightning-formatted-rich-text value={textCouponReadyForItemUpload}></lightning-formatted-rich-text></span>
+                    </div>
+                </template>
+                <!-- end 10-10-2022/ Chetra Sarom / US-0012679 -->
+
+                <!-- SB 13.6.2022 US-0010429  -->
+                <template if:true={showViewAgreement}>
+                    <div class="slds-size_1-of-1 slds-clearfix slds-m-bottom_xx-small">
+                        <a class="slds-button slds-button_brand slds-float_right" onclick={handleViewAgreementButton}>{Labels.button_ViewAgreement}</a>
+                    </div>
+                </template>
+                
+                <!--TH 01.11.2022 US-0012494-->
+                <template if:true={isItemBase}>
+                    <div class="slds-size_1-of-1 slds-clearfix slds-var-p-top_xx-small">
+                        <div class="slds-float_right slds-var-p-bottom_medium">
+
+                            <!-- MN-04072023-US-0012496 -->
+                            <template if:true={canDeclineAtNegotiation}>
+                                <a class="slds-button slds-button_brand" onclick={handleDeclineButton}>{Labels.button_Decline}</a>
+                            </template>
+                            <template if:true={uploadItemsAccess}>
+                                <a class="slds-button slds-button_brand" onclick={handleViewItem}>{Labels.tabLabel_UploadItems}</a>
+                            </template>
+                        </div>
+                        
+                    </div>
+                    
+                </template>
+                
+                <!-- DS 25/09/2025 US-0033398 -->
+                <template if:true={isProgramCouponSeller}>
+                    <div class="slds-size_1-of-1 slds-clearfix slds-var-p-top_xx-small">
+                        <div class="slds-float_right slds-var-p-bottom_medium">
+                            <!-- 12/12/2025 / CSP: US-0033567 -->
+                            <a class="slds-button slds-button_brand" onclick={handleGoToMasterAgreementButton} >{Labels.viewMasterAgreement}</a> 
+                            <a class="slds-button slds-button_brand" onclick={handleDownloadItemListButton}>{Labels.buttonDownloadItemList}</a>
+                            <template if:true={isVisibleOptOutButton}>
+                                <a class="slds-button slds-button_brand" onclick={handleOptOutButton}>{Labels.buttonOptOut}</a>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+                
+                
+                
+                <!-- End SB 13.6.2022 US-0010429 -->
+                <c-lwc-record-info record-id={recId}></c-lwc-record-info>
+                <div class="recordFormWrapper">
+                    <lightning-record-form
+                        object-api-name="Coupon_Seller__c"
+                        record-id={recId}
+                        layout-type="Full"
+                        density="comfy"
+                        mode="readonly"
+                        columns="2">
+                    </lightning-record-form>
+                </div>
+
+                <!--START DS 30/09/2025 US-0033174 -->
+                <template if:true={isMasterCoupon}>
+                    <div class={childPCCls}>
+                        <c-lwc-list-view 
+                            mdt-name="DEListProgramCouponSetting" 
+                            is-disable-filter="true"
+                            is-disable-search="true"
+                            filter={programCouponFilter}
+                            onlistviewhasrecord={handleChildHasRecord}
+                        >
+                        </c-lwc-list-view>
+                    </div>
+                </template>
+                <!--END US-0033174 -->
+
+
+                <template if:true={isShowCouponPerformanceSection}>
+                    <div class="recordFormWrapper">
+                        <div class="cls_message-info">
+                            <span style="padding: 5px;font-weight: 600;">{Labels.section_CouponPerformance}</span>
+                        </div>
+                        <lightning-record-form
+                            object-api-name="Coupon_Seller__c"
+                            record-id={recId}
+                            density="comfy"
+                            mode="readonly"
+                            columns="2"
+                            fields={fiedlsInSection}>
+                        </lightning-record-form>
+                    </div>
+                </template>
+                
+
+                <!-- Record Detail Section - END -->
+
+                <!-- Category Based - Item List - START -->
+                <!--LA-29-06-2022-US-0011917-->
+                <template if:true={isCategoryBase}>
+                    <!--<c-lwc-coupon-items-co-invests rec-id={recId}></c-lwc-coupon-items-co-invests>-->
+                    <div class={childCoInvCls}>
+                        <c-lwc-coupon-items-co-invests rec-id={recId} onlistviewhasrecord={handleChildHasRecord}></c-lwc-coupon-items-co-invests>
+                    </div>
+                </template>
+
+                <!-- Category Based - Item List - END -->
+
+                <!-- Item Based - Item List - START SRONG-17.05.2022-US-0011375 - Add related category list to item based coupon records -->
+                <!--LA-29-06-2022-US-0011917-->
+                <template if:true={isItemBase}>
+                    <!--<c-lwc-coupon-category-list rec-id={recId}></c-lwc-coupon-category-list>-->
+                    <div class={childCateCls}>   
+                        <c-lwc-coupon-category-list rec-id={recId} onlistviewhasrecord={handleChildHasRecord}></c-lwc-coupon-category-list>
+                    </div>
+                </template>
+
+
+                <!-- Item Based - Item List - END -->
+
+
+                <div class="slds-grid aslds-card card-padding card-no-border-topslds-p-bottom--medium slds-p-top_medium slds-p-bottom_medium">
+                        <div> 
+                            <!--TH:15.08.2023:US-0011560-->
+                            <template if:true={isVisibleDownloadTransactionFile}> 
+                            <button class="slds-button slds-button_neutral download-btn" onclick={handleDownload}>
+                                <lightning-icon icon-name="utility:download" size="x-small" ></lightning-icon> 
+                                &nbsp; <span>{Labels.SEP_DOWNLOAD_TRANSACTION}</span>  
+                            </button>
+                            </template>
+                            <!--END:US-0011560-->
+                        </div>
+                        <div class="slds-col_bump-left"> <!--col-sm-6 text-right slds-text-align--right-->
+                            <lightning-button onclick={clickBackhandler} label={SEP_BACK_BUTTON}  variant="neutral"></lightning-button>
+
+                            <!--<lightning-button class="slds-p-left_small" onclick={handleDownloadPDF} label={Labels.lbl_DownloadAgreement} variant="brand" if:true={showDownloadPDF}></lightning-button>-->
+                            <!-- <a href ={urlPdfDownload} download={fileNamePDF} stytle="display:none" class="a_downloadPDF"></a> -->
+                        </div>
+                     
+                </div>
+
+                <c-lwc-coupon-decline-reason is-modal-open={showDeclineReason} rec-id={recId} rec-contact-id={contactId}></c-lwc-coupon-decline-reason>
+                
+            </lightning-tab>
+
+            <!-- SB 13.6.2022 US-0010429 -->
+            <template if:true={isContractAvailable}>
+                <lightning-tab label={Labels.tabLabel_Contract} value="tab2" onactive={handlerFocusTab}>
+                    <c-lwc-contract-sign-agreement rec-id={recId} onchildmethod={callFromChild} is-view-agreement-click={showViewAgreement}></c-lwc-contract-sign-agreement>
+                </lightning-tab>
+            </template>
+            <!-- End SB 13.6.2022 US-0010429 -->
+
+            <!-- Upload Items - START -->
+            <!-- NK:31/08/2022:US-0012297: switch location upload tab to item tab -->
+            <!--TH-01112022-US-0012494: Remove Item Upload Tab-->
+            <!--<template if:true={hasUploadItemsAccess}>
+                <lightning-tab label={Labels.tabLabel_UploadItems} onactive={handlerFocusTab}>
+                    <template if:true={isSPCouponReadOnly}>
+                        <c-lwc-generic-error-message metadata-name={Labels.ErrorMessageCouponUploadItem}></c-lwc-generic-error-message>
+                    </template>
+                    <template if:false={isSPCouponReadOnly}>
+                        <c-lwc-coupon-upload-items rec-id={recId} onreloadlistview={handleReloadListView}></c-lwc-coupon-upload-items>    
+                    </template>
+                </lightning-tab>
+            </template>-->
+            
+            <!-- Upload Items - END -->
+
+            <!-- Item Based - Item List - START -->
+            <template if:true={isItemBase}>
+                <template if:false={isDeclineAtNegotiation}>
+                    <lightning-tab label={Labels.tabLabel_Items} value="tab3" onactive={handlerFocusTab}>
+                        <template if:true={uploadItemsAccess}>
+                            <template if:true={isSPCouponReadOnly}>
+                                <c-lwc-generic-error-message metadata-name={Labels.ErrorMessageCouponUploadItem}></c-lwc-generic-error-message>
+                            </template>
+                            <template if:false={isSPCouponReadOnly}>
+                                <c-lwc-coupon-upload-items ontab1={handleOverviewTab} rec-id={recId} onreloadlistview={handleReloadListView} onviewcoinvest={handleViewCoInvest}></c-lwc-coupon-upload-items>    <!--onviewitem={handleViewItem}-->
+                            </template>
+                        </template>
+                        <!--<template if:false={hasUploadItemsAccess}>-->
+                        <template if:true={viewItemsAccess}>
+                        <c-lwc-coupon-items-co-invests rec-id={recId} cp-access={spCouponValue}></c-lwc-coupon-items-co-invests>
+                        </template>
+                    </lightning-tab>
+                </template>
+            </template>
+            <!-- Item Based - Item List - END -->
+
+            
+            
+            
+        </lightning-tabset>
+        </template>
+    </div>
+    
+</template>

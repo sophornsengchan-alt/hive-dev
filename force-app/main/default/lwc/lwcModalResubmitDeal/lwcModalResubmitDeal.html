@@ -1,0 +1,189 @@
+<template>
+    <template if:true={isOverlay}>
+        <div class="overlay"></div>
+    </template>
+    <template if:true={showModal}>
+        
+        <!-- </template:html> MN-16122021-Weird end tag appear -->
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">{labels.lblCancel}</span>
+                    </button>
+                    <template if:true={isEid}>
+                        <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">{labels.lblEnterEIDTitle}</h2>
+                    </template>
+                    <template if:false={isEid}>
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{labels.lblTitle}</h2>
+                    </template>
+                    
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium slds-p-bottom--none fix-picklist-visibility slds-is-relative slds-p-top--none div-resubmit-deal">
+                     
+                        <lightning-spinner alternative-text="Loading" size="medium" if:true={showSpinner}></lightning-spinner>
+                           
+                    
+                        <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId} onsubmit ={handleReSubmit} onsuccess={handleSuccess} onload={handleLoad} onerror={handleError}> 
+                            <div>
+                                <lightning-messages class="fix-error-size"> </lightning-messages>
+                            </div>
+                            
+                            <lightning-layout multiple-rows="true" >
+                                <lightning-layout-item padding="around-small" size="6"  >
+                                    <lightning-layout multiple-rows="true">
+
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left" >                                            
+                                            <lightning-output-field field-name="EBH_ProductTitle__c" class="resubmit-pro-title"> </lightning-output-field>
+                                        </lightning-layout-item>                                         
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                            <lightning-output-field field-name="EBH_BusinessName__c"     > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <template if:true={isEid}>
+                                            <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                                <lightning-input type="text" name="input_EBH_eBayItemID__c" class="EBH_eBayItemID__c" data-apiname="EBH_eBayItemID__c" label={fieldLabels.EBH_eBayItemID__c} value={singleDeal.EBH_eBayItemID__c} variant="label-inline" required="true" onchange={handleFieldChange}></lightning-input>
+                                            </lightning-layout-item>
+                                        </template>
+                                        <template if:false={isEid}>
+                                            <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                                <lightning-output-field field-name="EBH_eBayItemID__c"> </lightning-output-field>
+                                            </lightning-layout-item>
+                                        </template>
+                                        
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                            <lightning-output-field field-name="Item_Condition__c"     > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                            <lightning-output-field field-name="EBH_EAN__c"     > </lightning-output-field>
+                                        </lightning-layout-item>
+
+                                        <!-- <lightning-layout-item  size="12"  class=" slds-text-align_left" >           
+                                                                                
+                                            <lightning-output-field field-name="EBH_DealSiteId__c"    > </lightning-output-field>
+                                        </lightning-layout-item> -->
+                                        <lightning-layout-item  size="12"  class=" slds-text-align_left  " >                                             
+                                            
+                                            <template if:true={isEid}>
+                                                <lightning-output-field field-name="EBH_Category__c"> </lightning-output-field>
+                                            </template>
+                                            <template if:false={isEid}>
+                                                <lightning-combobox variant="label-inline" label={fieldLabels.EBH_Category__c} value={singleDeal.EBH_Category__c} type="text" data-apiname="EBH_Category__c" options={categoryOptions}  message-when-value-missing="missing" required="true" onchange={handleFieldChange} ></lightning-combobox>
+                                            </template>
+                                            
+                                        
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class="  " >                                            
+                                            <!-- <lightning-input-field field-name="EBH_SellerPrice__c"   > </lightning-input-field> -->
+                                            
+                                            <template if:true={isEid}>
+                                                <lightning-output-field field-name="EBH_SellerPrice__c"> </lightning-output-field>
+                                            </template>
+                                            <template if:false={isEid}>
+                                                <lightning-input class="EBH_SellerPrice__c" type="text" name="input_EBH_SellerPrice__c" data-apiname="EBH_SellerPrice__c" label={fieldLabels.EBH_SellerPrice__c} value={singleDeal.EBH_SellerPrice__c} variant="label-inline" message-when-value-missing={labels.LWCCreateSingleDeal12} required="true" onchange={handleFieldChange} ></lightning-input><!--type="number" formatter="decimal" step="0.01" max="9999999999999999.99" -->
+                                            </template>
+                                            
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12" class="  " >
+                                            <template if:true={isEid}>
+                                                <lightning-output-field field-name="EBH_Quantity__c"> </lightning-output-field>
+                                            </template>
+                                            <template if:false={isEid}>
+                                                <lightning-input type="number" name="input_EBH_Quantity__c" data-apiname="EBH_Quantity__c" label={fieldLabels.EBH_Quantity__c} value={singleDeal.EBH_Quantity__c} formatter="decimal" step="1" max="999999999999999999" required="true" variant="label-inline" onchange={handleFieldChange}></lightning-input>
+                                            </template>
+                                            <!-- <lightning-input-field field-name="EBH_Quantity__c"   > </lightning-input-field> -->
+                                            
+                                        </lightning-layout-item>  
+                                        <lightning-layout-item  size="12" class="slds-text-align_left " >
+                                            <!--TH:Comment OUT : US-0011517 :AC1:Seller should be able to put the comments while resubmitting the deal.Make the field highlighted editable.-->
+                                            <!--<lightning-output-field field-name="EBH_CommentfromSeller__c"   > </lightning-output-field>-->
+                                            <lightning-input type="text" name="input_EBH_CommentfromSeller__c" data-apiname="EBH_CommentfromSeller__c" label={fieldLabels.EBH_CommentfromSeller__c} value={singleDeal.EBH_CommentfromSeller__c} variant="label-inline" onchange={handleFieldChange}></lightning-input>
+                                        </lightning-layout-item>                                         
+                                        
+                                        
+                                    </lightning-layout>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size="6" >
+                                    <lightning-layout multiple-rows="true">
+                                                                                
+                                        <lightning-layout-item  size="12"  class=" slds-text-align_left" >                               
+                                            <!-- Sambath Seng - 15/01/2024 - US-0013136 -->
+                                            <!-- <lightning-output-field field-name="Seller_Portal_Status__c"    > </lightning-output-field> -->
+                                            <lightning-output-field field-name="Status_Seller_Portal__c"> </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class=" slds-text-align_left" >                                            
+                                            <lightning-output-field field-name="EBH_DealRetailCampaign__c"    > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12" class="" >
+                                            <!-- <lightning-input-field field-name="EBH_Dealdateearliestpossible__c"   > </lightning-input-field> -->
+                                            <template if:true={isEid}>
+                                                <lightning-output-field field-name="EBH_Dealdateearliestpossible__c"    > </lightning-output-field>
+                                            </template>
+                                            <template if:false={isEid}>
+                                                <lightning-input type="date" class="calendar-icon EBH_Dealdateearliestpossible__c" name="input_EBH_Dealdateearliestpossible__c" data-apiname="EBH_Dealdateearliestpossible__c" label={fieldLabels.EBH_Dealdateearliestpossible__c} value={singleDeal.EBH_Dealdateearliestpossible__c} variant="label-inline" onchange={handleFieldChange}></lightning-input>
+                                            </template>
+                                            
+                                            
+                                        </lightning-layout-item> 
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                            <lightning-output-field field-name="EBH_DealStartDate__c" class="cls-startenddate" > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left " >                                            
+                                            <lightning-output-field field-name="EBH_DealEndDate__c" class="cls-startenddate"> </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class="slds-text-align_left custom01" >                                            
+                                            <lightning-output-field field-name="EBH_LocalDealFormat__c" > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class=" slds-text-align_left" >                                            
+                                            <lightning-output-field field-name="EBH_AmazonLink__c"    > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12"  class=" slds-text-align_left" >                                            
+                                            <lightning-output-field field-name="EBH_IdealoLink__c"   > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item  size="12" class=" slds-text-align_left"  > 
+                                            <lightning-output-field field-name="EBH_ReasonforRejection__c"    > </lightning-output-field>                                            
+                                        </lightning-layout-item> 
+                                        <lightning-layout-item  size="12" class=" slds-text-align_left"  > 
+                                            <lightning-output-field field-name="EBH_ReasonforRejectionextd__c"   > </lightning-output-field>                                            
+                                        </lightning-layout-item> 
+                                        <lightning-layout-item  size="12" class=" slds-text-align_left" >
+                                            <lightning-output-field field-name="EBH_CommentfromeBaySourcer__c"  > </lightning-output-field>
+                                        </lightning-layout-item>
+                                        
+
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                                
+
+                                <lightning-layout-item padding="around-small" size="12"   >
+                                    <footer class="slds-modal__footer">
+                                        <lightning-button label={labels.lblCancel} title={labels.lblCancel}  onclick={doCloseModal} class="slds-m-left_x-small"></lightning-button>
+                                        
+                                        <template if:true={isEid}>
+                                            <lightning-button variant="brand" label={labels.lblEnterEID} title={labels.lblEnterEID} onclick={handleReSubmit} class="slds-m-left_x-small"></lightning-button>
+                                        </template>
+                                        <template if:false={isEid}>
+                                            <template if:true={canReSubmit}>
+                                                <lightning-button variant="brand" label={labels.lblResubmit} title={labels.lblResubmit} onclick={handleRealReSubmit} class="slds-m-left_x-small"></lightning-button>
+                                            </template>
+                                        </template>
+                                        
+                                    </footer>
+                                </lightning-layout-item>
+
+                            </lightning-layout>
+                                                    
+                        </lightning-record-edit-form>
+                    
+                </div>
+               
+            </div>
+        </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>      
+    </template>
+</template>

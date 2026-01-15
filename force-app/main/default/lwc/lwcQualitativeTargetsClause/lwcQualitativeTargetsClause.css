@@ -1,0 +1,40 @@
+.progress-bar {
+    margin-top: 15px;
+}
+.main-body .slds-grid_align-center {
+    text-align: center;
+}
+.main-body .body-headerling {
+    border-bottom: 1px solid #aaa8a8;
+    padding-bottom: 15px;;
+} 
+.main-body .body-headerling h1 {
+    font-size: 16px;
+    font-weight: 400;
+}
+.right-align {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.container-setting,
+.container-preview {
+    padding: 15px;
+    border: 1px solid #606060;
+    border-radius: 5px;
+}
+.tbl-preview, .tbl-preview th, .tbl-preview td {
+    border:1px solid black;
+    border-collapse: collapse;
+}
+.tbl-preview th {
+    font-weight: bold;
+}
+.tbl-data {
+    padding: 15px;;
+}
+.header-title {
+    font-size: 16px;
+    font-weight: 400;
+}

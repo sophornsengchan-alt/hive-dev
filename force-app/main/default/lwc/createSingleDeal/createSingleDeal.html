@@ -1,0 +1,337 @@
+<template>
+
+  <template if:true={isAccountSelectable}>
+    
+      <template if:true={onShowLoadingSpinner}>
+        <div style="z-index: 99999 !important;">
+            <lightning-spinner alternative-text="Processing......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+      </template>
+      
+      <div class="titleBlock">
+        <!-- <h1 class="back_text">
+          {label.Back_Text}
+        </h1>
+          <a href="#" class="backButton" onclick={redirectToPicker}><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon> </a> -->
+          <a href="#" class="slds-button slds-button_neutral" >
+              <h2 >
+                {label.Back_Text}
+            </h2>  
+          </a> 
+      </div>
+      <div class="cls_content slds-p-around_medium slds slds-p-top_none">
+          <template for:each={objMessageInfos} for:item="item">
+              <div key={item.mainMsg} class={item.className}>
+                  <span style="padding: 5px;font-weight: 600;">{item.mainMsg}</span><span> {item.detailMsg}</span>
+              </div>
+          </template>
+      </div>
+    
+      <!-- <lightning-record-edit-form 
+        onsuccess={handleSuccess} 
+        onerror={handleError}    
+        onsubmit={handleSubmit}
+        record-id={recordId}     
+        object-api-name="EBH_Deal__c"> -->
+        
+      <!-- <form> -->
+    
+      <div if:true={showLoadingSpinner} class="slds-col--padded slds-size--1-of-1">
+        <lightning-spinner alternative-text="Loading" size="medium" variant="base"></lightning-spinner>
+      </div> 
+      <div class="row  custom-input"> 
+                    
+          <div class="col-sm-12 col-style">
+            <div class="slds-form-element">                 
+              <div class="slds-form-element__control">                    
+                <div class="slds-grid slds-grid_vertical">
+                  <div class="slds-col cls-createSingleDeal">
+                    <c-lwc-account-picker selected-acc-id={accountId} onaccountchange={handleAccountChange}></c-lwc-account-picker> <!--MN-29042022-US-0010950-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <template if:true={isAccountNoAccess}>
+            <div class="col-sm-12 col-style">
+              <c-lwc-generic-error-message is-deal-read-only=true metadata-name-read-only={DealReadOnlyErrorMessage}></c-lwc-generic-error-message>
+            </div>
+          </template>
+
+          <template if:false={isAccountNoAccess}>
+            <div class="col-sm-12 col-style">
+              <div class="slds-form-element">                 
+                <div class="slds-form-element__control">                    
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_DealSiteId__c}</div>
+                      <lightning-combobox onchange={handleChange} value={singleDeal.EBH_DealSiteId__c} variant="label-hidden" placeholder="Site" data-apiname="EBH_DealSiteId__c" options={siteOptions} required="true" ></lightning-combobox>
+                      <!--<lightning-combobox label={fieldLabels.EBH_DealSiteId__c} onchange={handleChange} value={singleDeal.EBH_DealSiteId__c} placeholder="Site" data-apiname="EBH_DealSiteId__c" options={siteOptions} required="true" ></lightning-combobox>-->
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_DealSiteId__c}>
+                      <span>{fieldErrors.EBH_DealSiteId__c}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>       
+            <div class="col-sm-12">
+                <div class="slds-form-element">                 
+                  <div class="slds-form-element__control">
+                    <div class="slds-grid slds-grid_vertical">
+                      <div class="slds-col">
+                        <lightning-combobox label={fieldLabels.EBH_DealRetailCampaign__c} onchange={handleChange} value={drcId} data-apiname="EBH_DealRetailCampaign__c" options={options} placeholder={label.LWC_Default_Picklist_Placeholder}></lightning-combobox>
+                      </div>
+                      <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_DealRetailCampaign__c}>
+                        <span>{fieldErrors.EBH_DealRetailCampaign__c}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- SB 21-2-2022 US-0011212 - Feedback - QA/BA/UAT/GCX-->
+                <div class="cls_message-info slds-m-top_x-small">
+                  <span style="padding: 5px;font-weight: 600;">INFORMATION -</span><span>{label.DRC_Inline_info}</span>
+                </div>
+                <!-- SB 21-2-2022 US-0011212 - Feedback - QA/BA/UAT/GCX-->
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+                <div class="slds-form-element">                
+                  <div class="slds-form-element__control">                    
+                    <div class="slds-grid slds-grid_vertical">
+                      <div class="slds-col">
+                        <!-- <input type="text" value={singleDeal.EBH_ProductTitle__c} data-apiname="EBH_ProductTitle__c"  placeholder="Product Title" onchange={handleChange} required class="slds-input"/> -->
+                        <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_ProductTitle__c}</div>
+                        <lightning-input type="text" value={singleDeal.EBH_ProductTitle__c} variant="label-hidden" data-apiname="EBH_ProductTitle__c"  onchange={handleChange} required="true" class="EBH_ProductTitle__c"></lightning-input>
+                      </div>
+                      <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_ProductTitle__c}>
+                        <span>{fieldErrors.EBH_ProductTitle__c}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+                <div class="slds-form-element">
+                  <div class="slds-form-element__control">
+                    <div class="slds-grid slds-grid_vertical">
+                      <div class="slds-col">
+                        <lightning-input label={fieldLabels.EBH_eBayItemID__c} type="text" value={singleDeal.EBH_eBayItemID__c} data-apiname="EBH_eBayItemID__c"  onchange={handleChange}></lightning-input>
+                      </div>
+                      <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_eBayItemID__c}>
+                        <span>{fieldErrors.EBH_eBayItemID__c}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_Category__c}</div>
+                      <lightning-combobox value={singleDeal.EBH_Category__c} variant="label-hidden" type="text" data-apiname="EBH_Category__c" options={categoryOptions}  message-when-value-missing={label.LWCCreateSingleDeal6} required="true" onchange={handleChange} class="EBH_Category__c"></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_Category__c}>
+                      <span>{fieldErrors.EBH_Category__c}</span>
+                    </div>
+                  </div>    
+                </div>
+              </div>
+            </div> 
+            
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">                  
+                <div class="slds-form-element__control">   
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <lightning-input label={fieldLabels.EBH_EAN__c} value={singleDeal.EBH_EAN__c} type="text" data-apiname="EBH_EAN__c" onchange={handleChange} class="EBH_EAN__c"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_EAN__c}>
+                      <span>{fieldErrors.EBH_EAN__c}</span>
+                    </div>
+                  </div>    
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">                 
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_Quantity__c}</div>
+                      <!-- remove pattern from input : type="number" to type="text"  SRONG TIN 24.03.2022 : US-0011338 -->
+                      <lightning-input pattern="[0-9]*$" value={singleDeal.EBH_Quantity__c} variant="label-hidden" type="text" data-apiname="EBH_Quantity__c" message-when-value-missing={label.LWCCreateSingleDeal19} message-when-pattern-mismatch={label.LWCCreateSingleDeal22}	onchange={handleChange} required="true" class="EBH_Quantity__c"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_Quantity__c}>
+                      <span>{fieldErrors.EBH_Quantity__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            
+            
+
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <!-- <lightning-combobox label={fieldLabels.EBH_DealFormat__c} value="" data-apiname="EBH_DealFormat__c" options={formatOptions} placeholder={fieldLabels.EBH_DealFormat__c} onchange={handleChange}></lightning-combobox> -->
+                      <lightning-combobox label={fieldLabels.EBH_DealFormat__c} value="" data-apiname="EBH_DealFormat__c" options={formatOptions} placeholder={label.LWC_Default_Picklist_Placeholder} onchange={handleChange}></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_DealFormat__c}>
+                      <span>{fieldErrors.EBH_DealFormat__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">                
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_SellerPrice__c}</div>
+                      <!--<lightning-input value={singleDeal.EBH_SellerPrice__c} variant="label-hidden" type="number" step="0.01" data-apiname="EBH_SellerPrice__c"  message-when-value-missing={label.LWCCreateSingleDeal12} onchange={handleChange} required="true" class="EBH_SellerPrice__c"></lightning-input>-->
+                      <lightning-input value={singleDeal.EBH_SellerPrice__c} variant="label-hidden" type="text" data-apiname="EBH_SellerPrice__c" onchange={handleChange} message-when-value-missing={label.LWCCreateSingleDeal12} required="true" class="EBH_SellerPrice__c"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_SellerPrice__c}>
+                      <span>{fieldErrors.EBH_SellerPrice__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">                 
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <lightning-input label={fieldLabels.EBH_AmazonLink__c} value={singleDeal.EBH_AmazonLink__c} type="text" data-apiname="EBH_AmazonLink__c" onchange={handleChange} message-when-type-mismatch={label.LWCCreateSingleDeal8}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_AmazonLink__c}>
+                      <span>{fieldErrors.EBH_AmazonLink__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+                <div class="slds-form-element">
+                  <div class="slds-form-element__control">
+                    <div class="slds-grid slds-grid_vertical">
+                      <div class="slds-col">
+                        <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.Item_Condition__c}</div>
+                        <lightning-combobox value="" variant="label-hidden" type="text" data-apiname="Item_Condition__c"  options={conditionOptions} onchange={handleChange} required="true" class="Item_Condition__c"></lightning-combobox>
+                      </div>
+                      <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.Item_Condition__c}>
+                        <span>{fieldErrors.Item_Condition__c}</span>
+                      </div>
+                    </div>    
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <lightning-input label={fieldLabels.EBH_IdealoLink__c} value={singleDeal.EBH_IdealoLink__c} type="text" data-apiname="EBH_IdealoLink__c"  onchange={handleChange} message-when-type-mismatch={label.LWCCreateSingleDeal9}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_IdealoLink__c}>
+                      <span>{fieldErrors.EBH_IdealoLink__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div> 
+            </div>
+            <div class="slds-grid slds-gutters">
+            <div class="col-sm-6 slds-col slds-size_6-of-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {fieldLabels.EBH_Dealdateearliestpossible__c}</div>
+                      <lightning-input value={singleDeal.EBH_Dealdateearliestpossible__c} variant="label-hidden" type="date" date-style="short" data-apiname="EBH_Dealdateearliestpossible__c"   onchange={handleChange} required="true" class="EBH_Dealdateearliestpossible__c"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_Dealdateearliestpossible__c}>
+                      <span>{fieldErrors.EBH_Dealdateearliestpossible__c}</span>
+                    </div>
+                  </div>    
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12  slds-col slds-size_6-of-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                      <lightning-input label={fieldLabels.EBH_CommentfromSeller__c} value={singleDeal.EBH_CommentfromSeller__c} data-apiname="EBH_CommentfromSeller__c" onchange={handleChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-form-element__help cls_input-error" if:true={fieldErrors.EBH_CommentfromSeller__c}>
+                      <span>{fieldErrors.EBH_CommentfromSeller__c}</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div> 
+          </div>                        
+          
+            <div class="col-sm-12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                        <div lang={lang} class="slds-form-element__label no-margin"><span style="color: red;">*</span> {req}</div>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </template>
+
+      </div> 
+      <br/>        
+          
+      <!-- </div><br/> -->
+      <br/>
+      
+      <!-- </form> -->
+
+      <template if:false={isAccountNoAccess}>
+        <div class="aslds-card card-padding slds-p-top_none" style="margin-top: -25px;">
+          <div class="row ">
+            
+            <div class="col-sm-6 slds-col slds-size_12-of-12 text-right" style="text-align:right;">
+              <template if:true={isShowMessage}>
+                <span class="smallGrey">{successMessage}</span>
+              </template>
+              <lightning-button class="slds-m-top_small slds-m-right_small" onclick={cancelhandler}                       
+                          label={labelCancelBtn}></lightning-button>&nbsp;         
+              <lightning-button class="slds-m-top_small slds-m-left_small" onclick={handleSubmit} variant="brand" disabled={disableBtn}
+                          type="submit" label={labelSubmitBtn}></lightning-button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+       <!-- </lightning-record-edit-form> -->
+  </template>
+
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <template if:true={showPageContent}>
+        <c-ebay-branded-section>
+            <!-- START Protrader Registration Page -->
+            <template if:true={isEligibleFor_RegistrationCat}>
+                <c-pro-trader-registration cohort-seller={cohortSeller} onrefreshprotraderpage={doGetProTraderProgramEligibility_callFromChild}></c-pro-trader-registration>
+            </template>
+            <!-- END Protrader Registration Page -->
+
+            <!-- START Show the Dashboard Button -->
+            <template if:true={isCohortActivated}>
+                <c-pro-trader-account-manager cohort-seller-id={cohortSeller.Id} registration-page="true"></c-pro-trader-account-manager>
+            </template>
+            <!-- END Show the Dashboard Button -->
+        </c-ebay-branded-section>
+    </template>
+</template>

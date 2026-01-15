@@ -1,0 +1,193 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item padding="around-small" size="12" class="slds-box slds-text-align--center">
+            <lightning-button
+                variant="brand"
+                label="Request Elevated Privileges"
+                title="Request Access"
+                onclick={handleRequestAccessClick}
+                class="slds-m-around_medium"></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+  
+    <template if:true={showModal}>            
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                    <lightning-spinner if:true={isSpinning} alternative-text="Loading..." size="large" class="my-spinner"></lightning-spinner>
+
+                <div class="slds-modal__container slds-is-relative  ">                    
+                    <header class="slds-modal__header slds-modal__title">
+                        User Request Elevated Privileges
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium modal-h">                        
+
+                        <lightning-layout multiple-rows>
+                                <lightning-layout-item padding="around-small" size="12" class="option-info slds-text-align_center" if:true={hasFullHiveAdminAccess}>
+                                    <lightning-formatted-rich-text
+                                                                class=" slds-p-bottom--none slds-p-top--none"
+                                                                value={labels.UserRights_Option_Info}>
+                                                                </lightning-formatted-rich-text>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size={layoutSizeTop} class=" " if:true={hasFullHiveAdminAccess}>
+                                    <div class="slds-box">
+                                        <lightning-input value={bypassFullAccessVisible} type="toggle" class="slds-var-p-bottom_medium slds-dynamic-menu__header slds-var-p-bottom_xx-smallsize" label="Full Hive Admin Access" name="toggleFull" data-id="toggleFull" onclick={toogleClick} message-toggle-active="" message-toggle-inactive=""></lightning-input></div>                                    
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size={layoutSizeTop}  if:true={hasHiveBypassAccess}>
+                                     <div  class="slds-box" >
+                                        <lightning-input value={bypassVRVisible} type="toggle" class="slds-var-p-bottom_medium slds-dynamic-menu__header slds-var-p-bottom_xx-smallsize" label="Bypass Validation Rule" name="toggleBypass"  data-id="toggleBypass" onclick={toogleClick} message-toggle-active="" message-toggle-inactive=""></lightning-input>
+                                     </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small" size="12"  if:true={hasNoAccess} class="slds-text-align_center">
+                                        <lightning-formatted-rich-text class="slds-text-heading--medium slds-p-bottom--none slds-p-top--none slds-text-color--error" value={labels.UserRights_Err_No_Permission}> </lightning-formatted-rich-text>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size="12"  if:true={usrToggle}>
+                                    <div class="slds-box" if:false={hasNoAccess}>
+                                           
+
+                                             <div if:true={bypassFullAccessVisible}>
+                                                    <lightning-layout multiple-rows>
+                                                        <lightning-layout-item padding="around-small" size="12" class="slds-text-align_center" >
+                                                                <lightning-formatted-rich-text
+                                                                class=" slds-p-bottom--none slds-p-top--none"
+                                                                value={labels.UserRights_FullAdmin_Info}>
+                                                                </lightning-formatted-rich-text>
+                                                         </lightning-layout-item>
+                                                         <lightning-layout-item padding="around-small" size="12"  >
+                                                                <div class="slds-var-p-top_x-small slds-dynamic-menu__header">Duration</div>
+                                                         </lightning-layout-item>
+ 
+                                                          <lightning-layout-item padding="around-small" size="12"  >
+                                                                <div >
+                                                                    <lightning-radio-group name="radioGroup"
+                                                                        data-id="duration"
+                                                                        label=""
+                                                                        options={durationBypassVR}
+                                                                        value={selectedDurationBypassVR}
+                                                                        required
+                                                                        variant="label-hidden"
+                                                                        type="button"></lightning-radio-group>
+                                                                </div>
+                                                          </lightning-layout-item>
+          
+                                                          <lightning-layout-item padding="around-small" size="12"  >
+                                                            <lightning-textarea
+                                                                label="Business Justification"
+                                                                data-id="reason"
+                                                                placeholder="Business Justification"
+                                                                required
+                                                                >
+                                                            </lightning-textarea>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                            </div>
+
+                                            <div if:true={bypassVRVisible}>
+                                                    <lightning-layout multiple-rows>        
+                                                        <lightning-layout-item padding="around-small" size="12" class="slds-text-align_center"  >
+                                                            <lightning-formatted-rich-text
+                                                                class="slds-p-bottom--none slds-p-top--none"
+                                                                value={labels.UserRights_Bypass_Info}>
+                                                                </lightning-formatted-rich-text>
+                                                         </lightning-layout-item>
+                                                         <lightning-layout-item padding="around-small" size="12"  >
+                                                               <lightning-dual-listbox name="dlbObject"
+                                                                    data-id="dlbObject"
+                                                                    label="Select Objects to Bypass Validation Rule"
+                                                                    source-label="Available"
+                                                                    selected-label="Selected"
+                                                                    field-level-help="Select Objects to Bypass Validation Rule"
+                                                                    options={objectList}
+                                                                    required
+                                                                    size="3"
+                                                                    onchange={handleObjectChange}>
+                                                                </lightning-dual-listbox>
+                                                         </lightning-layout-item>
+
+                                                         <lightning-layout-item padding="around-small" size="12"  >
+                                                                <div class=" slds-var-p-top_x-small slds-dynamic-menu__header"><span class="slds-text-color--error">*&nbsp;</span>Duration</div>
+                                                         </lightning-layout-item>
+                     
+                                                          <lightning-layout-item padding="around-small" size="12"  >
+                                                                <div class="">
+                                                                    <lightning-radio-group name="radioGroup"
+                                                                        data-id="duration"
+                                                                        label=""
+                                                                        options={durationBypassVR}
+                                                                        value={selectedDurationBypassVR}
+                                                                        required
+                                                                        variant="label-hidden"
+                                                                        type="button"></lightning-radio-group>
+                                                                </div>
+                                                          </lightning-layout-item>
+ 
+                                                          <lightning-layout-item padding="around-small" size="12"  >
+                                                            <lightning-textarea
+                                                                label="Business Justification"
+                                                                data-id="reason"
+                                                                placeholder="Business Justification"
+                                                                required
+                                                                >
+                                                            </lightning-textarea>
+                                                          </lightning-layout-item>
+ 
+                                                            <lightning-layout-item padding="around-small" size="12"  >
+                                                                <div class={toggleBypassBoxClass}>
+                                                                    <lightning-layout multiple-rows>
+                                                                            <lightning-layout-item padding="around-small" size="4">
+                                                                                    <lightning-input type="toggle" variant="label-hidden"  data-id="bypassFlow" label="Bypass Flow" name="tbp_flow"  message-toggle-active="" message-toggle-inactive="" onchange={handleToggleBypassChange}></lightning-input>
+                                                                                    <span>Bypass Flow</span>
+                                                                                </lightning-layout-item>
+                                                                            <lightning-layout-item padding="around-small" size="4">
+                                                                                    <lightning-input type="toggle" variant="label-hidden" data-id="bypassVR" label="Bypass Validation Rule" name="tbp_vr"  message-toggle-active="" message-toggle-inactive="" onchange={handleToggleBypassChange}></lightning-input>
+                                                                                    <span>Bypass Validation Rule</span>
+                                                                                </lightning-layout-item>
+                                                                    
+                                                                            <!-- <lightning-layout-item padding="around-small" size="6">
+                                                                                    <lightning-input type="toggle" variant="label-hidden" data-id="bypassWF" label="Bypass WF Rule" name="tbp_wf"  message-toggle-active="" message-toggle-inactive="" onchange={handleToggleBypassChange}></lightning-input>
+                                                                                    <span>Bypass WF Rule</span>    
+                                                                            </lightning-layout-item> -->
+                                                                            <lightning-layout-item padding="around-small" size="4">
+                                                                                    <lightning-input type="toggle" variant="label-hidden" data-id="bypassTrigger" label="Bypass Trigger" name="tbp_tgr"  message-toggle-active="" message-toggle-inactive="" onchange={handleToggleBypassChange}></lightning-input>
+                                                                                    <span>Bypass Trigger</span>  
+                                                                                </lightning-layout-item>
+                                                                        
+                                                                    </lightning-layout>
+                                                                </div>
+                                                           </lightning-layout-item>
+               
+
+                                                      
+                                                    </lightning-layout>
+                                            </div>
+                                        
+                                    </div>                                    
+                                </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <div class="actionContainer">
+                            <div class="slds-text-align_right">
+                                <!-- <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button> -->
+                                <lightning-button
+                                    variant="neutral"
+                                    label="Cancel"
+                                    title="Cancel"
+                                    onclick={closeModal}></lightning-button>
+                                    <lightning-button
+                                    variant="brand"
+                                    label="Submit"
+                                    title="Submit"
+                                    class="slds-m-left_small"
+                                    onclick={handleSubmit} if:false={hasNoAccess}></lightning-button>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,46 @@
+.custom-loading {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Custom Error Section */
+div.error-section {
+    /* width: 30%; */
+    padding: 15px 15px;
+    background-color: rgb(197,29,61);
+    color: white;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    
+}
+
+div.error-section .error-icon {
+    --sds-c-icon-color-foreground-default: white !important;
+    padding-right: 10px;
+    vertical-align: text-bottom;
+}
+
+div.error-section span {
+    color: white !important;
+    font-weight: 500;
+}
+
+.custom-card-header {
+    background-color: #F3F3F3;
+    margin-top: -12px;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+.small-input {
+    text-align: center;
+}
+
+.center-content .slds-input {
+    width: 110px !important;
+}

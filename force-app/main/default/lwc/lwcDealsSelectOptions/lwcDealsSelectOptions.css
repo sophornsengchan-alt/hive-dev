@@ -1,0 +1,153 @@
+/* .displayAd {
+    height: 100%;
+    padding: 25px;
+    background: #113045;
+    color: #8EDFE1;
+} */
+
+.goButton {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.2);
+   
+}
+.tileCursor{
+    height: 288px;
+    cursor:pointer;
+    padding-bottom: 55%;
+    padding: 25px;
+    background: #113045;
+    color: #8EDFE1;
+}
+.tileCursor p{
+    font-size: 16px;
+}
+/* SB 21-2-2022 US-0011303 - Cosmetic Defects 4 */
+.tileCursor h2{
+    width: 189px;
+}
+.tileCursor::after{
+    display: block;
+    padding-bottom: 100%;
+}
+.customBtn {
+    position: absolute;
+    bottom: 25px;
+    border: 1px solid #8edfe1;
+    color: #8edfe1;
+}
+.customBtn:hover{
+    color: #8edfe1;
+}
+.errorMessage{
+    display: none;
+    position: fixed;
+    top: 80px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.lwc-deal-label-btn {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+/* Sophal 08-04-2022 US-0011443 */
+
+
+.lwcDealsSelectOptions-container{
+    height: 144px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 100%;
+    background-color: #fff;
+}
+.lwcDealsSelectOptions-container,
+.lwcDealsSelectOptions-subContainer1{
+    padding: 0px;
+    margin:0px;
+}
+
+.lwcDealsSelectOptions-container,
+.lwcDealsSelectOptions-subContainer1 > div{
+    position: relative;
+    padding: 0px;
+}
+
+.lwcDealsSelectOptions-subContainer1{
+    width: 100%;
+    height: 60%;
+    background: transparent;
+}
+
+.lwcDealsSelectOptions-subContainer1,
+.lwcDealsSelectOptions-subContainer1 > div > div{
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:first-child{
+    border-right: 1px solid #ccc;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:first-child > div{
+    width: 100%;
+    text-align: center;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div > div > h2{
+    margin: 0;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:last-child > div{
+    cursor: pointer;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-button{
+    border-radius: 2px;
+}
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-dropdown-trigger > span{
+    text-align: left;
+}
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-dropdown-trigger ul{
+    margin-bottom: 0px;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-dropdown-trigger .white-icon{
+    --lwc-colorTextIconDefault: #fff;
+    margin-left: 5px;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-dropdown-trigger .slds-dropdown .slds-dropdown__list li > div{
+    text-decoration: underline;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.lwcDealsSelectOptions-subContainer1 > div:last-child .slds-dropdown-trigger:hover .slds-dropdown.slds-dropdown_left{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+@media only screen and (max-width: 575px) {
+    .lwcDealsSelectOptions-subContainer1 > div:first-child{
+        border-right: none;
+    }
+}

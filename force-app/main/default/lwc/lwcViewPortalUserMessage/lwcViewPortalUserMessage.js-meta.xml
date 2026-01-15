@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <description>Scroll To Div Example</description>
+   <isExposed>true</isExposed>
+   <masterLabel>Scroll To Div Example</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Setting Name" name="mdtName" type="String" default=""/>
+            <property label="Profile" name="profileSetting" type="String" default="US"/>
+            <property name="numRec" type="Integer"
+                label="Number of Record to Display"
+                default="5"
+                description="Minimux 1, Maximux 100"
+                min="1"
+                max="100"
+                required="true"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Setting Name" name="mdtName" type="String" default=""/>
+            <property label="Site" name="site" type="String"/>
+            <property label="Label Name of Density (Depreciated)" name="lbDensity" type="String" default="Density"/>
+            <property label="Show Density (Depreciated)" name="isShowDensity" type="Boolean" default="true"/>
+            <property label="Message No Record" name="messageNoRecord" type="String" default=""/>
+            <property label="Show Button Interested" name="isShowBtnIntr" type="Boolean" default="false"/>
+            <property label="Label Button Interested" name="lbButtonIntr" type="String" default="Interested"/>
+            <property label="Label Button Not Interested" name="lbButtonNotIntr" type="String" default="Not Interested"/>
+            <property label="Show Checkbox" name="isCheckBox" type="Boolean" default="false"/>
+            <property label="Disable Search/Filter Section" name="isDisableSearch" type="Boolean" default="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

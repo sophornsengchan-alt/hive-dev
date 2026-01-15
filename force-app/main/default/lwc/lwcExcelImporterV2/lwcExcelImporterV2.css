@@ -1,0 +1,181 @@
+/*CSS*/
+.switch-version {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/*
+.step-header h1, .step-header p {
+    padding-bottom: 15px;
+}
+*/
+.popup-export .slds-modal__container {
+    width: 40% !important;
+    max-width: 40% !important;
+}
+.popup-export .slds-modal__content {
+    height: 130px !important;
+    max-height: 130px !important;
+}
+.disabled-button {
+    margin-left: 0px !important;
+}
+.step-header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.step-header button {
+    padding-right: 5px;
+}
+
+.step1-body {
+    display: flex;
+}
+
+.field-guidance {
+    margin: auto;
+    width: 50%;
+    padding: 20px 20px;
+    padding-bottom: 40px;
+}
+
+.field-guidance table, table.common-error {
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+.field-guidance table tr td {
+    border-bottom-width: 1px;
+    border-bottom-color: gray;
+    border-bottom-style: inset;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+table.common-error{
+    width: 50% !important;
+    margin-top: 10px;
+}
+
+table.common-error tr td, table.common-error tr th {
+    border-top-width: 1px;
+    border-top-color: gray;
+    border-top-style: inset;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.export-importer-v2-action_btn_next, .export-importer-v2-action_btn_prev, .export-importer-v2-action_btn_brandoutline {
+    margin-left: 0px !important;
+    margin-right: 20px !important;
+}
+.slds-modal__footer .export-importer-v2-action_btn_next {
+    margin-right: 0px !important;
+}
+.slds-modal__footer .export-importer-v2-action_btn_brandoutline {
+    margin-right: 15px !important;
+}
+
+div.step2n3-body, div.step1-body {
+
+    padding-top: 15px;
+}
+
+div.step2r3r4-body, div.step1-body {
+
+    padding-top: 15px;
+}
+
+.step2n3-body input.export-importer-v2-paste_input::placeholder {
+
+    font-weight: lighter;
+    color: gray;
+}
+
+.step2r3r4-body input.export-importer-v2-paste_input::placeholder {
+
+    font-weight: lighter;
+    color: gray;
+}
+
+article.error-section {
+    width: 30%;
+    padding: 15px 15px;
+    background-color: rgb(197,29,61);
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+
+article.no-error-section {
+    width: 30%;
+    padding: 15px 15px;
+    background-color: #f3f3f3;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+}
+
+article.error-section .error-icon {
+    --sds-c-icon-color-foreground-default: white !important;
+    padding-right: 10px;
+    vertical-align: text-bottom;
+}
+
+article.error-section span, article.error-section a {
+    color: white !important;
+    font-weight: 500;
+}
+
+article.uploading-section {
+    width: 30%;
+    padding: 15px 15px;
+    background-color: #0654ba;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    color:white;
+}
+
+.cls_serverSideError{
+    padding:0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.cls_serverSideError .arrow-icon {
+    --sds-c-icon-color-foreground-default: white !important;
+}
+
+.cls_windowTitle {
+    font-weight: bold;
+}
+.cls_font-size_title {
+    font-size: 13px !important;
+}
+.cls_ListViewWrapper {
+    padding: 1rem;
+
+}
+.cls_ListViewWrapper .listColumn a {
+    width: 30px;
+    height: 30px;
+    /*line-height: 30px;*/
+    float: right;
+
+}
+.cls_accordion {
+    /*padding-top: 15px;*/
+    padding: 1rem;
+    
+}
+
+.finishing-loading {
+    background-color: transparent !important;
+    --lwc-brandPrimary: white !important;
+}

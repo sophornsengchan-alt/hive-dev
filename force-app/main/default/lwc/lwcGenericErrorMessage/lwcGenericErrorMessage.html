@@ -1,0 +1,47 @@
+<!-- Sambath Seng 15-3-2022 US-0011050 - [SP] Adjust the Generic Error Message -->
+<template>
+    <div class="wrapper">
+        <img src={backgroundURL} alt="Page Not Available">
+        <template if:false={isCustomError}>
+            <template if:true={helpTextMetadata}>
+                <div class="slds-grid slds-gutters content">
+                    <div class="slds-col slds-size_4-of-12"></div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <p class="slds-text-heading_large">
+                            {helpTextMetadata.Heading__c}
+                        </p>
+                        <p class="slds-text-heading_medium slds-text-color--weak">
+                            <lightning-formatted-rich-text value={helpText} ></lightning-formatted-rich-text>
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12"></div>
+                </div>
+            </template>
+        </template>
+        <template if:true={isCustomError}>
+            <div class="slds-grid slds-gutters content">
+                <div class="slds-col slds-size_4-of-12"></div>
+                <div class="slds-col slds-size_6-of-12">
+                    <p class="slds-text-heading_large">
+                        {titleName} <template if:true={titleValue}> {titleValue} </template>
+                    </p>
+                    <p class="slds-text-heading_medium slds-text-color--weak">
+                        <lightning-formatted-rich-text value={customLabel} ></lightning-formatted-rich-text>
+                    </p>
+                </div>
+                <div class="slds-col slds-size_2-of-12"></div>
+            </div>
+        </template>
+        <template if:false={isCustomError}>
+            <template if:true={isHomePageURL}>
+                <lightning-button class="button" onclick={redirectToHelpPage} label={label.getHelpButton} title={label.getHelpButton}></lightning-button>
+            </template>
+            <template if:false={isHomePageURL}>
+                <lightning-button class="button slds-button" onclick={redirectToHome} label={label.homeButton} title={label.homeButton}></lightning-button>
+            </template>
+        </template>
+        <!-- <template if:true={customError}>
+            <lightning-button class="button-ab slds-m-left_x-small" onclick={redirectToHome2} label={labelHomeButton} title={labelHomeButton}></lightning-button>
+        </template> -->
+    </div>
+</template>

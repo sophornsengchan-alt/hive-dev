@@ -1,0 +1,29 @@
+<template>
+    
+    <div class="slds-grid slds-gutters dwi-section">
+        <div class="dwi-left-section">
+            <span class="cls_windowTitle">{retailCampaign.NA_Retail_Campaign_Title__c}</span>
+        </div>
+        <div class="dwi-right-section">
+            <div>
+                <span>
+                    <lightning-formatted-date-time value={retailCampaign.NA_Retail_Campaign_Start_Date__c} time-zone="UTC"></lightning-formatted-date-time> to <lightning-formatted-date-time value={retailCampaign.NA_Retail_Campaign_End_Date__c} time-zone="UTC"></lightning-formatted-date-time>
+                </span>
+            </div>
+            
+            <div class="dwi-child-section-button">
+                <a onclick={onShowDetail} class="backButton">
+                    <lightning-icon icon-name={iconShowDetail} size="xx-small" ></lightning-icon>
+                </a>
+            </div>
+
+        </div>
+            
+    </div>
+    <template if:true={displayDetail}>
+        <div class="slds-grid slds-gutters dwi-detail-section">
+            <lightning-formatted-text value={rtCmpDescription} linkify ></lightning-formatted-text>
+        </div>
+        
+    </template>
+</template>

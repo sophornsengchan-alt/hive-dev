@@ -1,0 +1,61 @@
+<template>
+    
+    <template for:each={listAction} for:item="action">
+        <div key={action.key} class="slds-m-bottom_x-small">
+            <div>
+                <div class="slds-show_inline-block slds-text-heading_small">{action.label}</div>
+                <div class="slds-show_inline-block">
+
+
+                    <template if:true={action.isLoading}>
+
+                        <template if:true={action.isError}>
+                            <div class="slds-p-left_x-small slds-is-relative slds-show_inline-block allIcon">
+                                <lightning-icon icon-name="utility:close" alternative-text="error" title="error" size="x-small"></lightning-icon>
+                            </div>
+                           
+                        </template>
+
+                        <div class="slds-p-right_large slds-is-relative slds-show_inline-block loadingIcon">
+                            <lightning-spinner variant="brand" alternative-text="Loading..." size="x-small"></lightning-spinner>
+                        </div>
+
+                    </template>
+
+                    <template if:false={action.isLoading}>
+
+                         <template if:true={action.isError}>
+
+                            <div class="slds-p-left_x-small slds-is-relative allIcon">
+                                <lightning-icon icon-name="utility:close" alternative-text="error" title="error" size="x-small"></lightning-icon>
+                            </div>
+
+                         </template>
+
+                         <template if:false={action.isError}>
+
+                            <div class="slds-p-left_x-small slds-is-relative allIcon">
+                                <lightning-icon icon-name="utility:check" alternative-text="success" title="success" size="x-small"></lightning-icon>
+                            </div>
+
+                         </template>
+
+                    </template>
+
+                </div>
+                
+            </div>
+
+            <template if:true={action.isError}>
+                <template for:each={action.listError} for:item="error">
+                    <div key={error.errorKey} class="slds-p-left_large slds-text-color_error slds-text-heading_small">
+                        {error.errorMsg}
+                    </div>
+                </template>
+            </template>
+
+        </div>
+    </template>
+
+
+</template>

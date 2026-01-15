@@ -1,0 +1,31 @@
+<template>
+    <div if:true={showMessage}>
+        <div class="slds-is-relative">
+            <!-- //////////////////////////////////////// Success /////////////////////// -->
+            <div class="slds-notify slds-notify_toast slds-theme_success" role="status" if:true={isSuccess}>            
+                <lightning-icon icon-name="utility:success" alternative-text="Success" size="small" variant="inverse" title="Success" class="slds-var-p-right_xx-small"></lightning-icon>
+                <div class="">                     
+                        <lightning-formatted-rich-text value={message.msg} class=""></lightning-formatted-rich-text>
+                </div>
+            </div>
+            <!-- //////////////////////////////////////// ERROR ///////////////////////  -->
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="status" if:true={isErro}>            
+                <lightning-icon icon-name="utility:error" alternative-text="Error" size="small" variant="inverse" title="Error" class="slds-var-p-right_xx-small"></lightning-icon>
+                <div class="">                     
+                        <lightning-formatted-rich-text value={message.msg} class=""></lightning-formatted-rich-text>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon icon-name="utility:down" variant="border-inverse" alternative-text="Detail" size="small" onclick={showDetail}></lightning-button-icon>
+                </div>
+            </div>
+            <!-- //////////////////////////////////////// WARNING /////////////////////// -->
+            <div class="slds-notify slds-notify_toast slds-theme_warning" role="status"  if:true={isWarning}>            
+                <lightning-icon icon-name="utility:warning" alternative-text="Warning" size="small" variant="inverse" title="Warning" class="slds-var-p-right_xx-small"></lightning-icon>
+                <div class="">                     
+                        <lightning-formatted-rich-text value={message.msg} class=""></lightning-formatted-rich-text>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</template>

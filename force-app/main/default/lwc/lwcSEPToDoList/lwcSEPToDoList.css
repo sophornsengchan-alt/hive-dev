@@ -1,0 +1,28 @@
+.lineBreak{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.button{
+    border: none;
+    width: 100%;
+}
+.label{
+    color: #141414;
+    font-size: 14px;
+    overflow-wrap: break-word;
+}
+.count{
+    font-size: 35px;
+    padding-top: 10px;
+}
+
+.slds-col{
+    border-right: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.slds-grid > .slds-col:last-child{
+    border-right: none;
+}

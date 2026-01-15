@@ -1,0 +1,50 @@
+<template>
+    <div class="lwcDealContractAgreementDetailPage">
+        <div class="ui-widget"><p><span style="font-size: 22px; font-family: arial;">{title}</span></p></div>
+        <div class="ui-widget"><lightning-formatted-rich-text value={sub_title}></lightning-formatted-rich-text></div>
+        <lightning-tabset variant="scoped">
+            <lightning-tab label={Labels.tabLabel_Overview} value={Labels.tabLabel_Overview}>
+                <div class="recordFormWrapper">
+                    <lightning-record-form
+                        object-api-name="Deal_Contract_Agreement__c"
+                        record-id={recId}
+                        layout-type="Full"
+                        density="comfy"
+                        mode="readonly"
+                        columns="2">
+                    </lightning-record-form>
+                    <div class="slds-text-align--right  slds-p-top--small slds-p-right--large">
+                        <lightning-button class="slds-m-top_small slds-m-right_small" onclick={backToMySubDCA}  label={Labels.sepBackButton}></lightning-button>
+                        <lightning-button class="slds-m-top_small" onclick={handleDownloadAgreement} variant="brand" label={Labels.SEP_DownloadAgreement} icon-name="utility:download" if:true={showDownlaodPDF}></lightning-button>
+                    </div>
+                    
+                </div>
+            </lightning-tab>
+            <!--
+            <template if:true={isContractAgreement}>
+                <lightning-tab label={Labels.contract_Agreement_Tab_Label} value={Labels.contract_Agreement_Tab_Label}>
+                    <c-lwc-deal-contract-sign-agreement rec-id={recId}></c-lwc-deal-contract-sign-agreement>
+                </lightning-tab>
+            </template>
+            -->
+            <template for:each={allTabs} for:item="tab">
+                <lightning-tab label={tab.label} value={tab.name} key={tab.name} >
+                    <c-lwc-list-view mdt-name={tab.mdtname} optional-id={recId} message-no-record="No results available." oncallupdatenumberofitems={updateTotalRecord}></c-lwc-list-view>
+                    <div class="btn-right">
+                        <lightning-button class="slds-m-right_small" onclick={backToMySubDCA}  label={Labels.sepBackButton}></lightning-button>
+                        <!-- <template if:true={tab.isShowDownload}> -->
+                                <img src="/img/loading24.gif" title="Loading..." if:true={showDownloadSpinner} class="slds-var-p-right_small"/>
+                                <button class="slds-button slds-button_brand download-btn" data-id={tab.mdtname} onclick={handleDownloadDealItems}>
+                                    <lightning-icon class="download-icon" icon-name="utility:download" variant="brand" size="x-small" ></lightning-icon>
+                                    <span>{Labels.btn_downloadDealItems}</span>  
+                                </button><br/>
+                        <!-- </template> -->
+                    </div>
+                </lightning-tab>
+            </template>
+            
+
+            
+        </lightning-tabset>
+    </div>
+</template>

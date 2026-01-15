@@ -1,0 +1,6 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <template if:true={showPageContent}>
+        <div>Hello world from paid program component!</div>
+    </template>
+</template>

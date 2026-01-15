@@ -1,0 +1,4230 @@
+{
+    "fileVersion": 0,
+    "serverMaxRevisionCounter": 62572,
+    "sourceMembers": {
+        "PermissionSet__sfdcInternalInt__sfdc_scrt2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54196,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "SamlSsoConfig__EBH_eBaySSO": {
+            "memberType": "SamlSsoConfig",
+            "serverRevisionCounter": 100,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Opportunity_Screen_ContractGuidedCA": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 8866,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__eBay_Bookings1": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 59454,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__TermsConditionRecordPage": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 4684,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Contract.TermsConditions": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 4688,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Terms_Conditions_OWE_CA": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 6078,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Opportunity_Screen_ContractGuidedDE": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 11715,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Terms_Conditions_OWE_DE": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 11714,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Opportunity_Screen_ContractGuidedUK": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 14565,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Terms_Conditions_OWE_UK": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 14564,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Broadcast_Permission_set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54150,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__eBay_Seller_Portal1": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 60738,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__CouponSellerTriggerHandler": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 60540,
+            "lastRetrievedFromServer": 33963,
+            "isNameObsolete": false
+        },
+        "CustomLabel__eBay_Onramp_ChannelId_QA": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 22569,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/views/nAHome.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 33299,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "StaticResource__SNA_eBay_Seller_Portal1_sf_edge_wCNGn": {
+            "memberType": "StaticResource",
+            "serverRevisionCounter": 49345,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__BOB__c.Light_Touch_Category_Cohort": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 14687,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__BOB__c.Managed_Type__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 14686,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__BOB__c.Managed_Segment__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 36122,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Contract_Screen_eBayLiveContractClause_Sub": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 35155,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__SlackWorkspaceId": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 35158,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Settings__Security": {
+            "memberType": "Settings",
+            "serverRevisionCounter": 42016,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomObjectTranslation__Coupon_Seller__c-de": {
+            "memberType": "CustomObjectTranslation",
+            "serverRevisionCounter": 24846,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Translations__de": {
+            "memberType": "Translations",
+            "serverRevisionCounter": 60730,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Admin": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 62571,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Contract.Contract_Template_ID__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 36081,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Coupon_Seller__c.Co_Invest_Type__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 24857,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Coupon_Seller__c.Coupon_Seller_Stage_Portal__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 24858,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomMetadata__Glean_Assistant.Hive_Assistant_Account_Summary": {
+            "memberType": "CustomMetadata",
+            "serverRevisionCounter": 24859,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__CouponSellerTriggerHandlerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 62516,
+            "lastRetrievedFromServer": 33962,
+            "isNameObsolete": false
+        },
+        "ApexClass__GleanAgentController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 44142,
+            "lastRetrievedFromServer": 24862,
+            "isNameObsolete": false
+        },
+        "ApexClass__GleanAgentControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 24863,
+            "lastRetrievedFromServer": 24863,
+            "isNameObsolete": false
+        },
+        "ApexClass__SEPCouponController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 61222,
+            "lastRetrievedFromServer": 61222,
+            "isNameObsolete": false
+        },
+        "ApexTrigger__CouponSellerTrigger": {
+            "memberType": "ApexTrigger",
+            "serverRevisionCounter": 42542,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Program_Coupon_Overview_Text": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 24866,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__UK_eBay_Live_Incentive_Conga_TempId": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 24867,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__UK_eBay_Live_Promo_Conga_TempId": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 24868,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__View_Master_Agreement": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 24869,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__accountGleanSummary": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 44165,
+            "lastRetrievedFromServer": 24870,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountGleanSummary/accountGleanSummary.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 44166,
+            "lastRetrievedFromServer": 24871,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountGleanSummary/accountGleanSummary.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 44167,
+            "lastRetrievedFromServer": 24872,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountGleanSummary/accountGleanSummary.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 44168,
+            "lastRetrievedFromServer": 24873,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountGleanSummary/accountGleanSummary.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 44169,
+            "lastRetrievedFromServer": 24874,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcCouponSellerDetailPage": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 54877,
+            "lastRetrievedFromServer": 24875,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcCouponSellerDetailPage/lwcCouponSellerDetailPage.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54878,
+            "lastRetrievedFromServer": 24876,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcCouponSellerDetailPage/lwcCouponSellerDetailPage.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54879,
+            "lastRetrievedFromServer": 24877,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcCouponSellerDetailPage/lwcCouponSellerDetailPage.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54880,
+            "lastRetrievedFromServer": 24878,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcCouponSellerDetailPage/lwcCouponSellerDetailPage.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54881,
+            "lastRetrievedFromServer": 24879,
+            "isNameObsolete": false
+        },
+        "RecordType__Coupon_Seller__c.Master_Agreement_Seller": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 24880,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Coupon_Seller__c.Program_Coupon_Seller": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 24881,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FieldSet__Coupon_Seller__c.DEListProgramCouponSellerHighlight": {
+            "memberType": "FieldSet",
+            "serverRevisionCounter": 24882,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Coupon_Seller__c-Program Coupon Portal User Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 24883,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Coupon_Seller_Record_Trigger_Flow_Before_Context": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 24884,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Certilogo_Contract_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54178,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "BlacklistedConsumer__BlacklistedConsumer37403628577427": {
+            "memberType": "BlacklistedConsumer",
+            "serverRevisionCounter": 30800,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "BusinessProcess__Opportunity.Certilogo Contract": {
+            "memberType": "BusinessProcess",
+            "serverRevisionCounter": 43907,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Certilogo_Record_Page1": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 32208,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "Layout__Opportunity-Certilogo Contract Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 28406,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "Layout__Opportunity-Certilogo Contract Opportunity": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 48543,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "BlacklistedConsumer__BlacklistedConsumer39129674057446": {
+            "memberType": "BlacklistedConsumer",
+            "serverRevisionCounter": 30804,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "AppMenu__AppSwitcher": {
+            "memberType": "AppMenu",
+            "serverRevisionCounter": 37887,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ConnectedApp__Conga_CLM": {
+            "memberType": "ConnectedApp",
+            "serverRevisionCounter": 29612,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ConnectedApp__Conga_Push_Upgrade_CA": {
+            "memberType": "ConnectedApp",
+            "serverRevisionCounter": 30803,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.Certilogo_Contract": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53976,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Acquisition Partner Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 31994,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__API - Sailpoint": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 31995,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__AU - Seller Portal": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 31996,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__AU Standard User Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 49334,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Business Admin": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 33627,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Certilogo Standard User": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48569,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__DE - Seller Portal": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 49354,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Developer Profile Copado Salesforce": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32001,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__GCX Partner Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32002,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Influencer Partner Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32003,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Marketing Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32004,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__NA - Seller Portal": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32005,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__NA Standard User Base": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48570,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Platform User - Empty Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32007,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Read Only": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32008,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Sailpoint - Terminated Users": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32009,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Salesforce API Only System Integrations": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32010,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Salesforce Platform User": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32011,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Seller Portal Member": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32012,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Standard Ads EU User Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48571,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Standard Ads User Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48572,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Standard Advertising User Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48573,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Standard User Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 48574,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__System Administrator - Limited Privileges": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 57135,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__Tech Ops - Minimum Access": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 32019,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "BlacklistedConsumer__BlacklistedConsumer39930256862298": {
+            "memberType": "BlacklistedConsumer",
+            "serverRevisionCounter": 32024,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "ConnectedApp__Conga_Platform_Services": {
+            "memberType": "ConnectedApp",
+            "serverRevisionCounter": 32023,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Certilogo_Contract_Opportunity": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 48528,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Coupon_Seller__c-Program Coupon Seller Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 32755,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Excel_Importer_Template__mdt.HideSwitch__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 32737,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomMetadata__Excel_Importer_Template.Bulk_Upload_ExclusiveCoInvest": {
+            "memberType": "CustomMetadata",
+            "serverRevisionCounter": 42664,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__ExcelImporterController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 36092,
+            "lastRetrievedFromServer": 36092,
+            "isNameObsolete": false
+        },
+        "ApexClass__ExcelImporterControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 32740,
+            "lastRetrievedFromServer": 32740,
+            "isNameObsolete": false
+        },
+        "ApexClass__UploadCoInvestController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 58994,
+            "lastRetrievedFromServer": 32741,
+            "isNameObsolete": false
+        },
+        "ApexClass__UploadCoInvestControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 32742,
+            "lastRetrievedFromServer": 32742,
+            "isNameObsolete": false
+        },
+        "StaticResource__Manage_Exclusions_Template": {
+            "memberType": "StaticResource",
+            "serverRevisionCounter": 32743,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcExcelImporter": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 32744,
+            "lastRetrievedFromServer": 32744,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporter/lwcExcelImporter.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 32745,
+            "lastRetrievedFromServer": 32745,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporter/lwcExcelImporter.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 32746,
+            "lastRetrievedFromServer": 32746,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporter/lwcExcelImporter.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 32747,
+            "lastRetrievedFromServer": 32747,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporter/lwcExcelImporter.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 32748,
+            "lastRetrievedFromServer": 32748,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcExcelImporterV2": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 36117,
+            "lastRetrievedFromServer": 36117,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterV2/lwcExcelImporterV2.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 36118,
+            "lastRetrievedFromServer": 36118,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterV2/lwcExcelImporterV2.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 36119,
+            "lastRetrievedFromServer": 36119,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterV2/lwcExcelImporterV2.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 36120,
+            "lastRetrievedFromServer": 36120,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterV2/lwcExcelImporterV2.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 36121,
+            "lastRetrievedFromServer": 36121,
+            "isNameObsolete": false
+        },
+        "WebLink__Coupon_Co_Invest__c.BulkUploadExclusions": {
+            "memberType": "WebLink",
+            "serverRevisionCounter": 32754,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Excel_Importer_Template__mdt-Excel Importer Template Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 36089,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Subscription_Request__c.Subscription_Tier__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 33637,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Subscription_Request__c.Account_Manager": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 32917,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Subscription_Request__c-Subscription Request Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 32918,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Contracts_Super_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54004,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Account_Plan_Transfer_Ownership_MAM_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54005,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Managed_Payment": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54006,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Marketing_Execution_Team": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54007,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Monetization": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54008,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Edit_Lead_Source": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54010,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Agile_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54011,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Admin_permission_set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54012,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_Support_App": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54013,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Standard_Slack_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54014,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Integration_User_Certilogo": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54015,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__IRIS_Inbound_API_Only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54016,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Access_to_Data_Loader": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54017,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__sfdcInternalInt__sfdc_a360": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54018,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Deploy_to_UAT": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54019,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Developer": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54021,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__MS_O": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54022,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__MSO_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54023,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__SSO_Enforced": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54024,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Tableau_CRM_Manage_Analytics_Private_Assets": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54025,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Learning": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54026,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Monthly_Discount_Request": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54028,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__NA_Manage_SEP_Comms": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54029,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Super_User_Permission_set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54031,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Access_Genesys": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54033,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Promotions_MC_Admin": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54034,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__BA_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 53990,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Transfer_Records": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54036,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__sfdc_chatbot_service_permset": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54038,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__sfdcInternalInt__sfdc_activityplatform": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54037,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Integration_User_Extra_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54039,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Influencer_Partner_Portal_Additional_Access_for_eBay_Users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54040,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Live_Contract_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54042,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Glean_Assistant_Standard_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54043,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Seller_Management_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54044,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Nominated_Item_Editable": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54045,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Survey_Seller_Feedback": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54046,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Slack_Admin": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54048,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Coupon_Code": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54049,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Create_Report_and_Dashboard_Folders": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54050,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Subscribe_to_Reports_Dashboards": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54052,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Booking": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54053,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Billing": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54054,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_NA_Only_Sales": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54055,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_NA_Only_CSM": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54056,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Set_Dually_Signed_Closed_Won": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54057,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ticket_Access_for_Standard_Users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54058,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Sharing_Calculation_Deferral": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54059,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Sellers_Eligible_for_Deals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54060,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Custom_Object_Usage_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54061,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_Product_Edit_Delete": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54062,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Legacy_Contract_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54063,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_Product_New_Edit": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54064,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Support_Request_Integration_Help_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54065,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__UK_Seller_Risk_Management_BU": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54066,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Standard_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 59266,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Deals_Subsidy_Dispute_Analysis": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54067,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Deal_Start_End_time_fileds": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54068,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Live_Onboarding_Email_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54069,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Live_Support_Email_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54070,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Edit_Subsidy_Type_field": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54071,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Reports": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54072,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Deal_Auto_Reject_Inventory": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54073,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Standard_Advertising_User_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54074,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__NA_Promotion_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54075,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Promotions_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54076,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Contracts_3PP_Partner_Program_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54077,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_NA_Deals_Statements_Disputes": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54078,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Hive": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54079,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Verticals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54080,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__EBH_ContractAdmin": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54081,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Hive_Read_Only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54082,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Certilogo_Standard_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54083,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Transfer_Leads": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54084,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Formsite": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54085,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Bypass_Validation_Rule": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54086,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Tech_Ops_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54087,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_User_Story_Helper": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54088,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_AU_Only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54089,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Certilogo_Manage_Invoices": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54090,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hard_Delete_Bulk_API_permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54091,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Support_Request_eBay_Live_Onboarding_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 58163,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Project_eBay_Live_Onboarding": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54093,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__TH_TrailheadBadgeAndMixParticipant": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54094,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_DocuSign_Administrator": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54095,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Integration_User_DGP_Integration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54096,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__New_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54097,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__NA_Sales_Ops_Admin": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54098,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Use_Any_API_Client": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54099,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Salesforce_Surveys_Admin": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54100,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Customer_Users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54101,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Baseline_Account_Contact_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54102,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Bookings_Portal_General_v2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54103,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Plutus_Inbound_API_Only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54104,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Multilevel_Navigation_Menu": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54105,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Edit_Access_on_Month_fields_on_Ad_Products": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54106,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Customers_with_out_Subscriptions": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 32919,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Public_Dashboards": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54107,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Multi_Factor_Authentication": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54108,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Plutus_Credential_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54109,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Elevated_Access_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54110,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__FVF_Plutus_Promo_Creators": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54111,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Run_Flow_Assign_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54112,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__FVF_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54113,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Partnerships": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54114,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Promotions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54115,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Contracts_Legal_Approver": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54116,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Growth_Coaching": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54117,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Growth_Center": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54118,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_NA_Manage_Unsub_Deals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54119,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Project_Integration_Help_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54003,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Integration_Help_Project_Date_Edit": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54120,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Journey_Builder": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54121,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Create_Managed_Payment": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54122,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ardira_Survey_Admin_Custom": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54123,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Acquisition_Business_Development_Opportunity_Base_Access_Read_Only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54124,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Adv_Admin_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54125,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Pop_Coupon": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54126,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_BoB_Country_on_Users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54127,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Outreach_Integration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54128,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Change_Management_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54129,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Coupon_Special_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54130,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Business_Development_Pricing_Agreement_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54131,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__One_Off_Account_Management": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54132,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Login_as_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54133,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__NPS_Survey_Replies": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54134,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Calendly_Platform": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 40035,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Fulfilment_Team": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54135,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__DE_Seller_Portal_Coupons_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 62544,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__NA_Seller_Portal_Deals_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54137,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__DE_Seller_Portal_Deals_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54138,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Deals_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54139,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Baseline_Account_Contact_Access_V2": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54140,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Champion_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54141,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Lead_Duplicate_Merge": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54142,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_External_Users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54143,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Opportunity_Business_Development_Base_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 53998,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__ACP_Contract_BCD_Statement_Read_only": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54144,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Salesforce_CLI": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54145,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Startup_Scaleup": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54146,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Glean_Integration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54147,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_Team_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54148,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Copado_Deployment": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54149,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_eBay_max_co_fund": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54151,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Advertising_Billing_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54152,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Advertising_Finance_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54153,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Contract_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54154,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Salesforce_Developer_Tools": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54155,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Seek_Survey": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54156,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__IER_Permission_set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54157,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__US_Manage_Deals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54158,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_DocuSign_Sender": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54159,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_DocuSign_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54160,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Custom_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54161,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__GCX_Call_Scripts_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54162,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Deal_Subsidy_Amount_Editor": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54163,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Promotions_User_Deals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54164,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Knowledge_LSF_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54165,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Promotions_User_Coupons": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54166,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__GCX_Super_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54167,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__UK_Seller_Risk_Management_CUD_GCX": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54168,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Analytics_Cloud_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54169,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Access_to_BCD_Statement": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54170,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Bulk_Upload_Leads": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54171,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Community_View_PS": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54172,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Final_Value_Fee_Approval": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54173,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Conga_Contract_Document_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54174,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Sellers_Eligible_for_Coupons": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54175,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__CVC_Pro_Trader": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54176,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_NA_Seller_Vetting": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54177,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Influencer_Management": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54179,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__CVC_Onboarding": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54180,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__US_CA_Standard_user": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54181,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__FT_Account_Management_Team_Lead": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54182,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Coupons_Price_Take_Over_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54183,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__EU_Advertising_user": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54184,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Lead_New_Seller_Registration_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54185,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Marketing_Cloud_Connected_App": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54186,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Customer_Insights_View": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54187,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Moratorium_Approver": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54188,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__LeadGenius": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54189,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__User_Story_Code_Reviewer": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54190,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Reports_Dashboards_in_Public_Folders": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54191,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Bypass_Locked_Pricing_Configuration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54192,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Exclude_from_user_story_validations": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54193,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__BoB_Category_Lead": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54194,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Community_Analytics": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54195,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Full_Time_Account_Management_Base_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54197,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Dashboards": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54198,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Promotions_Privacy_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54199,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Coupon_Invoice": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54200,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Pricebook": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54201,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Lead_Acquisition_Base_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54202,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Standard_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54203,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Agile_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54204,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__EBH_exportReportsPermissionSet": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54205,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Influencer_Partner_Portal_Baseline_User_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54206,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Refurb_users": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54207,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Salesforce_Mobile_App_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54208,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__EBH_PasswordNeverExpires": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54209,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__sfdcInternalInt__sfdc_a360_sfcrm_data_extract": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54210,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Delete_Leads": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54211,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Promotions_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54212,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Acquisition_Template_Creator": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54213,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Project_Dates_Edit": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54214,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Business_Development_Opportunity_Go_Live_Edit": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54215,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__User_Availability_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54216,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__HIVE_SAP_Integration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54217,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__manage_report_types": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54218,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Risk_Seller_Vetting_Update_Fields_on_Account": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54219,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Certilogo_Super_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54220,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Sellers_Eligible_for_PM_Deals": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54221,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBayAds_Composer_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54222,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__LTTM_Permission_Set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54223,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Business_Analyst_Product_Owner": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54224,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Manage_Multi_Factor_Authentication_in_API": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54225,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Standard_User_Subscription_Request_Read_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54226,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Account_Quotas": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54227,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Copado_Tester": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54228,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Access_to_Media_Plan_Requests": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54229,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__DFP_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54230,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__DFP_Adimn": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54231,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Campaign_Managers": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54232,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Account_Managers": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54233,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Marketing": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54234,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Sales": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54235,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Ops_Legal_Finance": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54236,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Advertising_Request_Portal": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54237,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Custom_Copado_Developer": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54238,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Ebay_Advertisement_Sales_Ops": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54239,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Advertisement_CSI": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54240,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Gearset_Backup": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54241,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Actions_Change_Request_Reviewer": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54242,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Actions_Change_Request_Submitter": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54243,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Single_Contract_Multi_Coupon_SCMC_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54244,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__ebay_Academy_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54245,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__System_Admin_System_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54246,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__System_Admin_Apex_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54247,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Share_List_Views": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54248,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Advertising_Cohort_Lead": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54249,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Bookings_Portal_General": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54250,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__System_Admin_FLS": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54251,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Subsidized_Deals_Amend_Contracts_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54252,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Full_Hive_Admin_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54253,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Legacy_Coupon_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54254,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Hive_Bypass_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54255,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__AccelQ_Permission_set": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54256,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Developer_Support_Ticket_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54257,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Creation_of_Partner_Customer": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54258,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Talend_Internal_Integration": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54259,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_Plutus": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54260,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Communication_Object": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54261,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__API_IRIS": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54262,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Audit_Permissions": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54263,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Glean_Connector_Data_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54264,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__manager_partners": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54265,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Sales_Engagement_Cadence_Creator_Custom_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54266,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Pre_loved_Partner_Contract_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54267,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Pricing_Manager": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54268,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Book_AM_Subscription_Request_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54269,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Account_Plans_Manage_Access": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54270,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__EBH_EnableCampaignTagging": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54271,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__eBay_Ads_Withdraw_Quote_Approval": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54272,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Glean_Data_Connector_System_Permission": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54273,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Seller_Portal_Seller_Eligible_for_Account_Management": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54274,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__ebay_Copado_VSM_User": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54275,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__See_email_folder": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54276,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__Deals_Permission_sets": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54277,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "StandardValueSet__OpportunityStage": {
+            "memberType": "StandardValueSet",
+            "serverRevisionCounter": 33292,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.MS_O": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53977,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.Certilogo": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53978,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.eBay_NA_Acquisition": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53979,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.Private_Marketplace": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53980,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.Programmatic": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53981,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.eBay": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53982,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.eBay_Business_Development": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53983,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.eBay_Ads_Direct_Revision_Opportunity": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53984,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "RecordType__Opportunity.eBay_Ads_Promoted_Listings": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 53985,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "WaveDataset__BVA_UsersProfilesRoles": {
+            "memberType": "WaveDataset",
+            "serverRevisionCounter": 33344,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__DataInsertAfterRefresh": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 33328,
+            "lastRetrievedFromServer": 33328,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Subscription_Request_Record_Page": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 37442,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Subscription_Request__c.Opt_Out_Date__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 33631,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "WaveDataset__Contract_Activity_Tracking": {
+            "memberType": "WaveDataset",
+            "serverRevisionCounter": 33336,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Hive_Internal_BA": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 37448,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Subscription_Request__c.Opt_In_Date__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 33629,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Subscription_Request__c.Earliest_Unsubscribe_Date__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 33633,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Subscription_Request__c.Count_Subscribed_Months__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 33635,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Group__eBay_Live_Support_Request_Approver": {
+            "memberType": "Group",
+            "serverRevisionCounter": 35161,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/views/programCouponSeller.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 35884,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Profile__SEP DEV Profile": {
+            "memberType": "Profile",
+            "serverRevisionCounter": 35194,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomSite__SEP_DEV": {
+            "memberType": "CustomSite",
+            "serverRevisionCounter": 35451,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "NetworkBranding__cbSEP_DEV": {
+            "memberType": "NetworkBranding",
+            "serverRevisionCounter": 35197,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "NavigationMenu__Default_Navigation6": {
+            "memberType": "NavigationMenu",
+            "serverRevisionCounter": 35449,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Default6": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 35201,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Network__SEP DEV": {
+            "memberType": "Network",
+            "serverRevisionCounter": 35204,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__SEP_DEV1": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 62570,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__eBay_Live_Activation_Request_Record_Page": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 57753,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__SEP_DEV1/config/sEPDEV.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 35422,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Program_Coupon": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 35627,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "StaticResource__SNA_fLhaP_sf_default_cdn_SEP_DEV1": {
+            "memberType": "StaticResource",
+            "serverRevisionCounter": 35450,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__AU_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36651,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Program_Coupon_Seller": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 35891,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/config/eBaySellerPortal.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 35640,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/views/couponSellerDetail1.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 35873,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/variations/couponSellerDetailProgramCouponSellerPage.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 35879,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "QuickAction__Opportunity.Test": {
+            "memberType": "QuickAction",
+            "serverRevisionCounter": 35892,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "QuickAction__Opportunity.Fields_Opportunity_Support_Request": {
+            "memberType": "QuickAction",
+            "serverRevisionCounter": 39401,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/views/programCouponSellerDetail.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 36069,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Excel_Importer_Template__mdt.MainTitle__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 36087,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomPermission__Coupons_Price_Take_Over_Manager": {
+            "memberType": "CustomPermission",
+            "serverRevisionCounter": 36079,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__AU_Deals1_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36098,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__eBay_Live_Activation_Request_Submission": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 52536,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Group__DE_Seller_Portal": {
+            "memberType": "Group",
+            "serverRevisionCounter": 37467,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__AU_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36650,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Coupons_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36656,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__DE_Account_Manager_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36657,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__DE_Coupons_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36658,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__DE_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36659,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__DE_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36660,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__DE_Portal_Seller_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36661,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Deals_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36662,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Deals_Full_Access_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36663,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Deals_or_Coupons_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36664,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__FR_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36665,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__FR_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36666,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Global_Search_Coupons_Only_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36667,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Global_Search_Deals_Only_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36668,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Global_Search_Deals_and_Coupons_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36669,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Has_Activity_Access_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36670,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Has_Feature_Access1_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36671,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__IT_Account_Manager_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36672,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__IT_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36673,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__IT_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36674,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Linked_Accounts_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36675,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Manage_Users_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36676,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Account_Manager_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36677,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Coupons_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36678,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36679,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36680,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Portal_Seller_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36681,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Promotions_Manager_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36682,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__No_Feature_Access_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36683,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Program_Coupon_Seller_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36684,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__Subsidize_Deal_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36685,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__System_Administrator_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36686,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__UK_Account_Manager_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36687,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__UK_Domain_Authenticated_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36688,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__UK_Domain_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36689,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__IT_Deals_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36690,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Audience__NA_Sub_Deal_DEV": {
+            "memberType": "Audience",
+            "serverRevisionCounter": 36691,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__BoBSellerTriggerHandler": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 37085,
+            "lastRetrievedFromServer": 37085,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgram": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59276,
+            "lastRetrievedFromServer": 37870,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgram/paidProgram.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59277,
+            "lastRetrievedFromServer": 37871,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgram/paidProgram.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59278,
+            "lastRetrievedFromServer": 37872,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgram/paidProgram.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59279,
+            "lastRetrievedFromServer": 37873,
+            "isNameObsolete": false
+        },
+        "RecordType__Account.EBH_Seller": {
+            "memberType": "RecordType",
+            "serverRevisionCounter": 37465,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Account.Managed_Type__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 37466,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcAccountManagement": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59411,
+            "lastRetrievedFromServer": 37625,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcAccountManagement/lwcAccountManagement.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59412,
+            "lastRetrievedFromServer": 37626,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcAccountManagement/lwcAccountManagement.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59413,
+            "lastRetrievedFromServer": 37627,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcAccountManagement/lwcAccountManagement.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59414,
+            "lastRetrievedFromServer": 37628,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcAccountManagement/lwcAccountManagement.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59415,
+            "lastRetrievedFromServer": 37629,
+            "isNameObsolete": false
+        },
+        "CustomMetadata__Seller_Portal_Setting.Eligible_for_Paid_Program": {
+            "memberType": "CustomMetadata",
+            "serverRevisionCounter": 42732,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__AccountManagementController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 59401,
+            "lastRetrievedFromServer": 37857,
+            "isNameObsolete": false
+        },
+        "ApexClass__PaidProgramController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 59270,
+            "lastRetrievedFromServer": 37875,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Seller_Portal_DE": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 62550,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Seller_Portal_NA": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 62549,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Standard_User_NA_Additions": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 49314,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Promotions_User_US_Deals": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 49315,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExternalClientApplication__AccelQEC": {
+            "memberType": "ExternalClientApplication",
+            "serverRevisionCounter": 37895,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExtlClntAppConfigurablePolicies__AccelQEC_plcy": {
+            "memberType": "ExtlClntAppConfigurablePolicies",
+            "serverRevisionCounter": 37896,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExtlClntAppOauthSettings__AccelQEC_oauth": {
+            "memberType": "ExtlClntAppOauthSettings",
+            "serverRevisionCounter": 37897,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExtlClntAppGlobalOauthSettings__AccelQEC_glbloauth": {
+            "memberType": "ExtlClntAppGlobalOauthSettings",
+            "serverRevisionCounter": 37898,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExtlClntAppOauthConfigurablePolicies__AccelQEC_oauthPlcy": {
+            "memberType": "ExtlClntAppOauthConfigurablePolicies",
+            "serverRevisionCounter": 37899,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.Notes_for_Onboarding_Team__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 39897,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "PermissionSet__API_ACCELQ": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54032,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opptys": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54279,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Activities": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54280,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opp_with_without_Ad_Product": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54281,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Customers_with_or_without_Opp": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54282,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Customers_with_or_without_Opportunities": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54283,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Ad_Revenue_Monthly": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54284,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Accounts_with_Opps_Ad_Products_RSM": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54285,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Ad_Products_with_Ad_Revenue_Monthly": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54286,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Ad_Products_and_Ad_Rev_Daily": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54287,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__X1Opportunity_with_Actualized_Revenue": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54288,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Customers": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54289,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunity_with_IO_Revenue_Schedule": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54290,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Quotes_with_Opportunities": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54291,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Ad_Product_and_Quote_Line_Item": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54292,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_AdRev_Daily_and_Products": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54293,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_AdRev_Monthly_and_Products": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54294,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__EU_Ads_Opportunity_Ad_Product_Revenue": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54295,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunity_w_Daily_Revenue_Schedules": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54296,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Products": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54297,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Contact_Roles": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54298,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Seller_Account_with_Opportunities": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54299,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ReportType__Opportunities_with_Historical_Trending": {
+            "memberType": "ReportType",
+            "serverRevisionCounter": 54300,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__eBay_Seller_Portal1/views/dEHome.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 49344,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceResource__SEP_DEV1/views/accountManagement.json": {
+            "memberType": "ExperienceResource",
+            "serverRevisionCounter": 51387,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Contract_Record_Trigger_flow_Before_Update": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 40894,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Support_Request__c.Notes_for_Onboarding_Team__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 39907,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramUnscubscribeDraft": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59271,
+            "lastRetrievedFromServer": 41682,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramUnscubscribeDraft/paidProgramUnscubscribeDraft.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59272,
+            "lastRetrievedFromServer": 41683,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramUnscubscribeDraft/paidProgramUnscubscribeDraft.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59273,
+            "lastRetrievedFromServer": 41684,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramUnscubscribeDraft/paidProgramUnscubscribeDraft.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59274,
+            "lastRetrievedFromServer": 41685,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Project_eBay_Live_Onboarding": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 58632,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__Coupon_Templates/DE_Master_Coupon_Agreement_Contract_SEP": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 42750,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__EBH_Project__c.Comments_Questions__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 42092,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcViewPortalUserMessage": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 42100,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcViewPortalUserMessage/lwcViewPortalUserMessage.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 42101,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcViewPortalUserMessage/lwcViewPortalUserMessage.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 42102,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcViewPortalUserMessage/lwcViewPortalUserMessage.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 42103,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcViewPortalUserMessage/lwcViewPortalUserMessage.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 42104,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplateFolder__UKPaidPrograms": {
+            "memberType": "EmailTemplateFolder",
+            "serverRevisionCounter": 60007,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "LightningComponentResource__paidProgramUnscubscribeDraft/paidProgramUnscubscribeDraft.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59275,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__AccountManagementControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 54721,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__UKPaidPrograms/Cancellation_of_an_eBay_Account_Management_subscription_1767863450804": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 60005,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplate__UKPaidPrograms/Downgrade_of_an_eBay_Account_Management_Premium_subscription_1767864792238": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 60004,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplate__UKPaidPrograms/Upgrade_of_an_eBay_Account_Management_Plus_subscription_1767864392015": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 60006,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "ApexClass__CreatePortalUserMessageController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 50196,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Unsubscribe_PastOrToday": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 59246,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgram/paidProgram.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 43163,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Unsubscribe_Confirmed": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 59211,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramAccountManager": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59420,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramAccountManager/paidProgramAccountManager.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59421,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramAccountManager/paidProgramAccountManager.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59422,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramAccountManager/paidProgramAccountManager.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59423,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Unsubscribe_InProgress": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 43204,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramTier1": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 54792,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier1/paidProgramTier1.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54793,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier1/paidProgramTier1.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54794,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier1/paidProgramTier1.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54795,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier1/paidProgramTier1.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54796,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Unsubscribe_Future": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 43205,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__proTraderCommonCSS": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 51000,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__proTraderCommonCSS/proTraderCommonCSS.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 51001,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__proTraderCommonCSS/proTraderCommonCSS.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 51002,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__customLabels": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59438,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__customLabels/customLabels.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59439,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__customLabels/customLabels.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59440,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__customLabels/customLabels.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59441,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.AccountId": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 43300,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier1_Header": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 48786,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Opportunity-Certilogo Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 48347,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Tier1_Welcome_Text": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 59428,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramParentDraft": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 58100,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "LightningComponentResource__paidProgramParentDraft/paidProgramParentDraft.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54369,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramParentDraft/paidProgramParentDraft.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54370,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramParentDraft/paidProgramParentDraft.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54371,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Opportunity-Certilogo Contract Opportunity2": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 43482,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "Layout__Opportunity-Certilogo Contract Opportunity3": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 43462,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Title_YourManager": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 43526,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Title_YourAccountManager": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 43525,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramParentDraft/paidProgramParentDraft.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54372,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier1_YourSupportLevel": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 54649,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PathAssistant__Opportunity": {
+            "memberType": "PathAssistant",
+            "serverRevisionCounter": 43819,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PathAssistant__Opportunity_Certilogo_Contract": {
+            "memberType": "PathAssistant",
+            "serverRevisionCounter": 43868,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Tier1_Section_Title": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 48999,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "ReportFolder__CRM_180925_Sample_Sales_Reports": {
+            "memberType": "ReportFolder",
+            "serverRevisionCounter": 43904,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "DashboardFolder__CRM_180925_HVS_Sample_Dashboard_Folder": {
+            "memberType": "DashboardFolder",
+            "serverRevisionCounter": 43905,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__EmailMessage-Email Message Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 43844,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "BusinessProcess__Opportunity.testSalesProcess": {
+            "memberType": "BusinessProcess",
+            "serverRevisionCounter": 43867,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "AuthProvider__Microsoft_Glean_Auth": {
+            "memberType": "AuthProvider",
+            "serverRevisionCounter": 43869,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Sales_UtilityBar": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 43932,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomApplication__standard__LightningSales": {
+            "memberType": "CustomApplication",
+            "serverRevisionCounter": 43934,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Certilogo_Order_Opportunity": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 48995,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__chatGleanCmp": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 48544,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__chatGleanCmp/chatGleanCmp.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 48545,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__chatGleanCmp/chatGleanCmp.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 48546,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__chatGleanCmp/chatGleanCmp.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 48547,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__chatGleanCmp/chatGleanCmp.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 48548,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__Seller_Growth_Record_Page": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 48346,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplateFolder__SP_PaidProgram_UK": {
+            "memberType": "EmailTemplateFolder",
+            "serverRevisionCounter": 49233,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "RemoteSiteSetting__glean_endpoint": {
+            "memberType": "RemoteSiteSetting",
+            "serverRevisionCounter": 44159,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomField__Opportunity.Contract_Opportunity__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 48559,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomObject__Opportunity": {
+            "memberType": "CustomObject",
+            "serverRevisionCounter": 48558,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__GleanAgent_Config__mdt.Prompts_Id__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 45689,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomMetadata__GleanAgent_Config.Seller_CRM_HIVE_General_Assistant_1_0": {
+            "memberType": "CustomMetadata",
+            "serverRevisionCounter": 45852,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_PremiumService_Title": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 49025,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Opportunity-Certilogo Order Opportunity": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 48362,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_AdsService_Title": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 49014,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Standard_User_Base": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 59268,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier1_AccordionSection_Label": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 49024,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailFolder__SP_PaidProgram": {
+            "memberType": "EmailFolder",
+            "serverRevisionCounter": 49263,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_AdsService_Desc_Part1": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 49046,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplateFolder__SP_PaidProgram": {
+            "memberType": "EmailTemplateFolder",
+            "serverRevisionCounter": 49041,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplate__SP_PaidProgram_UK/PaidProgram_Tier2_AdsService_UK_1767898546950": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 49232,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Tier2_AdsService_Desc": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 52523,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__unfiled$public/PaidProgram_Tier2_AdsService_UK": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 49236,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailFolder__SP_PaidProgram_UK": {
+            "memberType": "EmailFolder",
+            "serverRevisionCounter": 49260,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplate__SP_PaidProgram_UK/PaidProgram_Tier2_AdsService_UK": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 49274,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "EmailTemplate__SP_PaidProgram/PaidProgram_Tier2_AdsService_UK": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 54653,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__SP_PaidProgram/PaidProgram_Tier2_PremiumService_UK": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 54666,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_PermiumService_Desc": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 52607,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "FlexiPage__eBay_Business_Development_Record_Page": {
+            "memberType": "FlexiPage",
+            "serverRevisionCounter": 57575,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "SharingSet__eBay_Seller_Portal_DE": {
+            "memberType": "SharingSet",
+            "serverRevisionCounter": 50186,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.Onboarding_Tier__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 50200,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Layout__Opportunity-eBay Business Development Layout": {
+            "memberType": "Layout",
+            "serverRevisionCounter": 60656,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramDowngrade": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 62557,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramDowngrade/paidProgramDowngrade.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 62558,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramDowngrade/paidProgramDowngrade.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 62559,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramDowngrade/paidProgramDowngrade.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 62560,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramDowngrade/paidProgramDowngrade.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 62561,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__Coupon_Templates/DE_Draft_Master_Coupon_Agreement_Contract_SEP_Download": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 52717,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Program_Coupon_Exclusions_Text": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 60697,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__CouponSellerDetail_TabLabel_Exclusions": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 52594,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__SEPCouponContractDownloadController": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 57587,
+            "lastRetrievedFromServer": 57587,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Btn_Unsubscribe": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 52688,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomMetadata__Excel_Importer_Template.SEP_Upload_ExclusiveCoInvest": {
+            "memberType": "CustomMetadata",
+            "serverRevisionCounter": 60719,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.Breaker_Interest__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 52773,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.Committed_Streaming_Days_Per_Week__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 53081,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Btn_UpgradeNow": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 53382,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.Committed_Streaming_Hours_per_Day__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 53387,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.eBay_IQ__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 53691,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomField__Opportunity.eBay_Live_IQ__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 53975,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Temporary_Banner": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 54667,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__paidProgramTier2": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 54787,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier2/paidProgramTier2.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54788,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier2/paidProgramTier2.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54789,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier2/paidProgramTier2.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54790,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramTier2/paidProgramTier2.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 54791,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_Header": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 54467,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Btn_DowngradeNow": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 54449,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_Welcome_Text": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 59429,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Tier2_YourSupportLevel": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 54651,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__PaidProgramControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 54723,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__paidProgramAccountManager/paidProgramAccountManager.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59424,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__GCX_C": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 59443,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__Survey_Responder1": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 59517,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ExperienceBundle__eBay_Influencer_Partner_Portal1": {
+            "memberType": "ExperienceBundle",
+            "serverRevisionCounter": 59442,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSet__sfdcInternalInt__sfdc_nc_constraints_engine_deploy": {
+            "memberType": "PermissionSet",
+            "serverRevisionCounter": 54861,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__programCouponExclusionUpload": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 61212,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__programCouponExclusionUpload/programCouponExclusionUpload.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 61213,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__programCouponExclusionUpload/programCouponExclusionUpload.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 61214,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__programCouponExclusionUpload/programCouponExclusionUpload.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 61215,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Coupon_Seller_Record_Trigger_Flow_After_Context": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 62512,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__EBH_PricingTriggerHandler": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 56114,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Workflow__Subscription_Request__c": {
+            "memberType": "Workflow",
+            "serverRevisionCounter": 59453,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Subscription_Request_Trigger_After_UK_PaidPrograms": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 57754,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "Queue__DE_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 57088,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__UK_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58104,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__FR_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58088,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__IT_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58103,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__ES_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58128,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__AU_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58144,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Queue__CA_eBay_live_Activation_Request_Queue": {
+            "memberType": "Queue",
+            "serverRevisionCounter": 58147,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__eBay_Live_Onboarding_Approver_Base_Access": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 58165,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Subscription_Request_Record_Trigger_Flow_After_Context": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 60154,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "QuickAction__Opportunity.eBay_Live_Onboarding_Field_for_Project": {
+            "memberType": "QuickAction",
+            "serverRevisionCounter": 58633,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__programCouponExclusionUpload/programCouponExclusionUpload.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 61216,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Project_Record_Create_Update_Assign_Breaker_to_Opp": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 59240,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "PermissionSetGroup__Seller_Portal_AU": {
+            "memberType": "PermissionSetGroup",
+            "serverRevisionCounter": 62548,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__unfiled$public/eBay_Account_Management_Premium_subscription_Downgrade": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 59450,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__unfiled$public/eBay_Account_Management_Plus_subscription_Upgrade": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 59449,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "EmailTemplate__unfiled$public/eBay_Account_Management_subscription_Cancellation": {
+            "memberType": "EmailTemplate",
+            "serverRevisionCounter": 59287,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ConnectedApp__Talend_ETL_Oauth_JWT": {
+            "memberType": "ConnectedApp",
+            "serverRevisionCounter": 59291,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__accountManagementOutage": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59395,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountManagementOutage/accountManagementOutage.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59396,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountManagementOutage/accountManagementOutage.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59397,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountManagementOutage/accountManagementOutage.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59398,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__accountManagementOutage/accountManagementOutage.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59399,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Services_Not_Available": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 59375,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__flowContractUserGuidedPackage": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 59444,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__flowContractUserGuidedPackage/flowContractUserGuidedPackage.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59445,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__flowContractUserGuidedPackage/flowContractUserGuidedPackage.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59446,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__flowContractUserGuidedPackage/flowContractUserGuidedPackage.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59447,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__flowContractUserGuidedPackage/flowContractUserGuidedPackage.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 59448,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentBundle__lwcExcelImporterSEP": {
+            "memberType": "LightningComponentBundle",
+            "serverRevisionCounter": 60687,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterSEP/lwcExcelImporterSEP.css": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 60688,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterSEP/lwcExcelImporterSEP.html": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 60689,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterSEP/lwcExcelImporterSEP.js": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 60690,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "LightningComponentResource__lwcExcelImporterSEP/lwcExcelImporterSEP.js-meta.xml": {
+            "memberType": "LightningComponentResource",
+            "serverRevisionCounter": 60691,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Flow__Contract_FVF_Discount_Approval_Process_US": {
+            "memberType": "Flow",
+            "serverRevisionCounter": 62508,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Program_Coupon_Exclusions_Template_Name": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 60698,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "StaticResource__Manage_Exclusions_Template_SEP_DE": {
+            "memberType": "StaticResource",
+            "serverRevisionCounter": 60722,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ApexClass__SEPCouponControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 60757,
+            "lastRetrievedFromServer": 60757,
+            "isNameObsolete": false
+        },
+        "ApexClass__SEPCouponContractDownloadControllerTest": {
+            "memberType": "ApexClass",
+            "serverRevisionCounter": 62572,
+            "lastRetrievedFromServer": 62572,
+            "isNameObsolete": false
+        },
+        "CustomField__EBH_Project__c.Transitioned_to_eBay_Live_CM__c": {
+            "memberType": "CustomField",
+            "serverRevisionCounter": 60759,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Group__eBay_Live_Pre_Check_US": {
+            "memberType": "Group",
+            "serverRevisionCounter": 61219,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "Group__Legal_Approval_L1_US": {
+            "memberType": "Group",
+            "serverRevisionCounter": 61220,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "ListView__Support_Request__c.DE_eBay_live_Activation_Request_Queue": {
+            "memberType": "ListView",
+            "serverRevisionCounter": 62511,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__Pro_Trader_Premium_Tittle": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62514,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Downgrade_Tittle": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62517,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62552,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": true
+        },
+        "CustomLabel__PaidProgram_Downgrade_Error_Message": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62553,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Downgrade_Thinking_of_Downgrading": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62555,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        },
+        "CustomLabel__PaidProgram_Downgrade_Confirmation_Message": {
+            "memberType": "CustomLabel",
+            "serverRevisionCounter": 62556,
+            "lastRetrievedFromServer": null,
+            "isNameObsolete": false
+        }
+    }
+}

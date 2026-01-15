@@ -1,0 +1,15 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+    <div>
+        <c-confirm-dialog is-show={showConfirmDialog} is-show-confirm={isShowConfirmButton} title={labels.Deal_Confirmation} message={msgPopUp} cancel-label={labels.lwcCancelbtn} confirm-label={labels.MgUser_Confirm}  onconfirm={onActionHandler} oncancel={onActionHandler}></c-confirm-dialog>
+        <div if:true={isShowImportCmp}>
+           <c-lwc-excel-importer 
+                template-name={templateName} 
+                redirect-obj-id={parentId} 
+                parent-id={parentId} 
+                is-from-ltng-cmp=false 
+                onhandlegoback={doGoBack}
+            ></c-lwc-excel-importer>
+        </div>
+    </div>
+</template>

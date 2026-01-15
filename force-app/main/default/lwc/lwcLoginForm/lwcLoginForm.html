@@ -1,0 +1,81 @@
+<template>
+    <template if:true={isCalloutDone}>
+        <div class="clt-loginFormHeader">
+            {lblSellerPortal} <!-- {!$Label.c.SellerPortalLabel} -->
+        </div>
+        <!-- <template if:true={isDomainDE}> -->
+        <template if:true={isDomainEU}>
+            <div class="slds-col slds-var-p-top_small">
+                {lblContinue_with_eBay_login} <!-- {Labels.Continue_with_eBay_login}  -->
+            </div>
+    
+            <div class="slds-var-p-around_x-small p-l-r-0">
+                <button class="slds-button slds-button_brand" style="display: block; width: 100%;" onclick={loginClick}>{lbleBay_Login}</button> <!--{Labels.eBay_Login}-->
+            </div> 
+    
+            <div class="slds-col slds-var-p-top_small">
+                <div class="separator">
+                    <div class="line"></div>
+                    <span>{lblOr} <!-- {Labels.lbl_Or}  --></span>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </template>
+
+        <div if:false={loginCheck}>
+            <div class="slds-var-p-around_x-small">
+                <button class="slds-button slds-button_brand" onclick={loginClick}>{lbleBay_Login}</button> <!--{Labels.eBay_Login}-->
+            </div> 
+        </div>
+
+        <div class="main-container slds-grid slds-grid_vertical">
+            <div if:false={loginCheck}> 
+                <div class="slds-col slds-var-p-top_small">
+                    {lblContinue_with_eBay_login} <!-- {Labels.Continue_with_eBay_login}  -->
+                </div>
+                <div class="slds-col slds-var-p-top_small">
+                    {lblOr} <!-- {Labels.lbl_Or}  -->
+                </div>
+            </div>
+    
+            <div class="slds-col slds-var-p-top_small">
+                <a class={lblloginClass} onclick={Login}>{lbllogin_diff}</a> <!-- {Labels.login_diff} -->
+            </div>
+            <div class=slds-col>
+                <template if:true={errorCheck}>
+                    <div class="error slds-var-p-around_x-small slds-var-p-top_small" style=" color: #ff9e9e;" role="alert">
+                        <!-- <span>{errorMessage}</span> -->
+                        <lightning-formatted-rich-text value={errorMessage}></lightning-formatted-rich-text>
+                    </div>
+                </template>
+            </div>
+            <div if:true={loginCheck}>
+                <div class="slds-col slds-var-p-top_small">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:user" alternative-text="username"
+                                size="x-small" s="slds-icon-utility-user input-icon slds-icon_container" style="position: absolute;top: 17px;left: 13px;"></lightning-icon>
+                            <input type="text" data-id="inputUsername" placeholder={lbllogin_username} style="padding: 25px 60px;font-size: 18px;" class="slds-input input-element" onchange={handleUserNameChange} onkeydown={handleEnterKey} required />
+                            <!-- {Labels.login_username} -->
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-var-p-top_small">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:lock" alternative-text="username" s="slds-icon-utility-user input-icon slds-icon_container" style="position: absolute;top: 17px;left: 13px;" size="x-small"></lightning-icon>
+                            <input type="password" data-id="inputPassword" placeholder={lbllogin_pwd} style="padding: 25px 60px;font-size: 18px;"  class="slds-input input-element" oninput={handlePasswordChange} onkeydown={handleEnterKey} required />
+                            <!-- {Labels.login_pwd} -->
+                        </div>
+                    </div>
+                </div> 
+                <div class="slds-col slds-var-p-top_small">
+                    <button type="submit" class="login-button slds-button" onclick={handleLogin} style=" padding: 13px; background: #199fdb;color: #fff;font-size: 18px; display: block; width: 100%;">{lbllogin_btn}</button> <!-- {Labels.login_btn} -->
+                </div>
+                <div class="slds-col slds-var-p-top_small">
+                    <a href={forgetPassUrl} class="forgot-password-text">{lbllogin_forgot_pwd}</a> <!--{Labels.login_forgot_pwd}-->
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

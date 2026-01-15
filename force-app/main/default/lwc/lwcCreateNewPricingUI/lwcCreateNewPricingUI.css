@@ -1,0 +1,141 @@
+.progress-bar {
+    margin-top: 15px;
+}
+.main-body .slds-grid_align-center {
+    text-align: center;
+}
+.main-body .body-headerling {
+    border-bottom: 1px solid #aaa8a8;
+    padding-bottom: 15px;;
+} 
+.main-body .body-headerling h1 {
+    font-size: 16px;
+    font-weight: 400;
+}
+.site-selection{
+    width: 250px;
+}
+.category-list {
+    margin-bottom: 15px;
+}
+.search-category{
+    margin-bottom: 10px;
+
+}
+.remove-btn {
+    margin-top: 20px;
+}
+.right-align {
+    text-align: right;
+}
+.fvf-container {
+    padding-top: 15px;
+    margin-bottom: 25px;
+}
+.fvf-container .slds-table {
+    background-color: rgb(0 0 0 / 2%);
+    border-radius: 5px;
+}
+.grey-color {
+    color:gray;
+}
+.black-color {
+    color:black;
+}
+.red-color {
+    color:red;
+}
+.padding-left{
+    padding-left: 15px;
+}
+.step-header {
+    padding:15px;
+    text-align: center;
+}
+.step-header h2 {
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+.title-header {
+    background-color: rgb(0 0 0 / 6%);
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.height-200 {
+    height: 200px;
+}
+.slds-card .slds-card__header {
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+.fee-type-container .slds-card .slds-card__header {
+    padding: 0px;
+}
+.features-category,
+.search-contract-category {
+    padding: 0px;
+}
+.store-subscription {
+    padding: 5px 15px;
+}
+.fee-type-container {
+    padding: 25px;
+    border: 1px solid #afafafb3;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.define-tiers-container .slds-size_3-of-12,
+.define-tiers-container .slds-size_2-of-12,
+.define-fvf .slds-size_4-of-12{
+    padding: 15px;
+}
+.define-tiers-container .tbl-data {
+    border: 1px solid #80808024;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.define-tiers-container table tr td {
+    width: 25%;
+}
+.define-tiers-container .casecade-btn{
+    padding-top: 15px;
+}
+.casecade-btn lightning-button {
+    margin: 0px;
+}
+.td-btn:has(.casecade-btn) {
+    padding-top: 52px;
+}
+.header-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+.help-text {
+    padding: 15px;
+}
+.tbl-cpm tr td {
+    width: 16.66%;
+}
+.empty-text {
+    padding: 15px;
+    margin-left: 80px;
+}
+.help-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+
+.hide-table {
+    display: none;
+}
+.body-header-amendment {
+    color: rgb(1, 118, 211); 
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    padding-top: 13px;
+}

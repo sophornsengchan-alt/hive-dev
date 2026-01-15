@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Main Text" name="mainTextDeal" type="String" default="(s) available for review"/>
+            <property label="URL" name="customURL" type="String" default=""/>
+            <property label="Last N Day " name="lastNday" type="String" default="5"/>
+            <property label="Object API Name" name="objectName" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

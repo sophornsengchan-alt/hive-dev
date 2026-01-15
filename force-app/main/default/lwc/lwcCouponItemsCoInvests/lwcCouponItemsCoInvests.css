@@ -1,0 +1,30 @@
+.cls-button-area {
+    text-align: right;
+    margin-right: -15px;
+}
+
+.cls_disableButton {
+    background-color: #c5c5c5 !important;
+    color: #fbfbfb !important;
+    border-color: #c5c5c5 !important;
+}
+
+.paddedCard{
+    padding-left:15px;
+    padding-right:15px;
+    box-shadow:0px 2px 4px rgba(0,0,0,0.3);
+    font-size: 14px;
+}
+.download-btn lightning-icon{
+    padding-right: 5px;
+}
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.btn-left{
+    padding-top: 15px;
+}

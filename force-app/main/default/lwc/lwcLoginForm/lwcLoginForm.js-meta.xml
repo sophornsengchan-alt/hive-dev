@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Different Account Label" name="diffacmsg" type="String" default="Login with a Different Account"/>
+            <property label="User Name Place Holder" name="usernameplaceholder" type="String" default="Username"/>
+            <property label="Password Place Holder" name="passwordplaceholder" type="String" default="Password"/>
+            <property label="Button Label" name="buttonlabel" type="String" default="Log In"/>
+            <property label="Forgot Password Label" name="forgotpasswordlabel" type="String" default="Forgot your password?"/>
+            <property label="Forgot Password Url" name="forgotpassworurl" type="String" default="https://sepdev-hive-partner.cs28.force.com/s/login/ForgotPassword"/>
+            <!-- <property label="Message No Record" name="messageNoRecord" type="String" default=""/> -->
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

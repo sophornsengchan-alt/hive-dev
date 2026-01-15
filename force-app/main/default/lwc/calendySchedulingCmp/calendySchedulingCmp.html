@@ -1,0 +1,22 @@
+<template>    
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <template if:true={isLoading}>
+            <lightning-spinner variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <div class="slds-modal__container"> 
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleCalendlyModalClose}>
+                <lightning-icon icon-name="utility:close" alternative-text="close!" title="close"></lightning-icon>
+                <span class="slds-assistive-text">Cancel and close</span>
+            </button>  
+            
+            <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+                <div style={_containerStyles} class="slds-align_absolute-center video-container">
+                    <iframe src={_url} onload={onLoad} frameborder="0" width="1100" height="650"></iframe>
+                </div>
+            </div>     
+           
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+  </template>

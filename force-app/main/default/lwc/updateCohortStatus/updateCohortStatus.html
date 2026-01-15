@@ -1,0 +1,82 @@
+<template>
+    <div class="slds-is-relative">
+
+        <template if:true={isReady}>
+
+          <template if:false={isBatchRunning}>
+
+            <template if:true={isChooseStatus}>
+
+              <lightning-spinner if:true={showSpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+
+              <lightning-quick-action-panel header={Labels.Update_Cohort_Status}>
+
+                  <fieldset class="slds-form-element">
+                    <legend class="slds-form-element__legend slds-form-element__label slds-text-heading_small slds-m-bottom_x-small">{Labels.Choose_Status}</legend>
+                    <div class="slds-form-element__control">
+                      <template for:each={listStatusOption} for:item="option">
+                        <span class="slds-radio slds-m-bottom_small" key={option.key}>
+                          <input type="radio" id={option.key} value={option.value} name={option.key} checked={option.checked} onclick={handleChangeStatus}/>
+                          <label class="slds-radio__label" for={option.key}>
+                            <span class="slds-radio_faux"></span>
+                            <span class="slds-form-element__label">{option.label}</span>
+                          </label>
+                          <div class="slds-m-top_xx-small slds-m-left_large">
+                            <span><lightning-formatted-rich-text value={option.desc}></lightning-formatted-rich-text></span>
+                          </div>
+                        </span>
+                      </template>
+                    </div>
+                  </fieldset>
+
+                  <div slot="footer">
+                      <lightning-button variant="neutral" label={Labels.Cancel} onclick={handleClose}></lightning-button> 
+                      <lightning-button variant="brand" class="slds-m-left_x-small" label={Labels.Next} type="submit" onclick={handleNext}></lightning-button>
+                  </div>
+
+              </lightning-quick-action-panel>
+  
+            </template>
+  
+            <template if:true={isActivateCohort}>
+                <c-cohort-activation record-id={recordId} bob={bob} is-pro-trader={isProTrader} from-activate-cohort={fromCohort} onchoosestatus={handleChooseStatus}></c-cohort-activation>
+            </template>
+
+            <template if:true={isDeactivateCohort}>
+                <c-cohort-deactivation record-id={recordId} bob={bob} is-pro-trader={isProTrader} from-deactivate-cohort={fromCohort} onchoosestatus={handleChooseStatus}></c-cohort-deactivation>
+            </template>
+
+          </template>
+
+          <template if:true={isBatchRunning}>
+
+            <lightning-quick-action-panel header={Labels.Update_Cohort_Status}>
+
+              <c-cohort-action cohort-id={bob.Id} from-cohort={fromCohort}></c-cohort-action>
+              <div slot="footer">
+
+                <div class="slds-show_inline-block slds-text-align_center closeModalContainser">
+                  <span>{Labels.Close_Modal_When_BatchCohortAction_Running}</span>
+               </div>
+               <div class="slds-show_inline-block">
+                   <lightning-button variant="brand" class="slds-m-left_x-small" label={Labels.Close} type="submit" onclick={handleClose}></lightning-button>
+               </div>
+
+              </div>
+
+            </lightning-quick-action-panel>
+
+          
+          </template>
+
+
+
+        </template>
+
+
+        
+
+    </div>
+
+    
+</template>

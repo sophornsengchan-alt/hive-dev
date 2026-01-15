@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <lightning-card title="Invite Seller" icon-name="custom:custom5">
+            <div class="slds-text-align--center">
+                <c-lwc-message ></c-lwc-message>
+            </div>
+            <div class="slds-box slds-m-around_medium">
+                    <c-lwc-loading if:true={showSpinner} message="Processing..."></c-lwc-loading>
+
+                <div if:false={hasError} class="slds-p-around_medium slds-p-top--none">
+                    <div class="">
+                        <p>
+                            <lightning-formatted-rich-text value={labels.InitiateSubDealDCADetail_ConfirmMsg}></lightning-formatted-rich-text>
+                        </p>                       
+                     </div>
+                     <div class="slds-m-top--large slds-p-bottom--x-small slds-p-top--x-small">
+                        <lightning-input type="checkbox" label="Don't notify Seller" name="chkSend" onchange={handleChkSendChanged}></lightning-input>
+                     </div>
+                </div>
+              
+                <div  slot="footer" class="footer">
+                    <div class="slds-m-around_medium">
+                        <lightning-button label={cancelButtonLabel} onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+                        <lightning-button label="Confirm" variant="brand" onclick={handleOK} class="slds-m-left_x-small" if:false={processComplete}></lightning-button>
+                    </div>
+                </div>
+            </div>
+            
+        </lightning-card>
+          
+    </div>
+</template>

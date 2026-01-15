@@ -1,0 +1,42 @@
+<template>
+    
+    <!-- For Excel Importer Version 2-->
+    <template if:true={isExcelImporterV2}>
+        <div class="stepper-wrapper small-size excelImporter">
+            <div class="stepper-item current-step">
+                <div class="step-counter">1</div>
+                <div class="step-name">{Labels.lblStep1}</div>
+            </div>
+            <div class="stepper-item">
+                <div class="step-counter">2</div>
+                <div class="step-name">{Labels.lblStep2}</div>
+            </div>
+            <div class="stepper-item">
+                <div class="step-counter">3</div>
+                <div class="step-name">{Labels.lblStep3}</div>
+            </div>
+            <div class="stepper-item">
+                <div class="step-counter">4</div>
+                <div class="step-name">{Labels.lblStep4}</div>
+            </div>
+        </div>
+    </template>
+
+    <template if:false={isExcelImporterV2}>
+        <div class="stepper-wrapper">
+            <div class="stepper-item active">
+                <div class="step-counter">1</div>
+                <div class="step-name">{Labels.upload}</div>
+            </div>
+            <div class="stepper-item">
+                <div class="step-counter">2</div>
+                <div class="step-name">{Labels.preview}</div>
+            </div>
+            <div class="stepper-item">
+                <div class="step-counter">3</div>
+                <div class="step-name">{Labels.submit}</div>
+            </div>
+        </div>
+    </template>
+    
+</template>

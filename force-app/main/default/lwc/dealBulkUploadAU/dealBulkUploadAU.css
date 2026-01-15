@@ -1,0 +1,102 @@
+.cls_content {
+    float: none;
+    clear: both;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+.cls_contentWrapper {
+    border: 1px solid #e9ecee;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.cls_displayfileName {
+    width: 100%;
+    float: left;
+}
+
+.cls_tableWrapper {
+    float: left; 
+    width: 100%; 
+    overflow-x: auto;
+}
+.cls_disableButton {
+    background-color: #c5c5c5 !important;
+    color: #fbfbfb !important;
+    border-color: #c5c5c5 !important;
+}
+
+.cls_message-info {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.cls_message-error{
+    background-color: #fff2f2;
+    color: red;
+    width: 100%;
+}
+.cls_message-success{
+    background-color: #e7fbee;
+    color: #00ad0d;
+}
+
+.hide{
+    display: none;
+}
+.cls_span {
+    width: 100%;
+    float: left;
+}
+
+.cls_float-left {
+    float: left;
+}
+.cls_margin-right {
+    margin-right: 10px !important;
+}
+.cls_padding-zero {
+    padding-left: 0;
+    padding-right: 0;
+}
+.slds-grid.slds-grid_align-center {
+    justify-content: left; 
+}
+/* Tooltip container */
+.tooltip {
+    position: relative;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #032e61;
+    color: #fff;
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    left: 60px;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #032e61 transparent transparent transparent;
+}

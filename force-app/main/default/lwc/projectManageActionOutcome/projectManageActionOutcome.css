@@ -1,0 +1,18 @@
+/* Project Manage Action Outcome Component Styles */
+.slds-modal_custom-size {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.action-table-container {
+    min-height: 300px;
+}
+
+.no-actions-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.modal-content-padding {
+    padding: 1rem;
+}

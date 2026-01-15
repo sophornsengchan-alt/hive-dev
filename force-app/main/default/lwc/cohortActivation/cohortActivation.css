@@ -1,0 +1,12 @@
+.listTableContainer{
+    height:270px
+}
+
+.closeModalContainser{
+    width: 80%;
+}
+
+.loadingIcon{
+    margin-left: 5px; 
+    margin-bottom: 5px;
+}

@@ -1,0 +1,22 @@
+.h100p
+{
+  height: 100%;
+}
+.panelH
+{
+  height: 82vh;
+}
+.force-menu-drop
+{
+  display: contents;
+}
+.lift-up{
+  margin-top: -40px;
+}
+.card-body-lift-up{
+  margin-top: -14px;
+  margin-bottom: 0px;
+}
+.view-panel-btns{
+  --slds-c-button-line-height: 22px;
+}

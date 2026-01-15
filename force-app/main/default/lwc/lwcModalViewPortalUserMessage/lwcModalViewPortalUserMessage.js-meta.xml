@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Modal Title" name="modalTitle" type="String" default="Agreement"/>
+            <property label="Label Accept" name="labelAcceptAgreement" type="String" default="I Understand"/>
+            <property label="Label Leave" name="labelLeave" type="String" default="Leave"/>           
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

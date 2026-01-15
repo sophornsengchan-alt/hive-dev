@@ -1,0 +1,43 @@
+<template>
+    <div class="row slds-p-vertical_x-large">
+        <div class="col-12 col-lg-10 offset-lg-1 mt-5">
+            <h4 class="title-24 mb-4 text-center">{label.Pro_Trader_Your_Booked_calls}</h4>
+            <div class="box-border-3665F3 mb-4" if:true={noEventDataAvailable}>
+                <div class="row">
+                    <div class="col-12 col-md-5 d-flex align-items-center">
+                        <p class="text-14">{label.Pro_Trader_No_calls_scheduled}</p>
+                    </div>
+                    <div class="col-12 col-md-7 d-flex align-items-center justify-content-start justify-content-md-end mt-3 mt-md-0">
+                        <a onclick={handleBookFirstCall} class="btn font-bold btn-white slds-text-align_center">{label.Pro_Trader_Book_your_first_call}</a>
+                    </div>
+                </div>
+            </div>
+
+            <template for:each={userEventDetails} for:item="cell" if:false={noEventDataAvailable}>
+                <div class={cell.calendlyCallsBackgroundStyle} key={cell.Id}>
+                    <div class="row">
+                        <div class="col-12 col-md-5 d-flex align-items-start justify-content-center flex-column">
+                            <p class="text-14 fw-bold">{cell.userName}</p>
+                            <p class="text-14">{cell.Subject}</p>
+                        </div>
+                        <div class="col-12 col-md-3 d-flex align-items-center">
+                            <p class="text-14 fw-bold color-3665F3 mt-3 mt-md-0">{cell.eventStartTime}</p>
+                        </div>
+                        <div class="col-12 col-md-4 d-flex align-items-start align-items-md-end justify-content-start justify-content-lg-end  flex-column mt-3 mt-md-0">
+                            <a data-id={cell.rescheduleLink} if:true={cell.showRescheduleCancelButton} class="slds-text-align_center btn btn-dark-blu font-bold" onclick={handleRescheduleClick}>{label.ProTrader_Reschedule}</a> 
+                            <a data-id={cell.cancelLink} if:true={cell.showRescheduleCancelButton} class="slds-text-align_center btn btn-light-blu mt-3 font-bold" onclick={handleCancelClick}>{label.ProTrader_Cancel}</a>
+                        </div>
+                    </div>
+                </div>  
+            </template>
+
+            <c-calendy-scheduling-cmp  if:true={showCalendlyModal} oncalendlyeventscheduled={handleCalendlyEventScheduled} 
+                    oncalendlymodalclose={handleCalendlyModalClose} calendly-link={calendlyLink} 
+                    email={currentUser.Contact.Email} name={currentUser.Contact.Name} custom-answer1={cohortSellerDetails.cohortSellerParentSellerName} 
+                    custom-answer2={currentUser.Contact.Phone} utm-campaign={utmCampaign} utm-content={cohortSellerId}
+                    utm-source={currentUser.Id} utm-term={currentUser.ContactId} >
+                </c-calendy-scheduling-cmp>
+
+        </div>
+    </div>
+</template>

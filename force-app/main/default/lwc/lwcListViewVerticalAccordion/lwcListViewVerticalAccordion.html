@@ -1,0 +1,67 @@
+<template>
+    <div class="cls_wrapper" style="min-height:65px;">
+        
+        <div class="cls_search" >
+            <lightning-input
+                onchange={handleKeyChange}
+                name="enter-search"
+                type="search"
+            ></lightning-input>
+        </div>
+        <div class="cls_sortField">
+            <!--<lightning-combobox name="progress" value={sortField} options={sortFieldsOpt} onchange={handleOptChange}>
+            </lightning-combobox>-->
+            <!--<select class="cls_selectOpt" name="sortField" onchange={handleOptChange}>
+                <template for:each={sortFieldsOpt} for:item="opt">
+                    <option key={opt.value} value={opt.value}> {opt.label} </option>
+                </template>
+            </select>-->
+
+            <lightning-combobox
+            name="progress"
+            value={sortField}
+            options={sortFieldsOpt}
+            onchange={handleOptChange} ></lightning-combobox>
+
+        </div>
+        
+    </div>
+    <div class="cls_wrapper">
+        <template if:true={isHasRecord}>
+        
+            <div class="itemList">
+                <template for:each={displayRecords} for:item="item">
+                        <!--<c-lwc-display-list-view-item key={item.id} item={item} highlight-fields={displayHighlightFields} detail-fields={displayDetailFields} oncallupdatecheckbox={updateCheckBox} ></c-lwc-display-list-view-item>-->
+                        <c-lwc-vertical-accordion-item key={item.id} item={item} highlight-fields={displayHighlightFields} profile-hidden-btn-single-deal={profileHiddenBtnSingleDeal} user-profile={userProfile} user-sep-domain={userSEPDomain} sep-domain-hidden-btn-single-deal={sepDomainHiddenBtnSingleDeal} label-btn-single-deal={labelBtnSingleDeal} label-btn-multiple-deals={labelBtnMultipleDeals}></c-lwc-vertical-accordion-item>
+                </template>
+            </div>
+                
+                
+        
+            <div class="pagination">
+    
+                <ul class="paginationList">
+                    <li>
+                        <a onclick={onPrevPage} ><lightning-icon icon-name="utility:chevronleft" size="x-small" ></lightning-icon> {label.Prev}</a>
+                    </li>
+                    <template for:each={displayPagination} for:item="page">
+                        <li key={page.value} class={page.clsActive}>
+                            <a onclick={onChangePage} data-id={page.value} >{page.value}</a> 
+                        </li>
+                    </template>
+                    <li>
+                        <a onclick={onNextPage} >{label.Next}<lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon></a>
+                    </li>
+                </ul>
+            </div>
+           
+            
+        </template>
+    
+        <template if:false={isHasRecord}>
+            <p>{messageNoRecord}</p>  
+              
+        </template>
+    </div>
+    
+</template>
