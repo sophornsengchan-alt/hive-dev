@@ -49,7 +49,14 @@ private  class SEPCouponContractDownloadControllerTest {
         Contact con = [SELECT Id,Email FROM Contact WHERE FirstName='test fn' AND LastName='test ln' limit 1];
 
         User user1 = SEPTestGenerator.createSEPUser('sepUsersccdc1', con.Id);
-                SEPTestGenerator.assignPermissionSetGroupToUser('Seller_Portal_NA', user1.Id);
+                    //  SEPTestGenerator.assignPermissionSetGroupToUser('Seller_Portal_NA', user1.Id);
+        for(PermissionSetGroup psg : [select Id, Status from PermissionSetGroup where DeveloperName IN ('Seller_Portal_NA')]){
+            // force calculation of the PSG if it is not already Updated
+            if (psg.Status != 'Updated') {
+                Test.calculatePermissionSetGroup(psg.Id);
+            }
+            insert new PermissionSetAssignment(AssigneeId=user1.Id,PermissionSetGroupId=psg.Id);
+        }
 
 
         /* MN-10062024-US-0015298
