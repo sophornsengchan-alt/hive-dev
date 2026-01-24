@@ -28,7 +28,14 @@
                         <a class="slds-button slds-button_brand slds-float_right" onclick={handleViewAgreementButton}>{Labels.button_ViewAgreement}</a>
                     </div>
                 </template>
-                
+                <!-- TH US-0034229  -->
+                <!-- <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12">
+                    <lightning-button label="Preview" 
+                    variant="brand"
+                    data-id={contentDocumentId}
+                    onclick={previewHandler}
+                    ></lightning-button>
+                </div> -->
                 <!--TH 01.11.2022 US-0012494-->
                 <template if:true={isItemBase}>
                     <div class="slds-size_1-of-1 slds-clearfix slds-var-p-top_xx-small">
@@ -158,6 +165,19 @@
                 <c-lwc-coupon-decline-reason is-modal-open={showDeclineReason} rec-id={recId} rec-contact-id={contactId}></c-lwc-coupon-decline-reason>
                 
             </lightning-tab>
+
+            <!-- MN 09.01.2026 US-0033366-->
+             <template if:true={isShowExclusionTab}>
+                <template if:true={isProgramCouponSeller}>
+                    <lightning-tab label={Labels.CouponSellerDetail_TabLabel_Exclusions} value="tab4">
+                        <div class="recordFormWrapper">
+                            <c-program-coupon-exclusion-upload rec-id={recId}></c-program-coupon-exclusion-upload>
+                        </div>
+                        
+                    </lightning-tab>
+                </template>
+             </template>
+            <!-- End MN 09.01.2026 US-0033366-->
 
             <!-- SB 13.6.2022 US-0010429 -->
             <template if:true={isContractAvailable}>

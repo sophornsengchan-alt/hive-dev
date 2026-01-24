@@ -59,7 +59,6 @@ export default class LwcContractSignAgreement extends LightningElement {
     isShowAccordion = false;//LA-08-08-2022-US-0012206
     TermConditionText;//LA-08-08-2022-US-0012206
     isDefaultSite = false;
-
     excelTitle;//LA-17-06-2022-US-0010534
     Labels = {  button_Agree
                 , button_Decline
@@ -80,7 +79,8 @@ export default class LwcContractSignAgreement extends LightningElement {
     @api fileNamePDF;
     @api showDownloadPDF = false;//SB 29.6.2022 US-0010429
     @api filePdfId;//SB 29.6.2022 US-0010429
-
+    contentDocumentId; //TH US-0034229
+    contentVersionId; //TH US-0034229
     profileName; //MN-25072022-US-0012015
     isDEPortal = false;
     
@@ -110,7 +110,7 @@ export default class LwcContractSignAgreement extends LightningElement {
     getCouponSeller() {
         getCouponSeller2({csId:this.recId})
             .then(result => {
-                //console.log(result);
+                //console.log('result::'+JSON.stringify(result));
                 var csContractDueDate = new Date(result.cs.Coupon_Contract_Due_Date__c);
                 var formattedContractDueDate = csContractDueDate.getDate() + '/' + (csContractDueDate.getMonth()+1) + '/' + csContractDueDate.getFullYear();
                 var sellerCouponType = result.sellerCouponType;
@@ -144,6 +144,8 @@ export default class LwcContractSignAgreement extends LightningElement {
                 this.excelTitle = (result.cs.Coupon_ID__c ? result.cs.Coupon_ID__c :'_') + '_'+ (result.cs.Marketing_Coupon_Name__c ? result.cs.Marketing_Coupon_Name__c : '_');  
                 this.showDownloadPDF = result.showDownlaodPDF;//SB 29.6.2022 US-0010429
                 this.filePdfId = result.attachmentId;//SB 29.6.2022 US-0010429
+                this.contentDocumentId = result.contentDocumentId; //TH US-0034229
+                this.contentVersionId = result.contentVersionId; //TH US-0034229
                 this.isDEPortal = result.isDEPortalProfile;
 
                 this.isUK = result.isUK;

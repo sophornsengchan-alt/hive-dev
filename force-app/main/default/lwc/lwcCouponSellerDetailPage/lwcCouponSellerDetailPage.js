@@ -43,8 +43,8 @@ import getCouponSeller2 from '@salesforce/apex/SEPCouponController.getCouponSell
 import LOCALE from '@salesforce/i18n/locale';
 import section_CouponPerformance from '@salesforce/label/c.Coupon_Performance_Section';//LA-17-10-2023:US-0014190
 import getFieldSet from '@salesforce/apex/SEPCouponController.getFieldSet';//LA-19-10-2023:US-0014190
-
 import Program_Coupon_Overview_Text from '@salesforce/label/c.Program_Coupon_Overview_Text'; //12/12/2025 / CSP: US-0033567
+import CouponSellerDetail_TabLabel_Exclusions from '@salesforce/label/c.CouponSellerDetail_TabLabel_Exclusions'; //MN-09012026-US-0033366
 
 export default class LwcCouponSellerDetailPage extends NavigationMixin(LightningElement) {
 
@@ -107,13 +107,16 @@ export default class LwcCouponSellerDetailPage extends NavigationMixin(Lightning
             buttonDownloadItemList,
             buttonOptOut,
             viewMasterAgreement,
-            Program_Coupon_Overview_Text //12/12/2025 / CSP: US-0033567
+            Program_Coupon_Overview_Text, //12/12/2025 / CSP: US-0033567
+            CouponSellerDetail_TabLabel_Exclusions //MN-09012026-US-0033366
         };
 
     isShowCouponPerformanceSection = false;//LA-19-10-2023:US-0014190
     fiedlsInSection = [];//LA-19-10-2023:US-0014190
 
     targetUrlMasterAgreementCouponSeller='';
+
+    isShowExclusionTab = false; //MN-09012026-US-0033366
 
     // CSNotVisibleStage = ['Contract Send','Contract Signed','Coupon Running','Coupon executed','T4 Statement Send','T34 Statement Send','Invoice paid'];// SB 10.6.2022 US-0010429
     finishedRender = false;
@@ -186,8 +189,8 @@ export default class LwcCouponSellerDetailPage extends NavigationMixin(Lightning
                 // this.showDownloadPDF = result.showDownlaodPDF;
                 // this.urlPdfDownload = "https://"+window.location.hostname+"/servlet/servlet.FileDownload?file="+result.attachmentId;
                 // this.fileNamePDF = result.fileNamePDF;
-                // this.filePdfId = result.attachmentId;
-                
+                //this.filePdfId = result.attachmentId;\
+
                 // Acmatac SEING, US-0011991: Fixing issues for Coupon Linked Accounts
                 this.profileName = result.profileName;
                 this.spCouponValue = result.spCouponValue;
@@ -220,6 +223,8 @@ export default class LwcCouponSellerDetailPage extends NavigationMixin(Lightning
                 this.relatedFileName = result.relatedFileName;
                 //end US-0011560
                 this.isShowCouponPerformanceSection = result.showCouponPerformanceSection;//LA-19-10-2023:US-0014190
+
+                this.isShowExclusionTab = result.isShowExclusionTab; //MN-09012026-US-0033366
             })
             .catch(error => {
                 console.log("..initCS error",error);
@@ -307,6 +312,7 @@ export default class LwcCouponSellerDetailPage extends NavigationMixin(Lightning
             this.activeTab('tab2');
         }, 100);
     }
+    
     //Start : TH:02/11/2022:US-0012494
     handleViewItem(){
         //this.isShowContract = true;

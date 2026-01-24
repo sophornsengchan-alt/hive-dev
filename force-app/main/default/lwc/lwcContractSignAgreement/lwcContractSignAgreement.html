@@ -63,6 +63,15 @@
     </div>
     <div class="slds-scrollable_y" style={dynamicAgreementHeight}>
          <!-- <div if:false={isUK}> -->
+    <!-- TH:US-0034229 -->
+    <div if:true={isCouponSellerStageNotContractSend} > <!--class="pdf-viewer-fullscreen" -->
+        <!-- <c-lwc-pdf-viewer record-id={contentVersionId}></c-lwc-pdf-viewer> -->
+         <c-lwc-pdf-viewer record-id={contentDocumentId}></c-lwc-pdf-viewer>
+         <!-- <c-pdfjsviewer record-id={recId}></c-pdfjsviewer> -->
+        <!-- <c-pdfjsviewer record-id={contentDocumentId}></c-pdfjsviewer> -->
+    </div>
+    <!--End: US-0034229-->
+    <div if:false={isCouponSellerStageNotContractSend}>
         <div if:true={isDESite}>
             <lightning-formatted-rich-text value={agreementTextBody1}></lightning-formatted-rich-text>
             <template if:true={isItemBased}>
@@ -129,6 +138,7 @@
                 </button>
             </div>
         </div>
+    </div>
     </div>
     <!-- Footer -->
     <div if:false={isPreviewContract}>

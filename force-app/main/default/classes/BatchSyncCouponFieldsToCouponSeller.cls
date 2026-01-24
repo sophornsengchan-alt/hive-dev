@@ -13,6 +13,7 @@
 @               : 05.06.2023 / Loumang SENG / US-0013029 - Streamline of coupon seller statuses & retiring coupon fields
 @				: 01.09.2023 / Mony Nou / US-0013979 - Long Term Coupons Visible on Portal (Seller Facing): AC4
 @               : 27.01.2025 / Mony Nou / US-0015576 - (Tech debt) Coupon update- Exceeding CPU time Limit exception & Too many DML rows: 10001
+@               : 19.01.2026 / Chan Sophorn / US-0033742 - POP - SP - Make new record types searchable in Global Search (Phase 2)
 *********************************************************************************************************************************/
 global with sharing class BatchSyncCouponFieldsToCouponSeller implements Database.Batchable<SObject>, Schedulable {
     
@@ -21,17 +22,21 @@ global with sharing class BatchSyncCouponFieldsToCouponSeller implements Databas
     private final static String COUPON_ITEMBASE = 'Item_Based'; 
     private final static String COUPON_SCMC_CATEGORYBASE = 'Single_Contract_Multi_Coupon_SCMC_Category_Based'; //MN-01092023-US-0013979
     private static final String COUPONTYPE_ITEMBASED = 'Item Based'; //MN-27012025-US-0015576
+    private static final String COUPON_PROGRAM_SELLER = 'Program_Coupon_Seller'; //CSP-19012026-US-0033742
+    private static final String COUPON_MASTER_SELLER = 'Master_Agreement_Seller'; //CSP-19012026-US-0033742
     
     private static RecordType cpnRTypeItemBase = ApexUtil.getRecordTypeByName(COUPON_OBJNAME,COUPON_ITEMBASE);
     private static RecordType cpnRTypeCateBase = ApexUtil.getRecordTypeByName(COUPON_OBJNAME,COUPON_CATEGORYBASE);
-    private static RecordType cpnRTypeSCMC 	= ApexUtil.getRecordTypeByName(COUPON_OBJNAME,COUPON_SCMC_CATEGORYBASE); //MN-01092023-US-0013979
+    // private static RecordType cpnRTypeSCMC 	= ApexUtil.getRecordTypeByName(COUPON_OBJNAME,COUPON_SCMC_CATEGORYBASE); //MN-01092023-US-0013979
 
     global Database.QueryLocator start(Database.BatchableContext BC){
 
         
-        Set<Id> sValidRT = new Set<Id> {cpnRTypeCateBase.Id, cpnRTypeItemBase.Id, cpnRTypeSCMC.Id}; 
+        Set<Id> sValidRT = new Set<Id> {cpnRTypeCateBase.Id, cpnRTypeItemBase.Id}; 
         
         Set<String> sValidStage = new Set<String> {'Targeted','Reached','Contract Negotiation','Approved','Review','Contract Send','Contract Signed'};//LA-05-06-2023-US-0013029: Retire picklist value 'Commited'
+        Set<String> sValidStageMaster = new Set<String> {'Seller Declined','Completed','Contract Send','Contract Signed'};//CSP-19012026-US-0033742
+        Set<String> sValidStageProgram = new Set<String> {'Opted-In','Opted-Out','Running','Completed','Draft','Statement Ready'};//CSP-19012026-US-0033742
     
         //MN-27012025-US-0015576--START
 
@@ -46,6 +51,10 @@ global with sharing class BatchSyncCouponFieldsToCouponSeller implements Databas
         query += ' OR (Coupon__r.RecordTypeId=:cpnRTypeItemBaseId AND Coupon_Type__c <>:COUPONTYPE_ITEMBASED)';
 
         //MN-27012025-US-0015576--END
+
+        //3nd Condition: Record types Master and Program stage check
+        query += ' OR (RecordType.DeveloperName =:COUPON_MASTER_SELLER AND Coupon_Seller_Stage__c IN:sValidStageMaster AND (Marketing_Coupon_Name_Diff__c=true OR Coupon_Code_Diff__c=true))'; //CSP-19012026-US-0033742CSP
+        query += ' OR (RecordType.DeveloperName =:COUPON_PROGRAM_SELLER AND Coupon_Seller_Stage__c IN:sValidStageProgram AND (Marketing_Coupon_Name_Diff__c=true OR Coupon_Code_Diff__c=true))'; //CSP-19012026-US-0033742CSP
 
         return Database.getQueryLocator(query);
 
@@ -63,9 +72,9 @@ global with sharing class BatchSyncCouponFieldsToCouponSeller implements Databas
             Boolean isUpdate = false;
             Coupon_Seller__c tmp = new Coupon_Seller__c(Id = cs.Id);
 
+            
             //1st condition: Sync Coupon Marketing Name and Coupon Code from Coupon to Coupon Seller
             if (cs.Coupon_Marketing_Name__c != cp.Marketing_Coupon_Name__c || cs.Coupon_Code__c != cp.Coupon_ID__c) {
-                
                 if (cs.Coupon_Marketing_Name__c != cp.Marketing_Coupon_Name__c) { tmp.Coupon_Marketing_Name__c = cp.Marketing_Coupon_Name__c; }
                 if (cs.Coupon_Code__c != cp.Coupon_ID__c) { tmp.Coupon_Code__c = cp.Coupon_ID__c; }
                 
