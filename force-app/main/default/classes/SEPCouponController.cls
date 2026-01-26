@@ -41,7 +41,7 @@
 @               : 10/12/2025 / Sovantheany Dim / US-0033746 - POP - Trigger to update status of Program Seller to Opt-Out - instead of Seller Declined 
 @               : 12/12/2025 / SENG Chan Sophorn / US-0033567 - POP - SP - Add Button, New Field and update text on Program Coupon Layout - view Master Agreement
 @               : 08/01/2026 / SENG Chan Sophorn / US-0033468 - POP - SP - Populate Program Coupon info on Master Coupon Agreement Contract (Part 2) 
-
+@               : 19/01/2026 / Mony Nou / US-0033366 - POP - SP - Ability for Sellers to Upload Coupon Item Exclusions in Seller Portal 
 *********************************************************************************************************************************/
 public with sharing class SEPCouponController {
 
@@ -108,6 +108,8 @@ public with sharing class SEPCouponController {
     private final static String COUPON_SELLER_STAGE_CONTRACT_SEND= 'Contract Send';
     private final static String COUPON_SELLER_STAGE_SELLER_DECLINED= 'Seller Declined';
     private final static String PROGRAM_COUPON_SELLER_STAGE_SELLER_OPT_OUT = 'Opted-Out';//TH:US-0033746:Update to Opt-Out
+    private final static String PROGRAM_COUPON_SELLER_STAGE_DRAFT = 'Draft';//MN-19012026-US-0033366
+    private final static String PROGRAM_COUPON_SELLER_STAGE_OPTED_IN = 'Opted-In';//MN-19012026-US-0033366
     private final static String COUPON_SELLER_STAGE_NEGO= 'Contract Negotiation';
     private final static String COUPON_SELLER_STAGE_REVIEW_SEP= 'Items in Review';//SB 23.6.2022 US-0011958 - Change Requests Focus 75
     private final static String COUPON_SELLER_STAGE_STATEMENT_GENERATED = 'T34 Statement Send';//TH:US-0011560 
@@ -803,6 +805,10 @@ public with sharing class SEPCouponController {
         //'Targeted','Reached','Commited'
     }; // CT 23.06.2022 / Chetra Sarom / US-0011912 //LA-05-06-2023-US-0013029: Retire picklist value 'Commited'
 
+    private final static Set<String> SET_STAGE_SHOW_EXCLUSION_TAB = new Set<String>{
+        PROGRAM_COUPON_SELLER_STAGE_DRAFT, PROGRAM_COUPON_SELLER_STAGE_OPTED_IN
+    }; // MN-19012026-US-0033366
+
    
      /*****************************************************************************************************************************
     @ Method:         getCouponSeller
@@ -824,7 +830,7 @@ public with sharing class SEPCouponController {
     @               02.09.2025 / Loumang SENG / US-0033254 - POP - SP - Ability to Accept/Decline Coupon Seller Contract
     @               25/09/2025 / Davy SORN / US-0033398 - POP - SP - Ability to view related child Coupons and Item List | Incl Opt Out Part 2
     @               12/12/2025 / SENG Chan Sophorn / US-0033567 - POP - SP - Add Button, New Field and update text on Program Coupon Layout - view Master Agreement
-
+    @               19/01/2026 / Mony Nou / US-0033366 - POP - SP - Ability for Sellers to Upload Coupon Item Exclusions in Seller Portal 
     *****************************************************************************************************************************/
     @AuraEnabled
     public static Map<String,Object> getCouponSeller2(String csId)
@@ -849,6 +855,13 @@ public with sharing class SEPCouponController {
         mapResult.put('isProgramCouponSeller', isProgramCouponSeller);
         mapResult.put('coInvestFileId', cs.CoInvestFileSFID__c);
         // END 26/09/2025 / Davy SORN / US-0033398
+
+        // START 19/01/2026 / Mony Nou / US-0033366
+        Boolean isShowExclusionTab = isProgramCouponSeller 
+            && SET_STAGE_SHOW_EXCLUSION_TAB.contains(cs.Coupon_Seller_Stage__c) 
+            && couponStartDateTime.addHours(-48) > currentDateTime;
+        mapResult.put('isShowExclusionTab', isShowExclusionTab);
+        // END 19/01/2026 / Mony Nou / US-0033366
 
         // START 01/10/2025 / Davy SORN / US-0033174
         Boolean isMasterCoupon = cs.RecordType.DeveloperName == MASTER_AGREEMENT_SELLER_REC_TYPE;
@@ -951,6 +964,7 @@ public with sharing class SEPCouponController {
             //25/09/2025 / Davy SORN / US-0033398 Use ApexSafe instead - fixed PMD error
             List<ContentVersion> cv = ApexSafe.query().doQuery(STR_QUERY_CONTENT_VERSION, new Map<String, Object> {'cdId' => listAtt[0].ContentDocumentId});
             mapResult.put('attachmentId',cv[0].Id);
+            mapResult.put('contentDocumentId', listAtt[0].ContentDocumentId); // TH: US-0034229 - Add ContentDocumentId for file preview
             mapResult.put('fileNamePDF',cv[0].Title);
             mapResult.put('showDownlaodPDF',SET_STAGE_SHOW_DOWNLOAD_CONTRACT.contains(cs.Coupon_Seller_Stage__c));
         }
