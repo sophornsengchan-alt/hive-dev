@@ -10,4 +10,5 @@ package.xml
 
 # LWC Jest
 **/__tests__/**
-.sf
+.sf/**
+.sfdx/**
