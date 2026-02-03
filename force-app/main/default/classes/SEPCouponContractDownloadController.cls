@@ -51,6 +51,8 @@ public with sharing class SEPCouponContractDownloadController {
     private final static String COUPON_ITEMBASE = 'Item Based';
     private final static String COUPON_SITE_AU = 'ebay.com.au';// SB 24.02.2023 US-0012755 - [AU] Downloading /storing Coupon Contract on Portal and in Hive
 
+    private final static String MASTER_AGREEMENT_SELLER_REC_TYPE = 'Master_Agreement_Seller'; //08012026:CSP/US-0033468
+
     private final static String EMAIL_COUPON_CONTRACT_DE_ITEM_SEP = 'DE_Item_Coupon_Contract_SEP_Download';
     private final static String EMAIL_COUPON_CONTRACT_DE_CAT_SEP = 'DE_Category_Coupon_Contract_SEP_Download';
     private final static String EMAIL_COUPON_CONTRACT_NA_ITEM_SEP = 'NA_Item_Coupon_Contract_SEP_Download';
@@ -227,9 +229,13 @@ public with sharing class SEPCouponContractDownloadController {
         htmlContent = emp.HtmlValue;
         */
 
-        String masterCouponId = String.valueOf(cs.Coupon__c).substring(0,15); // 08012026:CSP/US-0033468
-        List<Coupon_Seller__c> listProgramCS = SEPCouponController.getSEPContractListProgramCouponSeller(masterCouponId); // 08012026:CSP/US-0033468
-
+        // Start 08012026:CSP/US-0033468
+        List<Coupon_Seller__c> listProgramCS;
+        if (cs.RecordType.DeveloperName == MASTER_AGREEMENT_SELLER_REC_TYPE) {
+            String masterCouponId = String.valueOf(cs.Coupon__c).substring(0,15); // 08012026:CSP/US-0033468
+            listProgramCS = SEPCouponController.getSEPContractListProgramCouponSeller(masterCouponId, cs.Seller__r.Id); // 08012026:CSP/US-0033468
+        }
+        // End 08012026:CSP/US-0033468
 
         //START--MN-01082024-US-0015661: Fixed ApexCRUDViolation from Apex PMD Scan
         String empQuery = 'Select Id,HtmlValue From EmailTemplate WHERE DeveloperName =:templateName';
@@ -238,7 +244,7 @@ public with sharing class SEPCouponContractDownloadController {
             htmlContent = emp.HtmlValue;
 
             // Start 08012026:CSP/US-0033468
-            if(htmlContent.contains('{!programCouponSellerTables}')) {
+            if(htmlContent.contains('{!programCouponSellerTables}') && cs.RecordType.DeveloperName == MASTER_AGREEMENT_SELLER_REC_TYPE) {
                 String programCouponSellerTables = SEPCouponController.generateProgramCouponSellerHTMLTable(listProgramCS,htmlProgramTableTemplate,emp);
                 htmlContent = htmlContent.replace('{!programCouponSellerTables}', programCouponSellerTables);
             }

@@ -52,11 +52,11 @@ public with sharing class SEPCouponController {
     //23.08.2023 / Sambath Seng / US-0014046 add Seller__r.Seller_Portal_Group__c,Seller__r.Seller_Portal_Group__r.SP_Main_Domain__c,Seller__r.SP_Main_Domain__c into query
     //LA-28-09-2023: US-0013980 : Add Seller__r.EBH_RevRollup__c into query
     // 12/12/2025 / CSP:US-0033567
-    private final static String SOQL_COUPON_SELLER = 'Select Coupon__c, RecordType.DeveloperName, SellerMaximumContribution__c,Max_items_per_redemption__c,Contra_LC__c,GMV_LC__c,Last_Sales_Date__c,Last_Refresh_Date__c,Cost_Share_Seller_LC__c, Seller__r.EBH_RevRollup__c,Additional_Terms_Override_of_Agreement__c,Main_Coupon_Site__c,Coupon_Code__c, Name, Coupon_ID__c, Coupon_Start_Date__c, Coupon_End_Date__c, Legal_Entity_Name_w__c, Legal_Entity_Street_w__c, Legal_Entity_Zip_w__c, Seller__r.Parent.EBH_BillingCity__c, Seller__r.Name, Coupon_Start_Time__c, Coupon_End_Time__c, Additional_Terms__c, Seller__r.Parent.EBH_BillingCountry__c, Coupon__r.Couponsite_s__c, Marketing_Coupon_Name__c, Contract_Language__c, CurrencyIsoCode, Min_Transaction_Value__c, SP_Coupon_Discount_Rate__c, Coupon_Site__c, Max_Redemptions__c, Coupon_Discount_Amount__c, Legal_Entity_City__c, Maximum_Discount_Value__c, Coupon_Contract_Due_Date__c, Coupon_Seller_Stage__c, Contract_Accept_Date__c, Contract_Accepted_From__c, Contract_Signed_Declined_By__c, Legal_Entity_Country__c, Coupon_Type__c, Allow_reaccept_contract__c, Coupon_Seller_Stage_Portal__c, SellerShareHolder__c,eBay_Co_fund_Max__c,Negotiation_End_Date__c,Seller__r.Primary_Contact__c,Seller_Contact__r.Community_User__c,Seller__r.Seller_Portal_Group__c,Seller__r.Seller_Portal_Group__r.SP_Main_Domain__c,Seller__r.SP_Main_Domain__c,Master_Agreement_Coupon_Seller__c,Master_Agreement_Coupon_Seller__r.Name,CoInvestFileSFID__c From Coupon_Seller__c ' ; //SB 23.6.2022 US-0011958 - Change Requests Focus 75 // 10-10-2022/ Chetra Sarom / US-0012679 - Coupons Item Upload deadline Note on Seller portal
+    private final static String SOQL_COUPON_SELLER = 'Select Coupon__c,Seller__c,Seller__r.Id, RecordType.DeveloperName, SellerMaximumContribution__c,Max_items_per_redemption__c,Contra_LC__c,GMV_LC__c,Last_Sales_Date__c,Last_Refresh_Date__c,Cost_Share_Seller_LC__c, Seller__r.EBH_RevRollup__c,Additional_Terms_Override_of_Agreement__c,Main_Coupon_Site__c,Coupon_Code__c, Name, Coupon_ID__c, Coupon_Start_Date__c, Coupon_End_Date__c, Legal_Entity_Name_w__c, Legal_Entity_Street_w__c, Legal_Entity_Zip_w__c, Seller__r.Parent.EBH_BillingCity__c, Seller__r.Name, Coupon_Start_Time__c, Coupon_End_Time__c, Additional_Terms__c, Seller__r.Parent.EBH_BillingCountry__c, Coupon__r.Couponsite_s__c, Marketing_Coupon_Name__c, Contract_Language__c, CurrencyIsoCode, Min_Transaction_Value__c, SP_Coupon_Discount_Rate__c, Coupon_Site__c, Max_Redemptions__c, Coupon_Discount_Amount__c, Legal_Entity_City__c, Maximum_Discount_Value__c, Coupon_Contract_Due_Date__c, Coupon_Seller_Stage__c, Contract_Accept_Date__c, Contract_Accepted_From__c, Contract_Signed_Declined_By__c, Legal_Entity_Country__c, Coupon_Type__c, Allow_reaccept_contract__c, Coupon_Seller_Stage_Portal__c, SellerShareHolder__c,eBay_Co_fund_Max__c,Negotiation_End_Date__c,Seller__r.Primary_Contact__c,Seller_Contact__r.Community_User__c,Seller__r.Seller_Portal_Group__c,Seller__r.Seller_Portal_Group__r.SP_Main_Domain__c,Seller__r.SP_Main_Domain__c,Master_Agreement_Coupon_Seller__c,Master_Agreement_Coupon_Seller__r.Name,CoInvestFileSFID__c From Coupon_Seller__c ' ; //SB 23.6.2022 US-0011958 - Change Requests Focus 75 // 10-10-2022/ Chetra Sarom / US-0012679 - Coupons Item Upload deadline Note on Seller portal
     //MN-21022023-US-0012748-Added Seller_Funding__c into query
     private final static String SOQL_COUPONCOINVEST = 'select Item_ID__c,Item_Title__c,Category__c, Coupon_Seller__c, Co_Invest__c, Category_ID__c, Coupon_Category__r.Name, Seller_Funding__c from Coupon_Co_Invest__c';
     private final static String SOQL_PROGCOPOUNSELLER = 'Select Id, Coupon_End_Date__c, Marketing_Coupon_Name__c From Coupon_Seller__c'; //MN-25112025-US-0033542
-    private final static String SOQL_SEPCONTRACTPROGCOPOUNSELLER = 'Select Id, Coupon__c, Coupon_ID__c ,MasterCouponId__c, Marketing_Coupon_Name__c,Coupon_Start_Time__c ,Coupon_Start_Date__c ,Coupon_End_Time__c,Coupon_End_Date__c, Additional_Terms__c From Coupon_Seller__c'; // 08012026:CSP/US-0033468
+    private final static String SOQL_SEPCONTRACTPROGCOPOUNSELLER = 'Select Id, Seller__c,Seller__r.Id, Coupon__c, Coupon_ID__c ,MasterCouponId__c, Marketing_Coupon_Name__c,Coupon_Start_Time__c ,Coupon_Start_Date__c ,Coupon_End_Time__c,Coupon_End_Date__c, Additional_Terms__c From Coupon_Seller__c'; // 08012026:CSP/US-0033468
     private final static String EMAIL_COUPON_CONTRACT_DE_ITEM_SEP = 'DE_Item_Coupon_Contract_SEP';
     private final static String EMAIL_COUPON_CONTRACT_DE_CAT_SEP = 'DE_Category_Coupon_Contract_SEP';
     private final static String EMAIL_COUPON_CONTRACT_DE_MC_SEP = 'DE_Master_Coupon_Agreement_Contract_SEP';
@@ -361,15 +361,26 @@ public with sharing class SEPCouponController {
                 //emTDevName = isLocalize? MAP_CONTRACT_LOCALIZE.get(cs.Main_Coupon_Site__c+'-'+cs.Coupon_Type__c) : mSPMainDomainEmailTemp.get(SEP_Helper.sepUser.domain).get(cs.Coupon_Type__c); //MN-05062024-US-0015298 //MN-01082024-US-0015661
                 emTDevName = isLocalize? MAP_CONTRACT_LOCALIZE.get(cs.Main_Coupon_Site__c+'-'+cs.Coupon_Type__c) : mSPMainDomainEmailTemp.get(spMainDomain).get(cs.Coupon_Type__c); //MN-01082024-US-0015661: To allow EU SP Domain to sign DE Coupon Seller
             }
-            String masterCouponId = String.valueOf(cs.Coupon__c).substring(0,15); // 08012026:CSP/US-0033468
-            List<Coupon_Seller__c> listProgramCS = getSEPContractListProgramCouponSeller(masterCouponId); // 08012026:CSP/US-0033468
+
+            List<Coupon_Seller__c> listProgramCS;
+
+            if (cs.RecordType.DeveloperName == MASTER_AGREEMENT_SELLER_REC_TYPE) {
+              String masterCouponId = String.valueOf(cs.Coupon__c).substring(0,15); // 08012026:CSP/US-0033468
+              listProgramCS = getSEPContractListProgramCouponSeller(masterCouponId, cs.Seller__r.Id); // 08012026:CSP/US-0033468
+            }
+            
 
 
             for (EmailTemplate empt : Database.query(SOQLEMAIL_TEMPLATES +' Where DeveloperName  =:emTDevName')) {
                 String htmlValue = empt.HtmlValue != null ? empt.HtmlValue : null; 
                 htmlBody += mergeFieldsContractCoupon(htmlValue,cs);
                 htmlBody = htmlBody.contains('{!catTable}')?htmlBody.replace('{!catTable}',generateHTMLTable(listCoInvest,htmlRowTemplate,false,empt,currentUser.Profile.Name)):htmlBody;
-                htmlBody = htmlBody.contains('{!programCouponSellerTables}')?htmlBody.replace('{!programCouponSellerTables}',generateProgramCouponSellerHTMLTable(listProgramCS,htmlProgramTableTemplate,empt)):htmlBody;// 08012026:CSP/US-0033468
+                
+                
+                if (cs.RecordType.DeveloperName == MASTER_AGREEMENT_SELLER_REC_TYPE) {
+                    htmlBody = htmlBody.contains('{!programCouponSellerTables}')?htmlBody.replace('{!programCouponSellerTables}',generateProgramCouponSellerHTMLTable(listProgramCS,htmlProgramTableTemplate,empt)):htmlBody;// 08012026:CSP/US-0033468
+                }
+
                 //MN-21022023-US-0012748 - Replace {CouponCoInvest_SellerFunding} with field Seller_Funding__c from the first Co-Invest record
                 //if (currentUser.Profile.Name == PROF_SEP_AU) { //MN-05062024-US-0015298
                 if (SEP_Helper.sepUser.isAU()) { //MN-05062024-US-0015298: Use SP Main Domain instead of Profile Name
@@ -527,10 +538,10 @@ public with sharing class SEPCouponController {
     ------------------------------------------------------------------------------------------------------------------------------
     @ Parameter:      String csId
     *****************************************************************************************************************************/
-    public static List<Coupon_Seller__c> getSEPContractListProgramCouponSeller(String masterCouponId){
-        String query = SOQL_SEPCONTRACTPROGCOPOUNSELLER+' Where MasterCouponId__c =:masterCouponId Order By CreatedDate';
-        // return ApexSafe.query().secCheck(true).doQuery(query, new Map<String, Object>{'masterCouponId' => masterCouponId});
-        return ApexSafe.query().secCheck(true).doQuery(query, new Map<String, Object>{'masterCouponId' => masterCouponId});
+    public static List<Coupon_Seller__c> getSEPContractListProgramCouponSeller(String masterCouponId, String SellerId){
+        String query = SOQL_SEPCONTRACTPROGCOPOUNSELLER+' Where MasterCouponId__c =:masterCouponId and Seller__r.Id =:SellerId  Order By CreatedDate';
+        // return ApexSafe.query().secCheck(true).doQuery(query, new Map<String, Object>{'masterCouponId' => masterCouponId}); 
+        return ApexSafe.query().secCheck(true).doQuery(query, new Map<String, Object>{'masterCouponId' => masterCouponId, 'SellerId' => SellerId});
     }
 
     /*****************************************************************************************************************************
@@ -605,6 +616,7 @@ public with sharing class SEPCouponController {
     *****************************************************************************************************************************/
     public static String generateProgramCouponSellerHTMLTable(List<Coupon_Seller__c>  listProgramCS,String htmltableStringTemplate, EmailTemplate emt)
  	{ 
+
  		if(listProgramCS==null || (listProgramCS <>null && listProgramCS.isEmpty()))return '';
 
         Map<String, String> mHTMLHeader = new Map<String, String>{
